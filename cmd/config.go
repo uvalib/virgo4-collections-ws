@@ -13,9 +13,8 @@ type SolrConfig struct {
 
 // ServiceConfig defines all of the JRML pool configuration parameters
 type ServiceConfig struct {
-	Port    int
-	DevMode bool
-	Solr    SolrConfig
+	Port int
+	Solr SolrConfig
 }
 
 // LoadConfiguration will load the service configuration from the commandline
@@ -26,7 +25,6 @@ func LoadConfiguration() *ServiceConfig {
 	flag.IntVar(&cfg.Port, "port", 8080, "API service port (default 8080)")
 	flag.StringVar(&cfg.Solr.URL, "solr", "", "Solr URL")
 	flag.StringVar(&cfg.Solr.Core, "core", "test_core", "Solr core")
-	flag.BoolVar(&cfg.DevMode, "dev", false, "Dev mode flag")
 
 	flag.Parse()
 
@@ -40,7 +38,6 @@ func LoadConfiguration() *ServiceConfig {
 	log.Printf("[CONFIG] port          = [%d]", cfg.Port)
 	log.Printf("[CONFIG] solr          = [%s]", cfg.Solr.URL)
 	log.Printf("[CONFIG] core          = [%s]", cfg.Solr.Core)
-	log.Printf("[CONFIG] dev           = [%t]", cfg.DevMode)
 
 	return &cfg
 }

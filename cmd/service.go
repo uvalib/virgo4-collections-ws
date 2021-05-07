@@ -16,14 +16,13 @@ import (
 // ServiceContext contains common data used by all handlers
 type ServiceContext struct {
 	Version    string
-	DevMode    bool
 	Solr       SolrConfig
 	HTTPClient *http.Client
 }
 
 // InitializeService sets up the service context for all API handlers
 func InitializeService(version string, cfg *ServiceConfig) *ServiceContext {
-	ctx := ServiceContext{Version: version, DevMode: cfg.DevMode, Solr: cfg.Solr}
+	ctx := ServiceContext{Version: version, Solr: cfg.Solr}
 
 	log.Printf("INFO: create HTTP client...")
 	defaultTransport := &http.Transport{
