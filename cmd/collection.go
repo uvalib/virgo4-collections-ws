@@ -9,6 +9,7 @@ import (
 	"os"
 	"sort"
 	"strings"
+	"time"
 
 	"github.com/gin-gonic/gin"
 )
@@ -108,9 +109,17 @@ func (svc *ServiceContext) getPreviousItem(c *gin.Context) {
 	name := c.Param("name")
 	date := c.Param("date")
 	log.Printf("INFO: navigate to item after %s in %s", date, name)
+
+	// subtract 1 milisecond from the passed time; convert to time, then subtract,
+	// then back to string
+	layoutISO := "2006-01-02"
+	t, _ := time.Parse(layoutISO, date)
+	old := t.Add(-time.Millisecond)
+	date = old.Format(time.RFC3339)
+
 	qParams := make([]string, 0)
 	qParams = append(qParams, "fl=id")
-	q := fmt.Sprintf("digital_collection_f:\"%s\"+published_date:[* TO %sT00:00:00.000Z]", name, date)
+	q := fmt.Sprintf("digital_collection_f:\"%s\"+published_date:[* TO %s]", name, date)
 	qParams = append(qParams, fmt.Sprintf("q=%s", url.QueryEscape(q)))
 	qParams = append(qParams, "rows=1")
 	qParams = append(qParams, "start=0")
@@ -142,7 +151,7 @@ func (svc *ServiceContext) getNextItem(c *gin.Context) {
 	log.Printf("INFO: navigate to item before %s in %s", date, name)
 	qParams := make([]string, 0)
 	qParams = append(qParams, "fl=id")
-	q := fmt.Sprintf("digital_collection_f:\"%s\"+published_date:[%sT00:00:00.000Z TO *]", name, date)
+	q := fmt.Sprintf("digital_collection_f:\"%s\"+published_date:[%sT00:00:00.001Z TO *]", name, date)
 	qParams = append(qParams, fmt.Sprintf("q=%s", url.QueryEscape(q)))
 	qParams = append(qParams, "rows=1")
 	qParams = append(qParams, "start=0")
