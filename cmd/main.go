@@ -44,9 +44,10 @@ func main() {
 	router.GET("/favicon.ico", svc.ignoreFavicon)
 	router.GET("/version", svc.getVersion)
 	router.GET("/healthcheck", svc.healthCheck)
-	router.GET("/collection/:name", svc.getCollectionContext)
-	// router.GET("/collection/:cid/dates", svc.getCollectioDates)
-	// router.GET("/collection/:cid/:pid/:dir", svc.navigateItems)
+	router.GET("/collections/:name", svc.getCollectionContext)
+	router.GET("/collections/:name/dates", svc.getCollectioDates)
+	router.GET("/collections/:name/items/:date/next", svc.getNextItem)
+	router.GET("/collections/:name/items/:date/previous", svc.getPreviousItem)
 
 	portStr := fmt.Sprintf(":%d", cfg.Port)
 	log.Printf("INFO: start service v%s on port %s", version, portStr)

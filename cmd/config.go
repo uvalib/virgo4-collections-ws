@@ -2,6 +2,7 @@ package main
 
 import (
 	"flag"
+	"fmt"
 	"log"
 )
 
@@ -9,6 +10,10 @@ import (
 type SolrConfig struct {
 	URL  string
 	Core string
+}
+
+func (sc *SolrConfig) selectURL() string {
+	return fmt.Sprintf("%s/%s/select", sc.URL, sc.Core)
 }
 
 // ServiceConfig defines all of the JRML pool configuration parameters
