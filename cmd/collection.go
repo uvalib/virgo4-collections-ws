@@ -7,7 +7,6 @@ import (
 	"net/http"
 	"net/url"
 	"os"
-	"sort"
 	"strings"
 	"time"
 
@@ -26,18 +25,9 @@ type solrResponseDocuments struct {
 	Docs     []solrDocument `json:"docs,omitempty"`
 }
 
-type solrFacetCounts struct {
-	Fields solrFacetFields `json:"facet_fields,omitempty"`
-}
-
-type solrFacetFields struct {
-	Dates []interface{} `json:"published_date,omitempty"`
-}
-
 type solrResponse struct {
-	Header      solrResponseHeader    `json:"responseHeader,omitempty"`
-	Response    solrResponseDocuments `json:"response,omitempty"`
-	FacetCounts solrFacetCounts       `json:"facet_counts,omitempty"`
+	Header   solrResponseHeader    `json:"responseHeader,omitempty"`
+	Response solrResponseDocuments `json:"response,omitempty"`
 }
 
 func (svc *ServiceContext) getCollectionContext(c *gin.Context) {
@@ -69,13 +59,12 @@ func (svc *ServiceContext) getCollectioDates(c *gin.Context) {
 		return
 	}
 	log.Printf("INFO: get all item publication dates for %s in %s", year, name)
+
 	qParams := make([]string, 0)
-	qParams = append(qParams, "fl=title_a")
-	qParams = append(qParams, "rows=0")
+	qParams = append(qParams, "fl=id,published_date")
+	qParams = append(qParams, "rows=365")
 	qParams = append(qParams, "start=0")
-	qParams = append(qParams, "facet=true")
-	qParams = append(qParams, "facet.field=published_date")
-	qParams = append(qParams, "facet.limit=365")
+	qParams = append(qParams, "sort=published_date%20asc")
 	q := fmt.Sprintf("digital_collection_f:\"%s\"+published_date:[%s-01-01T00:00:00.000Z TO %s-12-31T00:00:00.000Z]",
 		name, year, year)
 	qParams = append(qParams, fmt.Sprintf("q=%s", url.QueryEscape(q)))
@@ -86,6 +75,7 @@ func (svc *ServiceContext) getCollectioDates(c *gin.Context) {
 		c.String(http.StatusInternalServerError, err.Error())
 		return
 	}
+
 	var respJSON solrResponse
 	err = json.Unmarshal(resp, &respJSON)
 	if err != nil {
@@ -93,14 +83,20 @@ func (svc *ServiceContext) getCollectioDates(c *gin.Context) {
 		c.String(http.StatusInternalServerError, err.Error())
 		return
 	}
-	out := make([]string, 0)
-	for _, d := range respJSON.FacetCounts.Fields.Dates {
-		if dateStr, ok := d.(string); ok {
+
+	type pubDate struct {
+		Date string `json:"date"`
+		PID  string `json:"pid"`
+	}
+	log.Printf("%+v", respJSON.Response.Docs)
+	out := make([]pubDate, 0)
+	for _, doc := range respJSON.Response.Docs {
+		if dateStr, ok := doc["published_date"].(string); ok {
 			cleanDate := strings.Split(dateStr, "T")[0]
-			out = append(out, cleanDate)
+			item := pubDate{Date: cleanDate, PID: doc["id"].(string)}
+			out = append(out, item)
 		}
 	}
-	sort.Strings(out)
 
 	c.JSON(http.StatusOK, out)
 }
