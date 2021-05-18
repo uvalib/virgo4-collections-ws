@@ -32,7 +32,7 @@ type solrResponse struct {
 
 func (svc *ServiceContext) getCollectionContext(c *gin.Context) {
 	rawName := c.Param("name")
-	log.Printf("Get collection context for [%s]", rawName)
+	log.Printf("INFO: get collection context for [%s]", rawName)
 
 	fileName := collectionFilename(rawName)
 	if _, err := os.Stat(fileName); err == nil {
