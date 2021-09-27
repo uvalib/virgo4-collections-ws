@@ -1,0 +1,37 @@
+#
+# migratespec.yml
+#
+
+version: 0.2
+
+#env:
+#  variables:
+#    name: value
+
+phases:
+  install:
+    runtime-versions:
+      golang: 1.15
+#    commands:
+
+  pre_build:
+    commands:
+      - docker version
+      - PASSWORD=$(aws ecr get-login-password --region $AWS_REGION)
+      - docker login --username AWS --password $PASSWORD $CONTAINER_REGISTRY
+      - latest_build=$(aws --region=$AWS_REGION ssm get-parameter --name /containers/$CONTAINER_IMAGE/latest | grep "Value" | awk -F\" '{print $4}')
+
+  build:
+    commands:
+      - DOCKER_ENTRY="--entrypoint /virgo4-collections-ws/scripts/migrate.sh"
+      - DOCKER_ENV="-e DBHOST=$DBHOST -e DBPORT=$DBPORT -e DBNAME=$DBNAME -e DBUSER=$DBUSER -e DBPASS=$DBPASSWD"
+      - DOCKER_IMAGE="$CONTAINER_REGISTRY/$CONTAINER_IMAGE:$latest_build"
+      - docker pull $DOCKER_IMAGE || docker pull $DOCKER_IMAGE || docker pull $DOCKER_IMAGE
+      - docker run $DOCKER_ENTRY $DOCKER_ENV $DOCKER_IMAGE
+
+#  post_build:
+#    commands:
+
+#
+# end of file
+#
