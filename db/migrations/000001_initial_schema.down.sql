@@ -1,0 +1,4 @@
+DROP TABLE IF EXISTS collection_features;
+DROP TABLE IF EXISTS images;
+DROP TABLE IF EXISTS features;
+DROP TABLE IF EXISTS collections;

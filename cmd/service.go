@@ -6,11 +6,15 @@ import (
 	"log"
 	"net"
 	"net/http"
+	"os"
 	"path/filepath"
+	"strconv"
 	"strings"
 	"time"
 
 	"github.com/gin-gonic/gin"
+	dbx "github.com/go-ozzo/ozzo-dbx"
+	_ "github.com/lib/pq"
 )
 
 // ServiceContext contains common data used by all handlers
@@ -18,11 +22,22 @@ type ServiceContext struct {
 	Version    string
 	Solr       SolrConfig
 	HTTPClient *http.Client
+	DB         *dbx.DB
 }
 
 // InitializeService sets up the service context for all API handlers
 func InitializeService(version string, cfg *ServiceConfig) *ServiceContext {
 	ctx := ServiceContext{Version: version, Solr: cfg.Solr}
+
+	log.Printf("Connect to Postgres")
+	connStr := fmt.Sprintf("user=%s password=%s dbname=%s host=%s port=%d sslmode=disable",
+		cfg.DB.User, cfg.DB.Pass, cfg.DB.Name, cfg.DB.Host, cfg.DB.Port)
+	db, err := dbx.Open("postgres", connStr)
+	if err != nil {
+		log.Fatal(err)
+	}
+	db.LogFunc = log.Printf
+	ctx.DB = db
 
 	log.Printf("INFO: create HTTP client...")
 	defaultTransport := &http.Transport{
@@ -68,9 +83,33 @@ func (svc *ServiceContext) healthCheck(c *gin.Context) {
 	type hcResp struct {
 		Healthy bool   `json:"healthy"`
 		Message string `json:"message,omitempty"`
+		Version int    `json:"version,omitempty"`
 	}
 	hcMap := make(map[string]hcResp)
 	hcMap["collectionsvc"] = hcResp{Healthy: true}
+
+	tq := svc.DB.NewQuery("select * from schema_migrations order by version desc limit 1")
+	var schema struct {
+		Version int  `db:"version"`
+		Dirty   bool `db:"dirty"`
+	}
+	err := tq.One(&schema)
+	if err != nil {
+		log.Printf("ERROR: %s", err.Error())
+		hcMap["postgres"] = hcResp{Healthy: false, Message: err.Error()}
+	} else {
+		log.Printf("Schema info - Version: %d, Dirty: %t", schema.Version, schema.Dirty)
+		if schema.Dirty {
+			hcMap["postgres"] = hcResp{Healthy: false, Message: fmt.Sprintf("Schema %d is marked dirty", schema.Version)}
+		} else {
+			// check that the highest numbered migration matches DB version value
+			latest := getLatestMigrationNumber()
+			if latest > 0 && latest != schema.Version {
+				hcMap["postgres"] = hcResp{Healthy: false, Message: fmt.Sprintf("Schema out of date. Reported version: %d, latest: %d", schema.Version, latest)}
+			}
+		}
+		hcMap["postgres"] = hcResp{Healthy: true, Version: schema.Version}
+	}
 
 	c.JSON(http.StatusOK, hcMap)
 }
@@ -119,4 +158,48 @@ func handleAPIResponse(url string, resp *http.Response, rawErr error) ([]byte, e
 	defer resp.Body.Close()
 	bodyBytes, _ := ioutil.ReadAll(resp.Body)
 	return bodyBytes, nil
+}
+
+func getLatestMigrationNumber() int {
+	// on deployed systems, the migrations can be found in ../db/*.sql (we run from ./bin)
+	// on dev systems run with 'go run', they are in ./backend/db/migrations/*.sql
+	// try both; if files found return the latest number. If none found, just return 0.
+	tgts := []string{"../db", "./db/migrations"}
+	migrateDir := ""
+	for _, dir := range tgts {
+		_, err := os.Stat(dir)
+		if err == nil {
+			migrateDir = dir
+			break
+		}
+	}
+
+	if migrateDir == "" {
+		log.Printf("WARN: DB Migration directory not found")
+		return 0
+	}
+
+	files, err := ioutil.ReadDir(migrateDir)
+	if err != nil {
+		log.Printf("WARN: DB Migration directory unreadable: %s", err.Error())
+		return 0
+	}
+
+	maxNum := -1
+	maxFile := ""
+	for _, f := range files {
+		fname := f.Name()
+		if strings.Contains(fname, "up.sql") {
+			numStr := strings.Split(fname, "_")[0]
+			num, _ := strconv.Atoi(numStr)
+			if num > maxNum {
+				maxNum = num
+				maxFile = fname
+			}
+		}
+	}
+
+	// there are up/down files for each migration
+	log.Printf("Last migration file found: %s, version: %d", maxFile, maxNum)
+	return maxNum
 }

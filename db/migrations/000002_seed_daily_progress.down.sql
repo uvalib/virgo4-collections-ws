@@ -1,0 +1,1 @@
+truncate TABLE collections CASCADE;

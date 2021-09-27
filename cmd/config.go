@@ -12,6 +12,15 @@ type SolrConfig struct {
 	Core string
 }
 
+// DBConfig wraps up all of the DB configuration
+type DBConfig struct {
+	Host string
+	Port int
+	User string
+	Pass string
+	Name string
+}
+
 func (sc *SolrConfig) selectURL() string {
 	return fmt.Sprintf("%s/%s/select", sc.URL, sc.Core)
 }
@@ -20,6 +29,7 @@ func (sc *SolrConfig) selectURL() string {
 type ServiceConfig struct {
 	Port int
 	Solr SolrConfig
+	DB   DBConfig
 }
 
 // LoadConfiguration will load the service configuration from the commandline
@@ -31,6 +41,13 @@ func LoadConfiguration() *ServiceConfig {
 	flag.StringVar(&cfg.Solr.URL, "solr", "", "Solr URL")
 	flag.StringVar(&cfg.Solr.Core, "core", "test_core", "Solr core")
 
+	// DB connection params
+	flag.StringVar(&cfg.DB.Host, "dbhost", "localhost", "Database host")
+	flag.IntVar(&cfg.DB.Port, "dbport", 5432, "Database port")
+	flag.StringVar(&cfg.DB.Name, "dbname", "virgo4", "Database name")
+	flag.StringVar(&cfg.DB.User, "dbuser", "v4user", "Database user")
+	flag.StringVar(&cfg.DB.Pass, "dbpass", "pass", "Database password")
+
 	flag.Parse()
 
 	if cfg.Solr.URL == "" {
@@ -40,9 +57,26 @@ func LoadConfiguration() *ServiceConfig {
 		log.Fatal("Parameter core is required")
 	}
 
+	if cfg.DB.Host == "" {
+		log.Fatal("Parameter dbhost is required")
+	}
+	if cfg.DB.Name == "" {
+		log.Fatal("Parameter dbname is required")
+	}
+	if cfg.DB.User == "" {
+		log.Fatal("Parameter dbuser is required")
+	}
+	if cfg.DB.Pass == "" {
+		log.Fatal("Parameter dbpass is required")
+	}
+
 	log.Printf("[CONFIG] port          = [%d]", cfg.Port)
 	log.Printf("[CONFIG] solr          = [%s]", cfg.Solr.URL)
 	log.Printf("[CONFIG] core          = [%s]", cfg.Solr.Core)
+	log.Printf("[CONFIG] dbhost        = [%s]", cfg.DB.Host)
+	log.Printf("[CONFIG] dbport        = [%d]", cfg.DB.Port)
+	log.Printf("[CONFIG] dbname        = [%s]", cfg.DB.Name)
+	log.Printf("[CONFIG] dbuser        = [%s]", cfg.DB.User)
 
 	return &cfg
 }

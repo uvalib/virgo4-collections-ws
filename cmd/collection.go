@@ -1,16 +1,17 @@
 package main
 
 import (
+	"database/sql"
 	"encoding/json"
 	"fmt"
 	"log"
 	"net/http"
 	"net/url"
-	"os"
 	"strings"
 	"time"
 
 	"github.com/gin-gonic/gin"
+	dbx "github.com/go-ozzo/ozzo-dbx"
 )
 
 type solrResponseHeader struct {
@@ -30,24 +31,74 @@ type solrResponse struct {
 	Response solrResponseDocuments `json:"response,omitempty"`
 }
 
+type collectionRec struct {
+	ID          int64  `db:"id"`
+	Key         string `db:"key"`
+	Type        string `db:"type"`
+	Description string `db:"description"`
+	FilterName  string `db:"filter_name"`
+	FilterValue string `db:"filter_value"`
+	StartDate   string `db:"start_date"`
+	EndDate     string `db:"end_date"`
+}
+
+// TableName sets the name of the table in the DB that this struct binds to
+func (c collectionRec) TableName() string {
+	return "collections"
+}
+
+type collectionJSON struct {
+	Key         string   `json:"key"`
+	Type        string   `json:"type"`
+	Description string   `json:"description"`
+	FilterName  string   `json:"filter_name"`
+	FilterValue string   `json:"filter_value"`
+	StartDate   string   `json:"start_date,omitempty"`
+	EndDate     string   `json:"end_date,omitempty"`
+	Features    []string `json:"features"`
+}
+
 func (svc *ServiceContext) getCollectionContext(c *gin.Context) {
 	rawName := c.Param("name")
 	log.Printf("INFO: get collection context for [%s]", rawName)
 
-	fileName := collectionFilename(rawName)
-	if _, err := os.Stat(fileName); err == nil {
-		c.Header("Content-Type", "application/json")
-		c.File(fileName)
-	} else {
-		log.Printf("WARNING: no collection context found for %s", fileName)
-		c.String(http.StatusNotFound, "not found")
+	var rec collectionRec
+	q := svc.DB.NewQuery("select * from collections where filter_value={:fv}")
+	q.Bind(dbx.Params{"fv": rawName})
+	err := q.One(&rec)
+	if err != nil {
+		if err == sql.ErrNoRows {
+			log.Printf("INFO: no collecction context found for %s", rawName)
+			c.String(http.StatusNotFound, "not found")
+		} else {
+			log.Printf("ERROR: contexed lookup for %s failed: %s", rawName, err.Error())
+			c.String(http.StatusInternalServerError, err.Error())
+		}
+		return
 	}
-}
 
-func collectionFilename(rawName string) string {
-	name := strings.ToLower(rawName)
-	name = strings.ReplaceAll(name, " ", "_")
-	return fmt.Sprintf("./data/%s.json", name)
+	out := collectionJSON{Key: rec.Key, Type: rec.Type, Description: rec.Description, FilterName: rec.FilterName,
+		FilterValue: rec.FilterValue, StartDate: rec.StartDate, EndDate: rec.EndDate, Features: make([]string, 0)}
+
+	log.Printf("INFO: get collection [%s] features", rawName)
+	q = svc.DB.NewQuery("select f.name from features f inner join collection_features cf on cf.feature_id = f.id where cf.collection_id={:cid}")
+	q.Bind(dbx.Params{"cid": rec.ID})
+	rows, err := q.Rows()
+	if err != nil {
+		if err == sql.ErrNoRows {
+			log.Printf("INFO: no features found for collection [%s]", rawName)
+		} else {
+			log.Printf("ERROR: unable to lookup features for [%s]: %s", rawName, err.Error())
+		}
+	} else {
+		for rows.Next() {
+			val := ""
+			rows.Scan(&val)
+			out.Features = append(out.Features, val)
+		}
+	}
+
+	c.JSON(http.StatusOK, out)
 }
 
 func (svc *ServiceContext) getCollectioDates(c *gin.Context) {

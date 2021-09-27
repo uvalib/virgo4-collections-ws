@@ -15,11 +15,9 @@ all: darwin linux
 
 darwin:
 	GOOS=darwin GOARCH=amd64 $(GOBUILD) -a -o bin/$(BASENAME).darwin cmd/*.go
-	cp -r data/ bin/data
 
 linux:
 	CGO_ENABLED=0 GOOS=linux GOARCH=amd64 $(GOBUILD) -a -installsuffix cgo -o bin/$(BASENAME).linux cmd/*.go
-	cp -r data/ bin/data
 
 clean:
 	$(GOCLEAN) cmd/
