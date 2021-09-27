@@ -47,8 +47,7 @@ COPY package/data/container_bash_profile /home/docker/.profile
 COPY --from=builder /build/bin/virgo4-collections-ws.linux $APP_HOME/bin/virgo4-collections-ws
 
 # Ensure permissions are correct
-RUN chown docker:sse /home/docker/.profile $APP_HOME/scripts/entry.sh $APP_HOME/scripts/migrate.sh $APP_HOME/bin/virgo4-collections-ws $APP_HOME/bin/migrate && chmod 755 /home/docker/.profile $APP_HOME/scripts/entry.sh $APP_HOME/scripts/migrate.sh $APP_HOME/bin/virgo4-collections-ws $APP_HOME/bin/migrate
-RUN chown -R $APP_HOME/db && chmod -R 755 $APP_HOME/db
+RUN chown docker:sse /home/docker/.profile $APP_HOME/scripts/entry.sh $APP_HOME/scripts/migrate.sh $APP_HOME/bin/virgo4-collections-ws $APP_HOME/bin/migrate $APP_HOME/db && chmod 755 /home/docker/.profile $APP_HOME/scripts/entry.sh $APP_HOME/scripts/migrate.sh $APP_HOME/bin/virgo4-collections-ws $APP_HOME/bin/migrate $APP_HOME/db
 
 # Add the build tag
 ARG BUILD_TAG
