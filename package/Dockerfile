@@ -7,7 +7,6 @@ RUN apk update && apk upgrade && apk add make
 WORKDIR /build
 COPY go.mod go.sum Makefile ./
 COPY cmd ./cmd
-COPY data ./data
 RUN make linux
 
 #
@@ -30,7 +29,7 @@ ENV APP_HOME /virgo4-collections-ws
 WORKDIR $APP_HOME
 
 # Create necessary directories
-RUN mkdir -p $APP_HOME/scripts $APP_HOME/bin $APP_HOME/bin/data
+RUN mkdir -p $APP_HOME/scripts $APP_HOME/bin
 RUN chown -R docker $APP_HOME && chgrp -R sse $APP_HOME
 
 # add the migrate tool
@@ -45,7 +44,6 @@ COPY package/scripts/entry.sh $APP_HOME/scripts/entry.sh
 COPY package/scripts/migrate.sh $APP_HOME/scripts/migrate.sh
 COPY db/migrations/*.sql $APP_HOME/db/
 COPY package/data/container_bash_profile /home/docker/.profile
-COPY data/* $APP_HOME/bin/data/
 COPY --from=builder /build/bin/virgo4-collections-ws.linux $APP_HOME/bin/virgo4-collections-ws
 
 # Ensure permissions are correct
