@@ -1,0 +1,5 @@
+CREATE TABLE IF NOT EXISTS fund_codes (
+   id serial PRIMARY KEY,
+   name VARCHAR (255) UNIQUE NOT NULL,
+   fund_code VARCHAR (80) UNIQUE NOT NULL
+)

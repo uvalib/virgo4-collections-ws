@@ -1,0 +1,7619 @@
+[{
+	"nid": [{
+		"value": 550
+	}],
+	"uuid": [{
+		"value": "d61fac09-ebb8-4e98-81f9-e909ccb991ec"
+	}],
+	"vid": [{
+		"value": 1854
+	}],
+	"langcode": [{
+		"value": "en"
+	}],
+	"type": [{
+		"target_id": "bookplate",
+		"target_type": "node_type",
+		"target_uuid": "36d64862-bbb0-42e9-bcf8-29da6062483d"
+	}],
+	"revision_timestamp": [{
+		"value": 1502287227
+	}],
+	"revision_uid": [{
+		"target_id": 21,
+		"target_type": "user",
+		"target_uuid": "0072a370-c021-452d-ac5f-3b5c3ded6d71",
+		"url": "\/user\/21"
+	}],
+	"revision_log": [],
+	"status": [{
+		"value": true
+	}],
+	"uid": [{
+		"target_id": 21,
+		"target_type": "user",
+		"target_uuid": "0072a370-c021-452d-ac5f-3b5c3ded6d71",
+		"url": "\/user\/21"
+	}],
+	"title": [{
+		"value": "John Cook Wyllie Memorial Library Fund"
+	}],
+	"created": [{
+		"value": 1494611092
+	}],
+	"changed": [{
+		"value": 1502287227
+	}],
+	"promote": [{
+		"value": true
+	}],
+	"sticky": [{
+		"value": false
+	}],
+	"default_langcode": [{
+		"value": true
+	}],
+	"revision_translation_affected": [{
+		"value": true
+	}],
+	"path": [{
+		"alias": null,
+		"pid": null,
+		"langcode": "en"
+	}],
+	"publish_on": [],
+	"unpublish_on": [],
+	"body": [{
+		"value": "\u003Cp\u003EWyllie, John Cook Memorial Library Fund\u003C\/p\u003E\r\n",
+		"format": "basic_html",
+		"processed": "\u003Cp\u003EWyllie, John Cook Memorial Library Fund\u003C\/p\u003E",
+		"summary": ""
+	}],
+	"field_bookplate_image": [{
+		"target_id": 580,
+		"alt": "The letters \u0022J\u0022, \u0022C\u0022, \u0022W\u0027 enclosed in a box.",
+		"title": "",
+		"width": 771,
+		"height": 799,
+		"target_type": "file",
+		"target_uuid": "d7ff829e-9542-4466-aac4-4162d1168101",
+		"url": "https:\/\/drupal.lib.virginia.edu\/sites\/default\/files\/bookplates\/20170622101457649_Page_2_wyllie.png"
+	}],
+	"field_date": [],
+	"field_fund": [{
+		"value": "ER00621"
+	}],
+	"field_fund_award_name": [{
+		"value": "LB-Wyllie, John Cook"
+	}],
+	"field_fund_id": [{
+		"value": "WYLLIE-ER00621"
+	}],
+	"field_restriction_summary": [{
+		"value": "Income to be expended for books and materials in those areas of particular interest to Mr. Wyllie, specifically typography, history of printing and Virginiana.\r\n"
+	}],
+	"field_summary": [{
+		"value": "John Cook Wyllie (1908\u20131968) was the longtime Curator of Rare Books and Manuscripts at the Library, and was Director of the University Libraries at the time of his death. The John Cook Wyllie Memorial Library Fund was established by the friends and relatives of Mr. Wyllie. The income of the fund is to be expended for books and materials in those areas of particular interest to Mr. Wyllie, specifically typography, history of printing and Virginiana.\r\n"
+	}]
+}, {
+	"nid": [{
+		"value": 549
+	}],
+	"uuid": [{
+		"value": "f9739f91-070b-4205-9293-52f9032ab5e0"
+	}],
+	"vid": [{
+		"value": 1845
+	}],
+	"langcode": [{
+		"value": "en"
+	}],
+	"type": [{
+		"target_id": "bookplate",
+		"target_type": "node_type",
+		"target_uuid": "36d64862-bbb0-42e9-bcf8-29da6062483d"
+	}],
+	"revision_timestamp": [{
+		"value": 1502286725
+	}],
+	"revision_uid": [{
+		"target_id": 21,
+		"target_type": "user",
+		"target_uuid": "0072a370-c021-452d-ac5f-3b5c3ded6d71",
+		"url": "\/user\/21"
+	}],
+	"revision_log": [],
+	"status": [{
+		"value": true
+	}],
+	"uid": [{
+		"target_id": 21,
+		"target_type": "user",
+		"target_uuid": "0072a370-c021-452d-ac5f-3b5c3ded6d71",
+		"url": "\/user\/21"
+	}],
+	"title": [{
+		"value": "Ellen Bayard Weedon Foundation Gift Fund"
+	}],
+	"created": [{
+		"value": 1494611039
+	}],
+	"changed": [{
+		"value": 1502286725
+	}],
+	"promote": [{
+		"value": true
+	}],
+	"sticky": [{
+		"value": false
+	}],
+	"default_langcode": [{
+		"value": true
+	}],
+	"revision_translation_affected": [{
+		"value": true
+	}],
+	"path": [{
+		"alias": null,
+		"pid": null,
+		"langcode": "en"
+	}],
+	"publish_on": [],
+	"unpublish_on": [],
+	"body": [],
+	"field_bookplate_image": [{
+		"target_id": 581,
+		"alt": "Seal of the University of Virginia",
+		"title": "",
+		"width": 912,
+		"height": 1288,
+		"target_type": "file",
+		"target_uuid": "278f8699-0f53-4c5f-8099-d6ff81a60f18",
+		"url": "https:\/\/drupal.lib.virginia.edu\/sites\/default\/files\/bookplates\/20170622102306444_Page_1_weedon.png"
+	}],
+	"field_date": [],
+	"field_fund": [{
+		"value": "DR01378"
+	}],
+	"field_fund_award_name": [{
+		"value": "LB-Weedon Fdn Gift"
+	}],
+	"field_fund_id": [{
+		"value": "WEEDON-DR01378"
+	}],
+	"field_restriction_summary": [],
+	"field_summary": [{
+		"value": "The Ellen Bayard Weedon Foundation Gift Fund was established in 1979 for the furthering the study of Asian art and architecture, including additions to the Library\u0027s collection of Asian holdings. \r\n"
+	}]
+}, {
+	"nid": [{
+		"value": 548
+	}],
+	"uuid": [{
+		"value": "1023fc2d-cfb0-44ff-9697-9ac439467d8f"
+	}],
+	"vid": [{
+		"value": 1850
+	}],
+	"langcode": [{
+		"value": "en"
+	}],
+	"type": [{
+		"target_id": "bookplate",
+		"target_type": "node_type",
+		"target_uuid": "36d64862-bbb0-42e9-bcf8-29da6062483d"
+	}],
+	"revision_timestamp": [{
+		"value": 1502287056
+	}],
+	"revision_uid": [{
+		"target_id": 21,
+		"target_type": "user",
+		"target_uuid": "0072a370-c021-452d-ac5f-3b5c3ded6d71",
+		"url": "\/user\/21"
+	}],
+	"revision_log": [],
+	"status": [{
+		"value": true
+	}],
+	"uid": [{
+		"target_id": 21,
+		"target_type": "user",
+		"target_uuid": "0072a370-c021-452d-ac5f-3b5c3ded6d71",
+		"url": "\/user\/21"
+	}],
+	"title": [{
+		"value": "R. H. Webb Memorial Book Fund"
+	}],
+	"created": [{
+		"value": 1494610992
+	}],
+	"changed": [{
+		"value": 1502287056
+	}],
+	"promote": [{
+		"value": true
+	}],
+	"sticky": [{
+		"value": false
+	}],
+	"default_langcode": [{
+		"value": true
+	}],
+	"revision_translation_affected": [{
+		"value": true
+	}],
+	"path": [{
+		"alias": null,
+		"pid": null,
+		"langcode": "en"
+	}],
+	"publish_on": [],
+	"unpublish_on": [],
+	"body": [{
+		"value": "\u003Cp\u003EWebb, R. H. Fund\u003C\/p\u003E\r\n",
+		"format": "basic_html",
+		"processed": "\u003Cp\u003EWebb, R. H. Fund\u003C\/p\u003E",
+		"summary": ""
+	}],
+	"field_bookplate_image": [{
+		"target_id": 582,
+		"alt": "\u0022\u0022",
+		"title": "",
+		"width": 845,
+		"height": 796,
+		"target_type": "file",
+		"target_uuid": "24d96fd7-119e-4fed-99d0-0b7f9cba9445",
+		"url": "https:\/\/drupal.lib.virginia.edu\/sites\/default\/files\/bookplates\/20170622102739905_Page_2_webb.png"
+	}],
+	"field_date": [],
+	"field_fund": [{
+		"value": "ER00605"
+	}],
+	"field_fund_award_name": [{
+		"value": "LB-Webb, Robert H"
+	}],
+	"field_fund_id": [{
+		"value": "WEBB-ER00605"
+	}],
+	"field_restriction_summary": [{
+		"value": "A memorial book fund for the purchase of books by the Department of Classics.\r\n"
+	}],
+	"field_summary": [{
+		"value": "The R. H. Webb Book Fund is a memorial fund for the purchase of books by the Department of Classics. The fund honors former professor of Greek Robert Henning Webb (1882\u20131952).\r\nOn Bookplate:\r\nIn honor of Robert Henning Webb\r\nProfessor of Greek at the \r\nUniversity of Virginia\r\n1912-1950\r\nPresented by his friends and students."
+	}]
+}, {
+	"nid": [{
+		"value": 547
+	}],
+	"uuid": [{
+		"value": "82f1523c-95ff-4e73-bf08-374969e30a51"
+	}],
+	"vid": [{
+		"value": 1855
+	}],
+	"langcode": [{
+		"value": "en"
+	}],
+	"type": [{
+		"target_id": "bookplate",
+		"target_type": "node_type",
+		"target_uuid": "36d64862-bbb0-42e9-bcf8-29da6062483d"
+	}],
+	"revision_timestamp": [{
+		"value": 1502287293
+	}],
+	"revision_uid": [{
+		"target_id": 21,
+		"target_type": "user",
+		"target_uuid": "0072a370-c021-452d-ac5f-3b5c3ded6d71",
+		"url": "\/user\/21"
+	}],
+	"revision_log": [],
+	"status": [{
+		"value": true
+	}],
+	"uid": [{
+		"target_id": 21,
+		"target_type": "user",
+		"target_uuid": "0072a370-c021-452d-ac5f-3b5c3ded6d71",
+		"url": "\/user\/21"
+	}],
+	"title": [{
+		"value": "John Robert and Joan Wier Weatherly Library Endowment Fund"
+	}],
+	"created": [{
+		"value": 1494610889
+	}],
+	"changed": [{
+		"value": 1502287293
+	}],
+	"promote": [{
+		"value": true
+	}],
+	"sticky": [{
+		"value": false
+	}],
+	"default_langcode": [{
+		"value": true
+	}],
+	"revision_translation_affected": [{
+		"value": true
+	}],
+	"path": [{
+		"alias": null,
+		"pid": null,
+		"langcode": "en"
+	}],
+	"publish_on": [],
+	"unpublish_on": [],
+	"body": [{
+		"value": "\u003Cp\u003EWeatherly, John R. and Joan W. Library Endowment Fund\u003C\/p\u003E\r\n",
+		"format": "basic_html",
+		"processed": "\u003Cp\u003EWeatherly, John R. and Joan W. Library Endowment Fund\u003C\/p\u003E",
+		"summary": ""
+	}],
+	"field_bookplate_image": [{
+		"target_id": 577,
+		"alt": "Representation of vol. 8 of Decline and Fall of the Roman Empire, leaning on a quill pen, above two mice. An inkwell appears in the background. Motto: A Little Knowledge is a Dangerous Thing.\u0022",
+		"title": "",
+		"width": 1500,
+		"height": 1257,
+		"target_type": "file",
+		"target_uuid": "00d76f21-fe60-44c4-aee1-e57fec4f8d1a",
+		"url": "https:\/\/drupal.lib.virginia.edu\/sites\/default\/files\/bookplates\/20170622102306444_Page_2_weatherly.png"
+	}],
+	"field_date": [],
+	"field_fund": [{
+		"value": "ER00646"
+	}],
+	"field_fund_award_name": [{
+		"value": "LB-Weatherly, John \u0026 Joan"
+	}],
+	"field_fund_id": [{
+		"value": "WEATHERLY-ER00646"
+	}],
+	"field_restriction_summary": [{
+		"value": "The income from the Fund, but none of the principal, shall be used for the acquisition and preservation of books, manuscripts, and other library materials.  Such books, manuscripts and other library materials shall include, but no be limited to, the history and literature of the Constitution, government and people of the United States of America, the late Confederate States of America, and the Kingdoms of England, Scotland, and Ireland.\r\n"
+	}],
+	"field_summary": [{
+		"value": "The Weatherly Library Fund was established in 1995 by John (CLAS 1954) and Joan Wier Weatherly, to be used for the acquisition and preservation of books, manuscripts, and other library material, primarily those pertaining to the history and literature of the Constitution, government and people of the United States of America, the late Confederate States of America, and the Kingdoms of England, Scotland, and Ireland. The family since added to the endowment and the fund has been indispensable in bolstering the Library\u2019s American and British history collections.\r\n"
+	}]
+}, {
+	"nid": [{
+		"value": 546
+	}],
+	"uuid": [{
+		"value": "a631ea49-fbb8-4adc-bcaf-dad1f2532ad4"
+	}],
+	"vid": [{
+		"value": 1858
+	}],
+	"langcode": [{
+		"value": "en"
+	}],
+	"type": [{
+		"target_id": "bookplate",
+		"target_type": "node_type",
+		"target_uuid": "36d64862-bbb0-42e9-bcf8-29da6062483d"
+	}],
+	"revision_timestamp": [{
+		"value": 1502287710
+	}],
+	"revision_uid": [{
+		"target_id": 21,
+		"target_type": "user",
+		"target_uuid": "0072a370-c021-452d-ac5f-3b5c3ded6d71",
+		"url": "\/user\/21"
+	}],
+	"revision_log": [],
+	"status": [{
+		"value": true
+	}],
+	"uid": [{
+		"target_id": 21,
+		"target_type": "user",
+		"target_uuid": "0072a370-c021-452d-ac5f-3b5c3ded6d71",
+		"url": "\/user\/21"
+	}],
+	"title": [{
+		"value": "Elise Sieker Walker Library Fund"
+	}],
+	"created": [{
+		"value": 1494610694
+	}],
+	"changed": [{
+		"value": 1502287710
+	}],
+	"promote": [{
+		"value": true
+	}],
+	"sticky": [{
+		"value": false
+	}],
+	"default_langcode": [{
+		"value": true
+	}],
+	"revision_translation_affected": [{
+		"value": true
+	}],
+	"path": [{
+		"alias": null,
+		"pid": null,
+		"langcode": "en"
+	}],
+	"publish_on": [],
+	"unpublish_on": [],
+	"body": [{
+		"value": "\u003Cp\u003EWalker, Elise Sieker Library Fund\u003C\/p\u003E\r\n",
+		"format": "basic_html",
+		"processed": "\u003Cp\u003EWalker, Elise Sieker Library Fund\u003C\/p\u003E",
+		"summary": ""
+	}],
+	"field_bookplate_image": [{
+		"target_id": 579,
+		"alt": "Representation of a boy and girl, sitting infront of a castle. The boy reads from an open book.",
+		"title": "",
+		"width": 1265,
+		"height": 1094,
+		"target_type": "file",
+		"target_uuid": "f6fd87e8-f50d-48f3-aba9-103f7d59e172",
+		"url": "https:\/\/drupal.lib.virginia.edu\/sites\/default\/files\/bookplates\/20170622102522080_Page_1_walker.png"
+	}],
+	"field_date": [],
+	"field_fund": [{
+		"value": "ER00666 "
+	}],
+	"field_fund_award_name": [{
+		"value": "LB-Walker, Elise Sieker"
+	}],
+	"field_fund_id": [{
+		"value": "WALKER-ER0066"
+	}],
+	"field_restriction_summary": [{
+		"value": "The income from the Fund, but none of the principal, shall be used to acquire library materials related to the study of children, families, and education.\r\n"
+	}],
+	"field_summary": [{
+		"value": "The Elise Sieker Walker Library Fund was established in 1999 to be used to acquire library materials related to the study of children, families, and education.\r\n"
+	}]
+}, {
+	"nid": [{
+		"value": 545
+	}],
+	"uuid": [{
+		"value": "b043ed6e-427f-43f3-a843-52f5d2975162"
+	}],
+	"vid": [{
+		"value": 4896
+	}],
+	"langcode": [{
+		"value": "en"
+	}],
+	"type": [{
+		"target_id": "bookplate",
+		"target_type": "node_type",
+		"target_uuid": "36d64862-bbb0-42e9-bcf8-29da6062483d"
+	}],
+	"revision_timestamp": [{
+		"value": 1531337512
+	}],
+	"revision_uid": [{
+		"target_id": 25,
+		"target_type": "user",
+		"target_uuid": "e5d6e6d6-d64e-4c47-9225-90e5bb4b2d00",
+		"url": "\/user\/25"
+	}],
+	"revision_log": [],
+	"status": [{
+		"value": true
+	}],
+	"uid": [{
+		"target_id": 21,
+		"target_type": "user",
+		"target_uuid": "0072a370-c021-452d-ac5f-3b5c3ded6d71",
+		"url": "\/user\/21"
+	}],
+	"title": [{
+		"value": "Robert and Virginia Tunstall Trust"
+	}],
+	"created": [{
+		"value": 1494610582
+	}],
+	"changed": [{
+		"value": 1531337512
+	}],
+	"promote": [{
+		"value": true
+	}],
+	"sticky": [{
+		"value": false
+	}],
+	"default_langcode": [{
+		"value": true
+	}],
+	"revision_translation_affected": [{
+		"value": true
+	}],
+	"path": [{
+		"alias": null,
+		"pid": null,
+		"langcode": "en"
+	}],
+	"publish_on": [],
+	"unpublish_on": [],
+	"body": [{
+		"value": "\u003Cp\u003ETunstall, Robert \u0026amp; Virginia Trust\u003C\/p\u003E\r\n",
+		"format": "basic_html",
+		"processed": "\u003Cp\u003ETunstall, Robert \u0026amp; Virginia Trust\u003C\/p\u003E",
+		"summary": ""
+	}],
+	"field_bookplate_image": [{
+		"target_id": 1298,
+		"alt": "Robert \u0026 Virginia Tunstall Trust",
+		"title": "",
+		"width": 370,
+		"height": 270,
+		"target_type": "file",
+		"target_uuid": "ff59e3fa-8f43-4743-87b6-58d19fb700ca",
+		"url": "https:\/\/drupal.lib.virginia.edu\/sites\/default\/files\/bookplates\/tunstall.png"
+	}],
+	"field_date": [],
+	"field_fund": [{
+		"value": "ER00631"
+	}],
+	"field_fund_award_name": [{
+		"value": "LB-Tunstall, Robert\u0026Virginia"
+	}],
+	"field_fund_id": [{
+		"value": "TUNSTALL-ER00631"
+	}],
+	"field_restriction_summary": [{
+		"value": "To use the net income, including accumulations of unused income, solely for the acquisition of rare books, maps or manuscripts selected by the appropriate authorities of the Alderman Library.\r\n"
+	}],
+	"field_summary": [{
+		"value": "The Robert and Virginia Tunstall Trust Fund was established in 1990 for the acquisition of rare books, maps or manuscripts selected by the appropriate authorities of the Alderman Library.\r\n"
+	}]
+}, {
+	"nid": [{
+		"value": 544
+	}],
+	"uuid": [{
+		"value": "55f3c4a1-f7f6-4025-a136-d230e8a8ec37"
+	}],
+	"vid": [{
+		"value": 1886
+	}],
+	"langcode": [{
+		"value": "en"
+	}],
+	"type": [{
+		"target_id": "bookplate",
+		"target_type": "node_type",
+		"target_uuid": "36d64862-bbb0-42e9-bcf8-29da6062483d"
+	}],
+	"revision_timestamp": [{
+		"value": 1502292391
+	}],
+	"revision_uid": [{
+		"target_id": 21,
+		"target_type": "user",
+		"target_uuid": "0072a370-c021-452d-ac5f-3b5c3ded6d71",
+		"url": "\/user\/21"
+	}],
+	"revision_log": [],
+	"status": [{
+		"value": true
+	}],
+	"uid": [{
+		"target_id": 21,
+		"target_type": "user",
+		"target_uuid": "0072a370-c021-452d-ac5f-3b5c3ded6d71",
+		"url": "\/user\/21"
+	}],
+	"title": [{
+		"value": "Robert Taylor Collection"
+	}],
+	"created": [{
+		"value": 1494610541
+	}],
+	"changed": [{
+		"value": 1502292391
+	}],
+	"promote": [{
+		"value": true
+	}],
+	"sticky": [{
+		"value": false
+	}],
+	"default_langcode": [{
+		"value": true
+	}],
+	"revision_translation_affected": [{
+		"value": true
+	}],
+	"path": [{
+		"alias": null,
+		"pid": null,
+		"langcode": "en"
+	}],
+	"publish_on": [],
+	"unpublish_on": [],
+	"body": [{
+		"value": "\u003Cp\u003ETaylor, Robert Collection\u003C\/p\u003E\r\n",
+		"format": "basic_html",
+		"processed": "\u003Cp\u003ETaylor, Robert Collection\u003C\/p\u003E",
+		"summary": ""
+	}],
+	"field_bookplate_image": [],
+	"field_date": [],
+	"field_fund": [{
+		"value": "ER00609"
+	}],
+	"field_fund_award_name": [{
+		"value": "LB-Taylor, Robert-Collection"
+	}],
+	"field_fund_id": [{
+		"value": "TAYLOR-RBT-ER00609"
+	}],
+	"field_restriction_summary": [{
+		"value": "To maintain the collection of annual best sellers in the Alderman Library.\r\n"
+	}],
+	"field_summary": [{
+		"value": "The Robert Taylor Collection Fund was established to maintain the collection of annual best sellers in the Alderman Library. Robert Coleman Taylor was an 1886 alumnus of the Law School; his wife, Lillian Gary Taylor (1865\u20131961), was a collector whose library of best-selling American fiction was donated to UVA in 1945. \r\n"
+	}]
+}, {
+	"nid": [{
+		"value": 543
+	}],
+	"uuid": [{
+		"value": "a44f09f2-3157-4919-bd6e-09d4c5f35f21"
+	}],
+	"vid": [{
+		"value": 1859
+	}],
+	"langcode": [{
+		"value": "en"
+	}],
+	"type": [{
+		"target_id": "bookplate",
+		"target_type": "node_type",
+		"target_uuid": "36d64862-bbb0-42e9-bcf8-29da6062483d"
+	}],
+	"revision_timestamp": [{
+		"value": 1502287829
+	}],
+	"revision_uid": [{
+		"target_id": 21,
+		"target_type": "user",
+		"target_uuid": "0072a370-c021-452d-ac5f-3b5c3ded6d71",
+		"url": "\/user\/21"
+	}],
+	"revision_log": [],
+	"status": [{
+		"value": true
+	}],
+	"uid": [{
+		"target_id": 21,
+		"target_type": "user",
+		"target_uuid": "0072a370-c021-452d-ac5f-3b5c3ded6d71",
+		"url": "\/user\/21"
+	}],
+	"title": [{
+		"value": "William G. Suhling, Jr., and William G. Suhling III Library Fund"
+	}],
+	"created": [{
+		"value": 1494610504
+	}],
+	"changed": [{
+		"value": 1502287829
+	}],
+	"promote": [{
+		"value": true
+	}],
+	"sticky": [{
+		"value": false
+	}],
+	"default_langcode": [{
+		"value": true
+	}],
+	"revision_translation_affected": [{
+		"value": true
+	}],
+	"path": [{
+		"alias": null,
+		"pid": null,
+		"langcode": "en"
+	}],
+	"publish_on": [],
+	"unpublish_on": [],
+	"body": [{
+		"value": "\u003Cp\u003ESuhling, Jr Wm G \u0026amp; Suhling, III Wm G Library Fund\u003C\/p\u003E\r\n",
+		"format": "basic_html",
+		"processed": "\u003Cp\u003ESuhling, Jr Wm G \u0026amp; Suhling, III Wm G Library Fund\u003C\/p\u003E",
+		"summary": ""
+	}],
+	"field_bookplate_image": [{
+		"target_id": 583,
+		"alt": "Portraits of William G. Suhling Jr., 1898-1973 (left) and William G. Suhling III, 1921-1942 with the Seven Society sign.",
+		"title": "",
+		"width": 1301,
+		"height": 1121,
+		"target_type": "file",
+		"target_uuid": "f929e43a-5edd-4f59-a839-6d407b1aa2c2",
+		"url": "https:\/\/drupal.lib.virginia.edu\/sites\/default\/files\/bookplates\/20170622102306444_Page_1_suhling.png"
+	}],
+	"field_date": [],
+	"field_fund": [{
+		"value": "ER00652"
+	}],
+	"field_fund_award_name": [{
+		"value": "LB-Suhling, William G Jr \u0026 III"
+	}],
+	"field_fund_id": [{
+		"value": "SUHLING-ER00652"
+	}],
+	"field_restriction_summary": [{
+		"value": "Endowment income will be used to support acquisitions or preservation of library materials.\r\n"
+	}],
+	"field_summary": [{
+		"value": "The William G. Suhling, Jr., and William G. Suhling III Library Fund was established in 1997 to support acquisitions or preservation of library materials. The fund was established to honor William G. Suhling, Jr. and his son, \u201cBilly,\u201d both UVA alumni and World War II-era military veterans.\r\n"
+	}]
+}, {
+	"nid": [{
+		"value": 542
+	}],
+	"uuid": [{
+		"value": "65bf298b-53d4-494a-8867-badd11c9fd1c"
+	}],
+	"vid": [{
+		"value": 1848
+	}],
+	"langcode": [{
+		"value": "en"
+	}],
+	"type": [{
+		"target_id": "bookplate",
+		"target_type": "node_type",
+		"target_uuid": "36d64862-bbb0-42e9-bcf8-29da6062483d"
+	}],
+	"revision_timestamp": [{
+		"value": 1502286977
+	}],
+	"revision_uid": [{
+		"target_id": 21,
+		"target_type": "user",
+		"target_uuid": "0072a370-c021-452d-ac5f-3b5c3ded6d71",
+		"url": "\/user\/21"
+	}],
+	"revision_log": [],
+	"status": [{
+		"value": true
+	}],
+	"uid": [{
+		"target_id": 21,
+		"target_type": "user",
+		"target_uuid": "0072a370-c021-452d-ac5f-3b5c3ded6d71",
+		"url": "\/user\/21"
+	}],
+	"title": [{
+		"value": "Colonial Dames Fund"
+	}],
+	"created": [{
+		"value": 1494610479
+	}],
+	"changed": [{
+		"value": 1502286977
+	}],
+	"promote": [{
+		"value": true
+	}],
+	"sticky": [{
+		"value": false
+	}],
+	"default_langcode": [{
+		"value": true
+	}],
+	"revision_translation_affected": [{
+		"value": true
+	}],
+	"path": [{
+		"alias": null,
+		"pid": null,
+		"langcode": "en"
+	}],
+	"publish_on": [],
+	"unpublish_on": [],
+	"body": [],
+	"field_bookplate_image": [{
+		"target_id": 584,
+		"alt": "Seal. Motto: Aemulatu Decoremus",
+		"title": "",
+		"width": 1033,
+		"height": 1556,
+		"target_type": "file",
+		"target_uuid": "423fbd34-51a3-4ebf-bf49-8b67b26a5b11",
+		"url": "https:\/\/drupal.lib.virginia.edu\/sites\/default\/files\/bookplates\/20170622103020471_Page_1_dames.png"
+	}],
+	"field_date": [],
+	"field_fund": [{
+		"value": "DR01374"
+	}],
+	"field_fund_award_name": [],
+	"field_fund_id": [{
+		"value": "SG-COL-DAMES-DR01374"
+	}],
+	"field_restriction_summary": [],
+	"field_summary": [{
+		"value": "The Colonial Dames Fund supports the collection of works of American History.  \r\nOn Bookplate: The Blue Ridge Committee\r\nof the National Society of\r\nthe Colonial Dames of America\r\nin the Commonwealth of Virginia\r\n"
+	}]
+}, {
+	"nid": [{
+		"value": 541
+	}],
+	"uuid": [{
+		"value": "554e9f55-f7cf-43f4-acb8-9e1da6e76cb1"
+	}],
+	"vid": [{
+		"value": 1887
+	}],
+	"langcode": [{
+		"value": "en"
+	}],
+	"type": [{
+		"target_id": "bookplate",
+		"target_type": "node_type",
+		"target_uuid": "36d64862-bbb0-42e9-bcf8-29da6062483d"
+	}],
+	"revision_timestamp": [{
+		"value": 1502292458
+	}],
+	"revision_uid": [{
+		"target_id": 21,
+		"target_type": "user",
+		"target_uuid": "0072a370-c021-452d-ac5f-3b5c3ded6d71",
+		"url": "\/user\/21"
+	}],
+	"revision_log": [],
+	"status": [{
+		"value": true
+	}],
+	"uid": [{
+		"target_id": 21,
+		"target_type": "user",
+		"target_uuid": "0072a370-c021-452d-ac5f-3b5c3ded6d71",
+		"url": "\/user\/21"
+	}],
+	"title": [{
+		"value": "Marion duPont Scott Fund"
+	}],
+	"created": [{
+		"value": 1494610438
+	}],
+	"changed": [{
+		"value": 1502292458
+	}],
+	"promote": [{
+		"value": true
+	}],
+	"sticky": [{
+		"value": false
+	}],
+	"default_langcode": [{
+		"value": true
+	}],
+	"revision_translation_affected": [{
+		"value": true
+	}],
+	"path": [{
+		"alias": null,
+		"pid": null,
+		"langcode": "en"
+	}],
+	"publish_on": [],
+	"unpublish_on": [],
+	"body": [{
+		"value": "\u003Cp\u003EScott, Marion duPont Fund\u003C\/p\u003E\r\n",
+		"format": "basic_html",
+		"processed": "\u003Cp\u003EScott, Marion duPont Fund\u003C\/p\u003E",
+		"summary": ""
+	}],
+	"field_bookplate_image": [],
+	"field_date": [],
+	"field_fund": [{
+		"value": "ER00573"
+	}],
+	"field_fund_award_name": [{
+		"value": "LB-Scott, Marion DuPont"
+	}],
+	"field_fund_id": [{
+		"value": "SCOTT-ER00573"
+	}],
+	"field_restriction_summary": [{
+		"value": "The income shall be used for furtherance and development of said library.\r\n"
+	}],
+	"field_summary": [{
+		"value": "The Marion duPont Scott Fund was created for furtherance and development of the Marion duPont Scott Sporting Collection, a library reflecting Mrs. duPont Scott\u2019s lifelong interest in racing, coaching, hunting, and horse breeding. Marion duPont Scott (1894\u20131983) was an internationally renowned Virginia horse breeder and owner of Montpelier, James Madison\u2019s Orange County home.\r\n"
+	}]
+}, {
+	"nid": [{
+		"value": 540
+	}],
+	"uuid": [{
+		"value": "629a3fd8-1137-4c4f-be5e-2ee38d1cad5a"
+	}],
+	"vid": [{
+		"value": 1851
+	}],
+	"langcode": [{
+		"value": "en"
+	}],
+	"type": [{
+		"target_id": "bookplate",
+		"target_type": "node_type",
+		"target_uuid": "36d64862-bbb0-42e9-bcf8-29da6062483d"
+	}],
+	"revision_timestamp": [{
+		"value": 1502287109
+	}],
+	"revision_uid": [{
+		"target_id": 21,
+		"target_type": "user",
+		"target_uuid": "0072a370-c021-452d-ac5f-3b5c3ded6d71",
+		"url": "\/user\/21"
+	}],
+	"revision_log": [],
+	"status": [{
+		"value": true
+	}],
+	"uid": [{
+		"target_id": 21,
+		"target_type": "user",
+		"target_uuid": "0072a370-c021-452d-ac5f-3b5c3ded6d71",
+		"url": "\/user\/21"
+	}],
+	"title": [{
+		"value": "Clifton Waller Barrett Library Fund"
+	}],
+	"created": [{
+		"value": 1494610205
+	}],
+	"changed": [{
+		"value": 1502287109
+	}],
+	"promote": [{
+		"value": true
+	}],
+	"sticky": [{
+		"value": false
+	}],
+	"default_langcode": [{
+		"value": true
+	}],
+	"revision_translation_affected": [{
+		"value": true
+	}],
+	"path": [{
+		"alias": null,
+		"pid": null,
+		"langcode": "en"
+	}],
+	"publish_on": [],
+	"unpublish_on": [],
+	"body": [],
+	"field_bookplate_image": [],
+	"field_date": [],
+	"field_fund": [{
+		"value": "SG00236"
+	}],
+	"field_fund_award_name": [],
+	"field_fund_id": [{
+		"value": "SC-PRB-M-100930-SG00"
+	}],
+	"field_restriction_summary": [],
+	"field_summary": [{
+		"value": "This gift fund is used to add to the collections of the Clifton Waller Barrett Library which encompasses 175 years of of American Literature,  from 1775 to 1950.  The Barrett Library was dedicated in 1960.\r\n"
+	}]
+}, {
+	"nid": [{
+		"value": 539
+	}],
+	"uuid": [{
+		"value": "fe15ef0d-1725-4a37-87c5-ed97b85bf971"
+	}],
+	"vid": [{
+		"value": 1860
+	}],
+	"langcode": [{
+		"value": "en"
+	}],
+	"type": [{
+		"target_id": "bookplate",
+		"target_type": "node_type",
+		"target_uuid": "36d64862-bbb0-42e9-bcf8-29da6062483d"
+	}],
+	"revision_timestamp": [{
+		"value": 1502287968
+	}],
+	"revision_uid": [{
+		"target_id": 21,
+		"target_type": "user",
+		"target_uuid": "0072a370-c021-452d-ac5f-3b5c3ded6d71",
+		"url": "\/user\/21"
+	}],
+	"revision_log": [],
+	"status": [{
+		"value": true
+	}],
+	"uid": [{
+		"target_id": 21,
+		"target_type": "user",
+		"target_uuid": "0072a370-c021-452d-ac5f-3b5c3ded6d71",
+		"url": "\/user\/21"
+	}],
+	"title": [{
+		"value": "Urban Joseph Peters Rushton Memorial Book Fund"
+	}],
+	"created": [{
+		"value": 1494610162
+	}],
+	"changed": [{
+		"value": 1502287968
+	}],
+	"promote": [{
+		"value": true
+	}],
+	"sticky": [{
+		"value": false
+	}],
+	"default_langcode": [{
+		"value": true
+	}],
+	"revision_translation_affected": [{
+		"value": true
+	}],
+	"path": [{
+		"alias": null,
+		"pid": null,
+		"langcode": "en"
+	}],
+	"publish_on": [],
+	"unpublish_on": [],
+	"body": [{
+		"value": "\u003Cp\u003ERushton, Urban Joseph Peters Memorial Book Fund\u003C\/p\u003E\r\n",
+		"format": "basic_html",
+		"processed": "\u003Cp\u003ERushton, Urban Joseph Peters Memorial Book Fund\u003C\/p\u003E",
+		"summary": ""
+	}],
+	"field_bookplate_image": [{
+		"target_id": 585,
+		"alt": "\u0022\u0022",
+		"title": "",
+		"width": 1139,
+		"height": 1742,
+		"target_type": "file",
+		"target_uuid": "75cc7a8d-1ee9-4012-be3a-6b5db01909dc",
+		"url": "https:\/\/drupal.lib.virginia.edu\/sites\/default\/files\/bookplates\/20170622102739905_Page_2_rushton.jpg"
+	}],
+	"field_date": [],
+	"field_fund": [{
+		"value": "ER00602"
+	}],
+	"field_fund_award_name": [{
+		"value": "Rushton, Urban Joseph Peters Memorial Book Fund"
+	}],
+	"field_fund_id": [{
+		"value": "RUSHTON-ER00602"
+	}],
+	"field_restriction_summary": [{
+		"value": "To purchase books (whether or not newly published) of significance in the field of American or English Literary Criticism, and useful the University Library.\r\n"
+	}],
+	"field_summary": [{
+		"value": "This fund was established in 1950 to purchase books (whether or not newly published) of significance in the field of American or English literature, particularly in contemporary poetry and literary criticism. The fund honors Urban Joseph Peters Rushton (1915\u20131949), former professor of English, assistant dean of the College, and assistant dean of students at the University of Virginia.\r\nOn Bookplate:\r\nUrban Joseph Peters Rushton, 1915-1949. Urban Joseph Peters Rushton was born in Birmingham, Alabama, on January 12, 1915, and died on December 27, 1949. After attending the Birmingham University School and the Hill School, he entered Princeton University where he took his bachelor\u0027s degree in 1937, studied at Gonville and Caius College, Cambride, and received the Ph.D. in English from Princeton in 1940. After having taught for a term at Princeton, he was called to the University of Virginia, where he was a member of the English faculty for the remaining years of his life. During World War II, he was a navigator in Naval Aviation and later received training for Military Government. He was a lieutenant, senior grade, when he left the service.\r\n   His accomplishments at Virginia were impressive. He initiated a series of seminars in Contemporary Prose and Poetry which brought the University many distinguished poets and critics. After his death, as a memorial to him, the series was names the Peters Rushton Seminars. Through his courses in English and Literary Criticism, his work as an administrator, his published writing, and his gifts to the Princeton and Virginia Libraries, he carried on his fight for livingness in letters and education. At the time of his death, he was Assistant Dean of Students at Virginia.\r\n   His achievements were extraordinary for so young a man, but naming them can do little to suggest those personal qualities which made his teaching a rare stimulus, his conversation a delight, and his friendship a constant renewal of faith. No one could know him without feeling himself a better man for having been close to virtue and wisdom and courage. Wherever wit, vigor of mind, and human understanding are valued among living men, he will be of their fellowship.\r\n"
+	}]
+}, {
+	"nid": [{
+		"value": 538
+	}],
+	"uuid": [{
+		"value": "1b4587f0-010a-4ffd-9ba2-7fbc09f6fd2d"
+	}],
+	"vid": [{
+		"value": 4900
+	}],
+	"langcode": [{
+		"value": "en"
+	}],
+	"type": [{
+		"target_id": "bookplate",
+		"target_type": "node_type",
+		"target_uuid": "36d64862-bbb0-42e9-bcf8-29da6062483d"
+	}],
+	"revision_timestamp": [{
+		"value": 1531512049
+	}],
+	"revision_uid": [{
+		"target_id": 25,
+		"target_type": "user",
+		"target_uuid": "e5d6e6d6-d64e-4c47-9225-90e5bb4b2d00",
+		"url": "\/user\/25"
+	}],
+	"revision_log": [],
+	"status": [{
+		"value": true
+	}],
+	"uid": [{
+		"target_id": 21,
+		"target_type": "user",
+		"target_uuid": "0072a370-c021-452d-ac5f-3b5c3ded6d71",
+		"url": "\/user\/21"
+	}],
+	"title": [{
+		"value": "William H. Runge Memorial Fund for Southern History - (Unrestricted)"
+	}],
+	"created": [{
+		"value": 1494610116
+	}],
+	"changed": [{
+		"value": 1531512049
+	}],
+	"promote": [{
+		"value": true
+	}],
+	"sticky": [{
+		"value": false
+	}],
+	"default_langcode": [{
+		"value": true
+	}],
+	"revision_translation_affected": [{
+		"value": true
+	}],
+	"path": [{
+		"alias": null,
+		"pid": null,
+		"langcode": "en"
+	}],
+	"publish_on": [],
+	"unpublish_on": [],
+	"body": [{
+		"value": "\u003Cp\u003ERunge, William H Mem For South History Unrest Q\/E\u003C\/p\u003E\r\n",
+		"format": "basic_html",
+		"processed": "\u003Cp\u003ERunge, William H Mem For South History Unrest Q\/E\u003C\/p\u003E",
+		"summary": ""
+	}],
+	"field_bookplate_image": [{
+		"target_id": 1301,
+		"alt": "Runge Memorial Fund",
+		"title": "",
+		"width": 268,
+		"height": 369,
+		"target_type": "file",
+		"target_uuid": "06041090-5f0d-40b9-86c6-48d98d9c273f",
+		"url": "https:\/\/drupal.lib.virginia.edu\/sites\/default\/files\/bookplates\/runge_0.png"
+	}],
+	"field_date": [],
+	"field_fund": [{
+		"value": "EU00045"
+	}],
+	"field_fund_award_name": [{
+		"value": "LB-Runge,Wm So. History"
+	}],
+	"field_fund_id": [{
+		"value": "RUNGEB-EU00045"
+	}],
+	"field_restriction_summary": [{
+		"value": "To establish an endowment for the acquisition of materials related to southern history.\r\n"
+	}],
+	"field_summary": [{
+		"value": "The William H. Runge Memorial Fund for Southern History was established in 2000 for the acquisition of materials relating to southern history. The fund was established by friends and colleagues to honor William H. Runge, a member of the Library\u2019s Special Collections staff from 1955\u201392 and a devoted curator of the Tracy W. McGregor Library.\r\n"
+	}]
+}, {
+	"nid": [{
+		"value": 537
+	}],
+	"uuid": [{
+		"value": "f7f7e255-90ee-49d5-9aec-bb4f43043294"
+	}],
+	"vid": [{
+		"value": 4899
+	}],
+	"langcode": [{
+		"value": "en"
+	}],
+	"type": [{
+		"target_id": "bookplate",
+		"target_type": "node_type",
+		"target_uuid": "36d64862-bbb0-42e9-bcf8-29da6062483d"
+	}],
+	"revision_timestamp": [{
+		"value": 1531511996
+	}],
+	"revision_uid": [{
+		"target_id": 25,
+		"target_type": "user",
+		"target_uuid": "e5d6e6d6-d64e-4c47-9225-90e5bb4b2d00",
+		"url": "\/user\/25"
+	}],
+	"revision_log": [],
+	"status": [{
+		"value": true
+	}],
+	"uid": [{
+		"target_id": 21,
+		"target_type": "user",
+		"target_uuid": "0072a370-c021-452d-ac5f-3b5c3ded6d71",
+		"url": "\/user\/21"
+	}],
+	"title": [{
+		"value": "William H. Runge Memorial Fund for Southern History - (Restricted)"
+	}],
+	"created": [{
+		"value": 1494610063
+	}],
+	"changed": [{
+		"value": 1531511996
+	}],
+	"promote": [{
+		"value": true
+	}],
+	"sticky": [{
+		"value": false
+	}],
+	"default_langcode": [{
+		"value": true
+	}],
+	"revision_translation_affected": [{
+		"value": true
+	}],
+	"path": [{
+		"alias": null,
+		"pid": null,
+		"langcode": "en"
+	}],
+	"publish_on": [],
+	"unpublish_on": [],
+	"body": [{
+		"value": "\u003Cp\u003ERunge, William H. Mem For South History Rest Q\/E\u003C\/p\u003E\r\n",
+		"format": "basic_html",
+		"processed": "\u003Cp\u003ERunge, William H. Mem For South History Rest Q\/E\u003C\/p\u003E",
+		"summary": ""
+	}],
+	"field_bookplate_image": [{
+		"target_id": 1300,
+		"alt": "Runge Memorial Fund",
+		"title": "",
+		"width": 268,
+		"height": 369,
+		"target_type": "file",
+		"target_uuid": "c0d7b26e-c71f-458e-a687-bcb90ed0f072",
+		"url": "https:\/\/drupal.lib.virginia.edu\/sites\/default\/files\/bookplates\/runge.png"
+	}],
+	"field_date": [],
+	"field_fund": [{
+		"value": "ER00568"
+	}],
+	"field_fund_award_name": [{
+		"value": "LB-Runge,Wm So. History-A"
+	}],
+	"field_fund_id": [{
+		"value": "RUNGEA-ER00568"
+	}],
+	"field_restriction_summary": [{
+		"value": "To establish a memorial fund for the acquisition of materials relating to southern history.\r\n"
+	}],
+	"field_summary": [{
+		"value": "The William H. Runge Memorial Fund for Southern History was established in 2000 for the acquisition of materials relating to southern history. The fund was established by friends and colleagues to honor William H. Runge, a member of the Library\u2019s Special Collections staff from 1955\u201392 and a devoted curator of the Tracy W. McGregor Library.\r\n"
+	}]
+}, {
+	"nid": [{
+		"value": 536
+	}],
+	"uuid": [{
+		"value": "2f5f15ed-f92e-4291-90c0-22f17cf9fb10"
+	}],
+	"vid": [{
+		"value": 4893
+	}],
+	"langcode": [{
+		"value": "en"
+	}],
+	"type": [{
+		"target_id": "bookplate",
+		"target_type": "node_type",
+		"target_uuid": "36d64862-bbb0-42e9-bcf8-29da6062483d"
+	}],
+	"revision_timestamp": [{
+		"value": 1531337068
+	}],
+	"revision_uid": [{
+		"target_id": 25,
+		"target_type": "user",
+		"target_uuid": "e5d6e6d6-d64e-4c47-9225-90e5bb4b2d00",
+		"url": "\/user\/25"
+	}],
+	"revision_log": [],
+	"status": [{
+		"value": true
+	}],
+	"uid": [{
+		"target_id": 21,
+		"target_type": "user",
+		"target_uuid": "0072a370-c021-452d-ac5f-3b5c3ded6d71",
+		"url": "\/user\/21"
+	}],
+	"title": [{
+		"value": " Ribble-Henry Fielding and his Contemporaries Fund"
+	}],
+	"created": [{
+		"value": 1494610038
+	}],
+	"changed": [{
+		"value": 1531337068
+	}],
+	"promote": [{
+		"value": true
+	}],
+	"sticky": [{
+		"value": false
+	}],
+	"default_langcode": [{
+		"value": true
+	}],
+	"revision_translation_affected": [{
+		"value": true
+	}],
+	"path": [{
+		"alias": null,
+		"pid": null,
+		"langcode": "en"
+	}],
+	"publish_on": [],
+	"unpublish_on": [],
+	"body": [],
+	"field_bookplate_image": [{
+		"target_id": 1295,
+		"alt": "Henry Fielding and his Contemporaries",
+		"title": "",
+		"width": 262,
+		"height": 287,
+		"target_type": "file",
+		"target_uuid": "acebe0e9-a71e-49a2-9407-c9eecca50a9d",
+		"url": "https:\/\/drupal.lib.virginia.edu\/sites\/default\/files\/bookplates\/ribble.png"
+	}],
+	"field_date": [],
+	"field_fund": [{
+		"value": "DR01375"
+	}],
+	"field_fund_award_name": [],
+	"field_fund_id": [{
+		"value": "RIBBLE-DR01375"
+	}],
+	"field_restriction_summary": [],
+	"field_summary": [{
+		"value": "The Ribble-Henry Fielding and his Contemporaries Fund is a gift fund established by Anne and Frederick Ribble of Charlottesville, Virginia.  The fund is used to purchase works by Fielding and his contemporaries.\r\n"
+	}]
+}, {
+	"nid": [{
+		"value": 535
+	}],
+	"uuid": [{
+		"value": "ac2ca32d-38fb-4fda-932f-71b946d91a6f"
+	}],
+	"vid": [{
+		"value": 1842
+	}],
+	"langcode": [{
+		"value": "en"
+	}],
+	"type": [{
+		"target_id": "bookplate",
+		"target_type": "node_type",
+		"target_uuid": "36d64862-bbb0-42e9-bcf8-29da6062483d"
+	}],
+	"revision_timestamp": [{
+		"value": 1502285322
+	}],
+	"revision_uid": [{
+		"target_id": 21,
+		"target_type": "user",
+		"target_uuid": "0072a370-c021-452d-ac5f-3b5c3ded6d71",
+		"url": "\/user\/21"
+	}],
+	"revision_log": [],
+	"status": [{
+		"value": true
+	}],
+	"uid": [{
+		"target_id": 21,
+		"target_type": "user",
+		"target_uuid": "0072a370-c021-452d-ac5f-3b5c3ded6d71",
+		"url": "\/user\/21"
+	}],
+	"title": [{
+		"value": "The Mid-Atlantic Chapter of the American Rhododendron Society"
+	}],
+	"created": [{
+		"value": 1494609996
+	}],
+	"changed": [{
+		"value": 1502285322
+	}],
+	"promote": [{
+		"value": true
+	}],
+	"sticky": [{
+		"value": false
+	}],
+	"default_langcode": [{
+		"value": true
+	}],
+	"revision_translation_affected": [{
+		"value": true
+	}],
+	"path": [{
+		"alias": null,
+		"pid": null,
+		"langcode": "en"
+	}],
+	"publish_on": [],
+	"unpublish_on": [],
+	"body": [{
+		"value": "\u003Cp\u003EMid-Atlantic Chapter Of Am Rhododendron Society\u003C\/p\u003E\r\n",
+		"format": "basic_html",
+		"processed": "\u003Cp\u003EMid-Atlantic Chapter Of Am Rhododendron Society\u003C\/p\u003E",
+		"summary": ""
+	}],
+	"field_bookplate_image": [{
+		"target_id": 608,
+		"alt": "\u0022\u0022",
+		"title": "",
+		"width": 1121,
+		"height": 1629,
+		"target_type": "file",
+		"target_uuid": "ea4f0f5d-5531-4301-b689-b34804c55991",
+		"url": "https:\/\/drupal.lib.virginia.edu\/sites\/default\/files\/bookplates\/20170622100940461_wheeldon.png"
+	}],
+	"field_date": [],
+	"field_fund": [{
+		"value": "ER00634"
+	}],
+	"field_fund_award_name": [{
+		"value": "LB-Mid-Atlantic Rhododendron"
+	}],
+	"field_fund_id": [{
+		"value": "RHODODENDRON-ER00634"
+	}],
+	"field_restriction_summary": [{
+		"value": "The income from the Fund will be used to buy library materials relating to the genus Rhododendron.\r\n"
+	}],
+	"field_summary": [{
+		"value": "The Middle Atlantic Chapter of American Rhododendron Society established this book fund endowment in 1989 in appreciation of the valuable service being performed for the chapter by Alderman Library\u2019s Collection department. The fund was created to buy library materials relating to the genus Rhododendron.\r\nOn Bookplate:\r\nA gift of the Middle Atlantic Chapter of\r\nthe American Rhododendron Society in \r\nMemory of Dr. Thomas Foster Wheeldon \r\nwith Special Appreciation to Mr. and Mrs.\r\nE. Donald Hirsch; Mr. Kenneth and Dr.\r\nSandra McDonald, Jr. and Mrs. Wheeldon.\r\n"
+	}]
+}, {
+	"nid": [{
+		"value": 534
+	}],
+	"uuid": [{
+		"value": "36b4ddbd-9e96-455f-a7c7-bfa3bc5690f9"
+	}],
+	"vid": [{
+		"value": 1890
+	}],
+	"langcode": [{
+		"value": "en"
+	}],
+	"type": [{
+		"target_id": "bookplate",
+		"target_type": "node_type",
+		"target_uuid": "36d64862-bbb0-42e9-bcf8-29da6062483d"
+	}],
+	"revision_timestamp": [{
+		"value": 1502292772
+	}],
+	"revision_uid": [{
+		"target_id": 21,
+		"target_type": "user",
+		"target_uuid": "0072a370-c021-452d-ac5f-3b5c3ded6d71",
+		"url": "\/user\/21"
+	}],
+	"revision_log": [],
+	"status": [{
+		"value": true
+	}],
+	"uid": [{
+		"target_id": 21,
+		"target_type": "user",
+		"target_uuid": "0072a370-c021-452d-ac5f-3b5c3ded6d71",
+		"url": "\/user\/21"
+	}],
+	"title": [{
+		"value": "Price-Taylor Library Fund"
+	}],
+	"created": [{
+		"value": 1494609939
+	}],
+	"changed": [{
+		"value": 1502292772
+	}],
+	"promote": [{
+		"value": true
+	}],
+	"sticky": [{
+		"value": false
+	}],
+	"default_langcode": [{
+		"value": true
+	}],
+	"revision_translation_affected": [{
+		"value": true
+	}],
+	"path": [{
+		"alias": null,
+		"pid": null,
+		"langcode": "en"
+	}],
+	"publish_on": [],
+	"unpublish_on": [],
+	"body": [{
+		"value": "\u003Cp\u003EPrice - Taylor Library Fund\u003C\/p\u003E\r\n",
+		"format": "basic_html",
+		"processed": "\u003Cp\u003EPrice - Taylor Library Fund\u003C\/p\u003E",
+		"summary": ""
+	}],
+	"field_bookplate_image": [],
+	"field_date": [],
+	"field_fund": [{
+		"value": "ER00613"
+	}],
+	"field_fund_award_name": [{
+		"value": "LB-Price-Taylor"
+	}],
+	"field_fund_id": [{
+		"value": "PRICE-TAYLOR-ER00613"
+	}],
+	"field_restriction_summary": [{
+		"value": "The income is to be used for the purchase of Virginiana for Alderman Library\u0027s collection.\r\n"
+	}],
+	"field_summary": [{
+		"value": "The Price-Taylor Library Fund was established in 1964 to be used for the purchase of Virginiana for Alderman Library\u0027s collection.\r\n"
+	}]
+}, {
+	"nid": [{
+		"value": 533
+	}],
+	"uuid": [{
+		"value": "8e73fa24-d5fb-4726-b240-b9dd3fec8fd6"
+	}],
+	"vid": [{
+		"value": 1861
+	}],
+	"langcode": [{
+		"value": "en"
+	}],
+	"type": [{
+		"target_id": "bookplate",
+		"target_type": "node_type",
+		"target_uuid": "36d64862-bbb0-42e9-bcf8-29da6062483d"
+	}],
+	"revision_timestamp": [{
+		"value": 1502288041
+	}],
+	"revision_uid": [{
+		"target_id": 21,
+		"target_type": "user",
+		"target_uuid": "0072a370-c021-452d-ac5f-3b5c3ded6d71",
+		"url": "\/user\/21"
+	}],
+	"revision_log": [],
+	"status": [{
+		"value": true
+	}],
+	"uid": [{
+		"target_id": 21,
+		"target_type": "user",
+		"target_uuid": "0072a370-c021-452d-ac5f-3b5c3ded6d71",
+		"url": "\/user\/21"
+	}],
+	"title": [{
+		"value": "Ellen Gilliam Perry Book Fund"
+	}],
+	"created": [{
+		"value": 1494609899
+	}],
+	"changed": [{
+		"value": 1502288041
+	}],
+	"promote": [{
+		"value": true
+	}],
+	"sticky": [{
+		"value": false
+	}],
+	"default_langcode": [{
+		"value": true
+	}],
+	"revision_translation_affected": [{
+		"value": true
+	}],
+	"path": [{
+		"alias": null,
+		"pid": null,
+		"langcode": "en"
+	}],
+	"publish_on": [],
+	"unpublish_on": [],
+	"body": [{
+		"value": "\u003Cp\u003EPerry, Ellen Gilliam Book Fund\u003C\/p\u003E\r\n",
+		"format": "basic_html",
+		"processed": "\u003Cp\u003EPerry, Ellen Gilliam Book Fund\u003C\/p\u003E",
+		"summary": ""
+	}],
+	"field_bookplate_image": [{
+		"target_id": 586,
+		"alt": "Seal of the University of Virginia. Motto at bottom: \u0022Non refert quam multos sed quam bonos libros legas. Non quam diu, sed quam bene vixeris refert.",
+		"title": "",
+		"width": 1263,
+		"height": 1882,
+		"target_type": "file",
+		"target_uuid": "d42d6b03-c027-4c72-9038-785a84cb2944",
+		"url": "https:\/\/drupal.lib.virginia.edu\/sites\/default\/files\/bookplates\/20170622102739905_Page_2_perry.png"
+	}],
+	"field_date": [],
+	"field_fund": [{
+		"value": "ER00572"
+	}],
+	"field_fund_award_name": [{
+		"value": "LB-Perry, Ellen Gilliam"
+	}],
+	"field_fund_id": [{
+		"value": "PERRY-ER00572"
+	}],
+	"field_restriction_summary": [{
+		"value": "The income from the Fund is to be used for the purchase of books for the library, with no restrictions, but with a preference for works in the humanities and literature.\r\n"
+	}],
+	"field_summary": [{
+		"value": "The Ellen Gilliam Perry Book Fund was established in 1983 to be used for the purchase of books for the library, with a preference for works in the humanities, and literature. The fund is named for Ellen Perry (1925\u20132008), a former circulation librarian at Alderman Library.\r\n"
+	}]
+}, {
+	"nid": [{
+		"value": 532
+	}],
+	"uuid": [{
+		"value": "1ac625d2-1faa-4861-aa2a-b108a4b80460"
+	}],
+	"vid": [{
+		"value": 10295
+	}],
+	"langcode": [{
+		"value": "en"
+	}],
+	"type": [{
+		"target_id": "bookplate",
+		"target_type": "node_type",
+		"target_uuid": "36d64862-bbb0-42e9-bcf8-29da6062483d"
+	}],
+	"revision_timestamp": [{
+		"value": 1620134396
+	}],
+	"revision_uid": [{
+		"target_id": 12,
+		"target_type": "user",
+		"target_uuid": "439d086d-5c77-4435-8ce2-0d00e5f90bed",
+		"url": "\/user\/12"
+	}],
+	"revision_log": [],
+	"status": [{
+		"value": true
+	}],
+	"uid": [{
+		"target_id": 21,
+		"target_type": "user",
+		"target_uuid": "0072a370-c021-452d-ac5f-3b5c3ded6d71",
+		"url": "\/user\/21"
+	}],
+	"title": [{
+		"value": "William B. O\u0027neal Book Fund"
+	}],
+	"created": [{
+		"value": 1494609572
+	}],
+	"changed": [{
+		"value": 1620134396
+	}],
+	"promote": [{
+		"value": true
+	}],
+	"sticky": [{
+		"value": false
+	}],
+	"default_langcode": [{
+		"value": true
+	}],
+	"revision_translation_affected": [{
+		"value": true
+	}],
+	"path": [{
+		"alias": null,
+		"pid": null,
+		"langcode": "en"
+	}],
+	"publish_on": [],
+	"unpublish_on": [],
+	"body": [],
+	"field_bookplate_image": [],
+	"field_date": [],
+	"field_fund": [{
+		"value": "ER00630"
+	}],
+	"field_fund_award_name": [{
+		"value": "LB-O\u0027Neal, William B"
+	}],
+	"field_fund_id": [{
+		"value": "ONEAL-SC-ER00630"
+	}],
+	"field_restriction_summary": [{
+		"value": "To be used for the purchase of architectural books to be added to the rate book collection of the Fiske Kimball Fine Arts Library.\r\n"
+	}],
+	"field_summary": [{
+		"value": "The William B. O\u0027neal Book Fund was established in 1973. The fund is used for the purchase of architectural books to be added to the rate book collection of the Fiske Kimball Fine Arts Library.\r\n"
+	}]
+}, {
+	"nid": [{
+		"value": 531
+	}],
+	"uuid": [{
+		"value": "4efd2690-a7f2-4af3-a461-7e652f6fa69d"
+	}],
+	"vid": [{
+		"value": 1891
+	}],
+	"langcode": [{
+		"value": "en"
+	}],
+	"type": [{
+		"target_id": "bookplate",
+		"target_type": "node_type",
+		"target_uuid": "36d64862-bbb0-42e9-bcf8-29da6062483d"
+	}],
+	"revision_timestamp": [{
+		"value": 1502292848
+	}],
+	"revision_uid": [{
+		"target_id": 21,
+		"target_type": "user",
+		"target_uuid": "0072a370-c021-452d-ac5f-3b5c3ded6d71",
+		"url": "\/user\/21"
+	}],
+	"revision_log": [],
+	"status": [{
+		"value": true
+	}],
+	"uid": [{
+		"target_id": 21,
+		"target_type": "user",
+		"target_uuid": "0072a370-c021-452d-ac5f-3b5c3ded6d71",
+		"url": "\/user\/21"
+	}],
+	"title": [{
+		"value": "James A. Myatt Memorial Fund"
+	}],
+	"created": [{
+		"value": 1494609497
+	}],
+	"changed": [{
+		"value": 1502292848
+	}],
+	"promote": [{
+		"value": true
+	}],
+	"sticky": [{
+		"value": false
+	}],
+	"default_langcode": [{
+		"value": true
+	}],
+	"revision_translation_affected": [{
+		"value": true
+	}],
+	"path": [{
+		"alias": null,
+		"pid": null,
+		"langcode": "en"
+	}],
+	"publish_on": [],
+	"unpublish_on": [],
+	"body": [{
+		"value": "\u003Cp\u003EMyatt, James A Memorial Fund\u003C\/p\u003E\r\n",
+		"format": "basic_html",
+		"processed": "\u003Cp\u003EMyatt, James A Memorial Fund\u003C\/p\u003E",
+		"summary": ""
+	}],
+	"field_bookplate_image": [],
+	"field_date": [],
+	"field_fund": [{
+		"value": "ER00618"
+	}],
+	"field_fund_award_name": [{
+		"value": "LB-Myatt, James A"
+	}],
+	"field_fund_id": [{
+		"value": "MYATT-ER00618"
+	}],
+	"field_restriction_summary": [{
+		"value": "The income to be used annually to buy books in the fields of history and the humanities, on behalf of the History Department.\r\n"
+	}],
+	"field_summary": [{
+		"value": "The James A. Myatt Memorial Fund was established to buy books in the fields of history and the humanities, on behalf of the History Department. Henry S. Gordon (CLAS 1949) established the fund in 1967 as a tribute to his friend James Myatt (1928\u20131967).\r\n"
+	}]
+}, {
+	"nid": [{
+		"value": 530
+	}],
+	"uuid": [{
+		"value": "7be936ec-b745-41c0-8b7f-8a57de5b9610"
+	}],
+	"vid": [{
+		"value": 1892
+	}],
+	"langcode": [{
+		"value": "en"
+	}],
+	"type": [{
+		"target_id": "bookplate",
+		"target_type": "node_type",
+		"target_uuid": "36d64862-bbb0-42e9-bcf8-29da6062483d"
+	}],
+	"revision_timestamp": [{
+		"value": 1502292948
+	}],
+	"revision_uid": [{
+		"target_id": 21,
+		"target_type": "user",
+		"target_uuid": "0072a370-c021-452d-ac5f-3b5c3ded6d71",
+		"url": "\/user\/21"
+	}],
+	"revision_log": [],
+	"status": [{
+		"value": true
+	}],
+	"uid": [{
+		"target_id": 21,
+		"target_type": "user",
+		"target_uuid": "0072a370-c021-452d-ac5f-3b5c3ded6d71",
+		"url": "\/user\/21"
+	}],
+	"title": [{
+		"value": "William and Elizabeth Millhiser Morris Rare Books Endowment Fund"
+	}],
+	"created": [{
+		"value": 1494609454
+	}],
+	"changed": [{
+		"value": 1502292948
+	}],
+	"promote": [{
+		"value": true
+	}],
+	"sticky": [{
+		"value": false
+	}],
+	"default_langcode": [{
+		"value": true
+	}],
+	"revision_translation_affected": [{
+		"value": true
+	}],
+	"path": [{
+		"alias": null,
+		"pid": null,
+		"langcode": "en"
+	}],
+	"publish_on": [],
+	"unpublish_on": [],
+	"body": [{
+		"value": "\u003Cp\u003EMorris, William \u0026amp; Elizabeth M Rare Books Endowment\u003C\/p\u003E\r\n",
+		"format": "basic_html",
+		"processed": "\u003Cp\u003EMorris, William \u0026amp; Elizabeth M Rare Books Endowment\u003C\/p\u003E",
+		"summary": ""
+	}],
+	"field_bookplate_image": [],
+	"field_date": [],
+	"field_fund": [{
+		"value": "ER00659"
+	}],
+	"field_fund_award_name": [{
+		"value": "LB-Morris,William\u0026Elizabeth"
+	}],
+	"field_fund_id": [{
+		"value": "MORRIS-ER00659"
+	}],
+	"field_restriction_summary": [{
+		"value": "The income from the Fund, but none of the principal, shall be used to benefit the Library\u0027s Special Collections by supporting the acquisition and preservation of books, manuscripts, and other library material.\r\n"
+	}],
+	"field_summary": [{
+		"value": "The William and Elizabeth Millhiser Morris Rare Books Endowment Fund was established in 1998 to benefit the Library\u0027s Special Collections by supporting the acquisition and preservation of books, manuscripts, and other library material. The trust the Morrises set up to support the Library also named the William and Elizabeth Millhiser Morris Seminar Room in the Harrison Institute\/Small Special Collections Library.\r\n"
+	}]
+}, {
+	"nid": [{
+		"value": 529
+	}],
+	"uuid": [{
+		"value": "8fa0f022-d59f-4cde-97b1-7ede93a41b68"
+	}],
+	"vid": [{
+		"value": 1893
+	}],
+	"langcode": [{
+		"value": "en"
+	}],
+	"type": [{
+		"target_id": "bookplate",
+		"target_type": "node_type",
+		"target_uuid": "36d64862-bbb0-42e9-bcf8-29da6062483d"
+	}],
+	"revision_timestamp": [{
+		"value": 1502293013
+	}],
+	"revision_uid": [{
+		"target_id": 21,
+		"target_type": "user",
+		"target_uuid": "0072a370-c021-452d-ac5f-3b5c3ded6d71",
+		"url": "\/user\/21"
+	}],
+	"revision_log": [],
+	"status": [{
+		"value": true
+	}],
+	"uid": [{
+		"target_id": 21,
+		"target_type": "user",
+		"target_uuid": "0072a370-c021-452d-ac5f-3b5c3ded6d71",
+		"url": "\/user\/21"
+	}],
+	"title": [{
+		"value": "Montgomery Memorial Fund"
+	}],
+	"created": [{
+		"value": 1494609414
+	}],
+	"changed": [{
+		"value": 1502293013
+	}],
+	"promote": [{
+		"value": true
+	}],
+	"sticky": [{
+		"value": false
+	}],
+	"default_langcode": [{
+		"value": true
+	}],
+	"revision_translation_affected": [{
+		"value": true
+	}],
+	"path": [{
+		"alias": null,
+		"pid": null,
+		"langcode": "en"
+	}],
+	"publish_on": [],
+	"unpublish_on": [],
+	"body": [{
+		"value": "\u003Cp\u003EMontgomery Memorial Fund\u003C\/p\u003E\r\n",
+		"format": "basic_html",
+		"processed": "\u003Cp\u003EMontgomery Memorial Fund\u003C\/p\u003E",
+		"summary": ""
+	}],
+	"field_bookplate_image": [],
+	"field_date": [],
+	"field_fund": [{
+		"value": "ER00598"
+	}],
+	"field_fund_award_name": [{
+		"value": "LB-Montgomery Memorial"
+	}],
+	"field_fund_id": [{
+		"value": "MONTGOMERY-ER00598"
+	}],
+	"field_restriction_summary": [{
+		"value": "To provide a book fund for the Department of Classics.\r\n"
+	}],
+	"field_summary": [{
+		"value": "The Montgomery Memorial Fund was created in honor of Walter Alexander Montgomery (1872\u20131949), professor of Latin, to provide a book fund for the Department of Classics. \r\n"
+	}]
+}, {
+	"nid": [{
+		"value": 528
+	}],
+	"uuid": [{
+		"value": "fa0e18b8-85de-4303-9c5e-d5965c0f814b"
+	}],
+	"vid": [{
+		"value": 1883
+	}],
+	"langcode": [{
+		"value": "en"
+	}],
+	"type": [{
+		"target_id": "bookplate",
+		"target_type": "node_type",
+		"target_uuid": "36d64862-bbb0-42e9-bcf8-29da6062483d"
+	}],
+	"revision_timestamp": [{
+		"value": 1502292121
+	}],
+	"revision_uid": [{
+		"target_id": 21,
+		"target_type": "user",
+		"target_uuid": "0072a370-c021-452d-ac5f-3b5c3ded6d71",
+		"url": "\/user\/21"
+	}],
+	"revision_log": [],
+	"status": [{
+		"value": true
+	}],
+	"uid": [{
+		"target_id": 21,
+		"target_type": "user",
+		"target_uuid": "0072a370-c021-452d-ac5f-3b5c3ded6d71",
+		"url": "\/user\/21"
+	}],
+	"title": [{
+		"value": "C. Venable Minor Endowment Fund"
+	}],
+	"created": [{
+		"value": 1494609358
+	}],
+	"changed": [{
+		"value": 1502292121
+	}],
+	"promote": [{
+		"value": true
+	}],
+	"sticky": [{
+		"value": false
+	}],
+	"default_langcode": [{
+		"value": true
+	}],
+	"revision_translation_affected": [{
+		"value": true
+	}],
+	"path": [{
+		"alias": null,
+		"pid": null,
+		"langcode": "en"
+	}],
+	"publish_on": [],
+	"unpublish_on": [],
+	"body": [{
+		"value": "\u003Cp\u003EMinor, C. Venable Endowment Fund\u003C\/p\u003E\r\n",
+		"format": "basic_html",
+		"processed": "\u003Cp\u003EMinor, C. Venable Endowment Fund\u003C\/p\u003E",
+		"summary": ""
+	}],
+	"field_bookplate_image": [{
+		"target_id": 588,
+		"alt": "\u0022\u0022",
+		"title": "",
+		"width": 948,
+		"height": 1133,
+		"target_type": "file",
+		"target_uuid": "ef928e40-07a7-4c6d-a736-932d2157f29c",
+		"url": "https:\/\/drupal.lib.virginia.edu\/sites\/default\/files\/bookplates\/20170622103020471_Page_2_minor.png"
+	}],
+	"field_date": [],
+	"field_fund": [{
+		"value": "ER00649"
+	}],
+	"field_fund_award_name": [{
+		"value": "LB-Minor, C Venable"
+	}],
+	"field_fund_id": [{
+		"value": "MINOR-ER00649"
+	}],
+	"field_restriction_summary": [{
+		"value": "The purpose of this Fund is to further the ability of the University Library in the collection, preservation and dissemination of materials which are of value for the recorded history of Albemarle County, Charlottesville and the University of Virginia.\r\n"
+	}],
+	"field_summary": [{
+		"value": "The C. Venable Minor Endowment Fund was established in 1996 in order to further the ability of the University Library in the collection, preservation and dissemination of materials which are of value for the recorded history of Albemarle County, Charlottesville and the University of Virginia. C. Venable Minor (1901\u20131988) was a 1922 graduate of the College and a 1925 graduate of the Law School. \r\n"
+	}]
+}, {
+	"nid": [{
+		"value": 527
+	}],
+	"uuid": [{
+		"value": "9e84d12a-0175-420f-aebf-0f070075abcc"
+	}],
+	"vid": [{
+		"value": 9788
+	}],
+	"langcode": [{
+		"value": "en"
+	}],
+	"type": [{
+		"target_id": "bookplate",
+		"target_type": "node_type",
+		"target_uuid": "36d64862-bbb0-42e9-bcf8-29da6062483d"
+	}],
+	"revision_timestamp": [{
+		"value": 1612389954
+	}],
+	"revision_uid": [{
+		"target_id": 38,
+		"target_type": "user",
+		"target_uuid": "753d12ee-0f15-4050-96f7-0285df701025",
+		"url": "\/user\/38"
+	}],
+	"revision_log": [],
+	"status": [{
+		"value": true
+	}],
+	"uid": [{
+		"target_id": 21,
+		"target_type": "user",
+		"target_uuid": "0072a370-c021-452d-ac5f-3b5c3ded6d71",
+		"url": "\/user\/21"
+	}],
+	"title": [{
+		"value": "John C. Metcalf Memorial Fund"
+	}],
+	"created": [{
+		"value": 1494609313
+	}],
+	"changed": [{
+		"value": 1612389954
+	}],
+	"promote": [{
+		"value": true
+	}],
+	"sticky": [{
+		"value": false
+	}],
+	"default_langcode": [{
+		"value": true
+	}],
+	"revision_translation_affected": [{
+		"value": true
+	}],
+	"path": [{
+		"alias": null,
+		"pid": null,
+		"langcode": "en"
+	}],
+	"publish_on": [],
+	"unpublish_on": [],
+	"body": [{
+		"value": "\u003Cp\u003EMetcalf, John C Memorial Fund\u003C\/p\u003E\r\n",
+		"format": "basic_html",
+		"processed": "\u003Cp\u003EMetcalf, John C Memorial Fund\u003C\/p\u003E",
+		"summary": ""
+	}],
+	"field_bookplate_image": [],
+	"field_date": [],
+	"field_fund": [{
+		"value": "ER00597"
+	}],
+	"field_fund_award_name": [{
+		"value": "LB-Metcalf, John C - English"
+	}],
+	"field_fund_id": [{
+		"value": "METCALF-ER00597"
+	}],
+	"field_restriction_summary": [{
+		"value": "To purchase books for the Department of English.\r\n"
+	}],
+	"field_summary": [{
+		"value": "The John C. Metcalf Memorial Fund was established as a memorial to John Calvin Metcalf (1865\u20131949), professor of English at UVA, for the purpose of purchasing books for the English department.\r\n"
+	}]
+}, {
+	"nid": [{
+		"value": 526
+	}],
+	"uuid": [{
+		"value": "aeb5ba4c-ca0d-4ad2-932c-01f7199aa37f"
+	}],
+	"vid": [{
+		"value": 1862
+	}],
+	"langcode": [{
+		"value": "en"
+	}],
+	"type": [{
+		"target_id": "bookplate",
+		"target_type": "node_type",
+		"target_uuid": "36d64862-bbb0-42e9-bcf8-29da6062483d"
+	}],
+	"revision_timestamp": [{
+		"value": 1502288344
+	}],
+	"revision_uid": [{
+		"target_id": 21,
+		"target_type": "user",
+		"target_uuid": "0072a370-c021-452d-ac5f-3b5c3ded6d71",
+		"url": "\/user\/21"
+	}],
+	"revision_log": [],
+	"status": [{
+		"value": true
+	}],
+	"uid": [{
+		"target_id": 21,
+		"target_type": "user",
+		"target_uuid": "0072a370-c021-452d-ac5f-3b5c3ded6d71",
+		"url": "\/user\/21"
+	}],
+	"title": [{
+		"value": "Walter S. McIlhenny Endowment"
+	}],
+	"created": [{
+		"value": 1494609268
+	}],
+	"changed": [{
+		"value": 1502288344
+	}],
+	"promote": [{
+		"value": true
+	}],
+	"sticky": [{
+		"value": false
+	}],
+	"default_langcode": [{
+		"value": true
+	}],
+	"revision_translation_affected": [{
+		"value": true
+	}],
+	"path": [{
+		"alias": null,
+		"pid": null,
+		"langcode": "en"
+	}],
+	"publish_on": [],
+	"unpublish_on": [],
+	"body": [{
+		"value": "\u003Cp\u003EMcilhenny, Walter S. Endowment\u003C\/p\u003E\r\n",
+		"format": "basic_html",
+		"processed": "\u003Cp\u003EMcilhenny, Walter S. Endowment\u003C\/p\u003E",
+		"summary": ""
+	}],
+	"field_bookplate_image": [{
+		"target_id": 587,
+		"alt": "\u0022Presented ... by his brother, John S. McilHenny. A representation of a tiger walking through a jungle.",
+		"title": "",
+		"width": 1341,
+		"height": 1792,
+		"target_type": "file",
+		"target_uuid": "b78dab59-9317-46f4-9892-2254506339d0",
+		"url": "https:\/\/drupal.lib.virginia.edu\/sites\/default\/files\/bookplates\/20170622100940461_mcilhenny.jpg"
+	}],
+	"field_date": [],
+	"field_fund": [{
+		"value": "ER00638"
+	}],
+	"field_fund_award_name": [{
+		"value": "LB-McIlhenny, Walter S"
+	}],
+	"field_fund_id": [{
+		"value": "MCILHENNY-ER00638"
+	}],
+	"field_restriction_summary": [{
+		"value": "The income from the fund to be used to endow a natural history acquisition for the Alderman Library\u0027s Department of Special Collections.\r\n"
+	}],
+	"field_summary": [{
+		"value": "The Walter S. McIlhenny Endowment was created to endow a natural history acquisition for Alderman Library\u0027s Department of Special Collections. The endowment was established in 1993 by John S. McIlhenny in honor of his late brother, Walter Stauffer McIlhenny, a UVA Engineering alum and World War II veteran who served as president of McIlhenny Company, maker of Tabasco brand pepper sauce, from 1949 until his death in 1985. \r\n"
+	}]
+}, {
+	"nid": [{
+		"value": 525
+	}],
+	"uuid": [{
+		"value": "a4e45aec-251c-4a7e-b2b3-7f520b64a9ef"
+	}],
+	"vid": [{
+		"value": 1863
+	}],
+	"langcode": [{
+		"value": "en"
+	}],
+	"type": [{
+		"target_id": "bookplate",
+		"target_type": "node_type",
+		"target_uuid": "36d64862-bbb0-42e9-bcf8-29da6062483d"
+	}],
+	"revision_timestamp": [{
+		"value": 1502288506
+	}],
+	"revision_uid": [{
+		"target_id": 21,
+		"target_type": "user",
+		"target_uuid": "0072a370-c021-452d-ac5f-3b5c3ded6d71",
+		"url": "\/user\/21"
+	}],
+	"revision_log": [],
+	"status": [{
+		"value": true
+	}],
+	"uid": [{
+		"target_id": 21,
+		"target_type": "user",
+		"target_uuid": "0072a370-c021-452d-ac5f-3b5c3ded6d71",
+		"url": "\/user\/21"
+	}],
+	"title": [{
+		"value": "The Tracy W. McGregor Library Endowed Fund"
+	}],
+	"created": [{
+		"value": 1494609213
+	}],
+	"changed": [{
+		"value": 1502288506
+	}],
+	"promote": [{
+		"value": true
+	}],
+	"sticky": [{
+		"value": false
+	}],
+	"default_langcode": [{
+		"value": true
+	}],
+	"revision_translation_affected": [{
+		"value": true
+	}],
+	"path": [{
+		"alias": null,
+		"pid": null,
+		"langcode": "en"
+	}],
+	"publish_on": [],
+	"unpublish_on": [],
+	"body": [{
+		"value": "\u003Cp\u003EMcgregor, Tracy W Library Fund\u003C\/p\u003E\r\n",
+		"format": "basic_html",
+		"processed": "\u003Cp\u003EMcgregor, Tracy W Library Fund\u003C\/p\u003E",
+		"summary": ""
+	}],
+	"field_bookplate_image": [{
+		"target_id": 589,
+		"alt": "Drawn by Hattie E. Burdette, from Capt. John Smith\u0027s \u0022New England.\u0022 A ship with several fish in the foreground.",
+		"title": "",
+		"width": 739,
+		"height": 1298,
+		"target_type": "file",
+		"target_uuid": "14d83faf-c495-40ea-9662-48277d15f0a0",
+		"url": "https:\/\/drupal.lib.virginia.edu\/sites\/default\/files\/bookplates\/20170622102522080_Page_2_mcgregor.png"
+	}],
+	"field_date": [],
+	"field_fund": [{
+		"value": "ER00642"
+	}],
+	"field_fund_award_name": [{
+		"value": "LB-McGregor, Tracy W-Fund"
+	}],
+	"field_fund_id": [{
+		"value": "MCGREGOR-ER00642"
+	}],
+	"field_restriction_summary": [{
+		"value": "To provide for future growth in the Tracy W. McGregor Library.\r\n"
+	}],
+	"field_summary": [{
+		"value": "The Tracy W. McGregor Library Endowed Fund was created to provide for future growth in the Tracy W. McGregor Library of American History, a notable collection of books and manuscripts and one of the cornerstones of the University of Virginia special collections. Assembled by Detroit philanthropist Tracy W. McGregor (1869\u20131936), the McGregor Library was donated to UVA in 1938 by the trustees of the McGregor Fund. The McGregor Room in Alderman Library was built to house the collection, which was moved when the Albert and Shirley Small Special Collections Library opened in 2004.\r\n"
+	}]
+}, {
+	"nid": [{
+		"value": 524
+	}],
+	"uuid": [{
+		"value": "5b933358-a230-47f7-b819-68032423b870"
+	}],
+	"vid": [{
+		"value": 1895
+	}],
+	"langcode": [{
+		"value": "en"
+	}],
+	"type": [{
+		"target_id": "bookplate",
+		"target_type": "node_type",
+		"target_uuid": "36d64862-bbb0-42e9-bcf8-29da6062483d"
+	}],
+	"revision_timestamp": [{
+		"value": 1502293182
+	}],
+	"revision_uid": [{
+		"target_id": 21,
+		"target_type": "user",
+		"target_uuid": "0072a370-c021-452d-ac5f-3b5c3ded6d71",
+		"url": "\/user\/21"
+	}],
+	"revision_log": [],
+	"status": [{
+		"value": true
+	}],
+	"uid": [{
+		"target_id": 21,
+		"target_type": "user",
+		"target_uuid": "0072a370-c021-452d-ac5f-3b5c3ded6d71",
+		"url": "\/user\/21"
+	}],
+	"title": [{
+		"value": "Linton R. Massey Fund for the William Faulkner Collection"
+	}],
+	"created": [{
+		"value": 1494609147
+	}],
+	"changed": [{
+		"value": 1502293182
+	}],
+	"promote": [{
+		"value": true
+	}],
+	"sticky": [{
+		"value": false
+	}],
+	"default_langcode": [{
+		"value": true
+	}],
+	"revision_translation_affected": [{
+		"value": true
+	}],
+	"path": [{
+		"alias": null,
+		"pid": null,
+		"langcode": "en"
+	}],
+	"publish_on": [],
+	"unpublish_on": [],
+	"body": [{
+		"value": "\u003Cp\u003EMassey, Linton R. Fd. - William Faulkner Collection\u003C\/p\u003E\r\n",
+		"format": "basic_html",
+		"processed": "\u003Cp\u003EMassey, Linton R. Fd. - William Faulkner Collection\u003C\/p\u003E",
+		"summary": ""
+	}],
+	"field_bookplate_image": [],
+	"field_date": [],
+	"field_fund": [{
+		"value": "ER00626"
+	}],
+	"field_fund_award_name": [{
+		"value": "LB-Massey,Linton R-Faulkner"
+	}],
+	"field_fund_id": [{
+		"value": "MASSEY-ER00626"
+	}],
+	"field_restriction_summary": [{
+		"value": "The income is to be expended by the Librarian of the Alderman Library for the maintenance of, or acquisitions for, its William Faulkner Collection.  Provided further that the income may be expended for general Library purposes should the income prove to be in excess of the needs of the William Faulkner Collection.\r\n"
+	}],
+	"field_summary": [{
+		"value": "The Linton R. Massey Fund for the William Faulkner Collection was established in 1976 for the maintenance of, or acquisitions for, the Library\u0027s William Faulkner Collections. The fund was established through a bequest from Mr. Massey, a friend of Faulkner\u0027s and donor of the Library\u2019s vast collection of Faulkner first editions, translations, and publications touching on the writer\u2019s life and work.\r\n"
+	}]
+}, {
+	"nid": [{
+		"value": 523
+	}],
+	"uuid": [{
+		"value": "d7e5c405-8bd4-4b6b-8809-ddff703a4263"
+	}],
+	"vid": [{
+		"value": 1864
+	}],
+	"langcode": [{
+		"value": "en"
+	}],
+	"type": [{
+		"target_id": "bookplate",
+		"target_type": "node_type",
+		"target_uuid": "36d64862-bbb0-42e9-bcf8-29da6062483d"
+	}],
+	"revision_timestamp": [{
+		"value": 1502288577
+	}],
+	"revision_uid": [{
+		"target_id": 21,
+		"target_type": "user",
+		"target_uuid": "0072a370-c021-452d-ac5f-3b5c3ded6d71",
+		"url": "\/user\/21"
+	}],
+	"revision_log": [],
+	"status": [{
+		"value": true
+	}],
+	"uid": [{
+		"target_id": 21,
+		"target_type": "user",
+		"target_uuid": "0072a370-c021-452d-ac5f-3b5c3ded6d71",
+		"url": "\/user\/21"
+	}],
+	"title": [{
+		"value": "Charles Locke Purchase Fund"
+	}],
+	"created": [{
+		"value": 1494609073
+	}],
+	"changed": [{
+		"value": 1502288577
+	}],
+	"promote": [{
+		"value": true
+	}],
+	"sticky": [{
+		"value": false
+	}],
+	"default_langcode": [{
+		"value": true
+	}],
+	"revision_translation_affected": [{
+		"value": true
+	}],
+	"path": [{
+		"alias": null,
+		"pid": null,
+		"langcode": "en"
+	}],
+	"publish_on": [],
+	"unpublish_on": [],
+	"body": [{
+		"value": "\u003Cp\u003ELocke, Charles Purchase Fund -Alderman Library\u003C\/p\u003E\r\n",
+		"format": "basic_html",
+		"processed": "\u003Cp\u003ELocke, Charles Purchase Fund -Alderman Library\u003C\/p\u003E",
+		"summary": ""
+	}],
+	"field_bookplate_image": [{
+		"target_id": 590,
+		"alt": "Seal of the University of Virginia",
+		"title": "",
+		"width": 993,
+		"height": 1357,
+		"target_type": "file",
+		"target_uuid": "e5705156-b272-4307-81a3-cb104e1c2581",
+		"url": "https:\/\/drupal.lib.virginia.edu\/sites\/default\/files\/bookplates\/20170622103020471_Page_1_locke.png"
+	}],
+	"field_date": [],
+	"field_fund": [{
+		"value": "ER00569"
+	}],
+	"field_fund_award_name": [{
+		"value": "LB-Locke, Charles"
+	}],
+	"field_fund_id": [{
+		"value": "LOCKE-ER00569"
+	}],
+	"field_restriction_summary": [{
+		"value": "The income from the Fund, but none of the principal, shall be used for the purchase of books on drawing, composition and printmaking, and examples of their applications.  A portion of the income would be used for the judicious acquisition of the best catalogues of drawing exhibitions.\r\n"
+	}],
+	"field_summary": [{
+		"value": "The Charles Locke Purchase Fund, endowed in 1984 by Warren and Lydia Chappell, is to be used for the purchase of books on drawing, composition and printmaking, and examples of their applications, including catalogues of drawing exhibitions. Mr. Chappell, an illustrator and book and type designer, named the fund for the teacher and artist Charles Wheeler Locke.\r\n"
+	}]
+}, {
+	"nid": [{
+		"value": 522
+	}],
+	"uuid": [{
+		"value": "f71dae05-05be-414b-91d7-057ef0c7e3e3"
+	}],
+	"vid": [{
+		"value": 1079
+	}],
+	"langcode": [{
+		"value": "en"
+	}],
+	"type": [{
+		"target_id": "bookplate",
+		"target_type": "node_type",
+		"target_uuid": "36d64862-bbb0-42e9-bcf8-29da6062483d"
+	}],
+	"revision_timestamp": [{
+		"value": 1494609047
+	}],
+	"revision_uid": [{
+		"target_id": 21,
+		"target_type": "user",
+		"target_uuid": "0072a370-c021-452d-ac5f-3b5c3ded6d71",
+		"url": "\/user\/21"
+	}],
+	"revision_log": [],
+	"status": [{
+		"value": true
+	}],
+	"uid": [{
+		"target_id": 21,
+		"target_type": "user",
+		"target_uuid": "0072a370-c021-452d-ac5f-3b5c3ded6d71",
+		"url": "\/user\/21"
+	}],
+	"title": [{
+		"value": "LA-WHITE"
+	}],
+	"created": [{
+		"value": 1494609032
+	}],
+	"changed": [{
+		"value": 1494609047
+	}],
+	"promote": [{
+		"value": true
+	}],
+	"sticky": [{
+		"value": false
+	}],
+	"default_langcode": [{
+		"value": true
+	}],
+	"revision_translation_affected": [{
+		"value": true
+	}],
+	"path": [{
+		"alias": null,
+		"pid": null,
+		"langcode": "en"
+	}],
+	"publish_on": [],
+	"unpublish_on": [],
+	"body": [],
+	"field_bookplate_image": [],
+	"field_date": [],
+	"field_fund": [{
+		"value": "DR02198"
+	}],
+	"field_fund_award_name": [],
+	"field_fund_id": [{
+		"value": "LA-WHITE"
+	}],
+	"field_restriction_summary": [],
+	"field_summary": []
+}, {
+	"nid": [{
+		"value": 521
+	}],
+	"uuid": [{
+		"value": "6d248132-68f0-4a41-b3ef-c5647b79733e"
+	}],
+	"vid": [{
+		"value": 1078
+	}],
+	"langcode": [{
+		"value": "en"
+	}],
+	"type": [{
+		"target_id": "bookplate",
+		"target_type": "node_type",
+		"target_uuid": "36d64862-bbb0-42e9-bcf8-29da6062483d"
+	}],
+	"revision_timestamp": [{
+		"value": 1494609022
+	}],
+	"revision_uid": [{
+		"target_id": 21,
+		"target_type": "user",
+		"target_uuid": "0072a370-c021-452d-ac5f-3b5c3ded6d71",
+		"url": "\/user\/21"
+	}],
+	"revision_log": [],
+	"status": [{
+		"value": true
+	}],
+	"uid": [{
+		"target_id": 21,
+		"target_type": "user",
+		"target_uuid": "0072a370-c021-452d-ac5f-3b5c3ded6d71",
+		"url": "\/user\/21"
+	}],
+	"title": [{
+		"value": "LA-SHEP"
+	}],
+	"created": [{
+		"value": 1494609006
+	}],
+	"changed": [{
+		"value": 1494609022
+	}],
+	"promote": [{
+		"value": true
+	}],
+	"sticky": [{
+		"value": false
+	}],
+	"default_langcode": [{
+		"value": true
+	}],
+	"revision_translation_affected": [{
+		"value": true
+	}],
+	"path": [{
+		"alias": null,
+		"pid": null,
+		"langcode": "en"
+	}],
+	"publish_on": [],
+	"unpublish_on": [],
+	"body": [],
+	"field_bookplate_image": [],
+	"field_date": [],
+	"field_fund": [{
+		"value": "DR02197"
+	}],
+	"field_fund_award_name": [],
+	"field_fund_id": [{
+		"value": "LA-SHEP"
+	}],
+	"field_restriction_summary": [],
+	"field_summary": []
+}, {
+	"nid": [{
+		"value": 520
+	}],
+	"uuid": [{
+		"value": "31c804f3-32e0-4627-9202-3905637d729a"
+	}],
+	"vid": [{
+		"value": 1077
+	}],
+	"langcode": [{
+		"value": "en"
+	}],
+	"type": [{
+		"target_id": "bookplate",
+		"target_type": "node_type",
+		"target_uuid": "36d64862-bbb0-42e9-bcf8-29da6062483d"
+	}],
+	"revision_timestamp": [{
+		"value": 1494609000
+	}],
+	"revision_uid": [{
+		"target_id": 21,
+		"target_type": "user",
+		"target_uuid": "0072a370-c021-452d-ac5f-3b5c3ded6d71",
+		"url": "\/user\/21"
+	}],
+	"revision_log": [],
+	"status": [{
+		"value": true
+	}],
+	"uid": [{
+		"target_id": 21,
+		"target_type": "user",
+		"target_uuid": "0072a370-c021-452d-ac5f-3b5c3ded6d71",
+		"url": "\/user\/21"
+	}],
+	"title": [{
+		"value": "LA-RITCHIE"
+	}],
+	"created": [{
+		"value": 1494608985
+	}],
+	"changed": [{
+		"value": 1494609000
+	}],
+	"promote": [{
+		"value": true
+	}],
+	"sticky": [{
+		"value": false
+	}],
+	"default_langcode": [{
+		"value": true
+	}],
+	"revision_translation_affected": [{
+		"value": true
+	}],
+	"path": [{
+		"alias": null,
+		"pid": null,
+		"langcode": "en"
+	}],
+	"publish_on": [],
+	"unpublish_on": [],
+	"body": [],
+	"field_bookplate_image": [],
+	"field_date": [],
+	"field_fund": [{
+		"value": "DR02208"
+	}],
+	"field_fund_award_name": [],
+	"field_fund_id": [{
+		"value": "LA-RITCHIE"
+	}],
+	"field_restriction_summary": [],
+	"field_summary": []
+}, {
+	"nid": [{
+		"value": 519
+	}],
+	"uuid": [{
+		"value": "ea225168-c998-4e7f-88a5-d84eb7d0b005"
+	}],
+	"vid": [{
+		"value": 1076
+	}],
+	"langcode": [{
+		"value": "en"
+	}],
+	"type": [{
+		"target_id": "bookplate",
+		"target_type": "node_type",
+		"target_uuid": "36d64862-bbb0-42e9-bcf8-29da6062483d"
+	}],
+	"revision_timestamp": [{
+		"value": 1494608978
+	}],
+	"revision_uid": [{
+		"target_id": 21,
+		"target_type": "user",
+		"target_uuid": "0072a370-c021-452d-ac5f-3b5c3ded6d71",
+		"url": "\/user\/21"
+	}],
+	"revision_log": [],
+	"status": [{
+		"value": true
+	}],
+	"uid": [{
+		"target_id": 21,
+		"target_type": "user",
+		"target_uuid": "0072a370-c021-452d-ac5f-3b5c3ded6d71",
+		"url": "\/user\/21"
+	}],
+	"title": [{
+		"value": "LA-PRESFOX"
+	}],
+	"created": [{
+		"value": 1494608962
+	}],
+	"changed": [{
+		"value": 1494608978
+	}],
+	"promote": [{
+		"value": true
+	}],
+	"sticky": [{
+		"value": false
+	}],
+	"default_langcode": [{
+		"value": true
+	}],
+	"revision_translation_affected": [{
+		"value": true
+	}],
+	"path": [{
+		"alias": null,
+		"pid": null,
+		"langcode": "en"
+	}],
+	"publish_on": [],
+	"unpublish_on": [],
+	"body": [],
+	"field_bookplate_image": [],
+	"field_date": [],
+	"field_fund": [{
+		"value": "DR02310"
+	}],
+	"field_fund_award_name": [],
+	"field_fund_id": [{
+		"value": "LA-PRESFOX"
+	}],
+	"field_restriction_summary": [],
+	"field_summary": []
+}, {
+	"nid": [{
+		"value": 518
+	}],
+	"uuid": [{
+		"value": "8a5ed82b-e8a8-42ec-b1b7-b29fe30877e3"
+	}],
+	"vid": [{
+		"value": 1075
+	}],
+	"langcode": [{
+		"value": "en"
+	}],
+	"type": [{
+		"target_id": "bookplate",
+		"target_type": "node_type",
+		"target_uuid": "36d64862-bbb0-42e9-bcf8-29da6062483d"
+	}],
+	"revision_timestamp": [{
+		"value": 1494608956
+	}],
+	"revision_uid": [{
+		"target_id": 21,
+		"target_type": "user",
+		"target_uuid": "0072a370-c021-452d-ac5f-3b5c3ded6d71",
+		"url": "\/user\/21"
+	}],
+	"revision_log": [],
+	"status": [{
+		"value": true
+	}],
+	"uid": [{
+		"target_id": 21,
+		"target_type": "user",
+		"target_uuid": "0072a370-c021-452d-ac5f-3b5c3ded6d71",
+		"url": "\/user\/21"
+	}],
+	"title": [{
+		"value": "LA-NEH"
+	}],
+	"created": [{
+		"value": 1494608941
+	}],
+	"changed": [{
+		"value": 1494608956
+	}],
+	"promote": [{
+		"value": true
+	}],
+	"sticky": [{
+		"value": false
+	}],
+	"default_langcode": [{
+		"value": true
+	}],
+	"revision_translation_affected": [{
+		"value": true
+	}],
+	"path": [{
+		"alias": null,
+		"pid": null,
+		"langcode": "en"
+	}],
+	"publish_on": [],
+	"unpublish_on": [],
+	"body": [],
+	"field_bookplate_image": [],
+	"field_date": [],
+	"field_fund": [{
+		"value": "DR02206"
+	}],
+	"field_fund_award_name": [],
+	"field_fund_id": [{
+		"value": "LA-NEH"
+	}],
+	"field_restriction_summary": [],
+	"field_summary": []
+}, {
+	"nid": [{
+		"value": 517
+	}],
+	"uuid": [{
+		"value": "655e9b6e-611c-41de-8a9c-70b8e04e8398"
+	}],
+	"vid": [{
+		"value": 1074
+	}],
+	"langcode": [{
+		"value": "en"
+	}],
+	"type": [{
+		"target_id": "bookplate",
+		"target_type": "node_type",
+		"target_uuid": "36d64862-bbb0-42e9-bcf8-29da6062483d"
+	}],
+	"revision_timestamp": [{
+		"value": 1494608935
+	}],
+	"revision_uid": [{
+		"target_id": 21,
+		"target_type": "user",
+		"target_uuid": "0072a370-c021-452d-ac5f-3b5c3ded6d71",
+		"url": "\/user\/21"
+	}],
+	"revision_log": [],
+	"status": [{
+		"value": true
+	}],
+	"uid": [{
+		"target_id": 21,
+		"target_type": "user",
+		"target_uuid": "0072a370-c021-452d-ac5f-3b5c3ded6d71",
+		"url": "\/user\/21"
+	}],
+	"title": [{
+		"value": "LA-KLAUS"
+	}],
+	"created": [{
+		"value": 1494608913
+	}],
+	"changed": [{
+		"value": 1494608935
+	}],
+	"promote": [{
+		"value": true
+	}],
+	"sticky": [{
+		"value": false
+	}],
+	"default_langcode": [{
+		"value": true
+	}],
+	"revision_translation_affected": [{
+		"value": true
+	}],
+	"path": [{
+		"alias": null,
+		"pid": null,
+		"langcode": "en"
+	}],
+	"publish_on": [],
+	"unpublish_on": [],
+	"body": [],
+	"field_bookplate_image": [],
+	"field_date": [],
+	"field_fund": [{
+		"value": "DR02203"
+	}],
+	"field_fund_award_name": [],
+	"field_fund_id": [{
+		"value": "LA-KLAUS"
+	}],
+	"field_restriction_summary": [],
+	"field_summary": []
+}, {
+	"nid": [{
+		"value": 516
+	}],
+	"uuid": [{
+		"value": "02fbbcce-c6da-4294-8c3b-d2c791812593"
+	}],
+	"vid": [{
+		"value": 1073
+	}],
+	"langcode": [{
+		"value": "en"
+	}],
+	"type": [{
+		"target_id": "bookplate",
+		"target_type": "node_type",
+		"target_uuid": "36d64862-bbb0-42e9-bcf8-29da6062483d"
+	}],
+	"revision_timestamp": [{
+		"value": 1494608896
+	}],
+	"revision_uid": [{
+		"target_id": 21,
+		"target_type": "user",
+		"target_uuid": "0072a370-c021-452d-ac5f-3b5c3ded6d71",
+		"url": "\/user\/21"
+	}],
+	"revision_log": [],
+	"status": [{
+		"value": true
+	}],
+	"uid": [{
+		"target_id": 21,
+		"target_type": "user",
+		"target_uuid": "0072a370-c021-452d-ac5f-3b5c3ded6d71",
+		"url": "\/user\/21"
+	}],
+	"title": [{
+		"value": "LA-JWAT"
+	}],
+	"created": [{
+		"value": 1494608882
+	}],
+	"changed": [{
+		"value": 1494608896
+	}],
+	"promote": [{
+		"value": true
+	}],
+	"sticky": [{
+		"value": false
+	}],
+	"default_langcode": [{
+		"value": true
+	}],
+	"revision_translation_affected": [{
+		"value": true
+	}],
+	"path": [{
+		"alias": null,
+		"pid": null,
+		"langcode": "en"
+	}],
+	"publish_on": [],
+	"unpublish_on": [],
+	"body": [],
+	"field_bookplate_image": [],
+	"field_date": [],
+	"field_fund": [{
+		"value": "DR02210"
+	}],
+	"field_fund_award_name": [],
+	"field_fund_id": [{
+		"value": "LA-JWAT"
+	}],
+	"field_restriction_summary": [],
+	"field_summary": []
+}, {
+	"nid": [{
+		"value": 515
+	}],
+	"uuid": [{
+		"value": "1b196042-ac54-4de4-935b-33fff154a73f"
+	}],
+	"vid": [{
+		"value": 1072
+	}],
+	"langcode": [{
+		"value": "en"
+	}],
+	"type": [{
+		"target_id": "bookplate",
+		"target_type": "node_type",
+		"target_uuid": "36d64862-bbb0-42e9-bcf8-29da6062483d"
+	}],
+	"revision_timestamp": [{
+		"value": 1494608873
+	}],
+	"revision_uid": [{
+		"target_id": 21,
+		"target_type": "user",
+		"target_uuid": "0072a370-c021-452d-ac5f-3b5c3ded6d71",
+		"url": "\/user\/21"
+	}],
+	"revision_log": [],
+	"status": [{
+		"value": true
+	}],
+	"uid": [{
+		"target_id": 21,
+		"target_type": "user",
+		"target_uuid": "0072a370-c021-452d-ac5f-3b5c3ded6d71",
+		"url": "\/user\/21"
+	}],
+	"title": [{
+		"value": "LA-JEFLEG"
+	}],
+	"created": [{
+		"value": 1494608859
+	}],
+	"changed": [{
+		"value": 1494608873
+	}],
+	"promote": [{
+		"value": true
+	}],
+	"sticky": [{
+		"value": false
+	}],
+	"default_langcode": [{
+		"value": true
+	}],
+	"revision_translation_affected": [{
+		"value": true
+	}],
+	"path": [{
+		"alias": null,
+		"pid": null,
+		"langcode": "en"
+	}],
+	"publish_on": [],
+	"unpublish_on": [],
+	"body": [],
+	"field_bookplate_image": [],
+	"field_date": [],
+	"field_fund": [{
+		"value": "DR02207"
+	}],
+	"field_fund_award_name": [],
+	"field_fund_id": [{
+		"value": "LA-JEFLEG"
+	}],
+	"field_restriction_summary": [],
+	"field_summary": []
+}, {
+	"nid": [{
+		"value": 514
+	}],
+	"uuid": [{
+		"value": "47d8795f-b2f3-4d3a-a6ad-3eb28dc45468"
+	}],
+	"vid": [{
+		"value": 1071
+	}],
+	"langcode": [{
+		"value": "en"
+	}],
+	"type": [{
+		"target_id": "bookplate",
+		"target_type": "node_type",
+		"target_uuid": "36d64862-bbb0-42e9-bcf8-29da6062483d"
+	}],
+	"revision_timestamp": [{
+		"value": 1494608836
+	}],
+	"revision_uid": [{
+		"target_id": 21,
+		"target_type": "user",
+		"target_uuid": "0072a370-c021-452d-ac5f-3b5c3ded6d71",
+		"url": "\/user\/21"
+	}],
+	"revision_log": [],
+	"status": [{
+		"value": true
+	}],
+	"uid": [{
+		"target_id": 21,
+		"target_type": "user",
+		"target_uuid": "0072a370-c021-452d-ac5f-3b5c3ded6d71",
+		"url": "\/user\/21"
+	}],
+	"title": [{
+		"value": "LA-HOBB"
+	}],
+	"created": [{
+		"value": 1494608820
+	}],
+	"changed": [{
+		"value": 1494608836
+	}],
+	"promote": [{
+		"value": true
+	}],
+	"sticky": [{
+		"value": false
+	}],
+	"default_langcode": [{
+		"value": true
+	}],
+	"revision_translation_affected": [{
+		"value": true
+	}],
+	"path": [{
+		"alias": null,
+		"pid": null,
+		"langcode": "en"
+	}],
+	"publish_on": [],
+	"unpublish_on": [],
+	"body": [],
+	"field_bookplate_image": [],
+	"field_date": [],
+	"field_fund": [{
+		"value": "DR02209"
+	}],
+	"field_fund_award_name": [],
+	"field_fund_id": [{
+		"value": "LA-HOBB"
+	}],
+	"field_restriction_summary": [],
+	"field_summary": []
+}, {
+	"nid": [{
+		"value": 513
+	}],
+	"uuid": [{
+		"value": "e1fc9770-69d8-4eaf-8d29-98ef5089f8ae"
+	}],
+	"vid": [{
+		"value": 1070
+	}],
+	"langcode": [{
+		"value": "en"
+	}],
+	"type": [{
+		"target_id": "bookplate",
+		"target_type": "node_type",
+		"target_uuid": "36d64862-bbb0-42e9-bcf8-29da6062483d"
+	}],
+	"revision_timestamp": [{
+		"value": 1494608815
+	}],
+	"revision_uid": [{
+		"target_id": 21,
+		"target_type": "user",
+		"target_uuid": "0072a370-c021-452d-ac5f-3b5c3ded6d71",
+		"url": "\/user\/21"
+	}],
+	"revision_log": [],
+	"status": [{
+		"value": true
+	}],
+	"uid": [{
+		"target_id": 21,
+		"target_type": "user",
+		"target_uuid": "0072a370-c021-452d-ac5f-3b5c3ded6d71",
+		"url": "\/user\/21"
+	}],
+	"title": [{
+		"value": "LA-HERD"
+	}],
+	"created": [{
+		"value": 1494608798
+	}],
+	"changed": [{
+		"value": 1494608815
+	}],
+	"promote": [{
+		"value": true
+	}],
+	"sticky": [{
+		"value": false
+	}],
+	"default_langcode": [{
+		"value": true
+	}],
+	"revision_translation_affected": [{
+		"value": true
+	}],
+	"path": [{
+		"alias": null,
+		"pid": null,
+		"langcode": "en"
+	}],
+	"publish_on": [],
+	"unpublish_on": [],
+	"body": [],
+	"field_bookplate_image": [],
+	"field_date": [],
+	"field_fund": [{
+		"value": "ER00396"
+	}],
+	"field_fund_award_name": [],
+	"field_fund_id": [{
+		"value": "LA-HERD"
+	}],
+	"field_restriction_summary": [],
+	"field_summary": []
+}, {
+	"nid": [{
+		"value": 512
+	}],
+	"uuid": [{
+		"value": "b88bd564-bd76-4987-8717-64325701d57e"
+	}],
+	"vid": [{
+		"value": 1069
+	}],
+	"langcode": [{
+		"value": "en"
+	}],
+	"type": [{
+		"target_id": "bookplate",
+		"target_type": "node_type",
+		"target_uuid": "36d64862-bbb0-42e9-bcf8-29da6062483d"
+	}],
+	"revision_timestamp": [{
+		"value": 1494608792
+	}],
+	"revision_uid": [{
+		"target_id": 21,
+		"target_type": "user",
+		"target_uuid": "0072a370-c021-452d-ac5f-3b5c3ded6d71",
+		"url": "\/user\/21"
+	}],
+	"revision_log": [],
+	"status": [{
+		"value": true
+	}],
+	"uid": [{
+		"target_id": 21,
+		"target_type": "user",
+		"target_uuid": "0072a370-c021-452d-ac5f-3b5c3ded6d71",
+		"url": "\/user\/21"
+	}],
+	"title": [{
+		"value": "LA-FOX"
+	}],
+	"created": [{
+		"value": 1494608768
+	}],
+	"changed": [{
+		"value": 1494608792
+	}],
+	"promote": [{
+		"value": true
+	}],
+	"sticky": [{
+		"value": false
+	}],
+	"default_langcode": [{
+		"value": true
+	}],
+	"revision_translation_affected": [{
+		"value": true
+	}],
+	"path": [{
+		"alias": null,
+		"pid": null,
+		"langcode": "en"
+	}],
+	"publish_on": [],
+	"unpublish_on": [],
+	"body": [],
+	"field_bookplate_image": [],
+	"field_date": [],
+	"field_fund": [{
+		"value": "DR02205"
+	}],
+	"field_fund_award_name": [],
+	"field_fund_id": [{
+		"value": "LA-FOX"
+	}],
+	"field_restriction_summary": [],
+	"field_summary": []
+}, {
+	"nid": [{
+		"value": 511
+	}],
+	"uuid": [{
+		"value": "0fa99cf2-e850-47ed-81bb-c15008679bb2"
+	}],
+	"vid": [{
+		"value": 1068
+	}],
+	"langcode": [{
+		"value": "en"
+	}],
+	"type": [{
+		"target_id": "bookplate",
+		"target_type": "node_type",
+		"target_uuid": "36d64862-bbb0-42e9-bcf8-29da6062483d"
+	}],
+	"revision_timestamp": [{
+		"value": 1494608761
+	}],
+	"revision_uid": [{
+		"target_id": 21,
+		"target_type": "user",
+		"target_uuid": "0072a370-c021-452d-ac5f-3b5c3ded6d71",
+		"url": "\/user\/21"
+	}],
+	"revision_log": [],
+	"status": [{
+		"value": true
+	}],
+	"uid": [{
+		"target_id": 21,
+		"target_type": "user",
+		"target_uuid": "0072a370-c021-452d-ac5f-3b5c3ded6d71",
+		"url": "\/user\/21"
+	}],
+	"title": [{
+		"value": "LA-FARM"
+	}],
+	"created": [{
+		"value": 1494608743
+	}],
+	"changed": [{
+		"value": 1494608761
+	}],
+	"promote": [{
+		"value": true
+	}],
+	"sticky": [{
+		"value": false
+	}],
+	"default_langcode": [{
+		"value": true
+	}],
+	"revision_translation_affected": [{
+		"value": true
+	}],
+	"path": [{
+		"alias": null,
+		"pid": null,
+		"langcode": "en"
+	}],
+	"publish_on": [],
+	"unpublish_on": [],
+	"body": [],
+	"field_bookplate_image": [],
+	"field_date": [],
+	"field_fund": [{
+		"value": "DR02200"
+	}],
+	"field_fund_award_name": [],
+	"field_fund_id": [{
+		"value": "LA-FARM"
+	}],
+	"field_restriction_summary": [],
+	"field_summary": []
+}, {
+	"nid": [{
+		"value": 510
+	}],
+	"uuid": [{
+		"value": "ed006cbe-a8d0-40e1-a983-f0f91f3e0b0b"
+	}],
+	"vid": [{
+		"value": 1067
+	}],
+	"langcode": [{
+		"value": "en"
+	}],
+	"type": [{
+		"target_id": "bookplate",
+		"target_type": "node_type",
+		"target_uuid": "36d64862-bbb0-42e9-bcf8-29da6062483d"
+	}],
+	"revision_timestamp": [{
+		"value": 1494608737
+	}],
+	"revision_uid": [{
+		"target_id": 21,
+		"target_type": "user",
+		"target_uuid": "0072a370-c021-452d-ac5f-3b5c3ded6d71",
+		"url": "\/user\/21"
+	}],
+	"revision_log": [],
+	"status": [{
+		"value": true
+	}],
+	"uid": [{
+		"target_id": 21,
+		"target_type": "user",
+		"target_uuid": "0072a370-c021-452d-ac5f-3b5c3ded6d71",
+		"url": "\/user\/21"
+	}],
+	"title": [{
+		"value": "LA-ENDOW"
+	}],
+	"created": [{
+		"value": 1494608720
+	}],
+	"changed": [{
+		"value": 1494608737
+	}],
+	"promote": [{
+		"value": true
+	}],
+	"sticky": [{
+		"value": false
+	}],
+	"default_langcode": [{
+		"value": true
+	}],
+	"revision_translation_affected": [{
+		"value": true
+	}],
+	"path": [{
+		"alias": null,
+		"pid": null,
+		"langcode": "en"
+	}],
+	"publish_on": [],
+	"unpublish_on": [],
+	"body": [],
+	"field_bookplate_image": [],
+	"field_date": [],
+	"field_fund": [{
+		"value": "ER00395"
+	}],
+	"field_fund_award_name": [],
+	"field_fund_id": [{
+		"value": "LA-ENDOW"
+	}],
+	"field_restriction_summary": [],
+	"field_summary": []
+}, {
+	"nid": [{
+		"value": 509
+	}],
+	"uuid": [{
+		"value": "06015fcc-aeca-4fc3-9780-23714221d2cd"
+	}],
+	"vid": [{
+		"value": 1066
+	}],
+	"langcode": [{
+		"value": "en"
+	}],
+	"type": [{
+		"target_id": "bookplate",
+		"target_type": "node_type",
+		"target_uuid": "36d64862-bbb0-42e9-bcf8-29da6062483d"
+	}],
+	"revision_timestamp": [{
+		"value": 1494608712
+	}],
+	"revision_uid": [{
+		"target_id": 21,
+		"target_type": "user",
+		"target_uuid": "0072a370-c021-452d-ac5f-3b5c3ded6d71",
+		"url": "\/user\/21"
+	}],
+	"revision_log": [],
+	"status": [{
+		"value": true
+	}],
+	"uid": [{
+		"target_id": 21,
+		"target_type": "user",
+		"target_uuid": "0072a370-c021-452d-ac5f-3b5c3ded6d71",
+		"url": "\/user\/21"
+	}],
+	"title": [{
+		"value": "LA-ENDBK"
+	}],
+	"created": [{
+		"value": 1494608684
+	}],
+	"changed": [{
+		"value": 1494608712
+	}],
+	"promote": [{
+		"value": true
+	}],
+	"sticky": [{
+		"value": false
+	}],
+	"default_langcode": [{
+		"value": true
+	}],
+	"revision_translation_affected": [{
+		"value": true
+	}],
+	"path": [{
+		"alias": null,
+		"pid": null,
+		"langcode": "en"
+	}],
+	"publish_on": [],
+	"unpublish_on": [],
+	"body": [],
+	"field_bookplate_image": [],
+	"field_date": [],
+	"field_fund": [{
+		"value": "DR02211"
+	}],
+	"field_fund_award_name": [],
+	"field_fund_id": [{
+		"value": "LA-ENDBK"
+	}],
+	"field_restriction_summary": [],
+	"field_summary": []
+}, {
+	"nid": [{
+		"value": 508
+	}],
+	"uuid": [{
+		"value": "6b48b86e-2d33-408b-aa90-5a6f628fb5f2"
+	}],
+	"vid": [{
+		"value": 1065
+	}],
+	"langcode": [{
+		"value": "en"
+	}],
+	"type": [{
+		"target_id": "bookplate",
+		"target_type": "node_type",
+		"target_uuid": "36d64862-bbb0-42e9-bcf8-29da6062483d"
+	}],
+	"revision_timestamp": [{
+		"value": 1494608678
+	}],
+	"revision_uid": [{
+		"target_id": 21,
+		"target_type": "user",
+		"target_uuid": "0072a370-c021-452d-ac5f-3b5c3ded6d71",
+		"url": "\/user\/21"
+	}],
+	"revision_log": [],
+	"status": [{
+		"value": true
+	}],
+	"uid": [{
+		"target_id": 21,
+		"target_type": "user",
+		"target_uuid": "0072a370-c021-452d-ac5f-3b5c3ded6d71",
+		"url": "\/user\/21"
+	}],
+	"title": [{
+		"value": "LA-DILL"
+	}],
+	"created": [{
+		"value": 1494608657
+	}],
+	"changed": [{
+		"value": 1494608678
+	}],
+	"promote": [{
+		"value": true
+	}],
+	"sticky": [{
+		"value": false
+	}],
+	"default_langcode": [{
+		"value": true
+	}],
+	"revision_translation_affected": [{
+		"value": true
+	}],
+	"path": [{
+		"alias": null,
+		"pid": null,
+		"langcode": "en"
+	}],
+	"publish_on": [],
+	"unpublish_on": [],
+	"body": [],
+	"field_bookplate_image": [],
+	"field_date": [],
+	"field_fund": [{
+		"value": "DR02199"
+	}],
+	"field_fund_award_name": [],
+	"field_fund_id": [{
+		"value": "LA-DILL"
+	}],
+	"field_restriction_summary": [],
+	"field_summary": []
+}, {
+	"nid": [{
+		"value": 507
+	}],
+	"uuid": [{
+		"value": "0acbaca7-d3f8-4f2d-a63b-e698990087af"
+	}],
+	"vid": [{
+		"value": 1064
+	}],
+	"langcode": [{
+		"value": "en"
+	}],
+	"type": [{
+		"target_id": "bookplate",
+		"target_type": "node_type",
+		"target_uuid": "36d64862-bbb0-42e9-bcf8-29da6062483d"
+	}],
+	"revision_timestamp": [{
+		"value": 1494608649
+	}],
+	"revision_uid": [{
+		"target_id": 21,
+		"target_type": "user",
+		"target_uuid": "0072a370-c021-452d-ac5f-3b5c3ded6d71",
+		"url": "\/user\/21"
+	}],
+	"revision_log": [],
+	"status": [{
+		"value": true
+	}],
+	"uid": [{
+		"target_id": 21,
+		"target_type": "user",
+		"target_uuid": "0072a370-c021-452d-ac5f-3b5c3ded6d71",
+		"url": "\/user\/21"
+	}],
+	"title": [{
+		"value": "LA-CUTTS"
+	}],
+	"created": [{
+		"value": 1494608598
+	}],
+	"changed": [{
+		"value": 1494608649
+	}],
+	"promote": [{
+		"value": true
+	}],
+	"sticky": [{
+		"value": false
+	}],
+	"default_langcode": [{
+		"value": true
+	}],
+	"revision_translation_affected": [{
+		"value": true
+	}],
+	"path": [{
+		"alias": null,
+		"pid": null,
+		"langcode": "en"
+	}],
+	"publish_on": [],
+	"unpublish_on": [],
+	"body": [],
+	"field_bookplate_image": [],
+	"field_date": [],
+	"field_fund": [{
+		"value": "DR02201"
+	}],
+	"field_fund_award_name": [],
+	"field_fund_id": [{
+		"value": "LA-CUTTS"
+	}],
+	"field_restriction_summary": [],
+	"field_summary": []
+}, {
+	"nid": [{
+		"value": 506
+	}],
+	"uuid": [{
+		"value": "f52549bc-696d-4edb-bf42-4787f51b3281"
+	}],
+	"vid": [{
+		"value": 1896
+	}],
+	"langcode": [{
+		"value": "en"
+	}],
+	"type": [{
+		"target_id": "bookplate",
+		"target_type": "node_type",
+		"target_uuid": "36d64862-bbb0-42e9-bcf8-29da6062483d"
+	}],
+	"revision_timestamp": [{
+		"value": 1502293253
+	}],
+	"revision_uid": [{
+		"target_id": 21,
+		"target_type": "user",
+		"target_uuid": "0072a370-c021-452d-ac5f-3b5c3ded6d71",
+		"url": "\/user\/21"
+	}],
+	"revision_log": [],
+	"status": [{
+		"value": true
+	}],
+	"uid": [{
+		"target_id": 21,
+		"target_type": "user",
+		"target_uuid": "0072a370-c021-452d-ac5f-3b5c3ded6d71",
+		"url": "\/user\/21"
+	}],
+	"title": [{
+		"value": "Mary Alice Kraehe Memorial Fund for Books on Africa"
+	}],
+	"created": [{
+		"value": 1494608311
+	}],
+	"changed": [{
+		"value": 1502293253
+	}],
+	"promote": [{
+		"value": true
+	}],
+	"sticky": [{
+		"value": false
+	}],
+	"default_langcode": [{
+		"value": true
+	}],
+	"revision_translation_affected": [{
+		"value": true
+	}],
+	"path": [{
+		"alias": null,
+		"pid": null,
+		"langcode": "en"
+	}],
+	"publish_on": [],
+	"unpublish_on": [],
+	"body": [{
+		"value": "\u003Cp\u003EKraehe, Mary Alice Memorial Fd For Books On Africa\u003C\/p\u003E\r\n",
+		"format": "basic_html",
+		"processed": "\u003Cp\u003EKraehe, Mary Alice Memorial Fd For Books On Africa\u003C\/p\u003E",
+		"summary": ""
+	}],
+	"field_bookplate_image": [],
+	"field_date": [],
+	"field_fund": [{
+		"value": "ER00657"
+	}],
+	"field_fund_award_name": [{
+		"value": "LB-Kraehe, Mary Alice"
+	}],
+	"field_fund_id": [{
+		"value": "KRAEHE-ER00657"
+	}],
+	"field_restriction_summary": [{
+		"value": "The income from the Fund, but none of the principal, shall be used to benefit the Library by supporting the acquisition of books, manuscripts, and other library materials relating to Africa.\r\n"
+	}],
+	"field_summary": [{
+		"value": "The Mary Alice Kraehe Memorial Fund for Books on Africa was endowed in 1998 to benefit the Library by supporting the acquisition of books, manuscripts, and other library materials relating to Africa. The fund was established as a memorial to Mary Alice Kraehe, who served as African Bibliographer in Alderman Library from the 1970\u0027s until her retirement in 1994.\r\n"
+	}]
+}, {
+	"nid": [{
+		"value": 505
+	}],
+	"uuid": [{
+		"value": "66f2a94f-7dfd-4d8d-b84b-82e4f2765080"
+	}],
+	"vid": [{
+		"value": 1897
+	}],
+	"langcode": [{
+		"value": "en"
+	}],
+	"type": [{
+		"target_id": "bookplate",
+		"target_type": "node_type",
+		"target_uuid": "36d64862-bbb0-42e9-bcf8-29da6062483d"
+	}],
+	"revision_timestamp": [{
+		"value": 1502293296
+	}],
+	"revision_uid": [{
+		"target_id": 21,
+		"target_type": "user",
+		"target_uuid": "0072a370-c021-452d-ac5f-3b5c3ded6d71",
+		"url": "\/user\/21"
+	}],
+	"revision_log": [],
+	"status": [{
+		"value": true
+	}],
+	"uid": [{
+		"target_id": 21,
+		"target_type": "user",
+		"target_uuid": "0072a370-c021-452d-ac5f-3b5c3ded6d71",
+		"url": "\/user\/21"
+	}],
+	"title": [{
+		"value": "James E. Kinard Library Fund"
+	}],
+	"created": [{
+		"value": 1494608238
+	}],
+	"changed": [{
+		"value": 1502293296
+	}],
+	"promote": [{
+		"value": true
+	}],
+	"sticky": [{
+		"value": false
+	}],
+	"default_langcode": [{
+		"value": true
+	}],
+	"revision_translation_affected": [{
+		"value": true
+	}],
+	"path": [{
+		"alias": null,
+		"pid": null,
+		"langcode": "en"
+	}],
+	"publish_on": [],
+	"unpublish_on": [],
+	"body": [{
+		"value": "\u003Cp\u003EKinard, James E. Library Fund For History\u003C\/p\u003E\r\n",
+		"format": "basic_html",
+		"processed": "\u003Cp\u003EKinard, James E. Library Fund For History\u003C\/p\u003E",
+		"summary": ""
+	}],
+	"field_bookplate_image": [],
+	"field_date": [],
+	"field_fund": [{
+		"value": "ER00661"
+	}],
+	"field_fund_award_name": [{
+		"value": "LB-Kinard, James E"
+	}],
+	"field_fund_id": [{
+		"value": "KINARD-ER00661"
+	}],
+	"field_restriction_summary": [{
+		"value": "The income from the Fund, but none of the principal, shall be used for the acquisition of library materials in the area of history, with first preference given to materials identified by the chair of the history department as most critical to meet curricula and research needs.\r\n"
+	}],
+	"field_summary": [{
+		"value": "The James E. Kinard Library Fund For History was established by Frank and Mary Kinard in 1998 to honor James Kinard (GSAS 1949), to be used for for the acquisition of library materials in the area of history. First preference will be giving to materials identified by the chair of the department as most critical to meet curricula and research needs.\r\n"
+	}]
+}, {
+	"nid": [{
+		"value": 504
+	}],
+	"uuid": [{
+		"value": "c997b020-e67f-4fce-af37-aca157de4ef6"
+	}],
+	"vid": [{
+		"value": 1898
+	}],
+	"langcode": [{
+		"value": "en"
+	}],
+	"type": [{
+		"target_id": "bookplate",
+		"target_type": "node_type",
+		"target_uuid": "36d64862-bbb0-42e9-bcf8-29da6062483d"
+	}],
+	"revision_timestamp": [{
+		"value": 1502293335
+	}],
+	"revision_uid": [{
+		"target_id": 21,
+		"target_type": "user",
+		"target_uuid": "0072a370-c021-452d-ac5f-3b5c3ded6d71",
+		"url": "\/user\/21"
+	}],
+	"revision_log": [],
+	"status": [{
+		"value": true
+	}],
+	"uid": [{
+		"target_id": 21,
+		"target_type": "user",
+		"target_uuid": "0072a370-c021-452d-ac5f-3b5c3ded6d71",
+		"url": "\/user\/21"
+	}],
+	"title": [{
+		"value": "W. Braden and Kathryn K. Kerchof Library Fund"
+	}],
+	"created": [{
+		"value": 1494608170
+	}],
+	"changed": [{
+		"value": 1502293335
+	}],
+	"promote": [{
+		"value": true
+	}],
+	"sticky": [{
+		"value": false
+	}],
+	"default_langcode": [{
+		"value": true
+	}],
+	"revision_translation_affected": [{
+		"value": true
+	}],
+	"path": [{
+		"alias": null,
+		"pid": null,
+		"langcode": "en"
+	}],
+	"publish_on": [],
+	"unpublish_on": [],
+	"body": [{
+		"value": "\u003Cp\u003EKerchof, W. Braden and Kathryn K. Library Fund\u003C\/p\u003E\r\n",
+		"format": "basic_html",
+		"processed": "\u003Cp\u003EKerchof, W. Braden and Kathryn K. Library Fund\u003C\/p\u003E",
+		"summary": ""
+	}],
+	"field_bookplate_image": [],
+	"field_date": [],
+	"field_fund": [{
+		"value": "ER01879"
+	}],
+	"field_fund_award_name": [{
+		"value": "LB-Kerchof, Braden \u0026 Kathryn"
+	}],
+	"field_fund_id": [{
+		"value": "KERCHOF-ER01879"
+	}],
+	"field_restriction_summary": [{
+		"value": "Income of the Fund, but none of the principal, shall be used to acquire books and materials for the University Library, with a preference for rare books and materials.  The Library agrees to provide son and daughter-in-law, W. Braden and Kathryn K. Kerchof, on an annual basis, a listing of those books and materials acquired by the Library with assets from the Fund.\r\n"
+	}],
+	"field_summary": [{
+		"value": "The W. Braden and Kathryn K. Kerchof Library Fund was established by William and Jean Kerchof in 2004. The fund, named for the Kerchof\u0027s son and daughter-in-law, was created to acquire books and materials for the University Library, with a preference for rare books and materials.\r\n"
+	}]
+}, {
+	"nid": [{
+		"value": 503
+	}],
+	"uuid": [{
+		"value": "36b34675-49d1-4510-8600-966d78e28097"
+	}],
+	"vid": [{
+		"value": 1865
+	}],
+	"langcode": [{
+		"value": "en"
+	}],
+	"type": [{
+		"target_id": "bookplate",
+		"target_type": "node_type",
+		"target_uuid": "36d64862-bbb0-42e9-bcf8-29da6062483d"
+	}],
+	"revision_timestamp": [{
+		"value": 1502288632
+	}],
+	"revision_uid": [{
+		"target_id": 21,
+		"target_type": "user",
+		"target_uuid": "0072a370-c021-452d-ac5f-3b5c3ded6d71",
+		"url": "\/user\/21"
+	}],
+	"revision_log": [],
+	"status": [{
+		"value": true
+	}],
+	"uid": [{
+		"target_id": 21,
+		"target_type": "user",
+		"target_uuid": "0072a370-c021-452d-ac5f-3b5c3ded6d71",
+		"url": "\/user\/21"
+	}],
+	"title": [{
+		"value": "Jean S. Kane Library Fund"
+	}],
+	"created": [{
+		"value": 1494607995
+	}],
+	"changed": [{
+		"value": 1502288632
+	}],
+	"promote": [{
+		"value": true
+	}],
+	"sticky": [{
+		"value": false
+	}],
+	"default_langcode": [{
+		"value": true
+	}],
+	"revision_translation_affected": [{
+		"value": true
+	}],
+	"path": [{
+		"alias": null,
+		"pid": null,
+		"langcode": "en"
+	}],
+	"publish_on": [],
+	"unpublish_on": [],
+	"body": [{
+		"value": "\u003Cp\u003EKane, Jean S. Library Fund\u003C\/p\u003E\r\n",
+		"format": "basic_html",
+		"processed": "\u003Cp\u003EKane, Jean S. Library Fund\u003C\/p\u003E",
+		"summary": ""
+	}],
+	"field_bookplate_image": [{
+		"target_id": 591,
+		"alt": "Drawing of the Rotunda.",
+		"title": "",
+		"width": 943,
+		"height": 1175,
+		"target_type": "file",
+		"target_uuid": "f442593a-3c08-442d-87ef-2f8553ae21c5",
+		"url": "https:\/\/drupal.lib.virginia.edu\/sites\/default\/files\/bookplates\/20170622101457649_Page_2_kane.png"
+	}],
+	"field_date": [],
+	"field_fund": [{
+		"value": "ER00704"
+	}],
+	"field_fund_award_name": [{
+		"value": "LB-Kane Jean S Library Fund"
+	}],
+	"field_fund_id": [{
+		"value": "KANE-ER00704"
+	}],
+	"field_restriction_summary": [{
+		"value": "The income from the Fund, but none of the principal, shall be used for the acquisition of science and engineering materials.\r\n"
+	}],
+	"field_summary": [{
+		"value": "The Jean S. Kane Library Fund was established in 2000 by Jean Kane of Brightwood Virginia, for the the acquisition of science and engineering materials.\r\n"
+	}]
+}, {
+	"nid": [{
+		"value": 502
+	}],
+	"uuid": [{
+		"value": "1afbe24a-e692-4987-9ef2-8537668b3769"
+	}],
+	"vid": [{
+		"value": 1857
+	}],
+	"langcode": [{
+		"value": "en"
+	}],
+	"type": [{
+		"target_id": "bookplate",
+		"target_type": "node_type",
+		"target_uuid": "36d64862-bbb0-42e9-bcf8-29da6062483d"
+	}],
+	"revision_timestamp": [{
+		"value": 1502287603
+	}],
+	"revision_uid": [{
+		"target_id": 21,
+		"target_type": "user",
+		"target_uuid": "0072a370-c021-452d-ac5f-3b5c3ded6d71",
+		"url": "\/user\/21"
+	}],
+	"revision_log": [],
+	"status": [{
+		"value": true
+	}],
+	"uid": [{
+		"target_id": 21,
+		"target_type": "user",
+		"target_uuid": "0072a370-c021-452d-ac5f-3b5c3ded6d71",
+		"url": "\/user\/21"
+	}],
+	"title": [{
+		"value": "International Studies Library Fund"
+	}],
+	"created": [{
+		"value": 1494607949
+	}],
+	"changed": [{
+		"value": 1502287603
+	}],
+	"promote": [{
+		"value": true
+	}],
+	"sticky": [{
+		"value": false
+	}],
+	"default_langcode": [{
+		"value": true
+	}],
+	"revision_translation_affected": [{
+		"value": true
+	}],
+	"path": [{
+		"alias": null,
+		"pid": null,
+		"langcode": "en"
+	}],
+	"publish_on": [],
+	"unpublish_on": [],
+	"body": [{
+		"value": "\u003Cp\u003EInternational Studies Library Fund\u003C\/p\u003E\r\n",
+		"format": "basic_html",
+		"processed": "\u003Cp\u003EInternational Studies Library Fund\u003C\/p\u003E",
+		"summary": ""
+	}],
+	"field_bookplate_image": [{
+		"target_id": 592,
+		"alt": "At top and bottom, a representation of a globe displaying the Western Hemisphere, an open book at the base of each.",
+		"title": "",
+		"width": 1062,
+		"height": 1585,
+		"target_type": "file",
+		"target_uuid": "d0eaf53c-4ed8-44d8-a8bd-928527d94297",
+		"url": "https:\/\/drupal.lib.virginia.edu\/sites\/default\/files\/bookplates\/20170622102739905_Page_1_international.png"
+	}],
+	"field_date": [],
+	"field_fund": [{
+		"value": "ER00593"
+	}],
+	"field_fund_award_name": [{
+		"value": "LB-International Studies"
+	}],
+	"field_fund_id": [{
+		"value": "INTL-STUDIES-ER00593"
+	}],
+	"field_restriction_summary": [{
+		"value": "To purchase books for the Woodrow Wilson Department of Foreign Affairs.\r\n"
+	}],
+	"field_summary": [{
+		"value": "The International Studies Library Fund was established by interested alumni in order to purchase books for the Woodrow Wilson Department of Foreign Affairs (Foreign affairs is now a major within the Woodrow Wilson Department of Politics.)\r\n"
+	}]
+}, {
+	"nid": [{
+		"value": 501
+	}],
+	"uuid": [{
+		"value": "1cdd3008-6517-4812-a20d-7ed398b7019f"
+	}],
+	"vid": [{
+		"value": 1866
+	}],
+	"langcode": [{
+		"value": "en"
+	}],
+	"type": [{
+		"target_id": "bookplate",
+		"target_type": "node_type",
+		"target_uuid": "36d64862-bbb0-42e9-bcf8-29da6062483d"
+	}],
+	"revision_timestamp": [{
+		"value": 1502288817
+	}],
+	"revision_uid": [{
+		"target_id": 21,
+		"target_type": "user",
+		"target_uuid": "0072a370-c021-452d-ac5f-3b5c3ded6d71",
+		"url": "\/user\/21"
+	}],
+	"revision_log": [],
+	"status": [{
+		"value": true
+	}],
+	"uid": [{
+		"target_id": 21,
+		"target_type": "user",
+		"target_uuid": "0072a370-c021-452d-ac5f-3b5c3ded6d71",
+		"url": "\/user\/21"
+	}],
+	"title": [{
+		"value": "James S. Helms Memorial Fund"
+	}],
+	"created": [{
+		"value": 1494607893
+	}],
+	"changed": [{
+		"value": 1502288817
+	}],
+	"promote": [{
+		"value": true
+	}],
+	"sticky": [{
+		"value": false
+	}],
+	"default_langcode": [{
+		"value": true
+	}],
+	"revision_translation_affected": [{
+		"value": true
+	}],
+	"path": [{
+		"alias": null,
+		"pid": null,
+		"langcode": "en"
+	}],
+	"publish_on": [],
+	"unpublish_on": [],
+	"body": [{
+		"value": "\u003Cp\u003EHelms, James S Memorial Fund\u003C\/p\u003E\r\n",
+		"format": "basic_html",
+		"processed": "\u003Cp\u003EHelms, James S Memorial Fund\u003C\/p\u003E",
+		"summary": ""
+	}],
+	"field_bookplate_image": [{
+		"target_id": 593,
+		"alt": "James Strother Helms, 1926-1959. A representation of a Coat of Arms.",
+		"title": "",
+		"width": 859,
+		"height": 1056,
+		"target_type": "file",
+		"target_uuid": "8c5ba7af-6ac0-4061-98e1-cb1b9e22d212",
+		"url": "https:\/\/drupal.lib.virginia.edu\/sites\/default\/files\/bookplates\/20170622102306444_Page_2_helms.png"
+	}],
+	"field_date": [],
+	"field_fund": [{
+		"value": "ER00606"
+	}],
+	"field_fund_award_name": [{
+		"value": "LB-Helms, James S"
+	}],
+	"field_fund_id": [{
+		"value": "HELMS-ER00606"
+	}],
+	"field_restriction_summary": [{
+		"value": "The income from this fund is to be used to purchase books for the Rare Book Room.\r\n"
+	}],
+	"field_summary": [{
+		"value": "The James S. Helms Memorial Fund was established in 1960 in honor of James Helms (CLAS 1951, GSAS 1958), to be used for the purchase of books for the Rare Book Room in Mr. Helm\u0027s memory.  James Strother \u0022Jimmy\u0022 Helms died in 1959 when Piedmont Airlines Flight 349 crashed in the Blue Ridge Mountains outside of Charlottesville. Active in the UVA drama department, the Helms Theatre is also named for him.\r\n\r\n"
+	}]
+}, {
+	"nid": [{
+		"value": 500
+	}],
+	"uuid": [{
+		"value": "f2bca066-1a71-4974-a612-e8b48bc48030"
+	}],
+	"vid": [{
+		"value": 4898
+	}],
+	"langcode": [{
+		"value": "en"
+	}],
+	"type": [{
+		"target_id": "bookplate",
+		"target_type": "node_type",
+		"target_uuid": "36d64862-bbb0-42e9-bcf8-29da6062483d"
+	}],
+	"revision_timestamp": [{
+		"value": 1531511829
+	}],
+	"revision_uid": [{
+		"target_id": 25,
+		"target_type": "user",
+		"target_uuid": "e5d6e6d6-d64e-4c47-9225-90e5bb4b2d00",
+		"url": "\/user\/25"
+	}],
+	"revision_log": [],
+	"status": [{
+		"value": true
+	}],
+	"uid": [{
+		"target_id": 21,
+		"target_type": "user",
+		"target_uuid": "0072a370-c021-452d-ac5f-3b5c3ded6d71",
+		"url": "\/user\/21"
+	}],
+	"title": [{
+		"value": "The Hatfield Chappell Fund"
+	}],
+	"created": [{
+		"value": 1494607803
+	}],
+	"changed": [{
+		"value": 1531511829
+	}],
+	"promote": [{
+		"value": true
+	}],
+	"sticky": [{
+		"value": false
+	}],
+	"default_langcode": [{
+		"value": true
+	}],
+	"revision_translation_affected": [{
+		"value": true
+	}],
+	"path": [{
+		"alias": null,
+		"pid": null,
+		"langcode": "en"
+	}],
+	"publish_on": [],
+	"unpublish_on": [],
+	"body": [{
+		"value": "\u003Cp\u003EHatfield Chappell Fund\u003C\/p\u003E\r\n",
+		"format": "basic_html",
+		"processed": "\u003Cp\u003EHatfield Chappell Fund\u003C\/p\u003E",
+		"summary": ""
+	}],
+	"field_bookplate_image": [{
+		"target_id": 1299,
+		"alt": "Gift of Lydia and Warren Chappell",
+		"title": "",
+		"width": 214,
+		"height": 263,
+		"target_type": "file",
+		"target_uuid": "7810f8f2-1673-4775-b590-9285e84ba9e7",
+		"url": "https:\/\/drupal.lib.virginia.edu\/sites\/default\/files\/bookplates\/chappell.png"
+	}],
+	"field_date": [],
+	"field_fund": [{
+		"value": "ER00629"
+	}],
+	"field_fund_award_name": [{
+		"value": "LB-Hatfield, Chappell"
+	}],
+	"field_fund_id": [{
+		"value": "HATFIELD-CH-ER00629"
+	}],
+	"field_restriction_summary": [{
+		"value": "The income will be used to buy contemporary American literature that has promise for survival and incorporation into the great body of classics in the University\u0027s Rare Books Collection.\r\n"
+	}],
+	"field_summary": [{
+		"value": "The Hatfield Chappell Fund was established in 1986 by Lydia and Warren Chappell. The fund is used to buy contemporary American literature that has promise for survival and incorporation into the great body of classics in the University\u0027s Rare Books Collection.\r\n"
+	}]
+}, {
+	"nid": [{
+		"value": 499
+	}],
+	"uuid": [{
+		"value": "57652931-710e-4091-9690-03bb2ef5521c"
+	}],
+	"vid": [{
+		"value": 1856
+	}],
+	"langcode": [{
+		"value": "en"
+	}],
+	"type": [{
+		"target_id": "bookplate",
+		"target_type": "node_type",
+		"target_uuid": "36d64862-bbb0-42e9-bcf8-29da6062483d"
+	}],
+	"revision_timestamp": [{
+		"value": 1502287471
+	}],
+	"revision_uid": [{
+		"target_id": 21,
+		"target_type": "user",
+		"target_uuid": "0072a370-c021-452d-ac5f-3b5c3ded6d71",
+		"url": "\/user\/21"
+	}],
+	"revision_log": [],
+	"status": [{
+		"value": true
+	}],
+	"uid": [{
+		"target_id": 21,
+		"target_type": "user",
+		"target_uuid": "0072a370-c021-452d-ac5f-3b5c3ded6d71",
+		"url": "\/user\/21"
+	}],
+	"title": [{
+		"value": "Nellie and Pinckney Harrison Fund"
+	}],
+	"created": [{
+		"value": 1494607747
+	}],
+	"changed": [{
+		"value": 1502287471
+	}],
+	"promote": [{
+		"value": true
+	}],
+	"sticky": [{
+		"value": false
+	}],
+	"default_langcode": [{
+		"value": true
+	}],
+	"revision_translation_affected": [{
+		"value": true
+	}],
+	"path": [{
+		"alias": null,
+		"pid": null,
+		"langcode": "en"
+	}],
+	"publish_on": [],
+	"unpublish_on": [],
+	"body": [{
+		"value": "\u003Cp\u003EHarrison, Nellie and Pinckney Fund\u003C\/p\u003E\r\n",
+		"format": "basic_html",
+		"processed": "\u003Cp\u003EHarrison, Nellie and Pinckney Fund\u003C\/p\u003E",
+		"summary": ""
+	}],
+	"field_bookplate_image": [{
+		"target_id": 578,
+		"alt": "James Pinckney Harrison, 1968. Image consists of two crossed rifles, birds, trees.",
+		"title": "",
+		"width": 1027,
+		"height": 1516,
+		"target_type": "file",
+		"target_uuid": "61d37318-99f0-4be5-8170-296ac6517e4f",
+		"url": "https:\/\/drupal.lib.virginia.edu\/sites\/default\/files\/bookplates\/20170622100940461_harrison.jpg"
+	}],
+	"field_date": [],
+	"field_fund": [{
+		"value": "ER00619"
+	}],
+	"field_fund_award_name": [{
+		"value": "LB-Harrison, Nellie\u0026Pinckney"
+	}],
+	"field_fund_id": [{
+		"value": "HARRISON-ER00619"
+	}],
+	"field_restriction_summary": [{
+		"value": "The income to be used by Alderman Library for the purchase of books in the field of history.\r\n"
+	}],
+	"field_summary": [{
+		"value": "The Nellie and Pinckney Harrison Fund was established in 1968. The fund is used by Alderman Library for the purchase of books in the field of history.\r\n"
+	}]
+}, {
+	"nid": [{
+		"value": 498
+	}],
+	"uuid": [{
+		"value": "cd770bd1-cd85-4ced-b129-bca1d8c25729"
+	}],
+	"vid": [{
+		"value": 1867
+	}],
+	"langcode": [{
+		"value": "en"
+	}],
+	"type": [{
+		"target_id": "bookplate",
+		"target_type": "node_type",
+		"target_uuid": "36d64862-bbb0-42e9-bcf8-29da6062483d"
+	}],
+	"revision_timestamp": [{
+		"value": 1502289058
+	}],
+	"revision_uid": [{
+		"target_id": 21,
+		"target_type": "user",
+		"target_uuid": "0072a370-c021-452d-ac5f-3b5c3ded6d71",
+		"url": "\/user\/21"
+	}],
+	"revision_log": [],
+	"status": [{
+		"value": true
+	}],
+	"uid": [{
+		"target_id": 21,
+		"target_type": "user",
+		"target_uuid": "0072a370-c021-452d-ac5f-3b5c3ded6d71",
+		"url": "\/user\/21"
+	}],
+	"title": [{
+		"value": "William Newton Hale Library Fund for Architecture"
+	}],
+	"created": [{
+		"value": 1494607677
+	}],
+	"changed": [{
+		"value": 1502289058
+	}],
+	"promote": [{
+		"value": true
+	}],
+	"sticky": [{
+		"value": false
+	}],
+	"default_langcode": [{
+		"value": true
+	}],
+	"revision_translation_affected": [{
+		"value": true
+	}],
+	"path": [{
+		"alias": null,
+		"pid": null,
+		"langcode": "en"
+	}],
+	"publish_on": [],
+	"unpublish_on": [],
+	"body": [{
+		"value": "\u003Cp\u003EHale, William Newton Library Fund For Architecture\u003C\/p\u003E\r\n",
+		"format": "basic_html",
+		"processed": "\u003Cp\u003EHale, William Newton Library Fund For Architecture\u003C\/p\u003E",
+		"summary": ""
+	}],
+	"field_bookplate_image": [{
+		"target_id": 594,
+		"alt": "Portrait of William Newton Hale, 1920-1954, University of Virginia Class of 1943.",
+		"title": "",
+		"width": 883,
+		"height": 1217,
+		"target_type": "file",
+		"target_uuid": "30275388-2db0-494f-89ec-ffca21e931a5",
+		"url": "https:\/\/drupal.lib.virginia.edu\/sites\/default\/files\/bookplates\/20170622101457649_Page_2_hale.png"
+	}],
+	"field_date": [],
+	"field_fund": [{
+		"value": "ER00667"
+	}],
+	"field_fund_award_name": [{
+		"value": "LB-Hale, William - Architecture"
+	}],
+	"field_fund_id": [{
+		"value": "HALE-WM-ER00667"
+	}],
+	"field_restriction_summary": [{
+		"value": "The income from the Fund, but none of the principal, shall be used by the Library for the acquisition and preservation of library materials in the field of Architecture.\r\n"
+	}],
+	"field_summary": [{
+		"value": "The William Newton Hale Library Fund for Architecture was established in 2000 by Lucy M. Hale of Charlottesville, Virginia.  The fund is used by the Library for the acquisition and preservation of library materials in the field of Architecture.\r\nOn Bookplate:\r\nWilliam Newton\r\nHale Fund\r\nfor Architecture\r\nIn Memory of\r\nWilliam Newton Hale, AIA\r\n1920-1954\r\nUniversity of Virginia\r\nclass of 1943\r\n"
+	}]
+}, {
+	"nid": [{
+		"value": 497
+	}],
+	"uuid": [{
+		"value": "8cb9804e-4ea1-4079-8d63-4f6fbc0decda"
+	}],
+	"vid": [{
+		"value": 1900
+	}],
+	"langcode": [{
+		"value": "en"
+	}],
+	"type": [{
+		"target_id": "bookplate",
+		"target_type": "node_type",
+		"target_uuid": "36d64862-bbb0-42e9-bcf8-29da6062483d"
+	}],
+	"revision_timestamp": [{
+		"value": 1502293521
+	}],
+	"revision_uid": [{
+		"target_id": 21,
+		"target_type": "user",
+		"target_uuid": "0072a370-c021-452d-ac5f-3b5c3ded6d71",
+		"url": "\/user\/21"
+	}],
+	"revision_log": [],
+	"status": [{
+		"value": true
+	}],
+	"uid": [{
+		"target_id": 21,
+		"target_type": "user",
+		"target_uuid": "0072a370-c021-452d-ac5f-3b5c3ded6d71",
+		"url": "\/user\/21"
+	}],
+	"title": [{
+		"value": "Oron J. Hale Fund "
+	}],
+	"created": [{
+		"value": 1494607609
+	}],
+	"changed": [{
+		"value": 1502293521
+	}],
+	"promote": [{
+		"value": true
+	}],
+	"sticky": [{
+		"value": false
+	}],
+	"default_langcode": [{
+		"value": true
+	}],
+	"revision_translation_affected": [{
+		"value": true
+	}],
+	"path": [{
+		"alias": null,
+		"pid": null,
+		"langcode": "en"
+	}],
+	"publish_on": [],
+	"unpublish_on": [],
+	"body": [{
+		"value": "\u003Cp\u003EHale, Oron J. Fund\u003C\/p\u003E\r\n",
+		"format": "basic_html",
+		"processed": "\u003Cp\u003EHale, Oron J. Fund\u003C\/p\u003E",
+		"summary": ""
+	}],
+	"field_bookplate_image": [],
+	"field_date": [],
+	"field_fund": [{
+		"value": "ER00639"
+	}],
+	"field_fund_award_name": [{
+		"value": "LB-Hale, Oron J"
+	}],
+	"field_fund_id": [{
+		"value": "HALE-OJ-ER00639"
+	}],
+	"field_restriction_summary": [{
+		"value": "The income is to be used for the enrichment of the Alderman Library\u0027s holdings in Ancient, Mediaeval and Modern European History.\r\n"
+	}],
+	"field_summary": [{
+		"value": "The Oron J. Hale Fund was established in 1992. The fund is used for the enrichment of the Alderman Library\u0027s holdings in ancient, mediaeval and modern European history.  Oran J. Hale was a professor of history at UVA specializing in 20th Century German history.\r\n"
+	}]
+}, {
+	"nid": [{
+		"value": 496
+	}],
+	"uuid": [{
+		"value": "8c5cd980-5b92-44b6-a171-73cf25adb53e"
+	}],
+	"vid": [{
+		"value": 9585
+	}],
+	"langcode": [{
+		"value": "en"
+	}],
+	"type": [{
+		"target_id": "bookplate",
+		"target_type": "node_type",
+		"target_uuid": "36d64862-bbb0-42e9-bcf8-29da6062483d"
+	}],
+	"revision_timestamp": [{
+		"value": 1607975868
+	}],
+	"revision_uid": [{
+		"target_id": 38,
+		"target_type": "user",
+		"target_uuid": "753d12ee-0f15-4050-96f7-0285df701025",
+		"url": "\/user\/38"
+	}],
+	"revision_log": [],
+	"status": [{
+		"value": true
+	}],
+	"uid": [{
+		"target_id": 21,
+		"target_type": "user",
+		"target_uuid": "0072a370-c021-452d-ac5f-3b5c3ded6d71",
+		"url": "\/user\/21"
+	}],
+	"title": [{
+		"value": "The Bradley Hunt, Meredith Strohm, and Bradford Macon Gunter Collection of English and American Literature Fund"
+	}],
+	"created": [{
+		"value": 1494607563
+	}],
+	"changed": [{
+		"value": 1607975868
+	}],
+	"promote": [{
+		"value": true
+	}],
+	"sticky": [{
+		"value": false
+	}],
+	"default_langcode": [{
+		"value": true
+	}],
+	"revision_translation_affected": [{
+		"value": true
+	}],
+	"path": [{
+		"alias": null,
+		"pid": null,
+		"langcode": "en"
+	}],
+	"publish_on": [],
+	"unpublish_on": [],
+	"body": [{
+		"value": "\u003Cp\u003EGunter, Bradley Hunt, Meredith Strohm, and Bradford Macon Collection of English and American Literature Fund\u003C\/p\u003E\r\n",
+		"format": "basic_html",
+		"processed": "\u003Cp\u003EGunter, Bradley Hunt, Meredith Strohm, and Bradford Macon Collection of English and American Literature Fund\u003C\/p\u003E",
+		"summary": ""
+	}],
+	"field_bookplate_image": [{
+		"target_id": 2234,
+		"alt": "Bookplate showing pen drawing of a man wearing Shakespearean dress sitting at desk writing with quill pen",
+		"title": "",
+		"width": 281,
+		"height": 370,
+		"target_type": "file",
+		"target_uuid": "8850bb7a-c216-42a5-9917-708bbde7179e",
+		"url": "https:\/\/drupal.lib.virginia.edu\/sites\/default\/files\/bookplates\/Gunter_bookplate_WEBtiny.jpg"
+	}],
+	"field_date": [],
+	"field_fund": [{
+		"value": "ER00654"
+	}],
+	"field_fund_award_name": [{
+		"value": "LB-Gunter Literature Fund"
+	}],
+	"field_fund_id": [{
+		"value": "GUNTER-ER00654"
+	}],
+	"field_restriction_summary": [{
+		"value": "The income from the Fund shall be used to benefit the Library\u0027s special collections by acquiring library materials relating to English and American literature.\r\n"
+	}],
+	"field_summary": [{
+		"value": "The Bradley Hunt, Meredith Strohm, and Bradford Macon Gunter Collection of English and American Literature Fund was established in 1997.  The fund benefits the Library\u0027s special collections by supporting the acquisition of library materials relating to English and American literature.\r\n"
+	}]
+}, {
+	"nid": [{
+		"value": 495
+	}],
+	"uuid": [{
+		"value": "521fc778-624a-43e5-968f-30aa03cd8c42"
+	}],
+	"vid": [{
+		"value": 4894
+	}],
+	"langcode": [{
+		"value": "en"
+	}],
+	"type": [{
+		"target_id": "bookplate",
+		"target_type": "node_type",
+		"target_uuid": "36d64862-bbb0-42e9-bcf8-29da6062483d"
+	}],
+	"revision_timestamp": [{
+		"value": 1531337222
+	}],
+	"revision_uid": [{
+		"target_id": 25,
+		"target_type": "user",
+		"target_uuid": "e5d6e6d6-d64e-4c47-9225-90e5bb4b2d00",
+		"url": "\/user\/25"
+	}],
+	"revision_log": [],
+	"status": [{
+		"value": true
+	}],
+	"uid": [{
+		"target_id": 21,
+		"target_type": "user",
+		"target_uuid": "0072a370-c021-452d-ac5f-3b5c3ded6d71",
+		"url": "\/user\/21"
+	}],
+	"title": [{
+		"value": "Henry S. Gordon Book Fund"
+	}],
+	"created": [{
+		"value": 1494607501
+	}],
+	"changed": [{
+		"value": 1531337222
+	}],
+	"promote": [{
+		"value": true
+	}],
+	"sticky": [{
+		"value": false
+	}],
+	"default_langcode": [{
+		"value": true
+	}],
+	"revision_translation_affected": [{
+		"value": true
+	}],
+	"path": [{
+		"alias": null,
+		"pid": null,
+		"langcode": "en"
+	}],
+	"publish_on": [],
+	"unpublish_on": [],
+	"body": [{
+		"value": "\u003Cp\u003EGordon, Henry S. Book Fund Endowment\u003C\/p\u003E\r\n",
+		"format": "basic_html",
+		"processed": "\u003Cp\u003EGordon, Henry S. Book Fund Endowment\u003C\/p\u003E",
+		"summary": ""
+	}],
+	"field_bookplate_image": [{
+		"target_id": 1296,
+		"alt": "Henry S. Gordon Book Fund",
+		"title": "",
+		"width": 264,
+		"height": 367,
+		"target_type": "file",
+		"target_uuid": "af2cf7b1-a965-45e3-958a-75251913f5a8",
+		"url": "https:\/\/drupal.lib.virginia.edu\/sites\/default\/files\/bookplates\/gordon.png"
+	}],
+	"field_date": [],
+	"field_fund": [{
+		"value": "ER00633"
+	}],
+	"field_fund_award_name": [{
+		"value": "LB-Gordon, Henry S"
+	}],
+	"field_fund_id": [{
+		"value": "GORDON-HENRY-ER00633"
+	}],
+	"field_restriction_summary": [{
+		"value": "The income from the fund will purchase books in the field of Juvenile literature published in the twentieth-century in limited illustrated editions of primary importance because of their excellence as the best examples of the book arts, that is typography, book design and book illustration and, where applicable, binding.\r\n"
+	}],
+	"field_summary": [{
+		"value": "The Henry S. Gordon Book Fund was established in 1990.  The Fund is for the purchase books in the field of Juvenile literature published in the twentieth-century in limited illustrated editions of primary importance because of their excellence as the best examples of the book arts, that is typography, book design and book illustration and, where applicable, binding.\r\n"
+	}]
+}, {
+	"nid": [{
+		"value": 494
+	}],
+	"uuid": [{
+		"value": "43ed1048-9f57-406d-82b1-711ef708534d"
+	}],
+	"vid": [{
+		"value": 1882
+	}],
+	"langcode": [{
+		"value": "en"
+	}],
+	"type": [{
+		"target_id": "bookplate",
+		"target_type": "node_type",
+		"target_uuid": "36d64862-bbb0-42e9-bcf8-29da6062483d"
+	}],
+	"revision_timestamp": [{
+		"value": 1502292023
+	}],
+	"revision_uid": [{
+		"target_id": 21,
+		"target_type": "user",
+		"target_uuid": "0072a370-c021-452d-ac5f-3b5c3ded6d71",
+		"url": "\/user\/21"
+	}],
+	"revision_log": [],
+	"status": [{
+		"value": true
+	}],
+	"uid": [{
+		"target_id": 21,
+		"target_type": "user",
+		"target_uuid": "0072a370-c021-452d-ac5f-3b5c3ded6d71",
+		"url": "\/user\/21"
+	}],
+	"title": [{
+		"value": "Douglas Hamilton Gordon Library Fund"
+	}],
+	"created": [{
+		"value": 1494607436
+	}],
+	"changed": [{
+		"value": 1502292023
+	}],
+	"promote": [{
+		"value": true
+	}],
+	"sticky": [{
+		"value": false
+	}],
+	"default_langcode": [{
+		"value": true
+	}],
+	"revision_translation_affected": [{
+		"value": true
+	}],
+	"path": [{
+		"alias": null,
+		"pid": null,
+		"langcode": "en"
+	}],
+	"publish_on": [],
+	"unpublish_on": [],
+	"body": [{
+		"value": "\u003Cp\u003EGordon, Douglas Hamilton Library Fund\u003C\/p\u003E\r\n",
+		"format": "basic_html",
+		"processed": "\u003Cp\u003EGordon, Douglas Hamilton Library Fund\u003C\/p\u003E",
+		"summary": ""
+	}],
+	"field_bookplate_image": [{
+		"target_id": 595,
+		"alt": "\u0022\u0022",
+		"title": "",
+		"width": 1100,
+		"height": 932,
+		"target_type": "file",
+		"target_uuid": "5b939258-7d59-4d1d-9154-094d5d62890f",
+		"url": "https:\/\/drupal.lib.virginia.edu\/sites\/default\/files\/bookplates\/20170622102522080_Page_2_gordon.png"
+	}],
+	"field_date": [],
+	"field_fund": [{
+		"value": "ER00590"
+	}],
+	"field_fund_award_name": [{
+		"value": "LB-Gordon, Douglas Hamilton"
+	}],
+	"field_fund_id": [{
+		"value": "GORDON-ER00590"
+	}],
+	"field_restriction_summary": [{
+		"value": "For the purchase of books by the Department of English.\r\n"
+	}],
+	"field_summary": [{
+		"value": "The Douglas Hamilton Gordon Library Fund was established by a bequest in 1883. The fund is for the purchase of books by the Library.\r\nOn Bookplate:\r\nAcquired by the\r\nUniversity of Virginia Library\r\nfrom the income of a fund\r\nbequeathed by\r\nDouglas Hamilton Gordon\r\nClass of 1837\r\nof Fredericksburg, Virginia\r\nand Baltimore, Maryland\r\nand enhanced\r\nby his grandson. \r\n\r\n"
+	}]
+}, {
+	"nid": [{
+		"value": 493
+	}],
+	"uuid": [{
+		"value": "f87631c0-e843-49fb-b3eb-fa07bc4f8438"
+	}],
+	"vid": [{
+		"value": 1881
+	}],
+	"langcode": [{
+		"value": "en"
+	}],
+	"type": [{
+		"target_id": "bookplate",
+		"target_type": "node_type",
+		"target_uuid": "36d64862-bbb0-42e9-bcf8-29da6062483d"
+	}],
+	"revision_timestamp": [{
+		"value": 1502291787
+	}],
+	"revision_uid": [{
+		"target_id": 21,
+		"target_type": "user",
+		"target_uuid": "0072a370-c021-452d-ac5f-3b5c3ded6d71",
+		"url": "\/user\/21"
+	}],
+	"revision_log": [],
+	"status": [{
+		"value": true
+	}],
+	"uid": [{
+		"target_id": 21,
+		"target_type": "user",
+		"target_uuid": "0072a370-c021-452d-ac5f-3b5c3ded6d71",
+		"url": "\/user\/21"
+	}],
+	"title": [{
+		"value": "GEE-SO-ER00589"
+	}],
+	"created": [{
+		"value": 1494607317
+	}],
+	"changed": [{
+		"value": 1502291787
+	}],
+	"promote": [{
+		"value": true
+	}],
+	"sticky": [{
+		"value": false
+	}],
+	"default_langcode": [{
+		"value": true
+	}],
+	"revision_translation_affected": [{
+		"value": true
+	}],
+	"path": [{
+		"alias": null,
+		"pid": null,
+		"langcode": "en"
+	}],
+	"publish_on": [],
+	"unpublish_on": [],
+	"body": [],
+	"field_bookplate_image": [{
+		"target_id": 596,
+		"alt": "Seal of the University of Virginia",
+		"title": "",
+		"width": 671,
+		"height": 1179,
+		"target_type": "file",
+		"target_uuid": "2319c577-f2fa-47c8-8225-d5fa4037f571",
+		"url": "https:\/\/drupal.lib.virginia.edu\/sites\/default\/files\/bookplates\/20170622102306444_Page_1_gee.png"
+	}],
+	"field_date": [],
+	"field_fund": [{
+		"value": "ER00589"
+	}],
+	"field_fund_award_name": [],
+	"field_fund_id": [{
+		"value": "GEE-SO-ER00589"
+	}],
+	"field_restriction_summary": [],
+	"field_summary": []
+}, {
+	"nid": [{
+		"value": 492
+	}],
+	"uuid": [{
+		"value": "02036584-ad43-468b-b6f2-3482004565bf"
+	}],
+	"vid": [{
+		"value": 1880
+	}],
+	"langcode": [{
+		"value": "en"
+	}],
+	"type": [{
+		"target_id": "bookplate",
+		"target_type": "node_type",
+		"target_uuid": "36d64862-bbb0-42e9-bcf8-29da6062483d"
+	}],
+	"revision_timestamp": [{
+		"value": 1502291742
+	}],
+	"revision_uid": [{
+		"target_id": 21,
+		"target_type": "user",
+		"target_uuid": "0072a370-c021-452d-ac5f-3b5c3ded6d71",
+		"url": "\/user\/21"
+	}],
+	"revision_log": [],
+	"status": [{
+		"value": true
+	}],
+	"uid": [{
+		"target_id": 21,
+		"target_type": "user",
+		"target_uuid": "0072a370-c021-452d-ac5f-3b5c3ded6d71",
+		"url": "\/user\/21"
+	}],
+	"title": [{
+		"value": "Wilson Gee Library Fund"
+	}],
+	"created": [{
+		"value": 1494607195
+	}],
+	"changed": [{
+		"value": 1502291742
+	}],
+	"promote": [{
+		"value": true
+	}],
+	"sticky": [{
+		"value": false
+	}],
+	"default_langcode": [{
+		"value": true
+	}],
+	"revision_translation_affected": [{
+		"value": true
+	}],
+	"path": [{
+		"alias": null,
+		"pid": null,
+		"langcode": "en"
+	}],
+	"publish_on": [],
+	"unpublish_on": [],
+	"body": [{
+		"value": "\u003Cp\u003EGee, Wilson Library Fund\u003C\/p\u003E\r\n",
+		"format": "basic_html",
+		"processed": "\u003Cp\u003EGee, Wilson Library Fund\u003C\/p\u003E",
+		"summary": ""
+	}],
+	"field_bookplate_image": [{
+		"target_id": 597,
+		"alt": "Seal of the University of Virginia",
+		"title": "",
+		"width": 671,
+		"height": 1179,
+		"target_type": "file",
+		"target_uuid": "a62867f3-9132-4941-9185-b012787077b3",
+		"url": "https:\/\/drupal.lib.virginia.edu\/sites\/default\/files\/bookplates\/20170622102306444_Page_1_gee_0.png"
+	}],
+	"field_date": [],
+	"field_fund": [{
+		"value": "ER00589"
+	}],
+	"field_fund_award_name": [{
+		"value": "LB-Gee, Wilson"
+	}],
+	"field_fund_id": [{
+		"value": "GEE-ER00589"
+	}],
+	"field_restriction_summary": [{
+		"value": "The income to be used for the librarian of the University to purchase books for the Library in the following named fields of social sciences: history, economics, political science, sociology, cultural anthropology, human geography, social psychology and other such fields of human knowledge which may become clearly recognized as social science.\r\n"
+	}],
+	"field_summary": [{
+		"value": "The Wilson Gee Library Fund, named for the UVA professor of rural social economics and sociology, was established in 1959.  The fund is for the purchase books for the Library in the following named fields of social sciences: history, economics, political science, sociology, cultural anthropology, human geography, social psychology and other such fields of human knowledge which may become clearly recognized as social science.\r\n"
+	}]
+}, {
+	"nid": [{
+		"value": 491
+	}],
+	"uuid": [{
+		"value": "b2e6891e-ff41-40ca-a816-c31c18369d67"
+	}],
+	"vid": [{
+		"value": 1879
+	}],
+	"langcode": [{
+		"value": "en"
+	}],
+	"type": [{
+		"target_id": "bookplate",
+		"target_type": "node_type",
+		"target_uuid": "36d64862-bbb0-42e9-bcf8-29da6062483d"
+	}],
+	"revision_timestamp": [{
+		"value": 1502291685
+	}],
+	"revision_uid": [{
+		"target_id": 21,
+		"target_type": "user",
+		"target_uuid": "0072a370-c021-452d-ac5f-3b5c3ded6d71",
+		"url": "\/user\/21"
+	}],
+	"revision_log": [],
+	"status": [{
+		"value": true
+	}],
+	"uid": [{
+		"target_id": 21,
+		"target_type": "user",
+		"target_uuid": "0072a370-c021-452d-ac5f-3b5c3ded6d71",
+		"url": "\/user\/21"
+	}],
+	"title": [{
+		"value": "Ray W. Frantz, Jr. 19th Century British Literature Fund"
+	}],
+	"created": [{
+		"value": 1494607060
+	}],
+	"changed": [{
+		"value": 1502291685
+	}],
+	"promote": [{
+		"value": true
+	}],
+	"sticky": [{
+		"value": false
+	}],
+	"default_langcode": [{
+		"value": true
+	}],
+	"revision_translation_affected": [{
+		"value": true
+	}],
+	"path": [{
+		"alias": null,
+		"pid": null,
+		"langcode": "en"
+	}],
+	"publish_on": [],
+	"unpublish_on": [],
+	"body": [{
+		"value": "\u003Cp\u003EFrantz, Ray W Jr 19Th Century British Literature\u003C\/p\u003E\r\n",
+		"format": "basic_html",
+		"processed": "\u003Cp\u003EFrantz, Ray W Jr 19Th Century British Literature\u003C\/p\u003E",
+		"summary": ""
+	}],
+	"field_bookplate_image": [{
+		"target_id": 598,
+		"alt": "\u0022\u0022",
+		"title": "",
+		"width": 1258,
+		"height": 854,
+		"target_type": "file",
+		"target_uuid": "18ad407d-8983-418b-8c3b-6be31f15b867",
+		"url": "https:\/\/drupal.lib.virginia.edu\/sites\/default\/files\/bookplates\/20170622101457649_Page_1_frantz.png"
+	}],
+	"field_date": [],
+	"field_fund": [{
+		"value": "ER00640"
+	}],
+	"field_fund_award_name": [{
+		"value": "LB-Frantz, Ray W Jr-British Literature 1"
+	}],
+	"field_fund_id": [{
+		"value": "FRANTZ-ER00640"
+	}],
+	"field_restriction_summary": [{
+		"value": "For the acquisition of nineteenth-century British Literature.\r\n"
+	}],
+	"field_summary": [{
+		"value": "The Ray W. Frantz, Jr. 19th Century British Literature Fund was established in 1993 to honor UVA Librarian Ray Franz, who served a twenty-five year tenure.  The fund is for the acquisition of nineteenth-century British Literature.\r\n"
+	}]
+}, {
+	"nid": [{
+		"value": 490
+	}],
+	"uuid": [{
+		"value": "a6b92190-4d22-412e-a473-f284fc009c69"
+	}],
+	"vid": [{
+		"value": 1902
+	}],
+	"langcode": [{
+		"value": "en"
+	}],
+	"type": [{
+		"target_id": "bookplate",
+		"target_type": "node_type",
+		"target_uuid": "36d64862-bbb0-42e9-bcf8-29da6062483d"
+	}],
+	"revision_timestamp": [{
+		"value": 1502293608
+	}],
+	"revision_uid": [{
+		"target_id": 21,
+		"target_type": "user",
+		"target_uuid": "0072a370-c021-452d-ac5f-3b5c3ded6d71",
+		"url": "\/user\/21"
+	}],
+	"revision_log": [],
+	"status": [{
+		"value": true
+	}],
+	"uid": [{
+		"target_id": 21,
+		"target_type": "user",
+		"target_uuid": "0072a370-c021-452d-ac5f-3b5c3ded6d71",
+		"url": "\/user\/21"
+	}],
+	"title": [{
+		"value": "William Faulkner Foundation Fund"
+	}],
+	"created": [{
+		"value": 1494607013
+	}],
+	"changed": [{
+		"value": 1502293608
+	}],
+	"promote": [{
+		"value": true
+	}],
+	"sticky": [{
+		"value": false
+	}],
+	"default_langcode": [{
+		"value": true
+	}],
+	"revision_translation_affected": [{
+		"value": true
+	}],
+	"path": [{
+		"alias": null,
+		"pid": null,
+		"langcode": "en"
+	}],
+	"publish_on": [],
+	"unpublish_on": [],
+	"body": [{
+		"value": "\u003Cp\u003EFaulkner, William Foundation\u003C\/p\u003E\r\n",
+		"format": "basic_html",
+		"processed": "\u003Cp\u003EFaulkner, William Foundation\u003C\/p\u003E",
+		"summary": ""
+	}],
+	"field_bookplate_image": [],
+	"field_date": [],
+	"field_fund": [{
+		"value": "ER00624"
+	}],
+	"field_fund_award_name": [{
+		"value": "LB-Faulkner, William-Foundation"
+	}],
+	"field_fund_id": [{
+		"value": "FAULKNER-ER00624"
+	}],
+	"field_restriction_summary": [],
+	"field_summary": [{
+		"value": "The William Faulkner Foundation Fund was established in 1975.  This fund enables the library to purchase additional primary or secondary Faulkner materials as they appear in the market.\r\n"
+	}]
+}, {
+	"nid": [{
+		"value": 489
+	}],
+	"uuid": [{
+		"value": "93d6f2ed-db4f-4f54-a8d1-2c5d5b95452a"
+	}],
+	"vid": [{
+		"value": 1903
+	}],
+	"langcode": [{
+		"value": "en"
+	}],
+	"type": [{
+		"target_id": "bookplate",
+		"target_type": "node_type",
+		"target_uuid": "36d64862-bbb0-42e9-bcf8-29da6062483d"
+	}],
+	"revision_timestamp": [{
+		"value": 1502293645
+	}],
+	"revision_uid": [{
+		"target_id": 21,
+		"target_type": "user",
+		"target_uuid": "0072a370-c021-452d-ac5f-3b5c3ded6d71",
+		"url": "\/user\/21"
+	}],
+	"revision_log": [],
+	"status": [{
+		"value": true
+	}],
+	"uid": [{
+		"target_id": 21,
+		"target_type": "user",
+		"target_uuid": "0072a370-c021-452d-ac5f-3b5c3ded6d71",
+		"url": "\/user\/21"
+	}],
+	"title": [{
+		"value": "Thomas G. and Dorothy H. DeShazo Library Fund"
+	}],
+	"created": [{
+		"value": 1494606885
+	}],
+	"changed": [{
+		"value": 1502293645
+	}],
+	"promote": [{
+		"value": true
+	}],
+	"sticky": [{
+		"value": false
+	}],
+	"default_langcode": [{
+		"value": true
+	}],
+	"revision_translation_affected": [{
+		"value": true
+	}],
+	"path": [{
+		"alias": null,
+		"pid": null,
+		"langcode": "en"
+	}],
+	"publish_on": [],
+	"unpublish_on": [],
+	"body": [{
+		"value": "\u003Cp\u003EDeShazo, Thomas G. and Dorothy H. Library Fund\u003C\/p\u003E\r\n",
+		"format": "basic_html",
+		"processed": "\u003Cp\u003EDeShazo, Thomas G. and Dorothy H. Library Fund\u003C\/p\u003E",
+		"summary": ""
+	}],
+	"field_bookplate_image": [],
+	"field_date": [],
+	"field_fund": [{
+		"value": "ER02042"
+	}],
+	"field_fund_award_name": [{
+		"value": "LB-DeShazo Library Fund"
+	}],
+	"field_fund_id": [{
+		"value": "DESHAZO-ER02042"
+	}],
+	"field_restriction_summary": [{
+		"value": "The income of the Fund, but none of the principal, shall be used to obtain library materials for the University of Virginia Library with a preference toward Special Collections and other materials related to Huguenot immigration to Virginia.\r\n"
+	}],
+	"field_summary": [{
+		"value": "The Thomas G. and Dorothy H. DeShazo Library Fund was established by Thomas DeShazo (COMM 1949) to collect materials for the Library, with a preference for materials for Special Collections and materials related to Huguenot immigration to Virginia.\r\n\r\n\r\n"
+	}]
+}, {
+	"nid": [{
+		"value": 488
+	}],
+	"uuid": [{
+		"value": "3505a4bb-8d89-47b8-a2ec-650db3dc8877"
+	}],
+	"vid": [{
+		"value": 1868
+	}],
+	"langcode": [{
+		"value": "en"
+	}],
+	"type": [{
+		"target_id": "bookplate",
+		"target_type": "node_type",
+		"target_uuid": "36d64862-bbb0-42e9-bcf8-29da6062483d"
+	}],
+	"revision_timestamp": [{
+		"value": 1502289341
+	}],
+	"revision_uid": [{
+		"target_id": 21,
+		"target_type": "user",
+		"target_uuid": "0072a370-c021-452d-ac5f-3b5c3ded6d71",
+		"url": "\/user\/21"
+	}],
+	"revision_log": [],
+	"status": [{
+		"value": true
+	}],
+	"uid": [{
+		"target_id": 21,
+		"target_type": "user",
+		"target_uuid": "0072a370-c021-452d-ac5f-3b5c3ded6d71",
+		"url": "\/user\/21"
+	}],
+	"title": [{
+		"value": "Casa del Greco Library Fund"
+	}],
+	"created": [{
+		"value": 1494606821
+	}],
+	"changed": [{
+		"value": 1502289341
+	}],
+	"promote": [{
+		"value": true
+	}],
+	"sticky": [{
+		"value": false
+	}],
+	"default_langcode": [{
+		"value": true
+	}],
+	"revision_translation_affected": [{
+		"value": true
+	}],
+	"path": [{
+		"alias": null,
+		"pid": null,
+		"langcode": "en"
+	}],
+	"publish_on": [],
+	"unpublish_on": [],
+	"body": [{
+		"value": "\u003Cp\u003EDel Greco, Casa Library Fund\u003C\/p\u003E\r\n",
+		"format": "basic_html",
+		"processed": "\u003Cp\u003EDel Greco, Casa Library Fund\u003C\/p\u003E",
+		"summary": ""
+	}],
+	"field_bookplate_image": [{
+		"target_id": 599,
+		"alt": "Line drawing of the front of a castle.",
+		"title": "",
+		"width": 842,
+		"height": 1060,
+		"target_type": "file",
+		"target_uuid": "0aa468a8-7b7d-4464-91b8-80850117259c",
+		"url": "https:\/\/drupal.lib.virginia.edu\/sites\/default\/files\/bookplates\/20170622102522080_Page_1_casa%20del%20greco.png"
+	}],
+	"field_date": [],
+	"field_fund": [{
+		"value": "ER00650"
+	}],
+	"field_fund_award_name": [{
+		"value": "LB-Del Greco Casa"
+	}],
+	"field_fund_id": [{
+		"value": "DELGRECO-ER00650"
+	}],
+	"field_restriction_summary": [{
+		"value": "The income from the Fund, but none of the principal, shall be split equally between the Department of Spanish, Italian and Portuguese in the College and Graduate School of Arts and Sciences, and the University of Virginia Library.  See Documents Tab for attached Agreement.\r\n"
+	}],
+	"field_summary": [{
+		"value": "The Casa del Greco Library Fund was established by Arnold A. and Laura B. Del Greco of Charlottesville, Virginia, in 1996.  The fund primarily supports the acquisition, processing and preservation of books, manuscripts and other materials in the history, language, poetry and literature of Spain, Italy and Portugal.\r\n"
+	}]
+}, {
+	"nid": [{
+		"value": 487
+	}],
+	"uuid": [{
+		"value": "d9c47864-1ffe-4515-9a18-3b0b3d16a238"
+	}],
+	"vid": [{
+		"value": 1904
+	}],
+	"langcode": [{
+		"value": "en"
+	}],
+	"type": [{
+		"target_id": "bookplate",
+		"target_type": "node_type",
+		"target_uuid": "36d64862-bbb0-42e9-bcf8-29da6062483d"
+	}],
+	"revision_timestamp": [{
+		"value": 1502293740
+	}],
+	"revision_uid": [{
+		"target_id": 21,
+		"target_type": "user",
+		"target_uuid": "0072a370-c021-452d-ac5f-3b5c3ded6d71",
+		"url": "\/user\/21"
+	}],
+	"revision_log": [],
+	"status": [{
+		"value": true
+	}],
+	"uid": [{
+		"target_id": 21,
+		"target_type": "user",
+		"target_uuid": "0072a370-c021-452d-ac5f-3b5c3ded6d71",
+		"url": "\/user\/21"
+	}],
+	"title": [{
+		"value": "Colgate W. Darden, Jr. Book Fund"
+	}],
+	"created": [{
+		"value": 1494606608
+	}],
+	"changed": [{
+		"value": 1502293740
+	}],
+	"promote": [{
+		"value": true
+	}],
+	"sticky": [{
+		"value": false
+	}],
+	"default_langcode": [{
+		"value": true
+	}],
+	"revision_translation_affected": [{
+		"value": true
+	}],
+	"path": [{
+		"alias": null,
+		"pid": null,
+		"langcode": "en"
+	}],
+	"publish_on": [],
+	"unpublish_on": [],
+	"body": [{
+		"value": "\u003Cp\u003EDarden, Colgate W. Jr. Book Fund\u003C\/p\u003E\r\n",
+		"format": "basic_html",
+		"processed": "\u003Cp\u003EDarden, Colgate W. Jr. Book Fund\u003C\/p\u003E",
+		"summary": ""
+	}],
+	"field_bookplate_image": [],
+	"field_date": [],
+	"field_fund": [{
+		"value": "ER00586"
+	}],
+	"field_fund_award_name": [{
+		"value": "LB-Darden, Colgate W Jr."
+	}],
+	"field_fund_id": [{
+		"value": "DARDEN-ER00586"
+	}],
+	"field_restriction_summary": [{
+		"value": "From the class of 1959 to endow a book fund.\r\n"
+	}],
+	"field_summary": [{
+		"value": "The Colgate W. Darden, Jr. Book Fund was created by the class of 1959.  This book fund is in recognition of Colgate Darden, Jr., the third president of the University"
+	}]
+}, {
+	"nid": [{
+		"value": 486
+	}],
+	"uuid": [{
+		"value": "c1370db2-e122-4b76-8352-2e5e196f5d85"
+	}],
+	"vid": [{
+		"value": 1869
+	}],
+	"langcode": [{
+		"value": "en"
+	}],
+	"type": [{
+		"target_id": "bookplate",
+		"target_type": "node_type",
+		"target_uuid": "36d64862-bbb0-42e9-bcf8-29da6062483d"
+	}],
+	"revision_timestamp": [{
+		"value": 1502289450
+	}],
+	"revision_uid": [{
+		"target_id": 21,
+		"target_type": "user",
+		"target_uuid": "0072a370-c021-452d-ac5f-3b5c3ded6d71",
+		"url": "\/user\/21"
+	}],
+	"revision_log": [],
+	"status": [{
+		"value": true
+	}],
+	"uid": [{
+		"target_id": 21,
+		"target_type": "user",
+		"target_uuid": "0072a370-c021-452d-ac5f-3b5c3ded6d71",
+		"url": "\/user\/21"
+	}],
+	"title": [{
+		"value": "E. C. Coles Library Fund"
+	}],
+	"created": [{
+		"value": 1494606570
+	}],
+	"changed": [{
+		"value": 1502289450
+	}],
+	"promote": [{
+		"value": true
+	}],
+	"sticky": [{
+		"value": false
+	}],
+	"default_langcode": [{
+		"value": true
+	}],
+	"revision_translation_affected": [{
+		"value": true
+	}],
+	"path": [{
+		"alias": null,
+		"pid": null,
+		"langcode": "en"
+	}],
+	"publish_on": [],
+	"unpublish_on": [],
+	"body": [{
+		"value": "\u003Cp\u003EColes, E.C. Library Fund\u003C\/p\u003E\r\n",
+		"format": "basic_html",
+		"processed": "\u003Cp\u003EColes, E.C. Library Fund\u003C\/p\u003E",
+		"summary": ""
+	}],
+	"field_bookplate_image": [{
+		"target_id": 600,
+		"alt": "Seal of the University of Virginia",
+		"title": "",
+		"width": 875,
+		"height": 1263,
+		"target_type": "file",
+		"target_uuid": "28725a86-419a-485d-811e-ec1d08f9551f",
+		"url": "https:\/\/drupal.lib.virginia.edu\/sites\/default\/files\/bookplates\/20170622101457649_Page_1_coles2.png"
+	}],
+	"field_date": [],
+	"field_fund": [{
+		"value": "ER00588"
+	}],
+	"field_fund_award_name": [{
+		"value": "LB-Coles, E C"
+	}],
+	"field_fund_id": [{
+		"value": "COLES-UPRESS-ER00588"
+	}],
+	"field_restriction_summary": [{
+		"value": "For books and documents relating to the state of Virginia.\r\n"
+	}],
+	"field_summary": [{
+		"value": "E. C. Coles Library Fund was established by Walter DeRossett Coles in 1939.  The fund is for books and documents relating to the state of Virginia.\r\n"
+	}]
+}, {
+	"nid": [{
+		"value": 485
+	}],
+	"uuid": [{
+		"value": "5ad8f322-fa61-4119-b85d-03e6bf583b29"
+	}],
+	"vid": [{
+		"value": 1905
+	}],
+	"langcode": [{
+		"value": "en"
+	}],
+	"type": [{
+		"target_id": "bookplate",
+		"target_type": "node_type",
+		"target_uuid": "36d64862-bbb0-42e9-bcf8-29da6062483d"
+	}],
+	"revision_timestamp": [{
+		"value": 1502293780
+	}],
+	"revision_uid": [{
+		"target_id": 21,
+		"target_type": "user",
+		"target_uuid": "0072a370-c021-452d-ac5f-3b5c3ded6d71",
+		"url": "\/user\/21"
+	}],
+	"revision_log": [],
+	"status": [{
+		"value": true
+	}],
+	"uid": [{
+		"target_id": 21,
+		"target_type": "user",
+		"target_uuid": "0072a370-c021-452d-ac5f-3b5c3ded6d71",
+		"url": "\/user\/21"
+	}],
+	"title": [{
+		"value": "Louis Henry and Marguerite A. Cohn Ernest Hemingway Memorial Collection"
+	}],
+	"created": [{
+		"value": 1494606448
+	}],
+	"changed": [{
+		"value": 1502293780
+	}],
+	"promote": [{
+		"value": true
+	}],
+	"sticky": [{
+		"value": false
+	}],
+	"default_langcode": [{
+		"value": true
+	}],
+	"revision_translation_affected": [{
+		"value": true
+	}],
+	"path": [{
+		"alias": null,
+		"pid": null,
+		"langcode": "en"
+	}],
+	"publish_on": [],
+	"unpublish_on": [],
+	"body": [{
+		"value": "\u003Cp\u003ECohn, Marguerite-Hemingway Purchase Fund\u003C\/p\u003E\r\n",
+		"format": "basic_html",
+		"processed": "\u003Cp\u003ECohn, Marguerite-Hemingway Purchase Fund\u003C\/p\u003E",
+		"summary": ""
+	}],
+	"field_bookplate_image": [],
+	"field_date": [],
+	"field_fund": [{
+		"value": "ER00571"
+	}],
+	"field_fund_award_name": [{
+		"value": "LB-Cohn-Hemingway"
+	}],
+	"field_fund_id": [{
+		"value": "COHN-HEMING-ER00571"
+	}],
+	"field_restriction_summary": [{
+		"value": "For the Rare Book Department. The income from the fund shall be disbursed from time to time solely for the purchase of books written by or about Ernest Hemingway. Books so purchased shall be only considered by the University to be suitable for inclusion in and shall be added to a special segregated collection relating to the works and life of Ernest Hemingway.\r\n"
+	}],
+	"field_summary": [{
+		"value": "Louis Henry and Marguerite A. Cohn Ernest Hemingway Memorial Collection was established in 1984.  The fund is for the purchase of books written by or about Ernest Hemingway.\r\n"
+	}]
+}, {
+	"nid": [{
+		"value": 484
+	}],
+	"uuid": [{
+		"value": "72986418-73af-4b6d-9ea5-c786baa1ebaf"
+	}],
+	"vid": [{
+		"value": 1870
+	}],
+	"langcode": [{
+		"value": "en"
+	}],
+	"type": [{
+		"target_id": "bookplate",
+		"target_type": "node_type",
+		"target_uuid": "36d64862-bbb0-42e9-bcf8-29da6062483d"
+	}],
+	"revision_timestamp": [{
+		"value": 1502289662
+	}],
+	"revision_uid": [{
+		"target_id": 21,
+		"target_type": "user",
+		"target_uuid": "0072a370-c021-452d-ac5f-3b5c3ded6d71",
+		"url": "\/user\/21"
+	}],
+	"revision_log": [],
+	"status": [{
+		"value": true
+	}],
+	"uid": [{
+		"target_id": 21,
+		"target_type": "user",
+		"target_uuid": "0072a370-c021-452d-ac5f-3b5c3ded6d71",
+		"url": "\/user\/21"
+	}],
+	"title": [{
+		"value": "Class of 1964 Library Fund"
+	}],
+	"created": [{
+		"value": 1494604629
+	}],
+	"changed": [{
+		"value": 1502289662
+	}],
+	"promote": [{
+		"value": true
+	}],
+	"sticky": [{
+		"value": false
+	}],
+	"default_langcode": [{
+		"value": true
+	}],
+	"revision_translation_affected": [{
+		"value": true
+	}],
+	"path": [{
+		"alias": null,
+		"pid": null,
+		"langcode": "en"
+	}],
+	"publish_on": [],
+	"unpublish_on": [],
+	"body": [{
+		"value": "\u003Cp\u003EClass Of 1964 Library Fund\u003C\/p\u003E\r\n",
+		"format": "basic_html",
+		"processed": "\u003Cp\u003EClass Of 1964 Library Fund\u003C\/p\u003E",
+		"summary": ""
+	}],
+	"field_bookplate_image": [{
+		"target_id": 602,
+		"alt": "\u0022\u0022",
+		"title": "",
+		"width": 1052,
+		"height": 848,
+		"target_type": "file",
+		"target_uuid": "b5af4b44-6da5-4d48-98c4-57da09f697b7",
+		"url": "https:\/\/drupal.lib.virginia.edu\/sites\/default\/files\/bookplates\/20170622102522080_Page_2_1964.png"
+	}],
+	"field_date": [],
+	"field_fund": [{
+		"value": "ER00612"
+	}],
+	"field_fund_award_name": [{
+		"value": "LB-Class of 1964"
+	}],
+	"field_fund_id": [{
+		"value": "CLASS-OF-64-ER00612"
+	}],
+	"field_restriction_summary": [{
+		"value": "To be used to collect and purchase all literature and published material in or about the newly created African countries of Tanganyika, Zanzibar, Ugunda, and Kenya. \r\n"
+	}],
+	"field_summary": [{
+		"value": "The Class Of 1964 Library Fund was established by the graduating class of 1964 to collect literature and other materials from and about the newly-created countries of Tanganyika, Zanzibar, Uganda, and Kenya.\r\nOn Bookplate:\r\nEast African Collection\r\nPurchased from funds begun on\r\nthe initiative of the\r\nClass of 1964\r\nin recognition of the countries\r\nwhich gained their\r\nindependence in that year\r\n\r\n"
+	}]
+}, {
+	"nid": [{
+		"value": 483
+	}],
+	"uuid": [{
+		"value": "aca4bbb0-05dc-4089-8aa4-a1de067944f0"
+	}],
+	"vid": [{
+		"value": 1875
+	}],
+	"langcode": [{
+		"value": "en"
+	}],
+	"type": [{
+		"target_id": "bookplate",
+		"target_type": "node_type",
+		"target_uuid": "36d64862-bbb0-42e9-bcf8-29da6062483d"
+	}],
+	"revision_timestamp": [{
+		"value": 1502290193
+	}],
+	"revision_uid": [{
+		"target_id": 21,
+		"target_type": "user",
+		"target_uuid": "0072a370-c021-452d-ac5f-3b5c3ded6d71",
+		"url": "\/user\/21"
+	}],
+	"revision_log": [],
+	"status": [{
+		"value": true
+	}],
+	"uid": [{
+		"target_id": 21,
+		"target_type": "user",
+		"target_uuid": "0072a370-c021-452d-ac5f-3b5c3ded6d71",
+		"url": "\/user\/21"
+	}],
+	"title": [{
+		"value": "Class of 1961 Books (Fund)"
+	}],
+	"created": [{
+		"value": 1494604516
+	}],
+	"changed": [{
+		"value": 1502290193
+	}],
+	"promote": [{
+		"value": true
+	}],
+	"sticky": [{
+		"value": false
+	}],
+	"default_langcode": [{
+		"value": true
+	}],
+	"revision_translation_affected": [{
+		"value": true
+	}],
+	"path": [{
+		"alias": null,
+		"pid": null,
+		"langcode": "en"
+	}],
+	"publish_on": [],
+	"unpublish_on": [],
+	"body": [{
+		"value": "\u003Cp\u003EClass Of 1961 Book Fund\u003C\/p\u003E\r\n",
+		"format": "basic_html",
+		"processed": "\u003Cp\u003EClass Of 1961 Book Fund\u003C\/p\u003E",
+		"summary": ""
+	}],
+	"field_bookplate_image": [{
+		"target_id": 603,
+		"alt": "\u0022\u0022",
+		"title": "",
+		"width": 1044,
+		"height": 886,
+		"target_type": "file",
+		"target_uuid": "b92991b3-51be-4753-9470-cb8c520842c8",
+		"url": "https:\/\/drupal.lib.virginia.edu\/sites\/default\/files\/bookplates\/20170622102306444_Page_2_1961.png"
+	}],
+	"field_date": [],
+	"field_fund": [{
+		"value": "ER00608"
+	}],
+	"field_fund_award_name": [{
+		"value": "LB-Class of 1961"
+	}],
+	"field_fund_id": [{
+		"value": "CLASS-OF-61-ER00608"
+	}],
+	"field_restriction_summary": [{
+		"value": "From the class of 1961 for to initiate a collection of writings from Middle Eastern Countries.  These writings will be obtained in the original language and will cover all phases of Middle Eastern Culture.\r\n"
+	}],
+	"field_summary": [{
+		"value": "The Class Of 1961 Book Fund was established by the graduating class of 1961 to initiate a library collection from Middle Eastern countries and cultures in their original languages.\r\nOn Bookplate:\r\nAlderman Library\r\nThe Middle Eastern Languages\r\nCollection\r\nBegun on the initiative of the\r\nUniversity of Virginia Graduate\r\nof 1961\r\nThis book is a gift of\r\nthe class of 1961\r\n\r\n\r\n\r\n\r\n"
+	}]
+}, {
+	"nid": [{
+		"value": 482
+	}],
+	"uuid": [{
+		"value": "942140cd-e7ef-481a-bbc6-7213f5452c09"
+	}],
+	"vid": [{
+		"value": 1871
+	}],
+	"langcode": [{
+		"value": "en"
+	}],
+	"type": [{
+		"target_id": "bookplate",
+		"target_type": "node_type",
+		"target_uuid": "36d64862-bbb0-42e9-bcf8-29da6062483d"
+	}],
+	"revision_timestamp": [{
+		"value": 1502289831
+	}],
+	"revision_uid": [{
+		"target_id": 21,
+		"target_type": "user",
+		"target_uuid": "0072a370-c021-452d-ac5f-3b5c3ded6d71",
+		"url": "\/user\/21"
+	}],
+	"revision_log": [],
+	"status": [{
+		"value": true
+	}],
+	"uid": [{
+		"target_id": 21,
+		"target_type": "user",
+		"target_uuid": "0072a370-c021-452d-ac5f-3b5c3ded6d71",
+		"url": "\/user\/21"
+	}],
+	"title": [{
+		"value": "Class of 1960 Woodrow Wilson Books (Fund)"
+	}],
+	"created": [{
+		"value": 1494604465
+	}],
+	"changed": [{
+		"value": 1502289831
+	}],
+	"promote": [{
+		"value": true
+	}],
+	"sticky": [{
+		"value": false
+	}],
+	"default_langcode": [{
+		"value": true
+	}],
+	"revision_translation_affected": [{
+		"value": true
+	}],
+	"path": [{
+		"alias": null,
+		"pid": null,
+		"langcode": "en"
+	}],
+	"publish_on": [],
+	"unpublish_on": [],
+	"body": [{
+		"value": "\u003Cp\u003EClass Of 1960 Woodrow Wilson Book Fd\u003C\/p\u003E\r\n",
+		"format": "basic_html",
+		"processed": "\u003Cp\u003EClass Of 1960 Woodrow Wilson Book Fd\u003C\/p\u003E",
+		"summary": ""
+	}],
+	"field_bookplate_image": [{
+		"target_id": 604,
+		"alt": "Drawing of the Rotunda",
+		"title": "",
+		"width": 968,
+		"height": 1167,
+		"target_type": "file",
+		"target_uuid": "2655ed8e-d01f-479a-a580-f6b2d4a0ad6a",
+		"url": "https:\/\/drupal.lib.virginia.edu\/sites\/default\/files\/bookplates\/20170622103020471_Page_1_1960.png"
+	}],
+	"field_date": [],
+	"field_fund": [{
+		"value": "ER00607"
+	}],
+	"field_fund_award_name": [{
+		"value": "LB-Class of 1960"
+	}],
+	"field_fund_id": [{
+		"value": "CLASS-OF-60-ER00607"
+	}],
+	"field_restriction_summary": [{
+		"value": "From the class of 1960 for the development of the collection of materials on Woodrow Wilson.\r\n"
+	}],
+	"field_summary": [{
+		"value": "The Class Of 1960 Book Fund was established by the graduating class of 1960 to enable the development of a collection of materials related to President Woodrow Wilson\r\nOn Bookplate:\r\nThe Woodrow Wilson Collection\r\npurchased for the \r\nUniversity of Virginia\r\nLibrary\r\nby the\r\nClass of 1960\r\nin honor of this earlier\r\nUniversity of Virginia Alumnus\r\n\r\n\r\n"
+	}]
+}, {
+	"nid": [{
+		"value": 481
+	}],
+	"uuid": [{
+		"value": "42dc6ca3-d138-4743-8bf8-bc5d7a92ec79"
+	}],
+	"vid": [{
+		"value": 1872
+	}],
+	"langcode": [{
+		"value": "en"
+	}],
+	"type": [{
+		"target_id": "bookplate",
+		"target_type": "node_type",
+		"target_uuid": "36d64862-bbb0-42e9-bcf8-29da6062483d"
+	}],
+	"revision_timestamp": [{
+		"value": 1502289968
+	}],
+	"revision_uid": [{
+		"target_id": 21,
+		"target_type": "user",
+		"target_uuid": "0072a370-c021-452d-ac5f-3b5c3ded6d71",
+		"url": "\/user\/21"
+	}],
+	"revision_log": [],
+	"status": [{
+		"value": true
+	}],
+	"uid": [{
+		"target_id": 21,
+		"target_type": "user",
+		"target_uuid": "0072a370-c021-452d-ac5f-3b5c3ded6d71",
+		"url": "\/user\/21"
+	}],
+	"title": [{
+		"value": "Class of 1952 Library Fund"
+	}],
+	"created": [{
+		"value": 1494604414
+	}],
+	"changed": [{
+		"value": 1502289968
+	}],
+	"promote": [{
+		"value": true
+	}],
+	"sticky": [{
+		"value": false
+	}],
+	"default_langcode": [{
+		"value": true
+	}],
+	"revision_translation_affected": [{
+		"value": true
+	}],
+	"path": [{
+		"alias": null,
+		"pid": null,
+		"langcode": "en"
+	}],
+	"publish_on": [],
+	"unpublish_on": [],
+	"body": [{
+		"value": "\u003Cp\u003EClass Of 1952 Library Fund\u003C\/p\u003E\r\n",
+		"format": "basic_html",
+		"processed": "\u003Cp\u003EClass Of 1952 Library Fund\u003C\/p\u003E",
+		"summary": ""
+	}],
+	"field_bookplate_image": [{
+		"target_id": 605,
+		"alt": "s",
+		"title": "",
+		"width": 939,
+		"height": 1353,
+		"target_type": "file",
+		"target_uuid": "830b0be2-acf2-4d71-9d79-a8bfb99c9403",
+		"url": "https:\/\/drupal.lib.virginia.edu\/sites\/default\/files\/bookplates\/20170622102522080_Page_1_1952.png"
+	}],
+	"field_date": [],
+	"field_fund": [{
+		"value": "ER00585"
+	}],
+	"field_fund_award_name": [{
+		"value": "LB-Class of 1952"
+	}],
+	"field_fund_id": [{
+		"value": "CLASS-OF-52-ER00585"
+	}],
+	"field_restriction_summary": [{
+		"value": "From the class of 1952 to endow a book fund for the General Library.\r\n"
+	}],
+	"field_summary": [{
+		"value": "The Class Of 1952 Library Fund was established by the graduating class of 1952 to endow a general library book fund.\r\n"
+	}]
+}, {
+	"nid": [{
+		"value": 480
+	}],
+	"uuid": [{
+		"value": "e011966d-a618-4cc2-afce-cfaea1da0eff"
+	}],
+	"vid": [{
+		"value": 1873
+	}],
+	"langcode": [{
+		"value": "en"
+	}],
+	"type": [{
+		"target_id": "bookplate",
+		"target_type": "node_type",
+		"target_uuid": "36d64862-bbb0-42e9-bcf8-29da6062483d"
+	}],
+	"revision_timestamp": [{
+		"value": 1502290006
+	}],
+	"revision_uid": [{
+		"target_id": 21,
+		"target_type": "user",
+		"target_uuid": "0072a370-c021-452d-ac5f-3b5c3ded6d71",
+		"url": "\/user\/21"
+	}],
+	"revision_log": [],
+	"status": [{
+		"value": true
+	}],
+	"uid": [{
+		"target_id": 21,
+		"target_type": "user",
+		"target_uuid": "0072a370-c021-452d-ac5f-3b5c3ded6d71",
+		"url": "\/user\/21"
+	}],
+	"title": [{
+		"value": "Class of 1940 Book Fund"
+	}],
+	"created": [{
+		"value": 1494604356
+	}],
+	"changed": [{
+		"value": 1502290006
+	}],
+	"promote": [{
+		"value": true
+	}],
+	"sticky": [{
+		"value": false
+	}],
+	"default_langcode": [{
+		"value": true
+	}],
+	"revision_translation_affected": [{
+		"value": true
+	}],
+	"path": [{
+		"alias": null,
+		"pid": null,
+		"langcode": "en"
+	}],
+	"publish_on": [],
+	"unpublish_on": [],
+	"body": [{
+		"value": "\u003Cp\u003EClass Of 1940 Book Fund\u003C\/p\u003E\r\n",
+		"format": "basic_html",
+		"processed": "\u003Cp\u003EClass Of 1940 Book Fund\u003C\/p\u003E",
+		"summary": ""
+	}],
+	"field_bookplate_image": [{
+		"target_id": 606,
+		"alt": "Seal of the University of Virginia",
+		"title": "",
+		"width": 985,
+		"height": 1309,
+		"target_type": "file",
+		"target_uuid": "30786876-9609-4d1b-a37f-9674ad276244",
+		"url": "https:\/\/drupal.lib.virginia.edu\/sites\/default\/files\/bookplates\/20170622101457649_Page_1_1940.png"
+	}],
+	"field_date": [],
+	"field_fund": [{
+		"value": "ER00584"
+	}],
+	"field_fund_award_name": [{
+		"value": "LB-Class of 1940"
+	}],
+	"field_fund_id": [{
+		"value": "CLASS-OF-40-ER00584"
+	}],
+	"field_restriction_summary": [{
+		"value": "From the class of 1940 to endow a book fund for the General Library.\r\n"
+	}],
+	"field_summary": [{
+		"value": "The Class Of 1940 Book Fund was established by the graduating class of 1940 to endow a general library book fund.\r\n"
+	}]
+}, {
+	"nid": [{
+		"value": 479
+	}],
+	"uuid": [{
+		"value": "daed987a-cc04-4413-90ee-00f197709d18"
+	}],
+	"vid": [{
+		"value": 1874
+	}],
+	"langcode": [{
+		"value": "en"
+	}],
+	"type": [{
+		"target_id": "bookplate",
+		"target_type": "node_type",
+		"target_uuid": "36d64862-bbb0-42e9-bcf8-29da6062483d"
+	}],
+	"revision_timestamp": [{
+		"value": 1502290031
+	}],
+	"revision_uid": [{
+		"target_id": 21,
+		"target_type": "user",
+		"target_uuid": "0072a370-c021-452d-ac5f-3b5c3ded6d71",
+		"url": "\/user\/21"
+	}],
+	"revision_log": [],
+	"status": [{
+		"value": true
+	}],
+	"uid": [{
+		"target_id": 21,
+		"target_type": "user",
+		"target_uuid": "0072a370-c021-452d-ac5f-3b5c3ded6d71",
+		"url": "\/user\/21"
+	}],
+	"title": [{
+		"value": "Class of 1930 Library Fund"
+	}],
+	"created": [{
+		"value": 1494604212
+	}],
+	"changed": [{
+		"value": 1502290031
+	}],
+	"promote": [{
+		"value": true
+	}],
+	"sticky": [{
+		"value": false
+	}],
+	"default_langcode": [{
+		"value": true
+	}],
+	"revision_translation_affected": [{
+		"value": true
+	}],
+	"path": [{
+		"alias": null,
+		"pid": null,
+		"langcode": "en"
+	}],
+	"publish_on": [],
+	"unpublish_on": [],
+	"body": [{
+		"value": "\u003Cp\u003EClass Of 1930 Library Fund\u003C\/p\u003E\r\n",
+		"format": "basic_html",
+		"processed": "\u003Cp\u003EClass Of 1930 Library Fund\u003C\/p\u003E",
+		"summary": ""
+	}],
+	"field_bookplate_image": [{
+		"target_id": 607,
+		"alt": "Seal of the University of Virginia",
+		"title": "",
+		"width": 950,
+		"height": 1274,
+		"target_type": "file",
+		"target_uuid": "d3746a4f-8965-41c9-9e1e-cdf3a6524aea",
+		"url": "https:\/\/drupal.lib.virginia.edu\/sites\/default\/files\/bookplates\/20170622101457649_Page_1_1930.png"
+	}],
+	"field_date": [],
+	"field_fund": [{
+		"value": "ER00583"
+	}],
+	"field_fund_award_name": [{
+		"value": "LB-Class of 1930"
+	}],
+	"field_fund_id": [{
+		"value": "CLASS-OF-30-ER00583"
+	}],
+	"field_restriction_summary": [{
+		"value": "From the class of 1930 to endow a book fund for the General Library.\r\n"
+	}],
+	"field_summary": [{
+		"value": "The Class Of 1930 Library Fund was established by the graduating class of 1930 to endow a general library book fund.\r\n"
+	}]
+}, {
+	"nid": [{
+		"value": 478
+	}],
+	"uuid": [{
+		"value": "bc240b84-45bb-4147-b08d-9c670cb72b92"
+	}],
+	"vid": [{
+		"value": 1906
+	}],
+	"langcode": [{
+		"value": "en"
+	}],
+	"type": [{
+		"target_id": "bookplate",
+		"target_type": "node_type",
+		"target_uuid": "36d64862-bbb0-42e9-bcf8-29da6062483d"
+	}],
+	"revision_timestamp": [{
+		"value": 1502293836
+	}],
+	"revision_uid": [{
+		"target_id": 21,
+		"target_type": "user",
+		"target_uuid": "0072a370-c021-452d-ac5f-3b5c3ded6d71",
+		"url": "\/user\/21"
+	}],
+	"revision_log": [],
+	"status": [{
+		"value": true
+	}],
+	"uid": [{
+		"target_id": 21,
+		"target_type": "user",
+		"target_uuid": "0072a370-c021-452d-ac5f-3b5c3ded6d71",
+		"url": "\/user\/21"
+	}],
+	"title": [{
+		"value": "Warren Fulton Chauncey Alderman Library - Rare Books and Special Collections Fund"
+	}],
+	"created": [{
+		"value": 1494604038
+	}],
+	"changed": [{
+		"value": 1502293836
+	}],
+	"promote": [{
+		"value": true
+	}],
+	"sticky": [{
+		"value": false
+	}],
+	"default_langcode": [{
+		"value": true
+	}],
+	"revision_translation_affected": [{
+		"value": true
+	}],
+	"path": [{
+		"alias": null,
+		"pid": null,
+		"langcode": "en"
+	}],
+	"publish_on": [],
+	"unpublish_on": [],
+	"body": [{
+		"value": "\u003Cp\u003EChauncey, Warren Fulton Alderman Library - Rare Books and Special Collections Fund\u003C\/p\u003E\r\n",
+		"format": "basic_html",
+		"processed": "\u003Cp\u003EChauncey, Warren Fulton Alderman Library - Rare Books and Special Collections Fund\u003C\/p\u003E",
+		"summary": ""
+	}],
+	"field_bookplate_image": [],
+	"field_date": [],
+	"field_fund": [{
+		"value": "ER01747"
+	}],
+	"field_fund_award_name": [{
+		"value": "LB-Chauncey, Warren-Spec Coll"
+	}],
+	"field_fund_id": [{
+		"value": "CHAUNCEY-ER01747"
+	}],
+	"field_restriction_summary": [{
+		"value": "Income shall be used to benefit the Special Collections of the University of Virginia Library by supporting the acquisition and preservation of books, manuscripts, genealogical materials, and other library materials which are of value for the study of Virginia with special emphasis on the Tidewater and Alexandria areas of Virginia. Expenditures will include primarily rare books, manuscripts, and reference materials which meet the donor\u0027s purpose as stated above. Preservation related expenses could include supplies and conservator services.\r\n"
+	}],
+	"field_summary": [{
+		"value": "The Warren Fulton Chauncey Fund was established in 2001 by Warren Chauncey (CLAS 1956).  The fund is for the purchase and preservation of rare books, manuscripts and genealogical materials which are valuable for the study of Virginia, with special emphasis the Tidewater and Alexandria areas.\r\n\r\n"
+	}]
+}, {
+	"nid": [{
+		"value": 477
+	}],
+	"uuid": [{
+		"value": "8220fdab-b070-4c6d-a366-366a877957f2"
+	}],
+	"vid": [{
+		"value": 1876
+	}],
+	"langcode": [{
+		"value": "en"
+	}],
+	"type": [{
+		"target_id": "bookplate",
+		"target_type": "node_type",
+		"target_uuid": "36d64862-bbb0-42e9-bcf8-29da6062483d"
+	}],
+	"revision_timestamp": [{
+		"value": 1502290660
+	}],
+	"revision_uid": [{
+		"target_id": 21,
+		"target_type": "user",
+		"target_uuid": "0072a370-c021-452d-ac5f-3b5c3ded6d71",
+		"url": "\/user\/21"
+	}],
+	"revision_log": [],
+	"status": [{
+		"value": true
+	}],
+	"uid": [{
+		"target_id": 21,
+		"target_type": "user",
+		"target_uuid": "0072a370-c021-452d-ac5f-3b5c3ded6d71",
+		"url": "\/user\/21"
+	}],
+	"title": [{
+		"value": "Alfred Henry Byrd Library Fund"
+	}],
+	"created": [{
+		"value": 1494603935
+	}],
+	"changed": [{
+		"value": 1502290660
+	}],
+	"promote": [{
+		"value": true
+	}],
+	"sticky": [{
+		"value": false
+	}],
+	"default_langcode": [{
+		"value": true
+	}],
+	"revision_translation_affected": [{
+		"value": true
+	}],
+	"path": [{
+		"alias": null,
+		"pid": null,
+		"langcode": "en"
+	}],
+	"publish_on": [],
+	"unpublish_on": [],
+	"body": [{
+		"value": "\u003Cp\u003EByrd, Alfred Henry Library Fund\u003C\/p\u003E\r\n",
+		"format": "basic_html",
+		"processed": "\u003Cp\u003EByrd, Alfred Henry Library Fund\u003C\/p\u003E",
+		"summary": ""
+	}],
+	"field_bookplate_image": [{
+		"target_id": 576,
+		"alt": "Representation of the Byrd Family Coat of Arms. Motto: NULLA PALLESCERE CULPA",
+		"title": "",
+		"width": 961,
+		"height": 1321,
+		"target_type": "file",
+		"target_uuid": "687a72a2-6d35-40f8-b049-22461634fbc5",
+		"url": "https:\/\/drupal.lib.virginia.edu\/sites\/default\/files\/bookplates\/20170622101457649_Page_2_byrd.png"
+	}],
+	"field_date": [],
+	"field_fund": [{
+		"value": "ER00581"
+	}],
+	"field_fund_award_name": [{
+		"value": "LB-Byrd, Alfred Henry"
+	}],
+	"field_fund_id": [{
+		"value": "BYRD-ER00581"
+	}],
+	"field_restriction_summary": [{
+		"value": "For the purchase of books on Virginia history and literature.\r\n"
+	}],
+	"field_summary": [{
+		"value": "The Alfred Henry Byrd Library Fund was established in 1900. The fund is for the purchase of books on Virginia history and literature.\r\n"
+	}]
+}, {
+	"nid": [{
+		"value": 476
+	}],
+	"uuid": [{
+		"value": "72108667-99aa-4120-986d-f47ee91eceb7"
+	}],
+	"vid": [{
+		"value": 1907
+	}],
+	"langcode": [{
+		"value": "en"
+	}],
+	"type": [{
+		"target_id": "bookplate",
+		"target_type": "node_type",
+		"target_uuid": "36d64862-bbb0-42e9-bcf8-29da6062483d"
+	}],
+	"revision_timestamp": [{
+		"value": 1502293907
+	}],
+	"revision_uid": [{
+		"target_id": 21,
+		"target_type": "user",
+		"target_uuid": "0072a370-c021-452d-ac5f-3b5c3ded6d71",
+		"url": "\/user\/21"
+	}],
+	"revision_log": [],
+	"status": [{
+		"value": true
+	}],
+	"uid": [{
+		"target_id": 21,
+		"target_type": "user",
+		"target_uuid": "0072a370-c021-452d-ac5f-3b5c3ded6d71",
+		"url": "\/user\/21"
+	}],
+	"title": [{
+		"value": "Books Arts Press Fund for the University of Virgina Library"
+	}],
+	"created": [{
+		"value": 1494603853
+	}],
+	"changed": [{
+		"value": 1502293907
+	}],
+	"promote": [{
+		"value": true
+	}],
+	"sticky": [{
+		"value": false
+	}],
+	"default_langcode": [{
+		"value": true
+	}],
+	"revision_translation_affected": [{
+		"value": true
+	}],
+	"path": [{
+		"alias": null,
+		"pid": null,
+		"langcode": "en"
+	}],
+	"publish_on": [],
+	"unpublish_on": [],
+	"body": [{
+		"value": "\u003Cp\u003EBook Arts Press Fund For The UVA Library\u003C\/p\u003E\r\n",
+		"format": "basic_html",
+		"processed": "\u003Cp\u003EBook Arts Press Fund For The UVA Library\u003C\/p\u003E",
+		"summary": ""
+	}],
+	"field_bookplate_image": [],
+	"field_date": [],
+	"field_fund": [{
+		"value": "ER00700"
+	}],
+	"field_fund_award_name": [{
+		"value": "LB-Book Arts Press"
+	}],
+	"field_fund_id": [{
+		"value": "BOOKARTS-ER00700"
+	}],
+	"field_restriction_summary": [{
+		"value": "The income from the Fund, but none of the principal, shall be used for the acquisition, processing, and preservation of materials useful to the Rare Book School and history of the book courses at the University.\r\n"
+	}],
+	"field_summary": [{
+		"value": "The Books Arts Press Fund for the University of Virginia Library was established by Terry Belanger of Charlottesville, Virginia, in 2000.  The fund is used for the acquisition, processing, and preservation of materials useful to the Rare Book School and the history of book courses at the University.\r\n"
+	}]
+}, {
+	"nid": [{
+		"value": 475
+	}],
+	"uuid": [{
+		"value": "05fbc178-14e5-408a-8e0f-13a92bb063d5"
+	}],
+	"vid": [{
+		"value": 1846
+	}],
+	"langcode": [{
+		"value": "en"
+	}],
+	"type": [{
+		"target_id": "bookplate",
+		"target_type": "node_type",
+		"target_uuid": "36d64862-bbb0-42e9-bcf8-29da6062483d"
+	}],
+	"revision_timestamp": [{
+		"value": 1502286816
+	}],
+	"revision_uid": [{
+		"target_id": 21,
+		"target_type": "user",
+		"target_uuid": "0072a370-c021-452d-ac5f-3b5c3ded6d71",
+		"url": "\/user\/21"
+	}],
+	"revision_log": [],
+	"status": [{
+		"value": true
+	}],
+	"uid": [{
+		"target_id": 21,
+		"target_type": "user",
+		"target_uuid": "0072a370-c021-452d-ac5f-3b5c3ded6d71",
+		"url": "\/user\/21"
+	}],
+	"title": [{
+		"value": "Charles Julian Bishko Library Excellence Fund"
+	}],
+	"created": [{
+		"value": 1494603697
+	}],
+	"changed": [{
+		"value": 1502286816
+	}],
+	"promote": [{
+		"value": true
+	}],
+	"sticky": [{
+		"value": false
+	}],
+	"default_langcode": [{
+		"value": true
+	}],
+	"revision_translation_affected": [{
+		"value": true
+	}],
+	"path": [{
+		"alias": null,
+		"pid": null,
+		"langcode": "en"
+	}],
+	"publish_on": [],
+	"unpublish_on": [],
+	"body": [],
+	"field_bookplate_image": [{
+		"target_id": 601,
+		"alt": "Seal of the University of Virginia",
+		"title": "",
+		"width": 939,
+		"height": 1271,
+		"target_type": "file",
+		"target_uuid": "9886195b-827d-4ff7-8028-45e8b39951e8",
+		"url": "https:\/\/drupal.lib.virginia.edu\/sites\/default\/files\/bookplates\/20170622102306444_Page_1_bishko.png"
+	}],
+	"field_date": [],
+	"field_fund": [{
+		"value": "DR01376"
+	}],
+	"field_fund_award_name": [{
+		"value": "LB-Bishko Fund"
+	}],
+	"field_fund_id": [{
+		"value": "BISHKO-DR01376"
+	}],
+	"field_restriction_summary": [{
+		"value": "The income of the Fund shall be used at the discretion of the University\r\nLibrarian for Library-related purposes and activities.\r\n"
+	}],
+	"field_summary": [{
+		"value": "The Charles Julian Bishko Library Excellence Fund was established by the The William and Salom\u00e9 Scanlon Foundation of San Antonio, Texas, in 2006.  The income of the fund is used at the discretion of the University Librarian for Library-related purposes and activities.  Julian Bishko was a renowned historian of medieval and early modern Iberia and a Commonwealth Professor of History at UVA. \r\n"
+	}]
+}, {
+	"nid": [{
+		"value": 474
+	}],
+	"uuid": [{
+		"value": "166339f3-269f-41a3-aebe-36943ff5bc97"
+	}],
+	"vid": [{
+		"value": 1915
+	}],
+	"langcode": [{
+		"value": "en"
+	}],
+	"type": [{
+		"target_id": "bookplate",
+		"target_type": "node_type",
+		"target_uuid": "36d64862-bbb0-42e9-bcf8-29da6062483d"
+	}],
+	"revision_timestamp": [{
+		"value": 1502297450
+	}],
+	"revision_uid": [{
+		"target_id": 21,
+		"target_type": "user",
+		"target_uuid": "0072a370-c021-452d-ac5f-3b5c3ded6d71",
+		"url": "\/user\/21"
+	}],
+	"revision_log": [],
+	"status": [{
+		"value": true
+	}],
+	"uid": [{
+		"target_id": 21,
+		"target_type": "user",
+		"target_uuid": "0072a370-c021-452d-ac5f-3b5c3ded6d71",
+		"url": "\/user\/21"
+	}],
+	"title": [{
+		"value": "Raymond C. Bice, Jr., Library Fund"
+	}],
+	"created": [{
+		"value": 1494603645
+	}],
+	"changed": [{
+		"value": 1502297450
+	}],
+	"promote": [{
+		"value": true
+	}],
+	"sticky": [{
+		"value": false
+	}],
+	"default_langcode": [{
+		"value": true
+	}],
+	"revision_translation_affected": [{
+		"value": true
+	}],
+	"path": [{
+		"alias": null,
+		"pid": null,
+		"langcode": "en"
+	}],
+	"publish_on": [],
+	"unpublish_on": [],
+	"body": [{
+		"value": "\u003Cp\u003EBice, Raymond C Jr Library Fund\u003C\/p\u003E\r\n",
+		"format": "basic_html",
+		"processed": "\u003Cp\u003EBice, Raymond C Jr Library Fund\u003C\/p\u003E",
+		"summary": ""
+	}],
+	"field_bookplate_image": [],
+	"field_date": [],
+	"field_fund": [{
+		"value": "ER00688"
+	}],
+	"field_fund_award_name": [{
+		"value": "LB-Bice Raymond C Jr Library Fund"
+	}],
+	"field_fund_id": [{
+		"value": "BICE-ER00688"
+	}],
+	"field_restriction_summary": [{
+		"value": "The income of the Fund, but none of the principal shall be used for the acquisition of materials related to the University of Virginia.\r\n"
+	}],
+	"field_summary": [{
+		"value": "The Raymond C. Bice, Jr., Library Fund was established in 2001. The fund is for the acquisition of materials related to the University of Virginia. Raymond Bice, Jr. was Professor of Psychology at UVA .\r\n"
+	}]
+}, {
+	"nid": [{
+		"value": 473
+	}],
+	"uuid": [{
+		"value": "e848c294-9e50-47f6-877f-a669b4a4cfb4"
+	}],
+	"vid": [{
+		"value": 9654
+	}],
+	"langcode": [{
+		"value": "en"
+	}],
+	"type": [{
+		"target_id": "bookplate",
+		"target_type": "node_type",
+		"target_uuid": "36d64862-bbb0-42e9-bcf8-29da6062483d"
+	}],
+	"revision_timestamp": [{
+		"value": 1610118235
+	}],
+	"revision_uid": [{
+		"target_id": 38,
+		"target_type": "user",
+		"target_uuid": "753d12ee-0f15-4050-96f7-0285df701025",
+		"url": "\/user\/38"
+	}],
+	"revision_log": [],
+	"status": [{
+		"value": true
+	}],
+	"uid": [{
+		"target_id": 21,
+		"target_type": "user",
+		"target_uuid": "0072a370-c021-452d-ac5f-3b5c3ded6d71",
+		"url": "\/user\/21"
+	}],
+	"title": [{
+		"value": "Dorothy Smith Berkeley and Edmund Berkeley Natural History Endowed Fund"
+	}],
+	"created": [{
+		"value": 1494603426
+	}],
+	"changed": [{
+		"value": 1610118235
+	}],
+	"promote": [{
+		"value": true
+	}],
+	"sticky": [{
+		"value": false
+	}],
+	"default_langcode": [{
+		"value": true
+	}],
+	"revision_translation_affected": [{
+		"value": true
+	}],
+	"path": [{
+		"alias": null,
+		"pid": null,
+		"langcode": "en"
+	}],
+	"publish_on": [],
+	"unpublish_on": [],
+	"body": [{
+		"value": "\u003Cp\u003EBerkeley, Dorothy S \u0026amp; Edmund Natural History Fund\u003C\/p\u003E\r\n",
+		"format": "basic_html",
+		"processed": "\u003Cp\u003EBerkeley, Dorothy S \u0026amp; Edmund Natural History Fund\u003C\/p\u003E",
+		"summary": ""
+	}],
+	"field_bookplate_image": [{
+		"target_id": 575,
+		"alt": "Drawing in green of two joined lilies. Ribbon across base of the stems \u0022Lilium Catesbaei.\u0022",
+		"title": "",
+		"width": 1222,
+		"height": 1728,
+		"target_type": "file",
+		"target_uuid": "06ac1d47-8d8f-4806-bca4-0476a0ecbea5",
+		"url": "https:\/\/drupal.lib.virginia.edu\/sites\/default\/files\/bookplates\/20170622100940461_berkeley.png"
+	}],
+	"field_date": [],
+	"field_fund": [{
+		"value": "ER00643"
+	}],
+	"field_fund_award_name": [{
+		"value": "LB-Berkeley, D \u0026 Edmund"
+	}],
+	"field_fund_id": [{
+		"value": "BERKELEY-ER00643"
+	}],
+	"field_restriction_summary": [{
+		"value": "The income from the Fund, but none of the principal, shall be used to benefit the Special Collections Department of the University Library by supporting acquisitions of books manuscripts, and other library materials in the field on natural history, and for no other purpose.\r\n"
+	}],
+	"field_summary": [{
+		"value": "The Dorothy Smith Berkeley and Edmund Berkeley Natural History Endowed Fund was created in 1994 by Edmund Berkeley, Jr. and Elizabeth M. Berkeley of Charlottesville, Virginia, in honor of Edmund Berkeley Jr\u0027s parents. The fund is used to benefit the Special Collections Department of the University Library by supporting acquisitions of books, manuscripts, and other library materials in the field of natural history.\r\n"
+	}]
+}, {
+	"nid": [{
+		"value": 472
+	}],
+	"uuid": [{
+		"value": "d23e8ca0-a007-4db1-8d32-959402cf8a7c"
+	}],
+	"vid": [{
+		"value": 1849
+	}],
+	"langcode": [{
+		"value": "en"
+	}],
+	"type": [{
+		"target_id": "bookplate",
+		"target_type": "node_type",
+		"target_uuid": "36d64862-bbb0-42e9-bcf8-29da6062483d"
+	}],
+	"revision_timestamp": [{
+		"value": 1502287020
+	}],
+	"revision_uid": [{
+		"target_id": 21,
+		"target_type": "user",
+		"target_uuid": "0072a370-c021-452d-ac5f-3b5c3ded6d71",
+		"url": "\/user\/21"
+	}],
+	"revision_log": [],
+	"status": [{
+		"value": true
+	}],
+	"uid": [{
+		"target_id": 21,
+		"target_type": "user",
+		"target_uuid": "0072a370-c021-452d-ac5f-3b5c3ded6d71",
+		"url": "\/user\/21"
+	}],
+	"title": [{
+		"value": "Martin C. and Ruthe R. Battestin Library Fund"
+	}],
+	"created": [{
+		"value": 1494603240
+	}],
+	"changed": [{
+		"value": 1502287020
+	}],
+	"promote": [{
+		"value": true
+	}],
+	"sticky": [{
+		"value": false
+	}],
+	"default_langcode": [{
+		"value": true
+	}],
+	"revision_translation_affected": [{
+		"value": true
+	}],
+	"path": [{
+		"alias": null,
+		"pid": null,
+		"langcode": "en"
+	}],
+	"publish_on": [],
+	"unpublish_on": [],
+	"body": [{
+		"value": "\u003Cp\u003EBattestin, Martin C. and Ruthe R. Library Fund\u003C\/p\u003E\r\n",
+		"format": "basic_html",
+		"processed": "\u003Cp\u003EBattestin, Martin C. and Ruthe R. Library Fund\u003C\/p\u003E",
+		"summary": ""
+	}],
+	"field_bookplate_image": [],
+	"field_date": [],
+	"field_fund": [{
+		"value": "ER02018"
+	}],
+	"field_fund_award_name": [{
+		"value": "LB-Battestin Library Fund"
+	}],
+	"field_fund_id": [{
+		"value": "BATTESTIN-ER02018"
+	}],
+	"field_restriction_summary": [{
+		"value": "\u0022The income of the fund shall be used solely for the acquisition of manuscripts and rare books for Special Collections at the University of Virginia Library.\r\nAny unexpended income in any given year shall be added to principal in continuing support of the Fund purpose.\u0022\r\n"
+	}],
+	"field_summary": [{
+		"value": "The Martin C. and Ruthe R. Battestin Library Fund was established in 2008.  The fund is used solely for the acquisition of manuscripts and rare books for Special Collections at the University of Virginia Library.  Martin C. Battestin was a professor of English ar UVA and renowned Fielding scholar. \r\n"
+	}]
+}, {
+	"nid": [{
+		"value": 471
+	}],
+	"uuid": [{
+		"value": "9a1d5ca0-f9a6-4d7e-9bb7-309f0a36f01e"
+	}],
+	"vid": [{
+		"value": 1916
+	}],
+	"langcode": [{
+		"value": "en"
+	}],
+	"type": [{
+		"target_id": "bookplate",
+		"target_type": "node_type",
+		"target_uuid": "36d64862-bbb0-42e9-bcf8-29da6062483d"
+	}],
+	"revision_timestamp": [{
+		"value": 1502299548
+	}],
+	"revision_uid": [{
+		"target_id": 21,
+		"target_type": "user",
+		"target_uuid": "0072a370-c021-452d-ac5f-3b5c3ded6d71",
+		"url": "\/user\/21"
+	}],
+	"revision_log": [],
+	"status": [{
+		"value": true
+	}],
+	"uid": [{
+		"target_id": 21,
+		"target_type": "user",
+		"target_uuid": "0072a370-c021-452d-ac5f-3b5c3ded6d71",
+		"url": "\/user\/21"
+	}],
+	"title": [{
+		"value": "Battestin Fund for 18th Century British Literature"
+	}],
+	"created": [{
+		"value": 1494601866
+	}],
+	"changed": [{
+		"value": 1502299548
+	}],
+	"promote": [{
+		"value": true
+	}],
+	"sticky": [{
+		"value": false
+	}],
+	"default_langcode": [{
+		"value": true
+	}],
+	"revision_translation_affected": [{
+		"value": true
+	}],
+	"path": [{
+		"alias": null,
+		"pid": null,
+		"langcode": "en"
+	}],
+	"publish_on": [],
+	"unpublish_on": [],
+	"body": [],
+	"field_bookplate_image": [],
+	"field_date": [],
+	"field_fund": [{
+		"value": "DR00516"
+	}],
+	"field_fund_award_name": [{
+		"value": "LB-Battestin-18th C Brit-Lit."
+	}],
+	"field_fund_id": [{
+		"value": "BATTESTIN-DR00516"
+	}],
+	"field_restriction_summary": [],
+	"field_summary": [{
+		"value": "The Battestin Fund for 18th Century British Literature was established in 2000.  The fund is for the purchase of books or manuscripts relating to British literature of the 18th century.\r\n\r\n"
+	}]
+}, {
+	"nid": [{
+		"value": 470
+	}],
+	"uuid": [{
+		"value": "54cf6580-43a3-49cc-8d5b-5f472d1520a3"
+	}],
+	"vid": [{
+		"value": 4901
+	}],
+	"langcode": [{
+		"value": "en"
+	}],
+	"type": [{
+		"target_id": "bookplate",
+		"target_type": "node_type",
+		"target_uuid": "36d64862-bbb0-42e9-bcf8-29da6062483d"
+	}],
+	"revision_timestamp": [{
+		"value": 1531512156
+	}],
+	"revision_uid": [{
+		"target_id": 25,
+		"target_type": "user",
+		"target_uuid": "e5d6e6d6-d64e-4c47-9225-90e5bb4b2d00",
+		"url": "\/user\/25"
+	}],
+	"revision_log": [],
+	"status": [{
+		"value": true
+	}],
+	"uid": [{
+		"target_id": 21,
+		"target_type": "user",
+		"target_uuid": "0072a370-c021-452d-ac5f-3b5c3ded6d71",
+		"url": "\/user\/21"
+	}],
+	"title": [{
+		"value": "Library Associates Endowment for Rare Books and Manuscripts "
+	}],
+	"created": [{
+		"value": 1494600405
+	}],
+	"changed": [{
+		"value": 1531512156
+	}],
+	"promote": [{
+		"value": true
+	}],
+	"sticky": [{
+		"value": false
+	}],
+	"default_langcode": [{
+		"value": true
+	}],
+	"revision_translation_affected": [{
+		"value": true
+	}],
+	"path": [{
+		"alias": null,
+		"pid": null,
+		"langcode": "en"
+	}],
+	"publish_on": [],
+	"unpublish_on": [],
+	"body": [{
+		"value": "\u003Cp\u003ELibrary Assoc Endwmt For Rare Books \u0026amp; Manuscripts\u003C\/p\u003E\r\n",
+		"format": "basic_html",
+		"processed": "\u003Cp\u003ELibrary Assoc Endwmt For Rare Books \u0026amp; Manuscripts\u003C\/p\u003E",
+		"summary": ""
+	}],
+	"field_bookplate_image": [{
+		"target_id": 1302,
+		"alt": "Gift of the Associates of the University",
+		"title": "",
+		"width": 263,
+		"height": 477,
+		"target_type": "file",
+		"target_uuid": "271a6bcf-4d04-4a55-8c63-7db39e9a74d2",
+		"url": "https:\/\/drupal.lib.virginia.edu\/sites\/default\/files\/bookplates\/associates.png"
+	}],
+	"field_date": [{
+		"value": "2005-01-01"
+	}],
+	"field_fund": [{
+		"value": "ER00570"
+	}],
+	"field_fund_award_name": [{
+		"value": "LB-Lib Assoc-Rare Books \u0026 Manuscripts"
+	}],
+	"field_fund_id": [{
+		"value": "ASSOCIATES-ER00570"
+	}],
+	"field_restriction_summary": [{
+		"value": "For the Alderman Library for the purchase of rare books and manuscripts.\r\n"
+	}],
+	"field_summary": [{
+		"value": "The Library Associates Endowment for Rare Books and Manuscripts was established by the Board of Directors of the Associates of the University of Virginia Library in 1984.  The fund is for the purchase of rare books and manuscripts relating to, complementing and supplementing the Library\u0027s current collections.\r\n"
+	}]
+}, {
+	"nid": [{
+		"value": 469
+	}],
+	"uuid": [{
+		"value": "5b51f982-0cc4-4d9a-8db6-254b62f10809"
+	}],
+	"vid": [{
+		"value": 1843
+	}],
+	"langcode": [{
+		"value": "en"
+	}],
+	"type": [{
+		"target_id": "bookplate",
+		"target_type": "node_type",
+		"target_uuid": "36d64862-bbb0-42e9-bcf8-29da6062483d"
+	}],
+	"revision_timestamp": [{
+		"value": 1502285402
+	}],
+	"revision_uid": [{
+		"target_id": 21,
+		"target_type": "user",
+		"target_uuid": "0072a370-c021-452d-ac5f-3b5c3ded6d71",
+		"url": "\/user\/21"
+	}],
+	"revision_log": [],
+	"status": [{
+		"value": true
+	}],
+	"uid": [{
+		"target_id": 21,
+		"target_type": "user",
+		"target_uuid": "0072a370-c021-452d-ac5f-3b5c3ded6d71",
+		"url": "\/user\/21"
+	}],
+	"title": [{
+		"value": "American Literature Library Fund"
+	}],
+	"created": [{
+		"value": 1494599892
+	}],
+	"changed": [{
+		"value": 1502285402
+	}],
+	"promote": [{
+		"value": true
+	}],
+	"sticky": [{
+		"value": false
+	}],
+	"default_langcode": [{
+		"value": true
+	}],
+	"revision_translation_affected": [{
+		"value": true
+	}],
+	"path": [{
+		"alias": null,
+		"pid": null,
+		"langcode": "en"
+	}],
+	"publish_on": [],
+	"unpublish_on": [],
+	"body": [{
+		"value": "\u003Cp\u003EAmerican Literature Library Fund\u003C\/p\u003E\r\n",
+		"format": "basic_html",
+		"processed": "\u003Cp\u003EAmerican Literature Library Fund\u003C\/p\u003E",
+		"summary": ""
+	}],
+	"field_bookplate_image": [],
+	"field_date": [],
+	"field_fund": [{
+		"value": "ER00651"
+	}],
+	"field_fund_award_name": [{
+		"value": "LB-American Lit-Library"
+	}],
+	"field_fund_id": [{
+		"value": "AMLIT-ER00651"
+	}],
+	"field_restriction_summary": [{
+		"value": "The income from the Fund, but none of the principal, shall be used to benefit the Library\u0027s special collections by supporting the acquisition of books, manuscripts, and other library materials relating to American Literature.\r\n"
+	}],
+	"field_summary": [{
+		"value": "The American Literature Library Fund was established by Betty L. and L. Frazier Fall of Charlottesville, Virginia, in 1997.  The fund benefits the Library\u0027s special collections by supporting the acquisition of books, manuscripts, and other library materials relating to American Literature.\r\n"
+	}]
+}, {
+	"nid": [{
+		"value": 468
+	}],
+	"uuid": [{
+		"value": "d7b2c6c3-2060-4cfb-9a99-63a5d7e0011d"
+	}],
+	"vid": [{
+		"value": 979
+	}],
+	"langcode": [{
+		"value": "en"
+	}],
+	"type": [{
+		"target_id": "bookplate",
+		"target_type": "node_type",
+		"target_uuid": "36d64862-bbb0-42e9-bcf8-29da6062483d"
+	}],
+	"revision_timestamp": [{
+		"value": 1494597440
+	}],
+	"revision_uid": [{
+		"target_id": 12,
+		"target_type": "user",
+		"target_uuid": "439d086d-5c77-4435-8ce2-0d00e5f90bed",
+		"url": "\/user\/12"
+	}],
+	"revision_log": [],
+	"status": [{
+		"value": true
+	}],
+	"uid": [{
+		"target_id": 12,
+		"target_type": "user",
+		"target_uuid": "439d086d-5c77-4435-8ce2-0d00e5f90bed",
+		"url": "\/user\/12"
+	}],
+	"title": [{
+		"value": "LA-CAPLIN"
+	}],
+	"created": [{
+		"value": 1494597424
+	}],
+	"changed": [{
+		"value": 1494597440
+	}],
+	"promote": [{
+		"value": true
+	}],
+	"sticky": [{
+		"value": false
+	}],
+	"default_langcode": [{
+		"value": true
+	}],
+	"revision_translation_affected": [{
+		"value": true
+	}],
+	"path": [{
+		"alias": null,
+		"pid": null,
+		"langcode": "en"
+	}],
+	"publish_on": [],
+	"unpublish_on": [],
+	"body": [],
+	"field_bookplate_image": [],
+	"field_date": [],
+	"field_fund": [{
+		"value": "DR02202"
+	}],
+	"field_fund_award_name": [],
+	"field_fund_id": [{
+		"value": "LA-CAPLIN"
+	}],
+	"field_restriction_summary": [],
+	"field_summary": []
+}, {
+	"nid": [{
+		"value": 467
+	}],
+	"uuid": [{
+		"value": "266c607d-da8e-431c-b14e-fc0f0bc99839"
+	}],
+	"vid": [{
+		"value": 1878
+	}],
+	"langcode": [{
+		"value": "en"
+	}],
+	"type": [{
+		"target_id": "bookplate",
+		"target_type": "node_type",
+		"target_uuid": "36d64862-bbb0-42e9-bcf8-29da6062483d"
+	}],
+	"revision_timestamp": [{
+		"value": 1502291505
+	}],
+	"revision_uid": [{
+		"target_id": 21,
+		"target_type": "user",
+		"target_uuid": "0072a370-c021-452d-ac5f-3b5c3ded6d71",
+		"url": "\/user\/21"
+	}],
+	"revision_log": [],
+	"status": [{
+		"value": true
+	}],
+	"uid": [{
+		"target_id": 12,
+		"target_type": "user",
+		"target_uuid": "439d086d-5c77-4435-8ce2-0d00e5f90bed",
+		"url": "\/user\/12"
+	}],
+	"title": [{
+		"value": "The Gilbert Schuyler Bahn Endowed Fund established with remembrance of the service to America of Govenor Paul Vories McNutt of Indiana, Senator Alva Blanchard Adams of Colorado, and Senator Guy Mark Gillette of Iowa"
+	}],
+	"created": [{
+		"value": 1494597283
+	}],
+	"changed": [{
+		"value": 1502291505
+	}],
+	"promote": [{
+		"value": true
+	}],
+	"sticky": [{
+		"value": false
+	}],
+	"default_langcode": [{
+		"value": true
+	}],
+	"revision_translation_affected": [{
+		"value": true
+	}],
+	"path": [{
+		"alias": null,
+		"pid": null,
+		"langcode": "en"
+	}],
+	"publish_on": [],
+	"unpublish_on": [],
+	"body": [{
+		"value": "\u003Cp\u003EBahn, Gilbert Schuyler Endowed Fund\u003C\/p\u003E\r\n",
+		"format": "basic_html",
+		"processed": "\u003Cp\u003EBahn, Gilbert Schuyler Endowed Fund\u003C\/p\u003E",
+		"summary": ""
+	}],
+	"field_bookplate_image": [{
+		"target_id": 609,
+		"alt": "\u0022\u0022",
+		"title": "",
+		"width": 1194,
+		"height": 1363,
+		"target_type": "file",
+		"target_uuid": "50a7a0d5-48f7-42b4-bce0-8dc806760863",
+		"url": "https:\/\/drupal.lib.virginia.edu\/sites\/default\/files\/bookplates\/20170622102739905_Page_1_bahn.png"
+	}],
+	"field_date": [],
+	"field_fund": [{
+		"value": "ER00644"
+	}],
+	"field_fund_award_name": [{
+		"value": "LB-Bahn, Gilbert S"
+	}],
+	"field_fund_id": [{
+		"value": "BAHN-ER00644"
+	}],
+	"field_restriction_summary": [{
+		"value": "The income from the Fund, but none of the principal, shall be used for the acquisition and preservation of appropriate manuscripts or printed work.  Income of the Fund shall be devoted to works in American History from its colonial beginnings forward, preferably relating to the growth, development, express, and appreciation of the American system of government."
+	}],
+	"field_summary": [{
+		"value": "The Gilbert Schuyler Bahn Endowed Fund was established in 1993 in remembrance of the service to America of Governor Paul Vories McNutt of Indiana, Senator Alva Blanchard Adams of Colorado, and Senator Guy Mark Gillette of Iowa.  The fund is devoted to the acquisition and preservation of works in American History from its colonial beginnings forward, preferably relating to the growth, development, expression, and appreciation of the American system of government.\r\n\r\nOn Bookplate:\r\nSpecial Collections University of Virginia Library. Provided by Gilbert Schuyler Bahn Endowed Fund. \u0022Established with remembrance of the service to America of Governor Paul Vories McNutt of Indiana, Senator Alva Blanchard Adams of Colorado, and Senator Guy Mark Gillette of Iowa,\u0022 Army officers in WWI, officers of the Federal Government during WWII, American patriots and decent men for whom stars did shine and to whom rainbows did beckon. \r\n"
+	}]
+}, {
+	"nid": [{
+		"value": 466
+	}],
+	"uuid": [{
+		"value": "ed33bd30-40e2-47cf-a173-a87b3e7e39a3"
+	}],
+	"vid": [{
+		"value": 1841
+	}],
+	"langcode": [{
+		"value": "en"
+	}],
+	"type": [{
+		"target_id": "bookplate",
+		"target_type": "node_type",
+		"target_uuid": "36d64862-bbb0-42e9-bcf8-29da6062483d"
+	}],
+	"revision_timestamp": [{
+		"value": 1502284951
+	}],
+	"revision_uid": [{
+		"target_id": 21,
+		"target_type": "user",
+		"target_uuid": "0072a370-c021-452d-ac5f-3b5c3ded6d71",
+		"url": "\/user\/21"
+	}],
+	"revision_log": [],
+	"status": [{
+		"value": true
+	}],
+	"uid": [{
+		"target_id": 12,
+		"target_type": "user",
+		"target_uuid": "439d086d-5c77-4435-8ce2-0d00e5f90bed",
+		"url": "\/user\/12"
+	}],
+	"title": [{
+		"value": "Agelasto Family Library Fund for Special Collections"
+	}],
+	"created": [{
+		"value": 1494536994
+	}],
+	"changed": [{
+		"value": 1502284951
+	}],
+	"promote": [{
+		"value": true
+	}],
+	"sticky": [{
+		"value": false
+	}],
+	"default_langcode": [{
+		"value": true
+	}],
+	"revision_translation_affected": [{
+		"value": true
+	}],
+	"path": [{
+		"alias": null,
+		"pid": null,
+		"langcode": "en"
+	}],
+	"publish_on": [],
+	"unpublish_on": [],
+	"body": [{
+		"value": "\u003Cp\u003EAgelasto Family Library Fund For Special Collections\u003C\/p\u003E\r\n",
+		"format": "basic_html",
+		"processed": "\u003Cp\u003EAgelasto Family Library Fund For Special Collections\u003C\/p\u003E",
+		"summary": ""
+	}],
+	"field_bookplate_image": [],
+	"field_date": [],
+	"field_fund": [{
+		"value": "ER00660"
+	}],
+	"field_fund_award_name": [{
+		"value": "LB-Agelasto Family"
+	}],
+	"field_fund_id": [{
+		"value": "AGELASTO-ER00660"
+	}],
+	"field_restriction_summary": [{
+		"value": "The income from the Fund, but none of the principal, shall be used to support the acquisition of special collections of rare books, manuscripts, and other library materials, including a program to encourage annual donations by others for such acquisitions."
+	}],
+	"field_summary": [{
+		"value": "The Agelasto Family Library Fund for Special Collections was established by the Agelasto Family of Virginia Beach, Virginia, in 1998. The fund was created to support the acquisition of rare books, manuscripts, and other library materials, as well as a program to encourage annual donations for such acquisitions.\r\n"
+	}]
+}]

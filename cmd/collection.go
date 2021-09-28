@@ -33,8 +33,6 @@ type solrResponse struct {
 
 type collectionRec struct {
 	ID          int64  `db:"id"`
-	Key         string `db:"key"`
-	Type        string `db:"type"`
 	Description string `db:"description"`
 	FilterName  string `db:"filter_name"`
 	FilterValue string `db:"filter_value"`
@@ -48,8 +46,6 @@ func (c collectionRec) TableName() string {
 }
 
 type collectionJSON struct {
-	Key         string   `json:"key"`
-	Type        string   `json:"type"`
 	Description string   `json:"description"`
 	FilterName  string   `json:"filter_name"`
 	FilterValue string   `json:"filter_value"`
@@ -77,7 +73,7 @@ func (svc *ServiceContext) getCollectionContext(c *gin.Context) {
 		return
 	}
 
-	out := collectionJSON{Key: rec.Key, Type: rec.Type, Description: rec.Description, FilterName: rec.FilterName,
+	out := collectionJSON{Description: rec.Description, FilterName: rec.FilterName,
 		FilterValue: rec.FilterValue, StartDate: rec.StartDate, EndDate: rec.EndDate, Features: make([]string, 0)}
 
 	log.Printf("INFO: get collection [%s] features", rawName)

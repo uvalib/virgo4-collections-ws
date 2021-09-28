@@ -1,0 +1,5 @@
+BEGIN;
+ALTER TABLE collections ADD COLUMN key VARCHAR (80) UNIQUE NOT NULL default '';
+ALTER TABLE collections ADD COLUMN type VARCHAR (80) UNIQUE NOT NULL default '';
+
+COMMIT;

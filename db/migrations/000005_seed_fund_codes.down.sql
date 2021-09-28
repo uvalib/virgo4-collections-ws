@@ -1,0 +1,1 @@
+truncate TABLE fund_codes CASCADE;
