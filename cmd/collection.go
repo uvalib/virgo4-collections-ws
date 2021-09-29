@@ -32,12 +32,12 @@ type solrResponse struct {
 }
 
 type collectionRec struct {
-	ID          int64  `db:"id"`
-	Description string `db:"description"`
-	FilterName  string `db:"filter_name"`
-	FilterValue string `db:"filter_value"`
-	StartDate   string `db:"start_date"`
-	EndDate     string `db:"end_date"`
+	ID          int64          `db:"id"`
+	Description string         `db:"description"`
+	FilterName  string         `db:"filter_name"`
+	FilterValue string         `db:"filter_value"`
+	StartDate   sql.NullString `db:"start_date"`
+	EndDate     sql.NullString `db:"end_date"`
 }
 
 // TableName sets the name of the table in the DB that this struct binds to
@@ -45,46 +45,84 @@ func (c collectionRec) TableName() string {
 	return "collections"
 }
 
-type collectionJSON struct {
-	Description string   `json:"description"`
-	FilterName  string   `json:"filter_name"`
-	FilterValue string   `json:"filter_value"`
-	StartDate   string   `json:"start_date,omitempty"`
-	EndDate     string   `json:"end_date,omitempty"`
-	Features    []string `json:"features"`
+type imageRec struct {
+	AltText  sql.NullString `db:"alt_text"`
+	Title    sql.NullString `db:"title"`
+	Width    int            `db:"width"`
+	Height   int            `db:"height"`
+	Filename string         `db:"filename"`
 }
 
-func (svc *ServiceContext) getCollectionContext(c *gin.Context) {
-	rawName := c.Param("name")
-	log.Printf("INFO: get collection context for [%s]", rawName)
+// TableName sets the name of the table in the DB that this struct binds to
+func (c imageRec) TableName() string {
+	return "images"
+}
+
+type imageJSON struct {
+	AltText string `json:"alt_text,omitempty"`
+	Title   string `json:"title,omitempty"`
+	Width   int    `json:"width"`
+	Height  int    `json:"height"`
+	URL     string `json:"filename"`
+}
+
+type collectionJSON struct {
+	ID          int64       `json:"id"`
+	Description string      `json:"description"`
+	FilterName  string      `json:"filter_name"`
+	FilterValue string      `json:"filter_value"`
+	StartDate   string      `json:"start_date,omitempty"`
+	EndDate     string      `json:"end_date,omitempty"`
+	Features    []string    `json:"features"`
+	Images      []imageJSON `json:"images"`
+}
+
+func (svc *ServiceContext) lookupCollectionContext(c *gin.Context) {
+	rawName := c.Query("q")
+	log.Printf("INFO: lookup collection context for [%s]", rawName)
+
+	// first see if the passed query is a descriptive name for a bookplate collection
+	fVal := ""
+	q := svc.DB.NewQuery("select fund_code from fund_codes where name={:n}")
+	q.Bind(dbx.Params{"n": rawName})
+	err := q.Row(&fVal)
+	if err != nil {
+		fVal = rawName
+	}
 
 	var rec collectionRec
-	q := svc.DB.NewQuery("select * from collections where filter_value={:fv}")
-	q.Bind(dbx.Params{"fv": rawName})
-	err := q.One(&rec)
+	q = svc.DB.NewQuery("select * from collections where filter_value={:fv}")
+	q.Bind(dbx.Params{"fv": fVal})
+	err = q.One(&rec)
 	if err != nil {
 		if err == sql.ErrNoRows {
-			log.Printf("INFO: no collecction context found for %s", rawName)
+			log.Printf("INFO: no collection context found for %s", fVal)
 			c.String(http.StatusNotFound, "not found")
 		} else {
-			log.Printf("ERROR: contexed lookup for %s failed: %s", rawName, err.Error())
+			log.Printf("ERROR: contexed lookup for %s failed: %s", fVal, err.Error())
 			c.String(http.StatusInternalServerError, err.Error())
 		}
 		return
 	}
 
-	out := collectionJSON{Description: rec.Description, FilterName: rec.FilterName,
-		FilterValue: rec.FilterValue, StartDate: rec.StartDate, EndDate: rec.EndDate, Features: make([]string, 0)}
+	out := collectionJSON{ID: rec.ID, Description: rec.Description, FilterName: rec.FilterName,
+		FilterValue: rec.FilterValue, Features: make([]string, 0), Images: make([]imageJSON, 0)}
+	if rec.StartDate.Valid {
+		out.StartDate = rec.StartDate.String
+	}
+	if rec.EndDate.Valid {
+		out.EndDate = rec.EndDate.String
+	}
 
-	log.Printf("INFO: get collection [%s] features", rawName)
+	log.Printf("INFO: get collection [%s] features", fVal)
 	q = svc.DB.NewQuery("select f.name from features f inner join collection_features cf on cf.feature_id = f.id where cf.collection_id={:cid}")
 	q.Bind(dbx.Params{"cid": rec.ID})
 	rows, err := q.Rows()
 	if err != nil {
 		if err == sql.ErrNoRows {
-			log.Printf("INFO: no features found for collection [%s]", rawName)
+			log.Printf("INFO: no features found for collection [%s]", fVal)
 		} else {
-			log.Printf("ERROR: unable to lookup features for [%s]: %s", rawName, err.Error())
+			log.Printf("ERROR: unable to lookup features for [%s]: %s", fVal, err.Error())
 		}
 	} else {
 		for rows.Next() {
@@ -94,18 +132,68 @@ func (svc *ServiceContext) getCollectionContext(c *gin.Context) {
 		}
 	}
 
+	log.Printf("INFO: get collection [%s] images", fVal)
+	var images []imageRec
+	q = svc.DB.NewQuery("select * from images where collection_id={:cid}")
+	q.Bind(dbx.Params{"cid": rec.ID})
+	err = q.All(&images)
+	if err != nil {
+		if err == sql.ErrNoRows {
+			log.Printf("INFO: no images found for collection [%s]", fVal)
+		} else {
+			log.Printf("ERROR: unable to lookup images for [%s]: %s", fVal, err.Error())
+		}
+	} else {
+		for _, img := range images {
+			imgJSON := imageJSON{Width: img.Width, Height: img.Height}
+			if img.AltText.Valid {
+				imgJSON.AltText = img.AltText.String
+			}
+			if img.Title.Valid {
+				imgJSON.Title = img.Title.String
+			}
+			imgJSON.URL = fmt.Sprintf("%s/%s", svc.BaseImageURL, img.Filename)
+			out.Images = append(out.Images, imgJSON)
+		}
+	}
+
 	c.JSON(http.StatusOK, out)
 }
 
+// collection middleware accepts a collection ID and finds the associated filter value
+func (svc *ServiceContext) collectionMiddleware(c *gin.Context) {
+	id := c.Param("id")
+	log.Printf("INFO: lookup collection id %s", id)
+
+	q := svc.DB.NewQuery("select filter_value from collections where id={:id}")
+	q.Bind(dbx.Params{"id": id})
+	name := ""
+	err := q.Row(&name)
+	if err != nil {
+		if err == sql.ErrNoRows {
+			log.Printf("INFO: collection %s not found", id)
+			c.AbortWithStatus(http.StatusNotFound)
+		} else {
+			log.Printf("ERROR: get collection %s failed: %s", id, err.Error())
+			c.AbortWithStatus(http.StatusInternalServerError)
+		}
+		return
+	}
+
+	c.Set("key", name)
+	log.Printf("INFO collection id %s=[%s]", id, name)
+	c.Next()
+}
+
 func (svc *ServiceContext) getCollectioDates(c *gin.Context) {
-	name := c.Param("name")
+	key := c.GetString("key")
 	year := c.Query("year")
 	if year == "" {
 		log.Printf("ERROR: year is required")
 		c.String(http.StatusBadRequest, "year param is required")
 		return
 	}
-	log.Printf("INFO: get all item publication dates for %s in %s", year, name)
+	log.Printf("INFO: get all item publication dates for %s in %s", year, key)
 
 	qParams := make([]string, 0)
 	qParams = append(qParams, "fl=id,published_date")
@@ -113,7 +201,7 @@ func (svc *ServiceContext) getCollectioDates(c *gin.Context) {
 	qParams = append(qParams, "start=0")
 	qParams = append(qParams, "sort=published_date%20asc")
 	q := fmt.Sprintf("digital_collection_f:\"%s\"+published_date:[%s-01-01T00:00:00.000Z TO %s-12-31T00:00:00.000Z]",
-		name, year, year)
+		key, year, year)
 	qParams = append(qParams, fmt.Sprintf("q=%s", url.QueryEscape(q)))
 	solrURL := fmt.Sprintf("%s?%s", svc.Solr.selectURL(), strings.Join(qParams, "&"))
 	resp, err := svc.getAPIResponse(solrURL)
@@ -149,9 +237,9 @@ func (svc *ServiceContext) getCollectioDates(c *gin.Context) {
 }
 
 func (svc *ServiceContext) getPreviousItem(c *gin.Context) {
-	name := c.Param("name")
+	key := c.GetString("key")
 	date := c.Param("date")
-	log.Printf("INFO: navigate to item after %s in %s", date, name)
+	log.Printf("INFO: navigate to item after %s in %s", date, key)
 
 	// subtract 1 milisecond from the passed time; convert to time, then subtract,
 	// then back to string
@@ -162,7 +250,7 @@ func (svc *ServiceContext) getPreviousItem(c *gin.Context) {
 
 	qParams := make([]string, 0)
 	qParams = append(qParams, "fl=id")
-	q := fmt.Sprintf("digital_collection_f:\"%s\"+published_date:[* TO %s]", name, date)
+	q := fmt.Sprintf("digital_collection_f:\"%s\"+published_date:[* TO %s]", key, date)
 	qParams = append(qParams, fmt.Sprintf("q=%s", url.QueryEscape(q)))
 	qParams = append(qParams, "rows=1")
 	qParams = append(qParams, "start=0")
@@ -189,12 +277,12 @@ func (svc *ServiceContext) getPreviousItem(c *gin.Context) {
 }
 
 func (svc *ServiceContext) getNextItem(c *gin.Context) {
-	name := c.Param("name")
+	key := c.GetString("key")
 	date := c.Param("date")
-	log.Printf("INFO: navigate to item before %s in %s", date, name)
+	log.Printf("INFO: navigate to item before %s in %s", date, key)
 	qParams := make([]string, 0)
 	qParams = append(qParams, "fl=id")
-	q := fmt.Sprintf("digital_collection_f:\"%s\"+published_date:[%sT00:00:00.001Z TO *]", name, date)
+	q := fmt.Sprintf("digital_collection_f:\"%s\"+published_date:[%sT00:00:00.001Z TO *]", key, date)
 	qParams = append(qParams, fmt.Sprintf("q=%s", url.QueryEscape(q)))
 	qParams = append(qParams, "rows=1")
 	qParams = append(qParams, "start=0")

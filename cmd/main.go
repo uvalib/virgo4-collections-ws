@@ -13,7 +13,7 @@ import (
 )
 
 // Version of the service
-const version = "1.0.0"
+const version = "2.0.0"
 
 func main() {
 	log.Printf("===> Collections Context service starting up <===")
@@ -44,10 +44,10 @@ func main() {
 	router.GET("/favicon.ico", svc.ignoreFavicon)
 	router.GET("/version", svc.getVersion)
 	router.GET("/healthcheck", svc.healthCheck)
-	router.GET("/collections/:name", svc.getCollectionContext)
-	router.GET("/collections/:name/dates", svc.getCollectioDates)
-	router.GET("/collections/:name/items/:date/next", svc.getNextItem)
-	router.GET("/collections/:name/items/:date/previous", svc.getPreviousItem)
+	router.GET("/lookup", svc.lookupCollectionContext)
+	router.GET("/collections/:id/dates", svc.collectionMiddleware, svc.getCollectioDates)
+	router.GET("/collections/:id/items/:date/next", svc.collectionMiddleware, svc.getNextItem)
+	router.GET("/collections/:id/items/:date/previous", svc.collectionMiddleware, svc.getPreviousItem)
 
 	portStr := fmt.Sprintf(":%d", cfg.Port)
 	log.Printf("INFO: start service v%s on port %s", version, portStr)

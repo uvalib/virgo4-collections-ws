@@ -27,9 +27,10 @@ func (sc *SolrConfig) selectURL() string {
 
 // ServiceConfig defines all of the JRML pool configuration parameters
 type ServiceConfig struct {
-	Port int
-	Solr SolrConfig
-	DB   DBConfig
+	Port         int
+	Solr         SolrConfig
+	DB           DBConfig
+	ImageBaseURL string
 }
 
 // LoadConfiguration will load the service configuration from the commandline
@@ -40,6 +41,7 @@ func LoadConfiguration() *ServiceConfig {
 	flag.IntVar(&cfg.Port, "port", 8080, "API service port (default 8080)")
 	flag.StringVar(&cfg.Solr.URL, "solr", "", "Solr URL")
 	flag.StringVar(&cfg.Solr.Core, "core", "test_core", "Solr core")
+	flag.StringVar(&cfg.ImageBaseURL, "imgurl", "", "Image base URL")
 
 	// DB connection params
 	flag.StringVar(&cfg.DB.Host, "dbhost", "localhost", "Database host")
@@ -56,6 +58,9 @@ func LoadConfiguration() *ServiceConfig {
 	if cfg.Solr.Core == "" {
 		log.Fatal("Parameter core is required")
 	}
+	if cfg.ImageBaseURL == "" {
+		log.Fatal("Parameter imgurl is required")
+	}
 
 	if cfg.DB.Host == "" {
 		log.Fatal("Parameter dbhost is required")
@@ -71,6 +76,7 @@ func LoadConfiguration() *ServiceConfig {
 	}
 
 	log.Printf("[CONFIG] port          = [%d]", cfg.Port)
+	log.Printf("[CONFIG] imgurl        = [%s]", cfg.ImageBaseURL)
 	log.Printf("[CONFIG] solr          = [%s]", cfg.Solr.URL)
 	log.Printf("[CONFIG] core          = [%s]", cfg.Solr.Core)
 	log.Printf("[CONFIG] dbhost        = [%s]", cfg.DB.Host)

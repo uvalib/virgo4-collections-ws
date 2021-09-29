@@ -19,15 +19,16 @@ import (
 
 // ServiceContext contains common data used by all handlers
 type ServiceContext struct {
-	Version    string
-	Solr       SolrConfig
-	HTTPClient *http.Client
-	DB         *dbx.DB
+	Version      string
+	BaseImageURL string
+	Solr         SolrConfig
+	HTTPClient   *http.Client
+	DB           *dbx.DB
 }
 
 // InitializeService sets up the service context for all API handlers
 func InitializeService(version string, cfg *ServiceConfig) *ServiceContext {
-	ctx := ServiceContext{Version: version, Solr: cfg.Solr}
+	ctx := ServiceContext{Version: version, Solr: cfg.Solr, BaseImageURL: cfg.ImageBaseURL}
 
 	log.Printf("Connect to Postgres")
 	connStr := fmt.Sprintf("user=%s password=%s dbname=%s host=%s port=%d sslmode=disable",
