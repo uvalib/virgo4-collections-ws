@@ -34,6 +34,7 @@ type solrResponse struct {
 type collectionRec struct {
 	ID          int64          `db:"id"`
 	Description string         `db:"description"`
+	ItemLabel   string         `db:"item_label"`
 	FilterName  string         `db:"filter_name"`
 	FilterValue string         `db:"filter_value"`
 	StartDate   sql.NullString `db:"start_date"`
@@ -69,6 +70,7 @@ type imageJSON struct {
 type collectionJSON struct {
 	ID          int64       `json:"id"`
 	Description string      `json:"description"`
+	ItemLabel   string      `json:"item_label"`
 	FilterName  string      `json:"filter_name"`
 	FilterValue string      `json:"filter_value"`
 	StartDate   string      `json:"start_date,omitempty"`
@@ -106,7 +108,8 @@ func (svc *ServiceContext) lookupCollectionContext(c *gin.Context) {
 	}
 
 	out := collectionJSON{ID: rec.ID, Description: rec.Description, FilterName: rec.FilterName,
-		FilterValue: rec.FilterValue, Features: make([]string, 0), Images: make([]imageJSON, 0)}
+		FilterValue: rec.FilterValue, ItemLabel: rec.ItemLabel,
+		Features: make([]string, 0), Images: make([]imageJSON, 0)}
 	if rec.StartDate.Valid {
 		out.StartDate = rec.StartDate.String
 	}

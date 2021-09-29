@@ -1,0 +1,1 @@
+ALTER TABLE collections DROP COLUMN item_label;
