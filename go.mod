@@ -14,7 +14,7 @@ require (
 	github.com/lib/pq v1.10.3
 	github.com/mattn/go-isatty v0.0.14 // indirect
 	github.com/prometheus/client_golang v1.11.0
-	github.com/prometheus/common v0.31.0 // indirect
+	github.com/prometheus/common v0.31.1 // indirect
 	github.com/prometheus/procfs v0.7.3 // indirect
 	github.com/sirupsen/logrus v1.8.1 // indirect
 	github.com/ugorji/go v1.2.6 // indirect

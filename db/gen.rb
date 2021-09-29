@@ -67,6 +67,7 @@ File.readlines('solr-bookplates.txt').each do |line|
       else
          # puts "     MATCH: #{clean}:#{code} -> #{code_info}"
          fund_codes.push( "('#{clean}', '#{code}')" )
+         code_info[:title] = clean
          collection_info << code_info
       end
       next
@@ -80,6 +81,7 @@ File.readlines('solr-bookplates.txt').each do |line|
          # puts "  MATCH: #{clean}:#{code} -> #{code_info}"
          fund_codes.push( "('#{clean}', '#{code}')" )
          match = true
+         code_info[:title] = clean
          collection_info << code_info
          break
       end
@@ -139,4 +141,11 @@ puts "DONE: #{count} bookplate names. MISSING: #{missed.length}, FOUND: #{fund_c
 #    end
 #    id += 1
 # end
+
+id = 2
+collection_info.each do |ci|
+   title = ci[:title].gsub(/\'/, "''")
+   puts "UPDATE collections set title='#{title}' where id=#{id};"
+   id += 1
+end
 
