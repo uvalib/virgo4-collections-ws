@@ -113,18 +113,30 @@ puts "DONE: #{count} bookplate names. MISSING: #{missed.length}, FOUND: #{fund_c
 # end
 
 
-id = 2
-puts "INSERT into images (collection_id, alt_text, title, width, height, filename) VALUES"
-collection_info.each do |ci|
-   img = ci[:image]
-   if img[:filename] != ""
-      val = "   (#{id}, '#{img[:alt]}', '#{img[:title]}', #{img[:width]}, #{img[:height]}, '#{img[:filename]}' )"
-      if ci == collection_info.last
-         puts "#{val};"
-      else
-         puts "#{val},"
-      end
-   end
-   id += 1
-end
+# id = 2
+# puts "INSERT into images (collection_id, alt_text, title, width, height, filename) VALUES"
+# collection_info.each do |ci|
+#    img = ci[:image]
+#    if img[:filename] != ""
+#       val = "   (#{id}, '#{img[:alt]}', '#{img[:title]}', #{img[:width]}, #{img[:height]}, '#{img[:filename]}' )"
+#       if ci == collection_info.last
+#          puts "#{val};"
+#       else
+#          puts "#{val},"
+#       end
+#    end
+#    id += 1
+# end
+
+# id = 2
+# puts "INSERT into collection_features (collection_id, feature_id) VALUES"
+# collection_info.each do |ci|
+#    val = "   ( #{id}, 5 )"
+#    if ci == collection_info.last
+#       puts "#{val};"
+#    else
+#       puts "#{val},"
+#    end
+#    id += 1
+# end
 

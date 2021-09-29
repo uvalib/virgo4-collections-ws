@@ -1,0 +1,1 @@
+TRUNCATE table collection_features;
