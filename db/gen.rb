@@ -10,7 +10,7 @@ def code_details(data, code)
          img = {width: 0, height: 0, title: "", alt: "", filename: ""}
          raw_sumary = rec['field_summary'].first
          if !raw_sumary.nil?
-            summary = raw_sumary['value']
+            summary = raw_sumary['value'].strip
          end
          raw_image_info = rec['field_bookplate_image'].first
          if !raw_image_info.nil?
@@ -25,9 +25,10 @@ def code_details(data, code)
             return nil
          end
 
-         return {summary: summary, image: img}
+         return {code: code, summary: summary, image: img}
       end
    end
+   # puts "     Nothing found for #{code} in drupal"
    return nil
 end
 
@@ -44,16 +45,17 @@ csv.each do |row|
    mappings[row[1]].push(row[0])
 end
 
-missed = 0
-found = 0
+missed = []
 fund_codes = []
+collection_info = []
+count = 0
 # These are the full fund (collection) name from the solr index
 File.readlines('solr-bookplates.txt').each do |line|
+   count += 1
    clean = line.strip
    # puts "=====> SOLR COLLECTION [#{clean}]"
    if !mappings.key?(clean)
-      puts "     #{clean} NOT IN fund-codes.csv"
-      missed+=1
+      missed << "#{clean} (no code)"
       next
    end
 
@@ -61,33 +63,68 @@ File.readlines('solr-bookplates.txt').each do |line|
       code = mappings[clean].first
       code_info = code_details(data, code)
       if code_info.nil?
-         puts "     #{clean}:#{code} NO MAPPING FOUND"
-         missed+= 1
+         missed << "#{clean} : #{code}"
       else
          # puts "     MATCH: #{clean}:#{code} -> #{code_info}"
          fund_codes.push( "('#{clean}', '#{code}')" )
-         found += 1
+         collection_info << code_info
       end
       next
    end
 
    match = false
+   # puts "  MULTIPLE CODES FOR [#{clean}]"
    mappings[clean].each do | code |
       code_info = code_details(data, code)
       if !code_info.nil?
-         # puts "     MATCH: #{clean}:#{code} -> #{code_info}"
+         # puts "  MATCH: #{clean}:#{code} -> #{code_info}"
          fund_codes.push( "('#{clean}', '#{code}')" )
          match = true
-         found += 1
+         collection_info << code_info
          break
       end
    end
    if !match
-      puts "     #{clean}: NO MAPPING FOUND (Multiple Options)"
-      missed !=1
+      # puts "     #{clean}: NO MAPPING FOUND (Multiple Options)"
+      missed << "#{clean} : #{ mappings[clean].join(", ")}"
    end
 end
-puts "#{missed} missing, FOUND: #{found}"
+puts "DONE: #{count} bookplate names. MISSING: #{missed.length}, FOUND: #{fund_codes.length}"
+# puts "MISSING NAMES:"
+# puts missed.join("\n")
+# puts FUND CODES:"
+# puts fund_codes.join("\n")
+
+
 # fc_vals = fund_codes.join(",\n")
 # puts "INSERT into fund_codes (name,fund_code) VALUES #{fc_vals};"
+
+# id = 2
+# puts "INSERT into collections (id,description,filter_name,filter_value) VALUES"
+# collection_info.each do |ci|
+#    summary = ci[:summary].gsub(/\'/, "''")
+#    val = "   (#{id}, '#{summary}', 'FilterFundCode', '#{ci[:code]}')"
+#    if ci == collection_info.last
+#       puts "#{val};"
+#    else
+#       puts "#{val},"
+#    end
+#    id += 1
+# end
+
+
+id = 2
+puts "INSERT into images (collection_id, alt_text, title, width, height, filename) VALUES"
+collection_info.each do |ci|
+   img = ci[:image]
+   if img[:filename] != ""
+      val = "   (#{id}, '#{img[:alt]}', '#{img[:title]}', #{img[:width]}, #{img[:height]}, '#{img[:filename]}' )"
+      if ci == collection_info.last
+         puts "#{val};"
+      else
+         puts "#{val},"
+      end
+   end
+   id += 1
+end
 
