@@ -37,7 +37,6 @@ type collectionRec struct {
 	Description string         `db:"description"`
 	ItemLabel   string         `db:"item_label"`
 	FilterName  string         `db:"filter_name"`
-	FilterValue string         `db:"filter_value"`
 	StartDate   sql.NullString `db:"start_date"`
 	EndDate     sql.NullString `db:"end_date"`
 }
@@ -65,7 +64,7 @@ type imageJSON struct {
 	Title   string `json:"title,omitempty"`
 	Width   int    `json:"width"`
 	Height  int    `json:"height"`
-	URL     string `json:"filename"`
+	URL     string `json:"url"`
 }
 
 type collectionJSON struct {
@@ -74,7 +73,6 @@ type collectionJSON struct {
 	Description string      `json:"description"`
 	ItemLabel   string      `json:"item_label"`
 	FilterName  string      `json:"filter_name"`
-	FilterValue string      `json:"filter_value"`
 	StartDate   string      `json:"start_date,omitempty"`
 	EndDate     string      `json:"end_date,omitempty"`
 	Features    []string    `json:"features"`
@@ -85,33 +83,23 @@ func (svc *ServiceContext) lookupCollectionContext(c *gin.Context) {
 	rawName := c.Query("q")
 	log.Printf("INFO: lookup collection context for [%s]", rawName)
 
-	// first see if the passed query is a descriptive name for a bookplate collection
-	fVal := ""
-	q := svc.DB.NewQuery("select fund_code from fund_codes where name={:n}")
-	q.Bind(dbx.Params{"n": rawName})
-	err := q.Row(&fVal)
-	if err != nil {
-		fVal = rawName
-	}
-
 	var rec collectionRec
-	q = svc.DB.NewQuery("select * from collections where filter_value={:fv}")
-	q.Bind(dbx.Params{"fv": fVal})
-	err = q.One(&rec)
+	q := svc.DB.NewQuery("select * from collections where filter_value={:fv}")
+	q.Bind(dbx.Params{"fv": rawName})
+	err := q.One(&rec)
 	if err != nil {
 		if err == sql.ErrNoRows {
-			log.Printf("INFO: no collection context found for %s", fVal)
+			log.Printf("INFO: no collection context found for %s", rawName)
 			c.String(http.StatusNotFound, "not found")
 		} else {
-			log.Printf("ERROR: contexed lookup for %s failed: %s", fVal, err.Error())
+			log.Printf("ERROR: contexed lookup for %s failed: %s", rawName, err.Error())
 			c.String(http.StatusInternalServerError, err.Error())
 		}
 		return
 	}
 
 	out := collectionJSON{ID: rec.ID, Title: rec.Title, Description: rec.Description, FilterName: rec.FilterName,
-		FilterValue: rec.FilterValue, ItemLabel: rec.ItemLabel,
-		Features: make([]string, 0), Images: make([]imageJSON, 0)}
+		ItemLabel: rec.ItemLabel, Features: make([]string, 0), Images: make([]imageJSON, 0)}
 	if rec.StartDate.Valid {
 		out.StartDate = rec.StartDate.String
 	}
@@ -119,15 +107,15 @@ func (svc *ServiceContext) lookupCollectionContext(c *gin.Context) {
 		out.EndDate = rec.EndDate.String
 	}
 
-	log.Printf("INFO: get collection [%s] features", fVal)
+	log.Printf("INFO: get collection [%s] features", rawName)
 	q = svc.DB.NewQuery("select f.name from features f inner join collection_features cf on cf.feature_id = f.id where cf.collection_id={:cid}")
 	q.Bind(dbx.Params{"cid": rec.ID})
 	rows, err := q.Rows()
 	if err != nil {
 		if err == sql.ErrNoRows {
-			log.Printf("INFO: no features found for collection [%s]", fVal)
+			log.Printf("INFO: no features found for collection [%s]", rawName)
 		} else {
-			log.Printf("ERROR: unable to lookup features for [%s]: %s", fVal, err.Error())
+			log.Printf("ERROR: unable to lookup features for [%s]: %s", rawName, err.Error())
 		}
 	} else {
 		for rows.Next() {
@@ -137,16 +125,16 @@ func (svc *ServiceContext) lookupCollectionContext(c *gin.Context) {
 		}
 	}
 
-	log.Printf("INFO: get collection [%s] images", fVal)
+	log.Printf("INFO: get collection [%s] images", rawName)
 	var images []imageRec
 	q = svc.DB.NewQuery("select * from images where collection_id={:cid}")
 	q.Bind(dbx.Params{"cid": rec.ID})
 	err = q.All(&images)
 	if err != nil {
 		if err == sql.ErrNoRows {
-			log.Printf("INFO: no images found for collection [%s]", fVal)
+			log.Printf("INFO: no images found for collection [%s]", rawName)
 		} else {
-			log.Printf("ERROR: unable to lookup images for [%s]: %s", fVal, err.Error())
+			log.Printf("ERROR: unable to lookup images for [%s]: %s", rawName, err.Error())
 		}
 	} else {
 		for _, img := range images {
@@ -170,7 +158,7 @@ func (svc *ServiceContext) collectionMiddleware(c *gin.Context) {
 	id := c.Param("id")
 	log.Printf("INFO: lookup collection id %s", id)
 
-	q := svc.DB.NewQuery("select filter_value from collections where id={:id}")
+	q := svc.DB.NewQuery("select title from collections where id={:id}")
 	q.Bind(dbx.Params{"id": id})
 	name := ""
 	err := q.Row(&name)
