@@ -102,7 +102,7 @@ puts "DONE: #{count} bookplate names. MISSING: #{missed.length}, FOUND: #{fund_c
 # puts "INSERT into fund_codes (name,fund_code) VALUES #{fc_vals};"
 
 # id = 2
-# puts "INSERT into collections (id,description,filter_name,filter_value) VALUES"
+# puts "INSERT into collections (id,description,filter_name,title) VALUES"
 # collection_info.each do |ci|
 #    summary = ci[:summary].gsub(/\'/, "''")
 #    val = "   (#{id}, '#{summary}', 'FilterFundCode', '#{ci[:code]}')"

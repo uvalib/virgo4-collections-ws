@@ -84,7 +84,7 @@ func (svc *ServiceContext) lookupCollectionContext(c *gin.Context) {
 	log.Printf("INFO: lookup collection context for [%s]", rawName)
 
 	var rec collectionRec
-	q := svc.DB.NewQuery("select * from collections where filter_value={:fv}")
+	q := svc.DB.NewQuery("select * from collections where title={:fv}")
 	q.Bind(dbx.Params{"fv": rawName})
 	err := q.One(&rec)
 	if err != nil {
