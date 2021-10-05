@@ -34,7 +34,7 @@ type solrResponse struct {
 type collectionRec struct {
 	ID          int64          `db:"id"`
 	Title       string         `db:"title"`
-	Description string         `db:"description"`
+	Description sql.NullString `db:"description"`
 	ItemLabel   string         `db:"item_label"`
 	FilterName  string         `db:"filter_name"`
 	StartDate   sql.NullString `db:"start_date"`
@@ -98,8 +98,11 @@ func (svc *ServiceContext) lookupCollectionContext(c *gin.Context) {
 		return
 	}
 
-	out := collectionJSON{ID: rec.ID, Title: rec.Title, Description: rec.Description, FilterName: rec.FilterName,
+	out := collectionJSON{ID: rec.ID, Title: rec.Title, FilterName: rec.FilterName,
 		ItemLabel: rec.ItemLabel, Features: make([]string, 0), Images: make([]imageJSON, 0)}
+	if rec.Description.Valid {
+		out.Description = rec.Description.String
+	}
 	if rec.StartDate.Valid {
 		out.StartDate = rec.StartDate.String
 	}
