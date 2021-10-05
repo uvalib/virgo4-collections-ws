@@ -1,0 +1,1 @@
+DELETE from collection_features where collection_id = 1 AND feature_id = 1;
