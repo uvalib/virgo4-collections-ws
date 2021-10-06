@@ -7,6 +7,7 @@ import (
 	"log"
 	"net/http"
 	"net/url"
+	"strconv"
 	"strings"
 	"time"
 
@@ -187,6 +188,17 @@ func (svc *ServiceContext) getCollectioDates(c *gin.Context) {
 	if year == "" {
 		log.Printf("ERROR: year is required")
 		c.String(http.StatusBadRequest, "year param is required")
+		return
+	}
+	if len(year) != 4 {
+		log.Printf("ERROR: year %s is invalid", year)
+		c.String(http.StatusBadRequest, "year param must be of the format YYYY")
+		return
+	}
+	_, err := strconv.Atoi(year)
+	if err != nil {
+		log.Printf("ERROR: year %s is invalid: %s", year, err.Error())
+		c.String(http.StatusBadRequest, "year param must be of the format YYYY")
 		return
 	}
 	log.Printf("INFO: get all item publication dates for %s in %s", year, key)
