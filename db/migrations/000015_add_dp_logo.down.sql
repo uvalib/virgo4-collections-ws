@@ -1,0 +1,1 @@
+DELETE from images where collection_id = 1;
