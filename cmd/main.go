@@ -5,7 +5,6 @@ import (
 	"log"
 
 	"github.com/gin-contrib/cors"
-	"github.com/gin-contrib/gzip"
 	"github.com/gin-gonic/gin"
 	"github.com/prometheus/client_golang/prometheus"
 	"github.com/prometheus/client_golang/prometheus/promhttp"
@@ -26,14 +25,12 @@ func main() {
 	gin.SetMode(gin.ReleaseMode)
 	gin.DisableConsoleColor()
 	router := gin.Default()
-	router.Use(gzip.Gzip(gzip.DefaultCompression))
 
-	// corsCfg := cors.DefaultConfig()
-	// corsCfg.AllowAllOrigins = true
-	// corsCfg.AllowCredentials = true
-	// router.Use(cors.New(corsCfg))
-
-	router.Use(cors.Default())
+	config := cors.DefaultConfig()
+	config.AllowAllOrigins = true
+	config.AllowCredentials = true
+	config.AddAllowHeaders("authorization")
+	router.Use(cors.New(config))
 
 	p := ginprometheus.NewPrometheus("gin")
 
