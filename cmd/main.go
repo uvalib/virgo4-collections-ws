@@ -13,7 +13,7 @@ import (
 )
 
 // Version of the service
-const version = "2.1.0"
+const version = "2.1.1"
 
 func main() {
 	log.Printf("===> Collections Context service starting up <===")
@@ -28,10 +28,12 @@ func main() {
 	router := gin.Default()
 	router.Use(gzip.Gzip(gzip.DefaultCompression))
 
-	corsCfg := cors.DefaultConfig()
-	corsCfg.AllowAllOrigins = true
-	corsCfg.AllowCredentials = true
-	router.Use(cors.New(corsCfg))
+	// corsCfg := cors.DefaultConfig()
+	// corsCfg.AllowAllOrigins = true
+	// corsCfg.AllowCredentials = true
+	// router.Use(cors.New(corsCfg))
+
+	router.Use(cors.Default())
 
 	p := ginprometheus.NewPrometheus("gin")
 
