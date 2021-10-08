@@ -7,10 +7,11 @@ Requires Go 1.16.0+
 ### Current API
 
 * GET /version - get version information
-* GET /lookup?q=[target name] - lookup collection context for a named collection. Ex: Daily Progress Digitized Microfilm
-* GET /collections/:id/dates?year=YYYY - get publication dates for a collection year
-* GET /collections/:id/items/:date/next - get the next published item; date format=yyyy-mm-dd
-* GET /collections/:id/items/:date/previous - get the previous published item; date format=yyyy-mm-dd
+* GET /healthcheck - check the system status
+* GET /api/lookup?q=[target name] - lookup collection context for a named collection. Ex: Daily Progress Digitized Microfilm
+* GET /api/collections/:id/dates?year=YYYY - get publication dates for a collection year
+* GET /api/collections/:id/items/:date/next - get the next published item; date format=yyyy-mm-dd
+* GET /api/collections/:id/items/:date/previous - get the previous published item; date format=yyyy-mm-dd
 
 ### Database Notes
 
