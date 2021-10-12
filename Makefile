@@ -9,33 +9,44 @@ GOMOD = $(GOCMD) mod
 
 BASENAME=virgo4-collections-ws
 
-build: darwin
+build: darwin web
 
-all: darwin linux
+all: darwin linux web
+
+linux-full: linux web
+
+darwin-full: darwin web
+
+web:
+	mkdir -p bin/
+	cd frontend && yarn install && yarn build
+	rm -rf bin/public
+	mv frontend/dist bin/public
 
 darwin:
-	GOOS=darwin GOARCH=amd64 $(GOBUILD) -a -o bin/$(BASENAME).darwin cmd/*.go
+	GOOS=darwin GOARCH=amd64 $(GOBUILD) -a -o bin/$(BASENAME).darwin backend/*.go
 
 linux:
-	CGO_ENABLED=0 GOOS=linux GOARCH=amd64 $(GOBUILD) -a -installsuffix cgo -o bin/$(BASENAME).linux cmd/*.go
+	CGO_ENABLED=0 GOOS=linux GOARCH=amd64 $(GOBUILD) -a -installsuffix cgo -o bin/$(BASENAME).linux backend/*.go
 
 clean:
-	$(GOCLEAN) cmd/
+	$(GOCLEAN) backend/
 	rm -rf bin
 
 fmt:
-	cd cmd; $(GOFMT)
+	cd backend; $(GOFMT)
 
 vet:
-	cd cmd; $(GOVET)
+	cd backend; $(GOVET)
 
 dep:
-	$(GOGET) -u ./cmd/...
+	cd frontend && yarn upgrade
+	$(GOGET) -u ./backend/...
 	$(GOMOD) tidy
 	$(GOMOD) verify
 
 check:
-	go install honnef.co/go/tools/cmd/staticcheck
-	$(HOME)/go/bin/staticcheck -checks all,-S1002,-ST1003 cmd/*.go
-	go install golang.org/x/tools/go/analysis/passes/shadow/cmd/shadow
-	$(GOVET) -vettool=$(HOME)/go/bin/shadow ./cmd/...
+	go install honnef.co/go/tools/backend/staticcheck
+	$(HOME)/go/bin/staticcheck -checks all,-S1002,-ST1003 backend/*.go
+	go install golang.org/x/tools/go/analysis/passes/shadow/backend/shadow
+	$(GOVET) -vettool=$(HOME)/go/bin/shadow ./backend/...

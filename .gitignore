@@ -13,5 +13,6 @@ env.*
 /pkg
 run.sh
 curls.txt
+node_modules/
 package/scripts/build.ksh
 package/scripts/shell.ksh

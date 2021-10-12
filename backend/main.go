@@ -6,6 +6,7 @@ import (
 
 	"github.com/gin-contrib/cors"
 	"github.com/gin-contrib/gzip"
+	"github.com/gin-gonic/contrib/static"
 	"github.com/gin-gonic/gin"
 	"github.com/prometheus/client_golang/prometheus"
 	"github.com/prometheus/client_golang/prometheus/promhttp"
@@ -56,6 +57,17 @@ func main() {
 		api.GET("/collections/:id/items/:date/next", svc.collectionMiddleware, svc.getNextItem)
 		api.GET("/collections/:id/items/:date/previous", svc.collectionMiddleware, svc.getPreviousItem)
 	}
+
+	// Note: in dev mode, this is never actually used. The front end is served
+	// by yarn and it proxies all requests to the API to the routes above
+	router.Use(static.Serve("/", static.LocalFile("./public", true)))
+
+	// add a catchall route that renders the index page.
+	// based on no-history config setup info here:
+	//    https://router.vuejs.org/guide/essentials/history-mode.html#example-server-configurations
+	router.NoRoute(func(c *gin.Context) {
+		c.File("./public/index.html")
+	})
 
 	portStr := fmt.Sprintf(":%d", cfg.Port)
 	log.Printf("INFO: start service v%s on port %s", version, portStr)
