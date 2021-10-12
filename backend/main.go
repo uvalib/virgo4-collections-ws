@@ -46,7 +46,6 @@ func main() {
 		h.ServeHTTP(c.Writer, c.Request)
 	})
 
-	router.GET("/", svc.getVersion)
 	router.GET("/favicon.ico", svc.ignoreFavicon)
 	router.GET("/version", svc.getVersion)
 	router.GET("/healthcheck", svc.healthCheck)
