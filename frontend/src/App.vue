@@ -7,7 +7,7 @@
             </a>
          </div>
          <div class="site-link">
-           <router-link to="/">Collections Admin</router-link>
+           <router-link to="/">Collections Management</router-link>
          </div>
       </div>
       <router-view />

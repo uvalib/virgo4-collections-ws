@@ -52,6 +52,7 @@ func main() {
 	api := router.Group("/api")
 	{
 		api.GET("/lookup", svc.lookupCollectionContext)
+		api.GET("/collections", svc.userMiddleware, svc.getCollections)
 		api.GET("/collections/:id/dates", svc.collectionMiddleware, svc.getCollectioDates)
 		api.GET("/collections/:id/items/:date/next", svc.collectionMiddleware, svc.getNextItem)
 		api.GET("/collections/:id/items/:date/previous", svc.collectionMiddleware, svc.getPreviousItem)
