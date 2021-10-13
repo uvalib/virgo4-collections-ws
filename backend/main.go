@@ -52,6 +52,7 @@ func main() {
 	api := router.Group("/api")
 	{
 		api.GET("/lookup", svc.lookupCollectionContext)
+		api.GET("/features", svc.userMiddleware, svc.getFeatures)
 		api.GET("/collections", svc.userMiddleware, svc.getCollections)
 		api.GET("/collections/:id", svc.userMiddleware, svc.getCollectionDetails)
 		api.GET("/collections/:id/dates", svc.collectionMiddleware, svc.getCollectioDates)

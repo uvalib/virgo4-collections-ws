@@ -9,6 +9,25 @@ import (
 	dbx "github.com/go-ozzo/ozzo-dbx"
 )
 
+func (svc *ServiceContext) getFeatures(c *gin.Context) {
+	user := c.GetString("user")
+	log.Printf("INFO: %s is requesting a list of features", user)
+	type featureResp struct {
+		ID   int64  `db:"id" json:"id"`
+		Name string `db:"name" json:"name"`
+	}
+	var features []featureResp
+	q := svc.DB.NewQuery("select id,name from features order by name asc")
+	err := q.All(&features)
+	if err != nil {
+		log.Printf("ERROR: unable to get features: %s", err.Error())
+		c.String(http.StatusInternalServerError, err.Error())
+		return
+	}
+
+	c.JSON(http.StatusOK, features)
+}
+
 func (svc *ServiceContext) getCollections(c *gin.Context) {
 	user := c.GetString("user")
 	log.Printf("INFO: %s is requesting a list of collections", user)

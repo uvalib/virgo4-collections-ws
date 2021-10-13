@@ -65,6 +65,9 @@ export default {
    },
    methods: {
       collectionClicked(id) {
+         this.$store.commit("clearDetails")
+         this.$store.commit("setAdding", false)
+         this.$store.commit("setEditing", false)
          this.$store.dispatch("getCollectionDetail", id)
       },
       editSelected() {
@@ -83,6 +86,7 @@ export default {
    },
    created() {
       this.$store.dispatch("getCollections")
+      this.$store.dispatch("getFeatures")
    }
 }
 </script>
@@ -148,7 +152,6 @@ export default {
     .details {
        border-radius: 5px;
        min-height: 600px;
-       max-height: 600px;
        padding: 20px 20px 0 0;
        .hint {
          font-size: 1.25em;

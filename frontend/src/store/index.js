@@ -8,6 +8,7 @@ export default createStore({
       selectedID: -1,
       editing: false,
       adding: false,
+      features: [],
       details: {
          id: -1,
          title: "",
@@ -59,6 +60,10 @@ export default createStore({
       setEditing(state, flag) {
          state.editing = flag
       },
+      setFeatures(state, data) {
+         state.features.splice(0, state.features.length)
+         data.forEach( f => state.features.push(f))
+      },
       setFatalError(state, err) {
          state.fatal = err
       },
@@ -78,6 +83,13 @@ export default createStore({
          }).catch((e) => {
             ctx.commit("setFatalError", e)
             ctx.commit("setWorking", false)
+         })
+      },
+      getFeatures(ctx) {
+         axios.get("/api/features").then(resp => {
+            ctx.commit("setFeatures", resp.data)
+         }).catch((e) => {
+            ctx.commit("setFatalError", e)
          })
       },
       getCollectionDetail(ctx, id) {
