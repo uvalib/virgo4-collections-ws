@@ -27,7 +27,12 @@
          <span v-if="hasError('filter')" class="error">Facet Name is required</span>
       </dd>
       <dt>Features:</dt>
-      <dd>{{details.features.join(", ")}}</dd>
+      <dd>
+         <template v-for="f in features" :key="`f${f.id}`">
+            <input type="checkbox" :id="`f${f.id}`" :value="f.id" v-model="collection.features" />
+            <label class="cb-label" :for="`f${f.id}`">{{ f.name }}</label>
+         </template>
+      </dd>
       <dt>Logo Title:</dt>
       <dd>
             <input type="text" v-model="collection.imageTitle" id="image-title"/>
@@ -52,6 +57,7 @@ export default {
       ...mapState({
          selectedID: state => state.selectedID,
          details: state => state.details,
+         features: state => state.features,
       })
    },
    data: function()  {
@@ -86,7 +92,13 @@ export default {
          this.collection.startDate = this.details.startDate
          this.collection.endDate = this.details.endDate
          this.collection.filter = this.details.filter
-         this.collection.features = this.details.features
+         this.collection.features = []
+         this.details.features.forEach( f => {
+            let data = this.features.find( sf => sf.name == f)
+            if (data) {
+               this.collection.features.push(data.id)
+            }
+         })
          if (this.details.image) {
             this.collection.imageTitle = this.details.image.title
             this.collection.imageAlt = this.details.image.alt_text
@@ -115,8 +127,14 @@ dl {
       -webkit-hyphens: auto;
       -moz-hyphens: auto;
       hyphens: auto;
-      input {
+      input[type=text] {
          width: 100%;
+      }
+      input[type=checkbox] {
+         margin: 0 5px 0 0;
+      }
+      .cb-label {
+         margin-right: 20px;
       }
       textarea {
          width: 100%;
