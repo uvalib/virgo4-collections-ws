@@ -69,15 +69,15 @@ type imageJSON struct {
 }
 
 type collectionJSON struct {
-	ID          int64       `json:"id"`
-	Title       string      `json:"title"`
-	Description string      `json:"description"`
-	ItemLabel   string      `json:"item_label"`
-	FilterName  string      `json:"filter_name"`
-	StartDate   string      `json:"start_date,omitempty"`
-	EndDate     string      `json:"end_date,omitempty"`
-	Features    []string    `json:"features"`
-	Images      []imageJSON `json:"images"`
+	ID          int64      `json:"id"`
+	Title       string     `json:"title"`
+	Description string     `json:"description"`
+	ItemLabel   string     `json:"item_label"`
+	FilterName  string     `json:"filter_name"`
+	StartDate   string     `json:"start_date,omitempty"`
+	EndDate     string     `json:"end_date,omitempty"`
+	Features    []string   `json:"features"`
+	Image       *imageJSON `json:"image,omitempty"`
 }
 
 func (coll *collectionJSON) getFeatures(db *dbx.DB) {
@@ -102,10 +102,10 @@ func (coll *collectionJSON) getFeatures(db *dbx.DB) {
 
 func (coll *collectionJSON) getImages(db *dbx.DB, baseImageURL string) {
 	log.Printf("INFO: get collection [%s] images", coll.Title)
-	var images []imageRec
-	q := db.NewQuery("select * from images where collection_id={:cid}")
+	var image imageRec
+	q := db.NewQuery("select * from images where collection_id={:cid} limit 1")
 	q.Bind(dbx.Params{"cid": coll.ID})
-	err := q.All(&images)
+	err := q.One(&image)
 	if err != nil {
 		if err == sql.ErrNoRows {
 			log.Printf("INFO: no images found for collection [%s]", coll.Title)
@@ -113,24 +113,21 @@ func (coll *collectionJSON) getImages(db *dbx.DB, baseImageURL string) {
 			log.Printf("ERROR: unable to lookup images for [%s]: %s", coll.Title, err.Error())
 		}
 	} else {
-		for _, img := range images {
-			imgJSON := imageJSON{Width: img.Width, Height: img.Height}
-			if img.AltText.Valid {
-				imgJSON.AltText = img.AltText.String
-			}
-			if img.Title.Valid {
-				imgJSON.Title = img.Title.String
-			}
-			imgJSON.URL = fmt.Sprintf("%s/%s", baseImageURL, img.Filename)
-			coll.Images = append(coll.Images, imgJSON)
+		imgJSON := imageJSON{Width: image.Width, Height: image.Height}
+		if image.AltText.Valid {
+			imgJSON.AltText = image.AltText.String
 		}
+		if image.Title.Valid {
+			imgJSON.Title = image.Title.String
+		}
+		imgJSON.URL = fmt.Sprintf("%s/%s", baseImageURL, image.Filename)
+		coll.Image = &imgJSON
 	}
 }
 
 // initialize JSON collection data from a DB rec
 func collectionfromDB(rec collectionRec) *collectionJSON {
-	c := collectionJSON{ID: rec.ID, Title: rec.Title, FilterName: rec.FilterName, ItemLabel: rec.ItemLabel,
-		Features: make([]string, 0), Images: make([]imageJSON, 0)}
+	c := collectionJSON{ID: rec.ID, Title: rec.Title, FilterName: rec.FilterName, ItemLabel: rec.ItemLabel, Features: make([]string, 0)}
 	if rec.Description.Valid {
 		c.Description = rec.Description.String
 	}

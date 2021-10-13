@@ -14,7 +14,7 @@ import (
 )
 
 // Version of the service
-const version = "2.1.1"
+const version = "2.2.0"
 
 func main() {
 	log.Printf("===> Collections Context service starting up <===")
