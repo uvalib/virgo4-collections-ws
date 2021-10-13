@@ -1,6 +1,6 @@
 <template>
    <div class="home">
-      <h1>Virgo Collections Management</h1>
+      <h1>Collections Management</h1>
       <wait-spinner v-if="working && selectedID == -1" message="Initializing system..."/>
       <div v-else class="content">
          <div class="list-wrap">
@@ -13,14 +13,32 @@
                   {{c.title}}
                </div>
             </div>
+            <div class="list-buttons">
+               <uva-button @click="addCollectionClicked">Add Collection</uva-button>
+            </div>
          </div>
          <div class="detail-wrap">
-             <h2>Details</h2>
+            <h2>
+               <span>Details</span>
+               <span class="detail-butons">
+                  <template v-if="editing">
+                     <uva-button @click="cancelEdit" class="cancel">Cancel</uva-button>
+                     <uva-button>Submit</uva-button>
+                  </template>
+                  <template v-else-if="adding">
+                     <uva-button @click="cancelEdit" class="cancel">Cancel</uva-button>
+                     <uva-button>Create</uva-button>
+                  </template>
+                  <template v-else-if="selectedID > -1">
+                     <uva-button class="delete">Delete</uva-button>
+                     <uva-button @click="editSelected">Edit</uva-button>
+                  </template>
+               </span>
+            </h2>
              <div class="details">
-                <div v-if="selectedID == -1" class="hint">Select a collection from the list on the left to view and edit the collection details.</div>
-                <template v-else>
-                   <collection-detail v-if="!editing" />
-                </template>
+               <collection-detail v-if="selectedID > -1 && !adding && !editing" />
+               <div v-if="selectedID == -1 && !adding" class="hint">Select a collection from the list on the left to view and edit the collection details.</div>
+               <edit-collection  v-if="editing || adding" />
              </div>
          </div>
       </div>
@@ -30,10 +48,11 @@
 <script>
 import { mapState } from "vuex"
 import CollectionDetail from '../components/CollectionDetail.vue'
+import EditCollection from '../components/EditCollection.vue'
 export default {
    name: 'Home',
    components: {
-      CollectionDetail
+      CollectionDetail,EditCollection
    },
    computed: {
       ...mapState({
@@ -41,14 +60,25 @@ export default {
          collections: state => state.collections,
          selectedID: state => state.selectedID,
          editing: state => state.editing,
+         adding: state => state.adding,
       })
    },
    methods: {
       collectionClicked(id) {
          this.$store.dispatch("getCollectionDetail", id)
-         // let ele = document.getElementById(`c${id}`)
-         // ele.scrollIntoView()
-         // console.log("scrolled")
+      },
+      editSelected() {
+         this.$store.commit("setEditing", true)
+         this.$store.commit("setAdding", false)
+      },
+      cancelEdit() {
+         this.$store.commit("setEditing", false)
+         this.$store.commit("setAdding", false)
+      },
+      addCollectionClicked() {
+         this.$store.commit("clearDetails")
+         this.$store.commit("setAdding", true)
+         this.$store.commit("setEditing", false)
       }
    },
    created() {
@@ -88,10 +118,31 @@ export default {
     .detail-wrap {
        flex-basis: 75%;
        h2 {
+         display: flex;
+         flex-flow: row nowrap;
+         justify-content: space-between;
          background: white;
          border: 0;
          border-bottom: 2px solid var(--uvalib-grey);
          border-radius: 0;
+         padding: 5px 0px 5px 5px;
+         .delete  {
+            margin-right: 5px;
+            background: #a00;
+            border-color: #800;
+            &:hover {
+               background: #c00;
+            }
+         }
+         .cancel {
+            margin-right: 5px;
+            background-color: var(--uvalib-grey-lightest);
+            border: 1px solid var(--uvalib-grey);
+            color: black;
+            &:hover {
+               background-color: var(--uvalib-grey-light);
+            }
+         }
       }
     }
     .details {
@@ -111,12 +162,13 @@ export default {
       border: 1px solid #aaa;
       padding: 0;
       border-radius: 0 0 5px 5px;
-      max-height: 600px;
+      max-height: 570px;
       width: 100%;
       overflow: scroll;
       margin: 0;
       box-sizing: border-box;
       border-top: 0;
+      box-shadow:0 2px 4px rgba(0, 0, 0, 0.10), 0 2px 4px rgba(0, 0, 0, 0.12);
       .item {
          margin: 0;
          cursor: pointer;
@@ -130,6 +182,10 @@ export default {
          background: var(--uvalib-brand-blue-light);
          color: white;
       }
+   }
+   .list-buttons {
+      margin: 10px 0;
+      text-align: right;
    }
 }
 </style>

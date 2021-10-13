@@ -7,6 +7,7 @@ export default createStore({
       collections: [],
       selectedID: -1,
       editing: false,
+      adding: false,
       details: {
          id: -1,
          title: "",
@@ -25,6 +26,18 @@ export default createStore({
          state.collections.splice(0, state.collections.length)
          data.forEach(c => state.collections.push(c))
       },
+      clearDetails(state) {
+         state.selectedID = -1
+         state.details.id = -1,
+         state.details.title = ""
+         state.details.description = ""
+         state.details.itemLabel = "Issue"
+         state.details.startDate = ""
+         state.details.endDate = ""
+         state.details.filter = ""
+         state.details.features.splice(0, state.details.features.length)
+         state.details.image = null
+      },
       setCollectionDetail(state, data) {
          state.details.image = null
          if (data.image) {
@@ -39,6 +52,9 @@ export default createStore({
          state.details.startDate = data.start_date
          state.details.endDate = data.end_date
          state.details.filter = data.filter_name
+      },
+      setAdding(state, flag) {
+         state.adding = flag
       },
       setEditing(state, flag) {
          state.editing = flag

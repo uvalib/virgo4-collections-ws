@@ -71,7 +71,6 @@
         <p class="copy">
            <span>Copyright {{ new Date().getFullYear() }} by the Rector and Visitors of the
               <a href="http://www.virginia.edu/">University of Virginia</a></span>
-           <span class="version">&nbsp;-&nbsp;v{{version}}</span>
         </p>
      </div>
    </div>
@@ -93,9 +92,6 @@ export default {
    },
    methods: {
    },
-   mounted() {
-      this.$store.dispatch("getVersion")
-   }
 }
 </script>
 

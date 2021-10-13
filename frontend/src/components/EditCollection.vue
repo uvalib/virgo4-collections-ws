@@ -2,32 +2,27 @@
    <dl>
       <dt>Title:</dt>
       <dd>
-         <template v-if="details.title">{{details.title}}</template>
-         <span v-else class="na">N/A</span>
+
       </dd>
       <dt>Description:</dt>
       <dd>
-         <span v-if="details.description" v-html="details.description"></span>
-         <span v-else class="na">N/A</span>
+
       </dd>
       <dt>Item Label:</dt>
       <dd>
-         <template v-if="details.itemLabel">{{details.itemLabel}}</template>
-         <span v-else class="na">N/A</span>
+
       </dd>
       <dt>Start Date:</dt>
       <dd>
-         <template v-if="details.startDate">{{details.startDate}}</template>
-         <span v-else class="na">N/A</span>
+
       </dd>
       <dt>End Date:</dt>
       <dd>
-         <template v-if="details.endDate">{{details.endDate}}</template>
-         <span v-else class="na">N/A</span>
+
       </dd>
       <dt>Facet Name:</dt>
       <dd>
-         {{details.filter}}
+
       </dd>
       <dt>Features:</dt>
       <dd>{{details.features.join(", ")}}</dd>
