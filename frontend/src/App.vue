@@ -3,7 +3,7 @@
       <div class="header" role="banner" id="uva-header">
          <div class="library-link">
             <a target="_blank" href="https://library.virginia.edu">
-               <UvaLibraryLogo />
+               <uva-library-logo />
             </a>
          </div>
          <div class="site-link">
@@ -11,14 +11,16 @@
          </div>
       </div>
       <router-view />
+      <uva-library-footer />
    </div>
 </template>
 
 <script>
 import UvaLibraryLogo from "@/components/UvaLibraryLogo"
+import UvaLibraryFooter from "@/components/UvaLibraryFooter"
 export default {
    components: {
-      UvaLibraryLogo
+      UvaLibraryLogo, UvaLibraryFooter
    }
 }
 </script>

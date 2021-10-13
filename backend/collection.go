@@ -80,6 +80,69 @@ type collectionJSON struct {
 	Images      []imageJSON `json:"images"`
 }
 
+func (coll *collectionJSON) getFeatures(db *dbx.DB) {
+	log.Printf("INFO: get collection [%s] features", coll.Title)
+	q := db.NewQuery("select f.name from features f inner join collection_features cf on cf.feature_id = f.id where cf.collection_id={:cid}")
+	q.Bind(dbx.Params{"cid": coll.ID})
+	rows, err := q.Rows()
+	if err != nil {
+		if err == sql.ErrNoRows {
+			log.Printf("INFO: no features found for collection [%s]", coll.Title)
+		} else {
+			log.Printf("ERROR: unable to lookup features for [%s]: %s", coll.Title, err.Error())
+		}
+	} else {
+		for rows.Next() {
+			val := ""
+			rows.Scan(&val)
+			coll.Features = append(coll.Features, val)
+		}
+	}
+}
+
+func (coll *collectionJSON) getImages(db *dbx.DB, baseImageURL string) {
+	log.Printf("INFO: get collection [%s] images", coll.Title)
+	var images []imageRec
+	q := db.NewQuery("select * from images where collection_id={:cid}")
+	q.Bind(dbx.Params{"cid": coll.ID})
+	err := q.All(&images)
+	if err != nil {
+		if err == sql.ErrNoRows {
+			log.Printf("INFO: no images found for collection [%s]", coll.Title)
+		} else {
+			log.Printf("ERROR: unable to lookup images for [%s]: %s", coll.Title, err.Error())
+		}
+	} else {
+		for _, img := range images {
+			imgJSON := imageJSON{Width: img.Width, Height: img.Height}
+			if img.AltText.Valid {
+				imgJSON.AltText = img.AltText.String
+			}
+			if img.Title.Valid {
+				imgJSON.Title = img.Title.String
+			}
+			imgJSON.URL = fmt.Sprintf("%s/%s", baseImageURL, img.Filename)
+			coll.Images = append(coll.Images, imgJSON)
+		}
+	}
+}
+
+// initialize JSON collection data from a DB rec
+func collectionfromDB(rec collectionRec) *collectionJSON {
+	c := collectionJSON{ID: rec.ID, Title: rec.Title, FilterName: rec.FilterName, ItemLabel: rec.ItemLabel,
+		Features: make([]string, 0), Images: make([]imageJSON, 0)}
+	if rec.Description.Valid {
+		c.Description = rec.Description.String
+	}
+	if rec.StartDate.Valid {
+		c.StartDate = rec.StartDate.String
+	}
+	if rec.EndDate.Valid {
+		c.EndDate = rec.EndDate.String
+	}
+	return &c
+}
+
 func (svc *ServiceContext) lookupCollectionContext(c *gin.Context) {
 	rawName := c.Query("q")
 	log.Printf("INFO: lookup collection context for [%s]", rawName)
@@ -99,60 +162,9 @@ func (svc *ServiceContext) lookupCollectionContext(c *gin.Context) {
 		return
 	}
 
-	out := collectionJSON{ID: rec.ID, Title: rec.Title, FilterName: rec.FilterName,
-		ItemLabel: rec.ItemLabel, Features: make([]string, 0), Images: make([]imageJSON, 0)}
-	if rec.Description.Valid {
-		out.Description = rec.Description.String
-	}
-	if rec.StartDate.Valid {
-		out.StartDate = rec.StartDate.String
-	}
-	if rec.EndDate.Valid {
-		out.EndDate = rec.EndDate.String
-	}
-
-	log.Printf("INFO: get collection [%s] features", rawName)
-	q = svc.DB.NewQuery("select f.name from features f inner join collection_features cf on cf.feature_id = f.id where cf.collection_id={:cid}")
-	q.Bind(dbx.Params{"cid": rec.ID})
-	rows, err := q.Rows()
-	if err != nil {
-		if err == sql.ErrNoRows {
-			log.Printf("INFO: no features found for collection [%s]", rawName)
-		} else {
-			log.Printf("ERROR: unable to lookup features for [%s]: %s", rawName, err.Error())
-		}
-	} else {
-		for rows.Next() {
-			val := ""
-			rows.Scan(&val)
-			out.Features = append(out.Features, val)
-		}
-	}
-
-	log.Printf("INFO: get collection [%s] images", rawName)
-	var images []imageRec
-	q = svc.DB.NewQuery("select * from images where collection_id={:cid}")
-	q.Bind(dbx.Params{"cid": rec.ID})
-	err = q.All(&images)
-	if err != nil {
-		if err == sql.ErrNoRows {
-			log.Printf("INFO: no images found for collection [%s]", rawName)
-		} else {
-			log.Printf("ERROR: unable to lookup images for [%s]: %s", rawName, err.Error())
-		}
-	} else {
-		for _, img := range images {
-			imgJSON := imageJSON{Width: img.Width, Height: img.Height}
-			if img.AltText.Valid {
-				imgJSON.AltText = img.AltText.String
-			}
-			if img.Title.Valid {
-				imgJSON.Title = img.Title.String
-			}
-			imgJSON.URL = fmt.Sprintf("%s/%s", svc.BaseImageURL, img.Filename)
-			out.Images = append(out.Images, imgJSON)
-		}
-	}
+	out := collectionfromDB(rec)
+	out.getFeatures(svc.DB)
+	out.getImages(svc.DB, svc.BaseImageURL)
 
 	c.JSON(http.StatusOK, out)
 }

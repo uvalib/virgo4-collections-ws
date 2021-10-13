@@ -1,10 +1,12 @@
 package main
 
 import (
+	"database/sql"
 	"log"
 	"net/http"
 
 	"github.com/gin-gonic/gin"
+	dbx "github.com/go-ozzo/ozzo-dbx"
 )
 
 func (svc *ServiceContext) getCollections(c *gin.Context) {
@@ -24,4 +26,31 @@ func (svc *ServiceContext) getCollections(c *gin.Context) {
 	}
 
 	c.JSON(http.StatusOK, recs)
+}
+
+func (svc *ServiceContext) getCollectionDetails(c *gin.Context) {
+	user := c.GetString("user")
+	id := c.Param("id")
+	log.Printf("INFO: %s is is requesting collection %s details", user, id)
+
+	var rec collectionRec
+	q := svc.DB.NewQuery("select * from collections where id={:cid}")
+	q.Bind(dbx.Params{"cid": id})
+	err := q.One(&rec)
+	if err != nil {
+		if err == sql.ErrNoRows {
+			log.Printf("INFO: no collection context found for %s", id)
+			c.String(http.StatusNotFound, "not found")
+		} else {
+			log.Printf("ERROR: contexed lookup for %s failed: %s", id, err.Error())
+			c.String(http.StatusInternalServerError, err.Error())
+		}
+		return
+	}
+
+	out := collectionfromDB(rec)
+	out.getFeatures(svc.DB)
+	out.getImages(svc.DB, svc.BaseImageURL)
+
+	c.JSON(http.StatusOK, out)
 }
