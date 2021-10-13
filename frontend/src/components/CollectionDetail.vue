@@ -30,8 +30,23 @@
          {{details.filter}}
       </dd>
       <dt>Features:</dt>
-      <dd>
-         {{details.features.join(", ")}}</dd>
+      <dd>{{details.features.join(", ")}}</dd>
+      <template v-if="details.image">
+         <dt>Logo:</dt>
+         <dd>
+            <img class="thumb" :src="details.image.url"/>
+         </dd>
+         <dt>Logo Title:</dt>
+         <dd>
+            <template v-if="details.image.title">{{details.image.title}}</template>
+            <span v-else class="na">N/A</span>
+         </dd>
+         <dt>Logo Alt Text:</dt>
+         <dd>
+            <template v-if="details.image.alt_text">{{details.image.alt_text}}</template>
+            <span v-else class="na">N/A</span>
+         </dd>
+      </template>
    </dl>
 </template>
 
@@ -73,6 +88,10 @@ dl {
       -webkit-hyphens: auto;
       -moz-hyphens: auto;
       hyphens: auto;
+      .thumb {
+         max-width: 200px;
+         border:1px solid var(--uvalib-grey-light);
+      }
    }
    .na {
       color: #aaa;

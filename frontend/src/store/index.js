@@ -16,7 +16,7 @@ export default createStore({
          endDate: "",
          filter: "",
          features: [],
-         images: [],
+         image: null,
       },
       fatal: ""
    },
@@ -26,9 +26,11 @@ export default createStore({
          data.forEach(c => state.collections.push(c))
       },
       setCollectionDetail(state, data) {
-         state.details.images.splice(0, state.details.images.length)
+         state.details.image = null
+         if (data.image) {
+            state.details.image = data.image
+         }
          state.details.features.splice(0, state.details.features.length)
-         data.images.forEach( i => state.details.images.push(i))
          data.features.forEach( f => state.details.features.push(f))
          state.details.id = data.id
          state.details.title = data.title

@@ -121,6 +121,7 @@ export default {
          margin: 0;
          cursor: pointer;
          padding: 5px 15px;
+         border-bottom: 1px solid var(--uvalib-grey-lightest);
          &:hover {
             background: var(--uvalib-teal-lightest);
          }
