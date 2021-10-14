@@ -2,12 +2,28 @@ package main
 
 import (
 	"database/sql"
+	"fmt"
 	"log"
 	"net/http"
+	"strings"
 
 	"github.com/gin-gonic/gin"
 	dbx "github.com/go-ozzo/ozzo-dbx"
 )
+
+type updateCollectionRequest struct {
+	ID            int    `json:"id"`
+	Title         string `json:"title"`
+	Description   string `json:"description"`
+	ItemLabel     string `json:"itemLabel"`
+	StartDate     string `json:"startDate"`
+	EndDate       string `json:"endDate"`
+	Filter        string `json:"filter"`
+	FeatureIDs    []int  `json:"features"`
+	ImageFileName string `json:"imageFile"`
+	ImageTitle    string `json:"imageTitle"`
+	ImageAlt      string `json:"imageAlt"`
+}
 
 func (svc *ServiceContext) getFeatures(c *gin.Context) {
 	user := c.GetString("user")
@@ -71,5 +87,77 @@ func (svc *ServiceContext) getCollectionDetails(c *gin.Context) {
 	out.getFeatures(svc.DB)
 	out.getImages(svc.DB, svc.BaseImageURL)
 
+	c.JSON(http.StatusOK, out)
+}
+
+func (svc *ServiceContext) addOrUpdateCollection(c *gin.Context) {
+	user := c.GetString("user")
+	var req updateCollectionRequest
+	err := c.ShouldBindJSON(&req)
+	if err != nil {
+		log.Printf("ERROR: %s update request with invalid payload: %v", user, err)
+		c.String(http.StatusBadRequest, err.Error())
+		return
+	}
+
+	updateRec := collectionRec{ID: int64(req.ID), Title: req.Title, ItemLabel: req.ItemLabel, FilterName: req.Filter}
+	if req.Description != "" {
+		updateRec.Description.String = req.Description
+		updateRec.Description.Valid = true
+	}
+	if req.StartDate != "" {
+		updateRec.StartDate.String = req.StartDate
+		updateRec.StartDate.Valid = true
+	}
+	if req.EndDate != "" {
+		updateRec.EndDate.String = req.EndDate
+		updateRec.EndDate.Valid = true
+	}
+
+	if req.ID == 0 {
+		log.Printf("INFO: %s add collection %+v", user, req)
+		addErr := svc.DB.Model(&updateRec).Insert()
+		if addErr != nil {
+			log.Printf("ERROR: %s add %v failed: %s", user, req, addErr.Error())
+			c.String(http.StatusInternalServerError, addErr.Error())
+			return
+		}
+	} else {
+		log.Printf("INFO: %s update collection %+v", user, req)
+		upErr := svc.DB.Model(&updateRec).Exclude("ID").Update()
+		if upErr != nil {
+			log.Printf("ERROR: %s update %v failed: %s", user, req, upErr.Error())
+			c.String(http.StatusInternalServerError, upErr.Error())
+			return
+		}
+		q := svc.DB.NewQuery("delete from collection_features where collection_id={:cid}")
+		q.Bind(dbx.Params{"cid": updateRec.ID})
+		_, upErr = q.Execute()
+		if upErr != nil {
+			log.Printf("ERROR: %s reset features failed: %s", user, upErr.Error())
+			c.String(http.StatusInternalServerError, upErr.Error())
+			return
+		}
+	}
+
+	log.Printf("INFO: adding features to collection %d", updateRec.ID)
+	qStr := "insert into collection_features (collection_id, feature_id) values "
+	vals := make([]string, 0)
+	for _, featureID := range req.FeatureIDs {
+		vals = append(vals, fmt.Sprintf("(%d,%d)", updateRec.ID, featureID))
+	}
+	qStr += strings.Join(vals, ",")
+	q := svc.DB.NewQuery(qStr)
+	_, err = q.Execute()
+	if err != nil {
+		log.Printf("ERROR: %s add features failed: %s", user, err.Error())
+		c.String(http.StatusInternalServerError, err.Error())
+		return
+	}
+
+	// convert DB structs into JSON response
+	out := collectionfromDB(updateRec)
+	out.getFeatures(svc.DB)
+	out.getImages(svc.DB, svc.BaseImageURL)
 	c.JSON(http.StatusOK, out)
 }

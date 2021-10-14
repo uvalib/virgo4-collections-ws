@@ -1,0 +1,10 @@
+BEGIN;
+LOCK TABLE collections IN EXCLUSIVE MODE;
+SELECT setval('collections_id_seq', COALESCE((SELECT MAX(id)+1 FROM collections), 1), false);
+LOCK TABLE features IN EXCLUSIVE MODE;
+SELECT setval('features_id_seq', COALESCE((SELECT MAX(id)+1 FROM features), 1), false);
+LOCK TABLE images IN EXCLUSIVE MODE;
+SELECT setval('images_id_seq', COALESCE((SELECT MAX(id)+1 FROM images), 1), false);
+LOCK TABLE collection_features IN EXCLUSIVE MODE;
+SELECT setval('collection_features_id_seq', COALESCE((SELECT MAX(id)+1 FROM collection_features), 1), false);
+COMMIT;

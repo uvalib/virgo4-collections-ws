@@ -32,6 +32,9 @@
             <input type="checkbox" :id="`f${f.id}`" :value="f.id" v-model="collection.features" />
             <label class="cb-label" :for="`f${f.id}`">{{ f.name }}</label>
          </template>
+         <div>
+            <span v-if="hasError('features')" class="error">At least one feature is required</span>
+         </div>
       </dd>
       <dt>Logo Title:</dt>
       <dd>
@@ -58,14 +61,16 @@ export default {
          selectedID: state => state.selectedID,
          details: state => state.details,
          features: state => state.features,
+         mode: state => state.mode
       })
    },
    data: function()  {
       return {
          error: "",
          errors: [],
-         required: ['title', 'facet'],
+         required: ['title', 'filter', 'itemLabel'],
          collection: {
+            id: 0,
             title: "",
             description: "",
             itemLabel: "Issue",
@@ -75,7 +80,15 @@ export default {
             features: [],
             imageTitle: "",
             imageAlt: "",
-            imageURL: ""
+            imageURL: "",
+            imageFile: ""
+         }
+      }
+   },
+   watch: {
+      mode(newVal, _oldVal)  {
+         if (newVal=="submit") {
+            this.submitChanges()
          }
       }
    },
@@ -83,9 +96,40 @@ export default {
       hasError( val) {
          return this.errors.includes(val)
       },
+      submitChanges() {
+         this.errors.splice(0, this.errors.length)
+         for (let [key, value] of Object.entries(this.collection)) {
+            if ( key == "features") {
+               if ( value.length == 0) {
+                  this.errors.push(key)
+               }
+            } else if ( this.required.includes(key) && value == "") {
+               this.errors.push(key)
+            }
+         }
+
+         let focused = false
+         if (this.errors.length > 0) {
+            let tgtID = this.errors[0]
+            if (tgtID == "itemLabel") {
+               tgtID = "item-label"
+            }
+            if (!focused) {
+               let first = document.getElementById(tgtID)
+               if ( first ) {
+                  first.focus()
+                  focused = true
+               }
+            }
+            this.$store.commit("setEdit")
+         } else {
+            this.$store.dispatch("submitCollection", this.collection)
+         }
+      }
    },
    mounted() {
-      if ( this.selectedID > 1) {
+      if ( this.selectedID > 0) {
+         this.collection.id = this.details.id
          this.collection.title = this.details.title
          this.collection.description = this.details.description
          this.collection.itemLabel = this.details.itemLabel
@@ -116,6 +160,12 @@ dl {
    grid-template-columns: max-content 2fr;
    grid-column-gap: 15px;
    width: 95%;
+   span.error {
+      color: var(--uvalib-red-emergency);
+      font-style: italic;
+      display: inline-block;
+      margin-top: 5px;
+   }
    dt {
       font-weight: bold;
       text-align: right;

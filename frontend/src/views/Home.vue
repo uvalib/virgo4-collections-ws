@@ -1,8 +1,8 @@
 <template>
    <div class="home">
       <h1>Collections Management</h1>
-      <wait-spinner v-if="working && selectedID == -1" message="Initializing system..."/>
-      <div v-else class="content">
+      <wait-spinner v-if="working" message="Initializing system..." :overlay="true"/>
+      <div class="content">
          <div class="list-wrap">
             <h2>Collection</h2>
             <div class="list">
@@ -14,31 +14,31 @@
                </div>
             </div>
             <div class="list-buttons">
-               <uva-button @click="addCollectionClicked">Add Collection</uva-button>
+               <uva-button @click="addCollectionClicked" :class="{disabled: isEditing}">Add Collection</uva-button>
             </div>
          </div>
          <div class="detail-wrap">
             <h2>
                <span>Details</span>
                <span class="detail-butons">
-                  <template v-if="editing">
+                  <template v-if="isEditing && selectedID > 0">
                      <uva-button @click="cancelEdit" class="cancel">Cancel</uva-button>
-                     <uva-button>Submit</uva-button>
+                     <uva-button @click="submitClicked">Submit</uva-button>
                   </template>
-                  <template v-else-if="adding">
+                  <template v-else-if="isEditing && selectedID == 0">
                      <uva-button @click="cancelEdit" class="cancel">Cancel</uva-button>
-                     <uva-button>Create</uva-button>
+                     <uva-button @click="submitClicked">Create</uva-button>
                   </template>
-                  <template v-else-if="selectedID > -1">
+                  <template v-else-if="selectedID > 0">
                      <uva-button class="delete">Delete</uva-button>
                      <uva-button @click="editSelected">Edit</uva-button>
                   </template>
                </span>
             </h2>
              <div class="details">
-               <collection-detail v-if="selectedID > -1 && !adding && !editing" />
-               <div v-if="selectedID == -1 && !adding" class="hint">Select a collection from the list on the left to view and edit the collection details.</div>
-               <edit-collection  v-if="editing || adding" />
+               <div v-if="selectedID == 0 && !isEditing" class="hint">Select a collection from the list on the left to view and edit the collection details.</div>
+               <collection-detail v-if="selectedID > 0 && !isEditing" />
+               <edit-collection v-else-if="isEditing" />
              </div>
          </div>
       </div>
@@ -46,7 +46,7 @@
 </template>
 
 <script>
-import { mapState } from "vuex"
+import { mapState, mapGetters } from "vuex"
 import CollectionDetail from '../components/CollectionDetail.vue'
 import EditCollection from '../components/EditCollection.vue'
 export default {
@@ -59,29 +59,29 @@ export default {
          working: state => state.working,
          collections: state => state.collections,
          selectedID: state => state.selectedID,
-         editing: state => state.editing,
-         adding: state => state.adding,
+      }),
+      ...mapGetters({
+         isEditing: 'isEditing',
       })
    },
    methods: {
+      submitClicked() {
+         this.$store.commit("setSubmit")
+      },
       collectionClicked(id) {
          this.$store.commit("clearDetails")
-         this.$store.commit("setAdding", false)
-         this.$store.commit("setEditing", false)
+         this.$store.commit("setDisplay")
          this.$store.dispatch("getCollectionDetail", id)
       },
       editSelected() {
-         this.$store.commit("setEditing", true)
-         this.$store.commit("setAdding", false)
+        this.$store.commit("setEdit")
       },
       cancelEdit() {
-         this.$store.commit("setEditing", false)
-         this.$store.commit("setAdding", false)
+         this.$store.commit("setDisplay")
       },
       addCollectionClicked() {
          this.$store.commit("clearDetails")
-         this.$store.commit("setAdding", true)
-         this.$store.commit("setEditing", false)
+        this.$store.commit("setEdit")
       }
    },
    created() {

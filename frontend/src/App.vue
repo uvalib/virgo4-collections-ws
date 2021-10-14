@@ -10,7 +10,17 @@
            <router-link to="/">Collections Management</router-link>
          </div>
       </div>
-      <router-view />
+      <div v-if="fatalError" class="fatal-err">
+         <h1>Internal System Error</h1>
+         <div class="err-txt">
+            <p>{{fatalError}}</p>
+            <p>Sorry for the inconvenience! We are aware of the issue and are working to resolve it. Please check back later.</p>
+         </div>
+      </div>
+      <template v-else>
+         <router-view />
+         <message-box />
+      </template>
       <uva-library-footer />
    </div>
 </template>
@@ -18,9 +28,16 @@
 <script>
 import UvaLibraryLogo from "@/components/UvaLibraryLogo"
 import UvaLibraryFooter from "@/components/UvaLibraryFooter"
+import MessageBox from "@/components/MessageBox"
+import { mapState } from 'vuex'
 export default {
    components: {
-      UvaLibraryLogo, UvaLibraryFooter
+      UvaLibraryLogo, UvaLibraryFooter, MessageBox
+   },
+   computed: {
+      ...mapState({
+         fatalError: state => state.fatal
+      }),
    }
 }
 </script>
@@ -121,6 +138,14 @@ body {
    margin: 0;
    padding: 0;
    background-color: var(--uvalib-blue-alt-darkest);
+}
+
+.fatal-err {
+   padding-top: 25px;
+   min-height: 500px;
+   .err-txt {
+      font-size: 1.15em;
+   }
 }
 
 div.header {

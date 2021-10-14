@@ -5,12 +5,11 @@ export default createStore({
    state: {
       working: false,
       collections: [],
-      selectedID: -1,
-      editing: false,
-      adding: false,
+      selectedID: 0,
+      mode: "display",
       features: [],
       details: {
-         id: -1,
+         id: 0,
          title: "",
          description: "",
          itemLabel: "Issue",
@@ -20,7 +19,16 @@ export default createStore({
          features: [],
          image: null,
       },
-      fatal: ""
+      fatal: "",
+      message: "",
+   },
+   getters: {
+      isEditing: state => {
+         return state.mode == "edit" || state.mode == "submit"
+      },
+      isAdding: state => {
+         return state.mode == "add" || state.mode == "submit"
+      },
    },
    mutations: {
       setCollections(state, data) {
@@ -28,8 +36,8 @@ export default createStore({
          data.forEach(c => state.collections.push(c))
       },
       clearDetails(state) {
-         state.selectedID = -1
-         state.details.id = -1,
+         state.selectedID = 0
+         state.details.id = 0,
          state.details.title = ""
          state.details.description = ""
          state.details.itemLabel = "Issue"
@@ -38,6 +46,19 @@ export default createStore({
          state.details.filter = ""
          state.details.features.splice(0, state.details.features.length)
          state.details.image = null
+      },
+      addCollection(state, data) {
+         state.collections.push({id: data.id, title: data.title})
+         state.details.features.splice(0, state.details.features.length)
+         data.features.forEach( f => state.details.features.push(f))
+         state.details.id = data.id
+         state.details.title = data.title
+         state.details.description  = data.description
+         state.details.itemLabel = data.item_label
+         state.details.startDate = data.start_date
+         state.details.endDate = data.end_date
+         state.details.filter = data.filter_name
+         state.selectedID = data.id
       },
       setCollectionDetail(state, data) {
          state.details.image = null
@@ -54,11 +75,14 @@ export default createStore({
          state.details.endDate = data.end_date
          state.details.filter = data.filter_name
       },
-      setAdding(state, flag) {
-         state.adding = flag
+      setEdit(state) {
+         state.mode = "edit"
       },
-      setEditing(state, flag) {
-         state.editing = flag
+      setSubmit(state) {
+         state.mode = "submit"
+      },
+      setDisplay(state) {
+         state.mode = "display"
       },
       setFeatures(state, data) {
          state.features.splice(0, state.features.length)
@@ -66,6 +90,12 @@ export default createStore({
       },
       setFatalError(state, err) {
          state.fatal = err
+      },
+      setMessage(state, err) {
+         state.message = err
+      },
+      clearMessage(state) {
+         state.message = ""
       },
       setSelectedCollectionID(state, id) {
          state.selectedID = id
@@ -100,6 +130,24 @@ export default createStore({
             ctx.commit("setWorking", false)
          }).catch((e) => {
             ctx.commit("setFatalError", e)
+            ctx.commit("setWorking", false)
+         })
+      },
+      submitCollection(ctx, collection) {
+         ctx.commit("setWorking", true)
+         ctx.commit("clearMessage")
+         let addingNew = (collection.id == 0)
+         axios.post("/api/collections", collection).then(resp => {
+            if ( addingNew ) {
+               ctx.commit("addCollection", resp.data)
+            } else {
+               ctx.commit("setCollectionDetail", resp.data)
+            }
+            ctx.commit("setWorking", false)
+            ctx.commit("setDisplay")
+         }).catch((e) => {
+            ctx.commit("setEdit")
+            ctx.commit("setMessage", e)
             ctx.commit("setWorking", false)
          })
       }
