@@ -47,6 +47,12 @@ export default createStore({
          state.details.features.splice(0, state.details.features.length)
          state.details.image = null
       },
+      deleteSelectedCollection(state) {
+         let idx = state.collections.findIndex( c => c.id == state.selectedID)
+         if (idx > -1) {
+            state.collections.splice(idx, 1)
+         }
+      },
       addCollection(state, data) {
          state.collections.push({id: data.id, title: data.title})
          state.details.features.splice(0, state.details.features.length)
@@ -130,6 +136,18 @@ export default createStore({
             ctx.commit("setWorking", false)
          }).catch((e) => {
             ctx.commit("setFatalError", e)
+            ctx.commit("setWorking", false)
+         })
+      },
+      deleteSelectedCollection(ctx) {
+         ctx.commit("setWorking", true)
+         ctx.commit("clearMessage")
+         axios.delete("/api/collections/"+ctx.state.selectedID).then( _resp => {
+            ctx.commit("setWorking", false)
+            ctx.commit("deleteSelectedCollection")
+            ctx.commit("clearDetails")
+         }).catch((e) => {
+            ctx.commit("setMessage", e)
             ctx.commit("setWorking", false)
          })
       },

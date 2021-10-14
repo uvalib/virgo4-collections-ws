@@ -30,8 +30,10 @@
                      <uva-button @click="submitClicked">Create</uva-button>
                   </template>
                   <template v-else-if="selectedID > 0">
-                     <uva-button class="delete">Delete</uva-button>
-                     <uva-button @click="editSelected">Edit</uva-button>
+                     <confirm @confirm="deleteCollection"
+                        buttonText="Delete"
+                        :message="`Delete collection <b>'${selected.title}</b>'?<br/>All data will be removed. This is not reversable.`" />
+                     <uva-button class="pad-left" @click="editSelected">Edit</uva-button>
                   </template>
                </span>
             </h2>
@@ -49,22 +51,30 @@
 import { mapState, mapGetters } from "vuex"
 import CollectionDetail from '../components/CollectionDetail.vue'
 import EditCollection from '../components/EditCollection.vue'
+import Confirm from '../components/Confirm.vue'
 export default {
    name: 'Home',
    components: {
-      CollectionDetail,EditCollection
+      CollectionDetail,EditCollection,Confirm
    },
    computed: {
       ...mapState({
          working: state => state.working,
          collections: state => state.collections,
          selectedID: state => state.selectedID,
+         selected: state => state.details
       }),
       ...mapGetters({
          isEditing: 'isEditing',
       })
    },
    methods: {
+      deleteCollection() {
+         this.$store.dispatch("deleteSelectedCollection")
+      },
+      deleteClicked() {
+         this.$store.commit("setShowConfirm", true)
+      },
       submitClicked() {
          this.$store.commit("setSubmit")
       },
@@ -106,6 +116,9 @@ export default {
       padding: 5px 10px;
       border: 1px solid var(--uvalib-grey-light);
       border-radius:5px 5px 0 0;
+   }
+   .pad-left {
+      margin-left: 5px;
    }
    .list-wrap, .detail-wrap {
       padding: 10px 20px;

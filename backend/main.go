@@ -55,6 +55,7 @@ func main() {
 		api.GET("/features", svc.userMiddleware, svc.getFeatures)
 		api.GET("/collections", svc.userMiddleware, svc.getCollections)
 		api.POST("/collections", svc.userMiddleware, svc.addOrUpdateCollection)
+		api.DELETE("/collections/:id", svc.userMiddleware, svc.deleteCollection)
 		api.GET("/collections/:id", svc.userMiddleware, svc.getCollectionDetails)
 		api.GET("/collections/:id/dates", svc.collectionMiddleware, svc.getCollectioDates)
 		api.GET("/collections/:id/items/:date/next", svc.collectionMiddleware, svc.getNextItem)

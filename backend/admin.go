@@ -90,6 +90,35 @@ func (svc *ServiceContext) getCollectionDetails(c *gin.Context) {
 	c.JSON(http.StatusOK, out)
 }
 
+func (svc *ServiceContext) deleteCollection(c *gin.Context) {
+	user := c.GetString("user")
+	id := c.Param("id")
+	log.Printf("INFO: %s requests delete of collection %s", user, id)
+	q := svc.DB.NewQuery("select * from collections where id={:cid}")
+	q.Bind(dbx.Params{"cid": id})
+	var rec collectionRec
+	err := q.One(&rec)
+	if err != nil {
+		if err == sql.ErrNoRows {
+			log.Printf("WARNING: collection %s not found", id)
+			c.String(http.StatusNotFound, fmt.Sprintf("%s not found", id))
+		} else {
+			log.Printf("ERROR: unable to find collection %s: %s", id, err.Error())
+			c.String(http.StatusInternalServerError, err.Error())
+		}
+		return
+	}
+
+	err = svc.DB.Model(&rec).Delete()
+	if err != nil {
+		log.Printf("ERROR: unable to delete ollection %s: %s", id, err.Error())
+		c.String(http.StatusInternalServerError, err.Error())
+		return
+	}
+
+	c.String(http.StatusOK, "deleted")
+}
+
 func (svc *ServiceContext) addOrUpdateCollection(c *gin.Context) {
 	user := c.GetString("user")
 	var req updateCollectionRequest
