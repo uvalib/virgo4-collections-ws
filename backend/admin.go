@@ -190,3 +190,11 @@ func (svc *ServiceContext) addOrUpdateCollection(c *gin.Context) {
 	out.getImages(svc.DB, svc.BaseImageURL)
 	c.JSON(http.StatusOK, out)
 }
+
+func (svc *ServiceContext) uploadLogo(c *gin.Context) {
+	user := c.GetString("user")
+	id := c.Param("id")
+	log.Printf("INFO: %s is uploading a new logo for collection %s", user, id)
+
+	c.String(http.StatusInternalServerError, "NO")
+}

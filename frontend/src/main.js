@@ -10,6 +10,7 @@ app.use(router)
 store.router = router
 
 import DropZone from 'dropzone-vue'
+import 'dropzone-vue/dist/dropzone-vue.common.css'
 app.use(DropZone)
 
 import WaitSpinner from "@/components/WaitSpinner"

@@ -38,7 +38,7 @@
       </dd>
       <dt>Logo Title:</dt>
       <dd>
-            <input type="text" v-model="collection.imageTitle" id="image-title"/>
+         <input type="text" v-model="collection.imageTitle" id="image-title"/>
       </dd>
       <dt>Logo Alt Text:</dt>
       <dd>
@@ -47,7 +47,25 @@
       <template v-if="collection.imageURL">
          <dt>Logo:</dt>
          <dd>
-            <img class="thumb" :src="collection.imageURL"/>
+            <div class="logo-wrap">
+               <img class="thumb" :src="collection.imageURL"/>
+               <span class="drop-wrap">
+                  <DropZone
+                     :maxFiles="1"
+                     :clickable="true"
+                     :uploadOnDrop="true"
+                     :acceptedFiles="['png', 'jpg']"
+                     :multipleUpload="false"
+                     dropzoneClassName="logo-drop"
+                     :url="uploadURL"
+                  >
+                     <template v-slot:message>
+                        <span>Drop logo here, or click to browse.</span>
+                        <span class="note"><b>Note:</b> A newly uploaded logo will replace the current logo upon submission.</span>
+                     </template>
+                  </DropZone>
+               </span>
+            </div>
          </dd>
       </template>
    </dl>
@@ -62,7 +80,10 @@ export default {
          details: state => state.details,
          features: state => state.features,
          mode: state => state.mode
-      })
+      }),
+      uploadURL() {
+         return `${window.location.href}/api/collections/${this.details.id}/logo`
+      }
    },
    data: function()  {
       return {
@@ -165,6 +186,27 @@ dl {
       font-style: italic;
       display: inline-block;
       margin-top: 5px;
+   }
+   .logo-wrap {
+      display: flex;
+      flex-flow: row nowrap;
+      justify-content: flex-start;
+   }
+   .drop-wrap {
+      width: 250px;
+      height: 250px;
+      margin-left: 10px;
+   }
+   .logo-drop {
+      border: 2px dashed var(--uvalib-grey-light);
+      border-radius: 5px;
+      padding: 25px;
+      .note {
+         display: block;
+         margin-top: 10px;
+         font-size: 0.85em;
+         font-style: italic;
+      }
    }
    dt {
       font-weight: bold;
