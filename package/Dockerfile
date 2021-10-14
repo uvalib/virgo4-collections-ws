@@ -16,7 +16,7 @@ RUN make linux-full
 FROM alpine:3.13
 
 # update the packages
-RUN apk update && apk upgrade && apk add bash tzdata ca-certificates curl && rm -fr /var/cache/apk/*
+RUN apk update && apk upgrade && apk add bash tzdata ca-certificates curl exiftool && rm -fr /var/cache/apk/*
 
 # Create the run user and group
 RUN addgroup webservice && adduser webservice -G webservice -D
