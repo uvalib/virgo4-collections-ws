@@ -1,18 +1,22 @@
 package main
 
 import (
+	"bytes"
 	"database/sql"
 	"encoding/json"
 	"fmt"
+	"io/ioutil"
 	"log"
 	"net/http"
 	"os"
 	"os/exec"
 	"path/filepath"
 	"strings"
+	"time"
 
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/service/s3"
+	"github.com/aws/aws-sdk-go/service/s3/s3manager"
 	"github.com/gin-gonic/gin"
 	dbx "github.com/go-ozzo/ozzo-dbx"
 )
@@ -213,6 +217,7 @@ func (svc *ServiceContext) addOrUpdateCollection(c *gin.Context) {
 
 	if req.ImageFileName != "" {
 		log.Printf("INFO: add logo %s to collection %d", req.ImageFileName, updateRec.ID)
+		tmpImagePath := fmt.Sprintf("/tmp/%s", req.ImageFileName)
 		newImage := imageRec{CollectionID: updateRec.ID, Filename: req.ImageFileName}
 		if req.ImageTitle != "" {
 			newImage.Title.String = req.ImageTitle
@@ -222,7 +227,7 @@ func (svc *ServiceContext) addOrUpdateCollection(c *gin.Context) {
 			newImage.AltText.String = req.ImageAlt
 			newImage.AltText.Valid = true
 		}
-		cmdArray := []string{"-json", "-ImageWidth", "-ImageHeight", fmt.Sprintf("/tmp/%s", req.ImageFileName)}
+		cmdArray := []string{"-json", "-ImageWidth", "-ImageHeight", tmpImagePath}
 		stdout, err := exec.Command("exiftool", cmdArray...).Output()
 		if err != nil {
 			log.Printf("WARNINIG: unable to get %s metadata: %s", req.ImageFileName, err.Error())
@@ -236,9 +241,14 @@ func (svc *ServiceContext) addOrUpdateCollection(c *gin.Context) {
 		if imgErr != nil {
 			log.Printf("ERROR: unable to add image record for %s: %s", req.ImageFileName, imgErr.Error())
 		} else {
-			log.Printf("INFO: upload logo %s to S3", req.ImageFileName)
-			// TODO upload then DELETE
+			s3Err := svc.uploadImageToS3(req.ImageFileName)
+			if s3Err != nil {
+				log.Printf("ERROR: unable to upload %s to S3: %s", req.ImageFileName, s3Err.Error())
+			}
 		}
+
+		log.Printf("INFO: cleaning up temp image file %s", tmpImagePath)
+		os.Remove(tmpImagePath)
 	}
 
 	// convert DB structs into JSON response
@@ -246,6 +256,29 @@ func (svc *ServiceContext) addOrUpdateCollection(c *gin.Context) {
 	out.getFeatures(svc.DB)
 	out.getImages(svc.DB, svc.BaseImageURL)
 	c.JSON(http.StatusOK, out)
+}
+
+func (svc *ServiceContext) uploadImageToS3(filename string) error {
+	log.Printf("INFO: upload logo %s to S3", filename)
+	imgBytes, err := ioutil.ReadFile(fmt.Sprintf("/tmp/%s", filename))
+	if err != nil {
+		return err
+	}
+	upParams := s3manager.UploadInput{
+		Bucket: aws.String(svc.S3ImageBucket),
+		Key:    aws.String(filename),
+		ACL:    aws.String("public-read"),
+		Body:   bytes.NewReader(imgBytes),
+	}
+
+	start := time.Now()
+	_, err = svc.S3Uploader.Upload(&upParams)
+	if err != nil {
+		return err
+	}
+	duration := time.Since(start)
+	log.Printf("INFO: upload of %s complete in %0.2f seconds", filename, duration.Seconds())
+	return nil
 }
 
 func (svc *ServiceContext) getLogos(c *gin.Context) {
