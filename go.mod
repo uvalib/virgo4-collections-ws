@@ -3,6 +3,7 @@ module github.com/uvalib/virgo4-collections-ws
 go 1.16
 
 require (
+	github.com/aws/aws-sdk-go v1.41.3
 	github.com/cespare/xxhash/v2 v2.1.2 // indirect
 	github.com/gin-contrib/cors v1.3.1
 	github.com/gin-contrib/gzip v0.0.3

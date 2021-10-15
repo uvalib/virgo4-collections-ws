@@ -44,30 +44,30 @@
       <dd>
          <input type="text" v-model="collection.imageAlt" id="image-alt"/>
       </dd>
-      <template v-if="collection.imageURL">
-         <dt>Logo:</dt>
-         <dd>
-            <div class="logo-wrap">
-               <img class="thumb" :src="collection.imageURL"/>
-               <span class="drop-wrap">
-                  <DropZone
-                     :maxFiles="1"
-                     :clickable="true"
-                     :uploadOnDrop="true"
-                     :acceptedFiles="['png', 'jpg']"
-                     :multipleUpload="false"
-                     dropzoneClassName="logo-drop"
-                     :url="uploadURL"
-                  >
-                     <template v-slot:message>
-                        <span>Drop logo here, or click to browse.</span>
-                        <span class="note"><b>Note:</b> A newly uploaded logo will replace the current logo upon submission.</span>
-                     </template>
-                  </DropZone>
-               </span>
-            </div>
-         </dd>
-      </template>
+      <dt>Logo:</dt>
+      <dd>
+         <div class="logo-wrap">
+            <img v-if="collection.imageURL" class="thumb" :src="collection.imageURL"/>
+            <span class="drop-wrap">
+               <DropZone
+                  :maxFiles="1"
+                  :clickable="true"
+                  :uploadOnDrop="true"
+                  :acceptedFiles="['png', 'jpg']"
+                  :multipleUpload="false"
+                  dropzoneClassName="logo-drop"
+                  :url="uploadURL"
+                  @addedFile="fileAdded"
+                  @removedFile="fileRemoved">
+               >
+                  <template v-slot:message>
+                     <span>Drop logo here, or click to browse.</span>
+                     <span class="note"><b>Note:</b> A newly uploaded logo will replace the current logo upon submission.</span>
+                  </template>
+               </DropZone>
+            </span>
+         </div>
+      </dd>
    </dl>
 </template>
 
@@ -116,6 +116,14 @@ export default {
    methods: {
       hasError( val) {
          return this.errors.includes(val)
+      },
+      fileAdded(item) {
+         let filename = item.file.name
+         this.collection.imageFile = filename
+      },
+      fileRemoved(item) {
+         this.collection.imageFile = ""
+         this.$store.dispatch("deletePendingImage", item.file.name)
       },
       submitChanges() {
          this.errors.splice(0, this.errors.length)
@@ -233,6 +241,10 @@ dl {
          box-sizing: border-box;
          border: 1px solid var(--uvalib-grey-light);
          border-radius: 5px;
+         font-family: "franklin-gothic-urw", arial, sans-serif;
+         -webkit-font-smoothing: antialiased;
+         -moz-osx-font-smoothing: grayscale;
+         padding: 5px;
       }
       .thumb {
          max-width: 200px;

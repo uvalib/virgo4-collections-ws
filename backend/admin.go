@@ -5,8 +5,12 @@ import (
 	"fmt"
 	"log"
 	"net/http"
+	"os"
+	"path/filepath"
 	"strings"
 
+	"github.com/aws/aws-sdk-go/aws"
+	"github.com/aws/aws-sdk-go/service/s3"
 	"github.com/gin-gonic/gin"
 	dbx "github.com/go-ozzo/ozzo-dbx"
 )
@@ -191,10 +195,62 @@ func (svc *ServiceContext) addOrUpdateCollection(c *gin.Context) {
 	c.JSON(http.StatusOK, out)
 }
 
+func (svc *ServiceContext) getLogos(c *gin.Context) {
+	user := c.GetString("user")
+	log.Printf("INFO: %s is requesting a list of logos", user)
+	b := aws.String(svc.S3ImageBucket)
+	loInput := &s3.ListObjectsV2Input{Bucket: b}
+	resp, err := svc.S3Service.ListObjectsV2(loInput)
+	if err != nil {
+		log.Printf("ERROR: list %s object failed: %s", svc.S3ImageBucket, err.Error())
+		c.String(http.StatusInternalServerError, err.Error())
+		return
+	}
+	out := make([]string, 0)
+	for _, item := range resp.Contents {
+		out = append(out, *item.Key)
+	}
+	c.JSON(http.StatusOK, out)
+}
+
 func (svc *ServiceContext) uploadLogo(c *gin.Context) {
 	user := c.GetString("user")
 	id := c.Param("id")
 	log.Printf("INFO: %s is uploading a new logo for collection %s", user, id)
 
-	c.String(http.StatusInternalServerError, "NO")
+	file, err := c.FormFile("file")
+	if err != nil {
+		log.Printf("ERROR: unable to get upload file: %s", err.Error())
+		c.String(http.StatusBadRequest, err.Error())
+		return
+	}
+
+	filename := filepath.Base(file.Filename)
+	dest := fmt.Sprintf("/tmp/%s", filename)
+	if _, err := os.Stat(dest); err == nil {
+		log.Printf("ERROR: File %s already exists", filename)
+		c.String(http.StatusConflict, fmt.Sprintf("%s already exists", filename))
+		return
+	}
+	log.Printf("INFO: receiving log file %s for collection %s", filename, id)
+	if err := c.SaveUploadedFile(file, dest); err != nil {
+		log.Printf("ERROR: unable to receive logo %s: %s", filename, err.Error())
+		c.String(http.StatusInternalServerError, err.Error())
+		return
+	}
+	log.Printf("INFO: done receiving %s", filename)
+	c.String(http.StatusOK, "Submitted")
+}
+
+func (svc *ServiceContext) deletePendingLogo(c *gin.Context) {
+	user := c.GetString("user")
+	id := c.Param("id")
+	filename := c.Param("fn")
+	log.Printf("INFO: %s is deleting pending logo %s from collection %s", user, filename, id)
+	dest := fmt.Sprintf("/tmp/%s", filename)
+	if _, err := os.Stat(dest); err == nil {
+		os.Remove(dest)
+		return
+	}
+	c.String(http.StatusOK, "ok")
 }

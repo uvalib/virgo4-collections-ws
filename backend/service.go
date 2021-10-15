@@ -12,6 +12,9 @@ import (
 	"strings"
 	"time"
 
+	"github.com/aws/aws-sdk-go/aws/session"
+	"github.com/aws/aws-sdk-go/service/s3"
+	"github.com/aws/aws-sdk-go/service/s3/s3manager"
 	"github.com/gin-gonic/gin"
 	dbx "github.com/go-ozzo/ozzo-dbx"
 	_ "github.com/lib/pq"
@@ -19,16 +22,31 @@ import (
 
 // ServiceContext contains common data used by all handlers
 type ServiceContext struct {
-	Version      string
-	BaseImageURL string
-	Solr         SolrConfig
-	HTTPClient   *http.Client
-	DB           *dbx.DB
+	Version       string
+	BaseImageURL  string
+	Solr          SolrConfig
+	HTTPClient    *http.Client
+	DB            *dbx.DB
+	S3ImageBucket string
+	S3Uploader    *s3manager.Uploader
+	S3Service     *s3.S3
 }
 
 // InitializeService sets up the service context for all API handlers
 func InitializeService(version string, cfg *ServiceConfig) *ServiceContext {
 	ctx := ServiceContext{Version: version, Solr: cfg.Solr, BaseImageURL: cfg.ImageBaseURL}
+
+	log.Printf("INFO: init S3 session and uploader")
+	bName := strings.Split(cfg.ImageBaseURL, "https://")[1]
+	bName = strings.Split(bName, ".")[0]
+	ctx.S3ImageBucket = bName
+	sess, err := session.NewSession()
+	if err != nil {
+		log.Fatal(err)
+	}
+	ctx.S3Uploader = s3manager.NewUploader(sess)
+	ctx.S3Service = s3.New(sess)
+	log.Printf("INFO: S3 bucket %s and upload manager initailized", ctx.S3ImageBucket)
 
 	log.Printf("Connect to Postgres")
 	connStr := fmt.Sprintf("user=%s password=%s dbname=%s host=%s port=%d sslmode=disable",

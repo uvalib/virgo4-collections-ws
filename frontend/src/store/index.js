@@ -151,6 +151,9 @@ export default createStore({
             ctx.commit("setWorking", false)
          })
       },
+      deletePendingImage(ctx, filename) {
+         axios.delete("/api/collections/"+ctx.state.selectedID+"/logo/"+filename)
+      },
       submitCollection(ctx, collection) {
          ctx.commit("setWorking", true)
          ctx.commit("clearMessage")
