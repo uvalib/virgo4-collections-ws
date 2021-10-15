@@ -18,7 +18,7 @@ func (svc *ServiceContext) userMiddleware(c *gin.Context) {
 
 	computingID := c.GetHeader("remote_user")
 	if computingID == "" {
-		log.Printf("ERROR: missing netbadge user header")
+		log.Printf("INFO: missing netbadge user header")
 		computingID = "ANONYMOUS"
 	}
 

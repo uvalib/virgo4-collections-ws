@@ -48,11 +48,13 @@ func (c collectionRec) TableName() string {
 }
 
 type imageRec struct {
-	AltText  sql.NullString `db:"alt_text"`
-	Title    sql.NullString `db:"title"`
-	Width    int            `db:"width"`
-	Height   int            `db:"height"`
-	Filename string         `db:"filename"`
+	ID           int64          `db:"id"`
+	CollectionID int64          `db:"collection_id"`
+	AltText      sql.NullString `db:"alt_text"`
+	Title        sql.NullString `db:"title"`
+	Width        int            `db:"width"`
+	Height       int            `db:"height"`
+	Filename     string         `db:"filename"`
 }
 
 // TableName sets the name of the table in the DB that this struct binds to

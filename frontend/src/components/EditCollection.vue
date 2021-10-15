@@ -172,10 +172,12 @@ export default {
                this.collection.features.push(data.id)
             }
          })
-         if (this.details.image) {
+         if (this.details.image != null) {
             this.collection.imageTitle = this.details.image.title
             this.collection.imageAlt = this.details.image.alt_text
             this.collection.imageURL = this.details.image.url
+            let bits = this.collection.imageURL.split("/")
+            this.collection.imageFile = bits[bits.length-1]
          }
       }
    }

@@ -2,10 +2,12 @@ package main
 
 import (
 	"database/sql"
+	"encoding/json"
 	"fmt"
 	"log"
 	"net/http"
 	"os"
+	"os/exec"
 	"path/filepath"
 	"strings"
 
@@ -27,6 +29,11 @@ type updateCollectionRequest struct {
 	ImageFileName string `json:"imageFile"`
 	ImageTitle    string `json:"imageTitle"`
 	ImageAlt      string `json:"imageAlt"`
+}
+
+type exifData struct {
+	Width  int `json:"ImageWidth"`
+	Height int `json:"ImageHeight"`
 }
 
 func (svc *ServiceContext) getFeatures(c *gin.Context) {
@@ -186,6 +193,52 @@ func (svc *ServiceContext) addOrUpdateCollection(c *gin.Context) {
 		log.Printf("ERROR: %s add features failed: %s", user, err.Error())
 		c.String(http.StatusInternalServerError, err.Error())
 		return
+	}
+
+	log.Printf("INFO: update image for collection %d to '%s'", updateRec.ID, req.ImageFileName)
+	iq := svc.DB.NewQuery("select * from images where collection_id={:cid} limit 1")
+	iq.Bind(dbx.Params{"cid": updateRec.ID})
+	var img imageRec
+	err = iq.One(&img)
+	if err == nil {
+		// an image exists for this collection, see if the filename matches -- or the new filename is blank
+		// if so, delete the current image
+		if req.ImageFileName == "" || req.ImageFileName != img.Filename {
+			delErr := svc.DB.Model(&img).Delete()
+			if delErr != nil {
+				log.Printf("ERROR: unable to delete image rec for %s: %s", img.Filename, delErr.Error())
+			}
+		}
+	}
+
+	if req.ImageFileName != "" {
+		log.Printf("INFO: add logo %s to collection %d", req.ImageFileName, updateRec.ID)
+		newImage := imageRec{CollectionID: updateRec.ID, Filename: req.ImageFileName}
+		if req.ImageTitle != "" {
+			newImage.Title.String = req.ImageTitle
+			newImage.Title.Valid = true
+		}
+		if req.ImageAlt != "" {
+			newImage.AltText.String = req.ImageAlt
+			newImage.AltText.Valid = true
+		}
+		cmdArray := []string{"-json", "-ImageWidth", "-ImageHeight", fmt.Sprintf("/tmp/%s", req.ImageFileName)}
+		stdout, err := exec.Command("exiftool", cmdArray...).Output()
+		if err != nil {
+			log.Printf("WARNINIG: unable to get %s metadata: %s", req.ImageFileName, err.Error())
+		} else {
+			var parsed []exifData
+			json.Unmarshal(stdout, &parsed)
+			newImage.Width = parsed[0].Width
+			newImage.Height = parsed[0].Height
+		}
+		imgErr := svc.DB.Model(&newImage).Insert()
+		if imgErr != nil {
+			log.Printf("ERROR: unable to add image record for %s: %s", req.ImageFileName, imgErr.Error())
+		} else {
+			log.Printf("INFO: upload logo %s to S3", req.ImageFileName)
+			// TODO upload then DELETE
+		}
 	}
 
 	// convert DB structs into JSON response
