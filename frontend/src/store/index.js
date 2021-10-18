@@ -21,6 +21,7 @@ export default createStore({
       },
       fatal: "",
       message: "",
+      logos: []
    },
    getters: {
       isEditing: state => {
@@ -34,6 +35,10 @@ export default createStore({
       setCollections(state, data) {
          state.collections.splice(0, state.collections.length)
          data.forEach(c => state.collections.push(c))
+      },
+      setLogos(state, data) {
+         state.logos.splice(0, state.logos.length)
+         data.forEach(c => state.logos.push(c))
       },
       clearDetails(state) {
          state.selectedID = 0
@@ -124,6 +129,13 @@ export default createStore({
       getFeatures(ctx) {
          axios.get("/api/features").then(resp => {
             ctx.commit("setFeatures", resp.data)
+         }).catch((e) => {
+            ctx.commit("setFatalError", e)
+         })
+      },
+      getLogos(ctx) {
+         axios.get("/api/logos").then(resp => {
+            ctx.commit("setLogos", resp.data)
          }).catch((e) => {
             ctx.commit("setFatalError", e)
          })

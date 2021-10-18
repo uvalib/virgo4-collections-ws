@@ -61,25 +61,57 @@
                   @removedFile="fileRemoved">
                >
                   <template v-slot:message>
-                     <span>Drop logo here, or click to browse.</span>
+                     <span>Drop new logo here, or click to browse.</span>
                      <span class="note"><b>Note:</b> A newly uploaded logo will replace the current logo upon submission.</span>
                   </template>
                </DropZone>
+               <div class="other-opts">
+                  <p>OR</p>
+                  <uva-button @click="pickImageClicked">Select an existing logo</uva-button>
+               </div>
             </span>
          </div>
       </dd>
    </dl>
+   <div class="picker-dimmer" v-if="logosOpened">
+      <div class="message" role="dialog" aria-modal="true"
+         aria-labelledby="picketitle" aria-describedby="msgbody"
+         @keyup.esc="dismissLogo"
+      >
+         <div class="bar">
+            <span id="picketitle" class="title">Select a logo</span>
+         </div>
+         <div class="content">
+            <ul class="images">
+               <li v-for="(i,idx) in logos" :key="`logo${idx}`" :class="{selected: idx==selectedLogoIdx}" @click="logoClicked(idx)">
+                  <img :src="i" />
+               </li>
+            </ul>
+         </div>
+         <div class="controls">
+            <button id="cancel-logo" @esc="dismissLogo" @click="selectLogo" >
+               Cancel
+            </button>
+            <button id="okl-ogo" @esc="dismissLogo" @click="selectLogo" >
+               Select Logo
+            </button>
+         </div>
+      </div>
+   </div>
 </template>
 
 <script>
 import { mapState } from "vuex"
+import UvaButton from './UvaButton.vue'
 export default {
+   components: { UvaButton },
    computed: {
       ...mapState({
          selectedID: state => state.selectedID,
          details: state => state.details,
          features: state => state.features,
-         mode: state => state.mode
+         mode: state => state.mode,
+         logos: state => state.logos
       }),
       uploadURL() {
          return `${window.location.href}/api/collections/${this.details.id}/logo`
@@ -87,6 +119,8 @@ export default {
    },
    data: function()  {
       return {
+         logosOpened: false,
+         selectedLogoIdx: -1,
          error: "",
          errors: [],
          required: ['title', 'filter', 'itemLabel'],
@@ -102,7 +136,8 @@ export default {
             imageTitle: "",
             imageAlt: "",
             imageURL: "",
-            imageFile: ""
+            imageFile: "",
+            imageStatus: "no_change"
          }
       }
    },
@@ -114,15 +149,36 @@ export default {
       }
    },
    methods: {
+      pickImageClicked() {
+         this.logosOpened = true
+         this.$store.dispatch("getLogos")
+      },
+      logoClicked(idx) {
+         this.selectedLogoIdx = idx
+      },
+      dismissLogo() {
+         this.logosOpened = false
+         this.selectedLogoIdx = -1;
+      },
+      selectLogo() {
+         this.logosOpened = false
+         this.collection.imageURL = this.logos[this.selectedLogoIdx]
+         let bits = this.collection.imageURL.split("/")
+         this.collection.imageFile = bits[bits.length-1]
+         this.selectedLogoIdx = -1
+         this.collection.imageStatus = "existing"
+      },
       hasError( val) {
          return this.errors.includes(val)
       },
       fileAdded(item) {
          let filename = item.file.name
          this.collection.imageFile = filename
+         this.collection.imageStatus = "new"
       },
       fileRemoved(item) {
          this.collection.imageFile = ""
+         this.collection.imageStatus = "no_change"
          this.$store.dispatch("deletePendingImage", item.file.name)
       },
       submitChanges() {
@@ -185,6 +241,86 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.picker-dimmer {
+   position: fixed;
+   left: 0;
+   width: 100%;
+   top:0;
+   height: 100%;
+   background: rgba(0, 0, 0, 0.2);
+   .message {
+      display: block;
+      text-align: left;
+      background: white;
+      padding: 0px;
+      box-shadow:  0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+      width: 75%;
+      border-radius: 5px;
+      margin: 5% auto;
+      .bar {
+         padding: 5px;
+         color: var(--uvalib-text-dark);
+         font-weight: 500;
+         display: flex;
+         flex-flow: row nowrap;
+         align-items: center;
+         justify-content: space-between;
+         background-color: var(--uvalib-blue-alt-light);
+         border-bottom: 2px solid var(--uvalib-blue-alt);
+         border-radius: 5px 5px 0 0;
+         font-size: 1.1em;
+         padding: 10px;
+      }
+      .content {
+         margin: 10px 20px 10px 0;
+         padding: 0;
+      }
+      .images {
+         box-sizing: border-box;
+         margin: 10px;
+         padding: 0;
+         white-space: nowrap;
+         width: 100%;
+         overflow-x: auto;
+         border: 1px solid var(--uvalib-grey-light);
+         display: flex;
+         flex-flow: row nowrap;
+         align-items: flex-start;
+         li {
+            display: inline-block;
+            width: 200px;
+            margin: 10px;
+
+            img {
+               max-width: 200px;
+               margin: 0;
+               padding: 0;
+               display: inline-block;
+               border: 1px solid var(--uvalib-grey-light);
+               box-shadow: 0 1px 3px rgba(0,0,0,.06), 0 1px 2px rgba(0,0,0,.12);
+               position: relative;
+               cursor: pointer;
+               &:hover, &:focus-within, &:focus {
+                  top: -2px;
+                  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5), 0 1px 2px rgba(0, 0, 0,1);
+               }
+            }
+         }
+         li.selected {
+            img {
+               outline: 5px solid var(--uvalib-brand-blue-lightest);
+            }
+         }
+      }
+      .controls {
+         padding: 15px 10px 10px 0;
+         text-align: right;
+         button {
+            margin-left: 5px;
+         }
+      }
+   }
+}
 dl {
    margin-left: 25px;
    display: inline-grid;
@@ -206,6 +342,9 @@ dl {
       width: 250px;
       height: 250px;
       margin-left: 10px;
+   }
+   .other-opts {
+      text-align: center;
    }
    .logo-drop {
       border: 2px dashed var(--uvalib-grey-light);

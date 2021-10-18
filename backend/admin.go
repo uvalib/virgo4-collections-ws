@@ -33,6 +33,8 @@ type updateCollectionRequest struct {
 	ImageFileName string `json:"imageFile"`
 	ImageTitle    string `json:"imageTitle"`
 	ImageAlt      string `json:"imageAlt"`
+	ImageURL      string `json:"imageURL"`
+	ImageStatus   string `json:"imageStatus"`
 }
 
 type exifData struct {
@@ -143,6 +145,7 @@ func (svc *ServiceContext) addOrUpdateCollection(c *gin.Context) {
 		c.String(http.StatusBadRequest, err.Error())
 		return
 	}
+	log.Printf("INFO: User %s add/update collection %+v", user, req)
 
 	updateRec := collectionRec{ID: int64(req.ID), Title: req.Title, ItemLabel: req.ItemLabel, FilterName: req.Filter}
 	if req.Description != "" {
@@ -199,25 +202,23 @@ func (svc *ServiceContext) addOrUpdateCollection(c *gin.Context) {
 		return
 	}
 
-	log.Printf("INFO: update image for collection %d to '%s'", updateRec.ID, req.ImageFileName)
-	iq := svc.DB.NewQuery("select * from images where collection_id={:cid} limit 1")
-	iq.Bind(dbx.Params{"cid": updateRec.ID})
-	var img imageRec
-	err = iq.One(&img)
-	if err == nil {
-		// an image exists for this collection, see if the filename matches -- or the new filename is blank
-		// if so, delete the current image
-		if req.ImageFileName == "" || req.ImageFileName != img.Filename {
+	if req.ImageStatus != "no_change" {
+		imgName := req.ImageFileName
+		log.Printf("INFO: update image for collection %d to '%s'", updateRec.ID, imgName)
+		iq := svc.DB.NewQuery("select * from images where collection_id={:cid} limit 1")
+		iq.Bind(dbx.Params{"cid": updateRec.ID})
+		var img imageRec
+		err = iq.One(&img)
+		if err == nil {
+			// an image exists for this collection, see if the filename matches -- or the new filename is blank
+			// if so, delete the current image
 			delErr := svc.DB.Model(&img).Delete()
 			if delErr != nil {
 				log.Printf("ERROR: unable to delete image rec for %s: %s", img.Filename, delErr.Error())
 			}
 		}
-	}
 
-	if req.ImageFileName != "" {
-		log.Printf("INFO: add logo %s to collection %d", req.ImageFileName, updateRec.ID)
-		tmpImagePath := fmt.Sprintf("/tmp/%s", req.ImageFileName)
+		log.Printf("INFO: add logo %s to collection %d", imgName, updateRec.ID)
 		newImage := imageRec{CollectionID: updateRec.ID, Filename: req.ImageFileName}
 		if req.ImageTitle != "" {
 			newImage.Title.String = req.ImageTitle
@@ -227,28 +228,44 @@ func (svc *ServiceContext) addOrUpdateCollection(c *gin.Context) {
 			newImage.AltText.String = req.ImageAlt
 			newImage.AltText.Valid = true
 		}
-		cmdArray := []string{"-json", "-ImageWidth", "-ImageHeight", tmpImagePath}
-		stdout, err := exec.Command("exiftool", cmdArray...).Output()
-		if err != nil {
-			log.Printf("WARNINIG: unable to get %s metadata: %s", req.ImageFileName, err.Error())
-		} else {
-			var parsed []exifData
-			json.Unmarshal(stdout, &parsed)
-			newImage.Width = parsed[0].Width
-			newImage.Height = parsed[0].Height
-		}
-		imgErr := svc.DB.Model(&newImage).Insert()
-		if imgErr != nil {
-			log.Printf("ERROR: unable to add image record for %s: %s", req.ImageFileName, imgErr.Error())
-		} else {
+
+		if req.ImageStatus == "new" {
+			tmpImagePath := fmt.Sprintf("/tmp/%s", req.ImageFileName)
+			cmdArray := []string{"-json", "-ImageWidth", "-ImageHeight", tmpImagePath}
+			stdout, err := exec.Command("exiftool", cmdArray...).Output()
+			if err != nil {
+				log.Printf("WARNINIG: unable to get %s metadata: %s", req.ImageFileName, err.Error())
+			} else {
+				var parsed []exifData
+				json.Unmarshal(stdout, &parsed)
+				newImage.Width = parsed[0].Width
+				newImage.Height = parsed[0].Height
+			}
 			s3Err := svc.uploadImageToS3(req.ImageFileName)
 			if s3Err != nil {
 				log.Printf("ERROR: unable to upload %s to S3: %s", req.ImageFileName, s3Err.Error())
 			}
+
+			log.Printf("INFO: cleaning up temp image file %s", tmpImagePath)
+			os.Remove(tmpImagePath)
+		} else {
+			log.Printf("INFO: lookup w/h of existing image %s", imgName)
+			iq := svc.DB.NewQuery("select * from images where filename={:fn} order by collection_id asc limit 1")
+			iq.Bind(dbx.Params{"fn": imgName})
+			var img imageRec
+			err := iq.One(&img)
+			if err == nil {
+				newImage.Width = img.Width
+				newImage.Height = img.Height
+			} else {
+				log.Printf("ERROR: unable to get existing image %s: %s", imgName, err.Error())
+			}
 		}
 
-		log.Printf("INFO: cleaning up temp image file %s", tmpImagePath)
-		os.Remove(tmpImagePath)
+		imgErr := svc.DB.Model(&newImage).Insert()
+		if imgErr != nil {
+			log.Printf("ERROR: unable to add image record for %s: %s", req.ImageFileName, imgErr.Error())
+		}
 	}
 
 	// convert DB structs into JSON response
@@ -294,7 +311,7 @@ func (svc *ServiceContext) getLogos(c *gin.Context) {
 	}
 	out := make([]string, 0)
 	for _, item := range resp.Contents {
-		out = append(out, *item.Key)
+		out = append(out, fmt.Sprintf("%s/%s", svc.BaseImageURL, *item.Key))
 	}
 	c.JSON(http.StatusOK, out)
 }
