@@ -5,12 +5,18 @@
       <div class="content">
          <div class="list-wrap">
             <h2>Collection</h2>
-            <div class="list">
-               <div class="item" v-for="c in collections" :key="c.id" :id="`c${c.id}`"
-                  :class="{selected: c.id==selectedID}"
-                  @click="collectionClicked(c.id)"
-               >
-                  {{c.title}}
+            <div class="list-details">
+               <div class="search-div">
+                  <label>Find:</label>
+                  <input type="text" v-model="query" @input="queryTyped" @keyup.enter.prevent.stop="querySelected"/>
+               </div>
+               <div class="list" id="collection-list">
+                  <div class="item" v-for="c in collections" :key="c.id" :id="`c${c.id}`"
+                     :class="{selected: c.id==selectedID}"
+                     @click="collectionClicked(c.id)"
+                  >
+                     {{c.title}}
+                  </div>
                </div>
             </div>
             <div class="list-buttons">
@@ -57,6 +63,11 @@ export default {
    components: {
       CollectionDetail,EditCollection,Confirm
    },
+   data() {
+      return {
+         query: ""
+      }
+   },
    computed: {
       ...mapState({
          working: state => state.working,
@@ -69,6 +80,48 @@ export default {
       })
    },
    methods: {
+      queryTyped() {
+         let val = this.collections.find( c => c.title.toLowerCase().indexOf(this.query)==0)
+         if (val) {
+            let eles = document.getElementsByClassName("tgt-collection")
+            for (let i = 0; i < eles.length; i++) {
+               eles[i].classList.remove('tgt-collection')
+            }
+            let tgt = document.getElementById(`c${val.id}`)
+            if (tgt) {
+               // tgt.scrollIntoView()
+               this.scrollParentToChild(document.getElementById("collection-list"), tgt)
+               tgt.classList.add("tgt-collection")
+            }
+         }
+      },
+      querySelected() {
+         let val = this.collections.find( c => c.title.toLowerCase().indexOf(this.query)==0)
+         if ( val ) {
+            this.collectionClicked(val.id)
+         }
+      },
+      scrollParentToChild(parent, child) {
+         var parentRect = parent.getBoundingClientRect()
+         var parentViewableArea = {
+            height: parent.clientHeight,
+            width: parent.clientWidth
+         }
+         var childRect = child.getBoundingClientRect()
+         var isViewable = (childRect.top >= parentRect.top) && (childRect.bottom <= parentRect.top + parentViewableArea.height)
+         if (!isViewable) {
+            // Should we scroll using top or bottom? Find the smaller ABS adjustment
+            const scrollTop = childRect.top - parentRect.top;
+            const scrollBot = childRect.bottom - parentRect.bottom;
+            if (Math.abs(scrollTop) < Math.abs(scrollBot)) {
+               // we're near the top of the list
+               parent.scrollTop += scrollTop;
+            } else {
+               // we're near the bottom of the list
+               parent.scrollTop += scrollBot;
+            }
+         }
+      },
       deleteCollection() {
          this.$store.dispatch("deleteSelectedCollection")
       },
@@ -173,32 +226,55 @@ export default {
          margin: 25px;
       }
     }
-   .list {
-      text-align: left;
-      border: 1px solid #aaa;
-      padding: 0;
-      border-radius: 0 0 5px 5px;
-      max-height: 570px;
-      width: 100%;
-      overflow: scroll;
-      margin: 0;
-      box-sizing: border-box;
-      border-top: 0;
-      box-shadow:0 2px 4px rgba(0, 0, 0, 0.10), 0 2px 4px rgba(0, 0, 0, 0.12);
-      .item {
+    .list-details {
+       border-radius: 0 0 5px 5px;
+       box-shadow:0 2px 4px rgba(0, 0, 0, 0.10), 0 2px 4px rgba(0, 0, 0, 0.12);
+       border: 1px solid #aaa;
+       .search-div {
+          padding: 5px;
+          display: flex;
+          flex-flow: row nowrap;
+          align-items: center;
+          justify-content: flex-start;
+          background: #f0f0f0;
+          label {
+             font-weight: bold;
+             margin: 0 5px;
+          }
+          input {
+             box-sizing: border-box;
+             flex-grow: 1;
+          }
+          border-bottom: 1px solid #aaa;
+       }
+      .list {
+         text-align: left;
+         padding: 0;
+         max-height: 570px;
+         width: 100%;
+         overflow: scroll;
          margin: 0;
-         cursor: pointer;
-         padding: 5px 15px;
-         border-bottom: 1px solid var(--uvalib-grey-lightest);
-         &:hover {
+         box-sizing: border-box;
+         border-top: 0;
+
+         .item {
+            margin: 0;
+            cursor: pointer;
+            padding: 5px 15px;
+            border-bottom: 1px solid var(--uvalib-grey-lightest);
+            &:hover {
+               background: var(--uvalib-teal-lightest);
+            }
+         }
+         .tgt-collection {
             background: var(--uvalib-teal-lightest);
          }
+         .item.selected {
+            background: var(--uvalib-brand-blue-light);
+            color: white;
+         }
       }
-      .item.selected {
-         background: var(--uvalib-brand-blue-light);
-         color: white;
-      }
-   }
+    }
    .list-buttons {
       margin: 10px 0;
       text-align: right;
