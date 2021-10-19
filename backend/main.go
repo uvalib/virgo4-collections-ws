@@ -54,7 +54,7 @@ func main() {
 		api.GET("/logos", svc.userMiddleware, svc.getLogos)
 		api.GET("/lookup", svc.lookupCollectionContext)
 		api.GET("/features", svc.userMiddleware, svc.getFeatures)
-		api.GET("/collections", svc.userMiddleware, svc.getCollections)
+		api.GET("/collections", svc.getCollections)
 		api.POST("/collections", svc.userMiddleware, svc.addOrUpdateCollection)
 		api.POST("/collections/:id/logo", svc.userMiddleware, svc.uploadLogo)
 		api.DELETE("/collections/:id/logo/:fn", svc.userMiddleware, svc.deletePendingLogo)

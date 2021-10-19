@@ -142,6 +142,25 @@ func collectionfromDB(rec collectionRec) *collectionJSON {
 	return &c
 }
 
+func (svc *ServiceContext) getCollections(c *gin.Context) {
+	log.Printf("INFO: get a list of collections")
+	type collResp struct {
+		ID     int64  `db:"id" json:"id"`
+		Filter string `db:"filter_name" json:"facet"`
+		Title  string `db:"title" json:"title"`
+	}
+	q := svc.DB.NewQuery("select id,title,filter_name from collections order by title asc")
+	var recs []collResp
+	err := q.All(&recs)
+	if err != nil {
+		log.Printf("ERROR: unable to get collections: %s", err.Error())
+		c.String(http.StatusInternalServerError, err.Error())
+		return
+	}
+
+	c.JSON(http.StatusOK, recs)
+}
+
 func (svc *ServiceContext) lookupCollectionContext(c *gin.Context) {
 	rawName := c.Query("q")
 	log.Printf("INFO: lookup collection context for [%s]", rawName)
