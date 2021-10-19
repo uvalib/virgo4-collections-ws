@@ -1,0 +1,1 @@
+INSERT into collection_features (collection_id, feature_id) VALUES (1,1);
