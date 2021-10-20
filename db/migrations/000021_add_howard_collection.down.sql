@@ -1,0 +1,1 @@
+delete from collections where title='James Murray Howard University of Virginia Historic Buildings and Grounds Collection, University of Virginia Library';
