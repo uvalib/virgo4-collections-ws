@@ -1,5 +1,9 @@
 <template>
    <dl>
+      <dt>Active:</dt>
+      <dd>
+         <input type="checkbox" v-model="collection.active" id="active"/>
+      </dd>
       <dt>Title:</dt>
       <dd>
          <input type="text" v-model="collection.title" id="title" aria-required="true" required="required"/>
@@ -29,8 +33,10 @@
       <dt>Features:</dt>
       <dd>
          <template v-for="f in features" :key="`f${f.id}`">
-            <input type="checkbox" :id="`f${f.id}`" :value="f.id" v-model="collection.features" />
-            <label class="cb-label" :for="`f${f.id}`">{{ f.name }}</label>
+            <label class="cb-label" :for="`f${f.id}`">
+               <input type="checkbox" :id="`f${f.id}`" :value="f.id" v-model="collection.features" />
+               <span>{{ f.name }}</span>
+            </label>
          </template>
          <div>
             <span v-if="hasError('features')" class="error">At least one feature is required</span>
@@ -126,6 +132,7 @@ export default {
          required: ['title', 'filter', 'itemLabel'],
          collection: {
             id: 0,
+            active: false,
             title: "",
             description: "",
             itemLabel: "Issue",
@@ -215,6 +222,7 @@ export default {
    mounted() {
       if ( this.selectedID > 0) {
          this.collection.id = this.details.id
+         this.collection.active = this.details.active
          this.collection.title = this.details.title
          this.collection.description = this.details.description
          this.collection.itemLabel = this.details.itemLabel
@@ -373,9 +381,18 @@ dl {
       }
       input[type=checkbox] {
          margin: 0 5px 0 0;
+         width: 20px;
+         height: 20px;
       }
       .cb-label {
-         margin-right: 20px;
+         margin: 0 0 10px 0;
+         display: flex;
+         flex-flow: row nowrap;
+         justify-content: flex-start;
+         align-items: center;
+         input[type=checkbox] {
+            margin-right: 10px;
+         }
       }
       textarea {
          width: 100%;

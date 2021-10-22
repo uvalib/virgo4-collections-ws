@@ -1,5 +1,10 @@
 <template>
    <dl>
+      <dt>Active:</dt>
+      <dd>
+         <span v-if="details.active">Yes</span>
+         <span v-else>No</span>
+      </dd>
       <dt>Title:</dt>
       <dd>
          <template v-if="details.title">{{details.title}}</template>

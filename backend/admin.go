@@ -35,6 +35,7 @@ type updateCollectionRequest struct {
 	ImageAlt      string `json:"imageAlt"`
 	ImageURL      string `json:"imageURL"`
 	ImageStatus   string `json:"imageStatus"`
+	Active        bool   `json:"active"`
 }
 
 type exifData struct {
@@ -128,7 +129,7 @@ func (svc *ServiceContext) addOrUpdateCollection(c *gin.Context) {
 	}
 	log.Printf("INFO: User %s add/update collection %+v", user, req)
 
-	updateRec := collectionRec{ID: int64(req.ID), Title: req.Title, ItemLabel: req.ItemLabel, FilterName: req.Filter}
+	updateRec := collectionRec{ID: int64(req.ID), Active: req.Active, Title: req.Title, ItemLabel: req.ItemLabel, FilterName: req.Filter}
 	if req.Description != "" {
 		updateRec.Description.String = req.Description
 		updateRec.Description.Valid = true

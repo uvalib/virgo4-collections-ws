@@ -40,6 +40,7 @@ type collectionRec struct {
 	FilterName  string         `db:"filter_name"`
 	StartDate   sql.NullString `db:"start_date"`
 	EndDate     sql.NullString `db:"end_date"`
+	Active      bool           `db:"active"`
 }
 
 // TableName sets the name of the table in the DB that this struct binds to
@@ -72,6 +73,7 @@ type imageJSON struct {
 
 type collectionJSON struct {
 	ID          int64      `json:"id"`
+	Active      bool       `json:"active"`
 	Title       string     `json:"title"`
 	Description string     `json:"description"`
 	ItemLabel   string     `json:"item_label"`
@@ -129,7 +131,7 @@ func (coll *collectionJSON) getImages(db *dbx.DB, baseImageURL string) {
 
 // initialize JSON collection data from a DB rec
 func collectionfromDB(rec collectionRec) *collectionJSON {
-	c := collectionJSON{ID: rec.ID, Title: rec.Title, FilterName: rec.FilterName, ItemLabel: rec.ItemLabel, Features: make([]string, 0)}
+	c := collectionJSON{ID: rec.ID, Active: rec.Active, Title: rec.Title, FilterName: rec.FilterName, ItemLabel: rec.ItemLabel, Features: make([]string, 0)}
 	if rec.Description.Valid {
 		c.Description = rec.Description.String
 	}
@@ -143,13 +145,20 @@ func collectionfromDB(rec collectionRec) *collectionJSON {
 }
 
 func (svc *ServiceContext) getCollections(c *gin.Context) {
+	all := c.Query("all")
 	log.Printf("INFO: get a list of collections")
 	type collResp struct {
 		ID     int64  `db:"id" json:"id"`
 		Filter string `db:"filter_name" json:"facet"`
 		Title  string `db:"title" json:"title"`
 	}
-	q := svc.DB.NewQuery("select id,title,filter_name from collections order by title asc")
+
+	q := svc.DB.NewQuery("select id,title,filter_name from collections where active={:a} order by title asc")
+	q.Bind(dbx.Params{"a": true})
+	if all != "" {
+		log.Printf("INFO: get all collections, including inactive")
+		q = svc.DB.NewQuery("select id,title,filter_name from collections order by title asc")
+	}
 	var recs []collResp
 	err := q.All(&recs)
 	if err != nil {
@@ -166,8 +175,9 @@ func (svc *ServiceContext) lookupCollectionContext(c *gin.Context) {
 	log.Printf("INFO: lookup collection context for [%s]", rawName)
 
 	var rec collectionRec
-	q := svc.DB.NewQuery("select * from collections where title={:fv}")
+	q := svc.DB.NewQuery("select * from collections where title={:fv} and active={:a}")
 	q.Bind(dbx.Params{"fv": rawName})
+	q.Bind(dbx.Params{"a": true})
 	err := q.One(&rec)
 	if err != nil {
 		if err == sql.ErrNoRows {
@@ -192,8 +202,9 @@ func (svc *ServiceContext) collectionMiddleware(c *gin.Context) {
 	id := c.Param("id")
 	log.Printf("INFO: lookup collection id %s", id)
 
-	q := svc.DB.NewQuery("select title from collections where id={:id}")
+	q := svc.DB.NewQuery("select title from collections where id={:id} and active={:a}")
 	q.Bind(dbx.Params{"id": id})
+	q.Bind(dbx.Params{"a": true})
 	name := ""
 	err := q.Row(&name)
 	if err != nil {

@@ -18,6 +18,7 @@ export default createStore({
          filter: "",
          features: [],
          image: null,
+         active: false
       },
       fatal: "",
       message: "",
@@ -51,6 +52,7 @@ export default createStore({
          state.details.filter = ""
          state.details.features.splice(0, state.details.features.length)
          state.details.image = null
+         state.details.active = false
       },
       deleteSelectedCollection(state) {
          let idx = state.collections.findIndex( c => c.id == state.selectedID)
@@ -63,6 +65,7 @@ export default createStore({
          state.details.features.splice(0, state.details.features.length)
          data.features.forEach( f => state.details.features.push(f))
          state.details.id = data.id
+         state.details.active = data.active
          state.details.title = data.title
          state.details.description  = data.description
          state.details.itemLabel = data.item_label
@@ -79,6 +82,7 @@ export default createStore({
          state.details.features.splice(0, state.details.features.length)
          data.features.forEach( f => state.details.features.push(f))
          state.details.id = data.id
+         state.details.active = data.active
          state.details.title = data.title
          state.details.description  = data.description
          state.details.itemLabel = data.item_label
@@ -118,7 +122,7 @@ export default createStore({
    actions: {
       getCollections(ctx) {
          ctx.commit("setWorking", true)
-         axios.get("/api/collections").then(resp => {
+         axios.get("/api/collections?all=true").then(resp => {
             ctx.commit("setCollections", resp.data)
             ctx.commit("setWorking", false)
          }).catch((e) => {
