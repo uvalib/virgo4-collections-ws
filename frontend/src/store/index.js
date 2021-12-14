@@ -72,6 +72,9 @@ export default createStore({
          state.details.startDate = data.start_date
          state.details.endDate = data.end_date
          state.details.filter = data.filter_name
+         if (data.image) {
+            state.details.image = data.image
+         }
          state.selectedID = data.id
       },
       setCollectionDetail(state, data) {

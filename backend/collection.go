@@ -1,8 +1,8 @@
 package main
 
 import (
-	"database/sql"
 	"encoding/json"
+	"errors"
 	"fmt"
 	"log"
 	"net/http"
@@ -12,7 +12,7 @@ import (
 	"time"
 
 	"github.com/gin-gonic/gin"
-	dbx "github.com/go-ozzo/ozzo-dbx"
+	"gorm.io/gorm"
 )
 
 type solrResponseHeader struct {
@@ -32,138 +32,52 @@ type solrResponse struct {
 	Response solrResponseDocuments `json:"response,omitempty"`
 }
 
-type collectionRec struct {
-	ID          int64          `db:"id"`
-	Title       string         `db:"title"`
-	Description sql.NullString `db:"description"`
-	ItemLabel   string         `db:"item_label"`
-	FilterName  string         `db:"filter_name"`
-	StartDate   sql.NullString `db:"start_date"`
-	EndDate     sql.NullString `db:"end_date"`
-	Active      bool           `db:"active"`
+type feature struct {
+	ID   int64  `json:"id"`
+	Name string `json:"name"`
 }
 
-// TableName sets the name of the table in the DB that this struct binds to
-func (c collectionRec) TableName() string {
-	return "collections"
+type collection struct {
+	ID          int64     `json:"id"`
+	Title       string    `json:"title"`
+	Description string    `json:"description,omitempty"`
+	ItemLabel   string    `json:"item_label,omitempty"`
+	FilterName  string    `json:"filter_name"`
+	StartDate   string    `json:"start_date,omitempty"`
+	EndDate     string    `json:"end_date,omitempty"`
+	Active      bool      `json:"active,omitempty"`
+	Features    []feature `json:"features,omitempty" gorm:"many2many:collection_features"`
+	Image       *image    `json:"image,omitempty"`
 }
 
-type imageRec struct {
-	ID           int64          `db:"id"`
-	CollectionID int64          `db:"collection_id"`
-	AltText      sql.NullString `db:"alt_text"`
-	Title        sql.NullString `db:"title"`
-	Width        int            `db:"width"`
-	Height       int            `db:"height"`
-	Filename     string         `db:"filename"`
-}
-
-// TableName sets the name of the table in the DB that this struct binds to
-func (c imageRec) TableName() string {
-	return "images"
-}
-
-type imageJSON struct {
-	AltText string `json:"alt_text,omitempty"`
-	Title   string `json:"title,omitempty"`
-	Width   int    `json:"width"`
-	Height  int    `json:"height"`
-	URL     string `json:"url"`
-}
-
-type collectionJSON struct {
-	ID          int64      `json:"id"`
-	Active      bool       `json:"active"`
-	Title       string     `json:"title"`
-	Description string     `json:"description"`
-	ItemLabel   string     `json:"item_label"`
-	FilterName  string     `json:"filter_name"`
-	StartDate   string     `json:"start_date,omitempty"`
-	EndDate     string     `json:"end_date,omitempty"`
-	Features    []string   `json:"features"`
-	Image       *imageJSON `json:"image,omitempty"`
-}
-
-func (coll *collectionJSON) getFeatures(db *dbx.DB) {
-	log.Printf("INFO: get collection [%s] features", coll.Title)
-	q := db.NewQuery("select f.name from features f inner join collection_features cf on cf.feature_id = f.id where cf.collection_id={:cid}")
-	q.Bind(dbx.Params{"cid": coll.ID})
-	rows, err := q.Rows()
-	if err != nil {
-		if err == sql.ErrNoRows {
-			log.Printf("INFO: no features found for collection [%s]", coll.Title)
-		} else {
-			log.Printf("ERROR: unable to lookup features for [%s]: %s", coll.Title, err.Error())
-		}
-	} else {
-		for rows.Next() {
-			val := ""
-			rows.Scan(&val)
-			coll.Features = append(coll.Features, val)
-		}
-	}
-}
-
-func (coll *collectionJSON) getImages(db *dbx.DB, baseImageURL string) {
-	log.Printf("INFO: get collection [%s] images", coll.Title)
-	var image imageRec
-	q := db.NewQuery("select * from images where collection_id={:cid} limit 1")
-	q.Bind(dbx.Params{"cid": coll.ID})
-	err := q.One(&image)
-	if err != nil {
-		if err == sql.ErrNoRows {
-			log.Printf("INFO: no images found for collection [%s]", coll.Title)
-		} else {
-			log.Printf("ERROR: unable to lookup images for [%s]: %s", coll.Title, err.Error())
-		}
-	} else {
-		imgJSON := imageJSON{Width: image.Width, Height: image.Height}
-		if image.AltText.Valid {
-			imgJSON.AltText = image.AltText.String
-		}
-		if image.Title.Valid {
-			imgJSON.Title = image.Title.String
-		}
-		imgJSON.URL = fmt.Sprintf("%s/%s", baseImageURL, image.Filename)
-		coll.Image = &imgJSON
-	}
-}
-
-// initialize JSON collection data from a DB rec
-func collectionfromDB(rec collectionRec) *collectionJSON {
-	c := collectionJSON{ID: rec.ID, Active: rec.Active, Title: rec.Title, FilterName: rec.FilterName, ItemLabel: rec.ItemLabel, Features: make([]string, 0)}
-	if rec.Description.Valid {
-		c.Description = rec.Description.String
-	}
-	if rec.StartDate.Valid {
-		c.StartDate = rec.StartDate.String
-	}
-	if rec.EndDate.Valid {
-		c.EndDate = rec.EndDate.String
-	}
-	return &c
+type image struct {
+	ID           int64  `json:"id"`
+	CollectionID int64  `json:"-"`
+	AltText      string `json:"alt_text,omitempty"`
+	Title        string `json:"title,omitempty"`
+	Width        int    `json:"width"`
+	Height       int    `json:"height"`
+	Filename     string `json:"filename"`
+	URL          string `json:"url"`
 }
 
 func (svc *ServiceContext) getCollections(c *gin.Context) {
 	all := c.Query("all")
 	log.Printf("INFO: get a list of collections")
-	type collResp struct {
-		ID     int64  `db:"id" json:"id"`
-		Filter string `db:"filter_name" json:"facet"`
-		Title  string `db:"title" json:"title"`
-	}
 
-	q := svc.DB.NewQuery("select id,title,filter_name from collections where active={:a} order by title asc")
-	q.Bind(dbx.Params{"a": true})
+	var recs []collection
+	var dbResp *gorm.DB
 	if all != "" {
 		log.Printf("INFO: get all collections, including inactive")
-		q = svc.DB.NewQuery("select id,title,filter_name from collections order by title asc")
+		dbResp = svc.GDB.Select("id,title,filter_name").Order("title asc").Find(&recs)
+	} else {
+		log.Printf("INFO: get all active collections")
+		dbResp = svc.GDB.Select("id,title,filter_name").Order("title asc").Where("active=?", true).Find(&recs)
 	}
-	var recs []collResp
-	err := q.All(&recs)
-	if err != nil {
-		log.Printf("ERROR: unable to get collections: %s", err.Error())
-		c.String(http.StatusInternalServerError, err.Error())
+
+	if dbResp.Error != nil {
+		log.Printf("ERROR: unable to get collections: %s", dbResp.Error.Error())
+		c.String(http.StatusInternalServerError, dbResp.Error.Error())
 		return
 	}
 
@@ -174,52 +88,46 @@ func (svc *ServiceContext) lookupCollectionContext(c *gin.Context) {
 	rawName := c.Query("q")
 	log.Printf("INFO: lookup collection context for [%s]", rawName)
 
-	var rec collectionRec
-	q := svc.DB.NewQuery("select * from collections where title={:fv} and active={:a}")
-	q.Bind(dbx.Params{"fv": rawName})
-	q.Bind(dbx.Params{"a": true})
-	err := q.One(&rec)
-	if err != nil {
-		if err == sql.ErrNoRows {
+	var rec collection
+	dbResp := svc.GDB.Preload("Image").Preload("Features").Where("title=? and active=?", rawName, true).First(&rec)
+	if dbResp.Error != nil {
+		if errors.Is(dbResp.Error, gorm.ErrRecordNotFound) {
 			log.Printf("INFO: no collection context found for %s", rawName)
 			c.String(http.StatusNotFound, "not found")
 		} else {
-			log.Printf("ERROR: contexed lookup for %s failed: %s", rawName, err.Error())
-			c.String(http.StatusInternalServerError, err.Error())
+			log.Printf("ERROR: context lookup for %s failed: %s", rawName, dbResp.Error.Error())
+			c.String(http.StatusInternalServerError, dbResp.Error.Error())
 		}
 		return
 	}
 
-	out := collectionfromDB(rec)
-	out.getFeatures(svc.DB)
-	out.getImages(svc.DB, svc.BaseImageURL)
+	if rec.Image != nil {
+		rec.Image.URL = fmt.Sprintf("%s/%s", svc.BaseImageURL, rec.Image.Filename)
+	}
 
-	c.JSON(http.StatusOK, out)
+	c.JSON(http.StatusOK, rec)
 }
 
-// collection middleware accepts a collection ID and finds the associated filter value
+// collection middleware accepts a collection ID and finds the associated filter value (title)
 func (svc *ServiceContext) collectionMiddleware(c *gin.Context) {
-	id := c.Param("id")
-	log.Printf("INFO: lookup collection id %s", id)
+	id, _ := strconv.Atoi(c.Param("id"))
+	log.Printf("INFO: lookup collection id %d", id)
 
-	q := svc.DB.NewQuery("select title from collections where id={:id} and active={:a}")
-	q.Bind(dbx.Params{"id": id})
-	q.Bind(dbx.Params{"a": true})
-	name := ""
-	err := q.Row(&name)
-	if err != nil {
-		if err == sql.ErrNoRows {
-			log.Printf("INFO: collection %s not found", id)
+	var coll collection
+	dbResp := svc.GDB.Select("title").Where("id=? and active=?", id, true)
+	if dbResp.Error != nil {
+		if errors.Is(dbResp.Error, gorm.ErrRecordNotFound) {
+			log.Printf("INFO: collection %d not found", id)
 			c.AbortWithStatus(http.StatusNotFound)
 		} else {
-			log.Printf("ERROR: get collection %s failed: %s", id, err.Error())
+			log.Printf("ERROR: get collection %d failed: %s", id, dbResp.Error.Error())
 			c.AbortWithStatus(http.StatusInternalServerError)
 		}
 		return
 	}
 
-	c.Set("key", name)
-	log.Printf("INFO collection id %s=[%s]", id, name)
+	c.Set("key", coll.Title)
+	log.Printf("INFO collection id %d=[%s]", id, coll.Title)
 	c.Next()
 }
 

@@ -35,7 +35,9 @@
          {{details.filter}}
       </dd>
       <dt>Features:</dt>
-      <dd>{{details.features.join(", ")}}</dd>
+      <dd>
+         <template v-for="f in details.features" :key="`f${f.id}`"><span class="feature">{{f.name}}</span></template>
+      </dd>
       <template v-if="details.image">
          <dt>Logo Title:</dt>
          <dd>
@@ -89,6 +91,14 @@ dl {
       .thumb {
          max-width: 200px;
          border:1px solid var(--uvalib-grey-light);
+      }
+      .feature {
+         display: inline-block;
+         margin-right: 10px;
+         border:1px solid var(--uvalib-grey-light);
+         background: var(--uvalib-grey-lightest);
+         padding: 2px 15px;
+         border-radius: 15px;
       }
    }
    .na {

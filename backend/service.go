@@ -16,8 +16,9 @@ import (
 	"github.com/aws/aws-sdk-go/service/s3"
 	"github.com/aws/aws-sdk-go/service/s3/s3manager"
 	"github.com/gin-gonic/gin"
-	dbx "github.com/go-ozzo/ozzo-dbx"
 	_ "github.com/lib/pq"
+	"gorm.io/driver/postgres"
+	"gorm.io/gorm"
 )
 
 // ServiceContext contains common data used by all handlers
@@ -26,10 +27,16 @@ type ServiceContext struct {
 	BaseImageURL  string
 	Solr          SolrConfig
 	HTTPClient    *http.Client
-	DB            *dbx.DB
+	GDB           *gorm.DB
 	S3ImageBucket string
 	S3Uploader    *s3manager.Uploader
 	S3Service     *s3.S3
+}
+
+// SchemaMigration contains details about the version of the DB
+type SchemaMigration struct {
+	Version int
+	Dirty   bool
 }
 
 // InitializeService sets up the service context for all API handlers
@@ -51,12 +58,11 @@ func InitializeService(version string, cfg *ServiceConfig) *ServiceContext {
 	log.Printf("Connect to Postgres")
 	connStr := fmt.Sprintf("user=%s password=%s dbname=%s host=%s port=%d sslmode=disable",
 		cfg.DB.User, cfg.DB.Pass, cfg.DB.Name, cfg.DB.Host, cfg.DB.Port)
-	db, err := dbx.Open("postgres", connStr)
+	gdb, err := gorm.Open(postgres.Open(connStr), &gorm.Config{})
 	if err != nil {
 		log.Fatal(err)
 	}
-	db.LogFunc = log.Printf
-	ctx.DB = db
+	ctx.GDB = gdb
 
 	log.Printf("INFO: create HTTP client...")
 	defaultTransport := &http.Transport{
@@ -107,15 +113,11 @@ func (svc *ServiceContext) healthCheck(c *gin.Context) {
 	hcMap := make(map[string]hcResp)
 	hcMap["collectionsvc"] = hcResp{Healthy: true}
 
-	tq := svc.DB.NewQuery("select * from schema_migrations order by version desc limit 1")
-	var schema struct {
-		Version int  `db:"version"`
-		Dirty   bool `db:"dirty"`
-	}
-	err := tq.One(&schema)
-	if err != nil {
-		log.Printf("ERROR: %s", err.Error())
-		hcMap["postgres"] = hcResp{Healthy: false, Message: err.Error()}
+	var schema SchemaMigration
+	dbResp := svc.GDB.Order("version desc").First(&schema)
+	if dbResp.Error != nil {
+		log.Printf("ERROR: %s", dbResp.Error.Error())
+		hcMap["postgres"] = hcResp{Healthy: false, Message: dbResp.Error.Error()}
 	} else {
 		log.Printf("Schema info - Version: %d, Dirty: %t", schema.Version, schema.Dirty)
 		if schema.Dirty {

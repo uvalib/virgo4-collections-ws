@@ -231,10 +231,7 @@ export default {
          this.collection.filter = this.details.filter
          this.collection.features = []
          this.details.features.forEach( f => {
-            let data = this.features.find( sf => sf.name == f)
-            if (data) {
-               this.collection.features.push(data.id)
-            }
+            this.collection.features.push(f.id)
          })
          if (this.details.image != null) {
             this.collection.imageTitle = this.details.image.title

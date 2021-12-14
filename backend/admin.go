@@ -2,8 +2,8 @@ package main
 
 import (
 	"bytes"
-	"database/sql"
 	"encoding/json"
+	"errors"
 	"fmt"
 	"io/ioutil"
 	"log"
@@ -11,6 +11,7 @@ import (
 	"os"
 	"os/exec"
 	"path/filepath"
+	"strconv"
 	"strings"
 	"time"
 
@@ -18,7 +19,7 @@ import (
 	"github.com/aws/aws-sdk-go/service/s3"
 	"github.com/aws/aws-sdk-go/service/s3/s3manager"
 	"github.com/gin-gonic/gin"
-	dbx "github.com/go-ozzo/ozzo-dbx"
+	"gorm.io/gorm"
 )
 
 type updateCollectionRequest struct {
@@ -46,16 +47,11 @@ type exifData struct {
 func (svc *ServiceContext) getFeatures(c *gin.Context) {
 	user := c.GetString("user")
 	log.Printf("INFO: %s is requesting a list of features", user)
-	type featureResp struct {
-		ID   int64  `db:"id" json:"id"`
-		Name string `db:"name" json:"name"`
-	}
-	var features []featureResp
-	q := svc.DB.NewQuery("select id,name from features order by name asc")
-	err := q.All(&features)
-	if err != nil {
-		log.Printf("ERROR: unable to get features: %s", err.Error())
-		c.String(http.StatusInternalServerError, err.Error())
+	var features []feature
+	dbResp := svc.GDB.Order("name asc").Find(&features)
+	if dbResp.Error != nil {
+		log.Printf("ERROR: unable to get features: %s", dbResp.Error.Error())
+		c.String(http.StatusInternalServerError, dbResp.Error.Error())
 		return
 	}
 
@@ -64,54 +60,42 @@ func (svc *ServiceContext) getFeatures(c *gin.Context) {
 
 func (svc *ServiceContext) getCollectionDetails(c *gin.Context) {
 	user := c.GetString("user")
-	id := c.Param("id")
-	log.Printf("INFO: %s is is requesting collection %s details", user, id)
+	id, _ := strconv.Atoi(c.Param("id"))
+	log.Printf("INFO: %s is is requesting collection %d details", user, id)
 
-	var rec collectionRec
-	q := svc.DB.NewQuery("select * from collections where id={:cid}")
-	q.Bind(dbx.Params{"cid": id})
-	err := q.One(&rec)
-	if err != nil {
-		if err == sql.ErrNoRows {
-			log.Printf("INFO: no collection context found for %s", id)
+	var rec collection
+	dbResp := svc.GDB.Preload("Image").Preload("Features").First(&rec, id)
+	if dbResp.Error != nil {
+		if errors.Is(dbResp.Error, gorm.ErrRecordNotFound) {
+			log.Printf("INFO: no collection context found for %d", id)
 			c.String(http.StatusNotFound, "not found")
 		} else {
-			log.Printf("ERROR: contexed lookup for %s failed: %s", id, err.Error())
-			c.String(http.StatusInternalServerError, err.Error())
+			log.Printf("ERROR: contexed lookup for %d failed: %s", id, dbResp.Error.Error())
+			c.String(http.StatusInternalServerError, dbResp.Error.Error())
 		}
 		return
 	}
 
-	out := collectionfromDB(rec)
-	out.getFeatures(svc.DB)
-	out.getImages(svc.DB, svc.BaseImageURL)
+	if rec.Image != nil {
+		rec.Image.URL = fmt.Sprintf("%s/%s", svc.BaseImageURL, rec.Image.Filename)
+	}
 
-	c.JSON(http.StatusOK, out)
+	c.JSON(http.StatusOK, rec)
 }
 
 func (svc *ServiceContext) deleteCollection(c *gin.Context) {
 	user := c.GetString("user")
-	id := c.Param("id")
-	log.Printf("INFO: %s requests delete of collection %s", user, id)
-	q := svc.DB.NewQuery("select * from collections where id={:cid}")
-	q.Bind(dbx.Params{"cid": id})
-	var rec collectionRec
-	err := q.One(&rec)
-	if err != nil {
-		if err == sql.ErrNoRows {
-			log.Printf("WARNING: collection %s not found", id)
-			c.String(http.StatusNotFound, fmt.Sprintf("%s not found", id))
+	id, _ := strconv.Atoi(c.Param("id"))
+	log.Printf("INFO: %s requests delete of collection %d", user, id)
+	dbResp := svc.GDB.Delete(&collection{}, id)
+	if dbResp.Error != nil {
+		if errors.Is(dbResp.Error, gorm.ErrRecordNotFound) {
+			log.Printf("WARNING: collection %d not found", id)
+			c.String(http.StatusNotFound, fmt.Sprintf("%d not found", id))
 		} else {
-			log.Printf("ERROR: unable to find collection %s: %s", id, err.Error())
-			c.String(http.StatusInternalServerError, err.Error())
+			log.Printf("ERROR: unable to find collection %d: %s", id, dbResp.Error.Error())
+			c.String(http.StatusInternalServerError, dbResp.Error.Error())
 		}
-		return
-	}
-
-	err = svc.DB.Model(&rec).Delete()
-	if err != nil {
-		log.Printf("ERROR: unable to delete ollection %s: %s", id, err.Error())
-		c.String(http.StatusInternalServerError, err.Error())
 		return
 	}
 
@@ -129,44 +113,25 @@ func (svc *ServiceContext) addOrUpdateCollection(c *gin.Context) {
 	}
 	log.Printf("INFO: User %s add/update collection %+v", user, req)
 
-	updateRec := collectionRec{ID: int64(req.ID), Active: req.Active, Title: req.Title, ItemLabel: req.ItemLabel, FilterName: req.Filter}
-	if req.Description != "" {
-		updateRec.Description.String = req.Description
-		updateRec.Description.Valid = true
-	}
-	if req.StartDate != "" {
-		updateRec.StartDate.String = req.StartDate
-		updateRec.StartDate.Valid = true
-	}
-	if req.EndDate != "" {
-		updateRec.EndDate.String = req.EndDate
-		updateRec.EndDate.Valid = true
-	}
-
+	updateRec := collection{ID: int64(req.ID), Active: req.Active, Title: req.Title, ItemLabel: req.ItemLabel,
+		FilterName: req.Filter, Description: req.Description, StartDate: req.StartDate, EndDate: req.EndDate}
 	if req.ID == 0 {
 		log.Printf("INFO: %s add collection %+v", user, req)
-		addErr := svc.DB.Model(&updateRec).Insert()
-		if addErr != nil {
-			log.Printf("ERROR: %s add %v failed: %s", user, req, addErr.Error())
-			c.String(http.StatusInternalServerError, addErr.Error())
+		addResp := svc.GDB.Create(&updateRec)
+		if addResp.Error != nil {
+			log.Printf("ERROR: %s add %v failed: %s", user, req, addResp.Error.Error())
+			c.String(http.StatusInternalServerError, addResp.Error.Error())
 			return
 		}
 	} else {
 		log.Printf("INFO: %s update collection %+v", user, req)
-		upErr := svc.DB.Model(&updateRec).Exclude("ID").Update()
-		if upErr != nil {
-			log.Printf("ERROR: %s update %v failed: %s", user, req, upErr.Error())
-			c.String(http.StatusInternalServerError, upErr.Error())
+		upResp := svc.GDB.Omit("ID").Updates(&updateRec)
+		if upResp.Error != nil {
+			log.Printf("ERROR: %s update %v failed: %s", user, req, upResp.Error.Error())
+			c.String(http.StatusInternalServerError, upResp.Error.Error())
 			return
 		}
-		q := svc.DB.NewQuery("delete from collection_features where collection_id={:cid}")
-		q.Bind(dbx.Params{"cid": updateRec.ID})
-		_, upErr = q.Execute()
-		if upErr != nil {
-			log.Printf("ERROR: %s reset features failed: %s", user, upErr.Error())
-			c.String(http.StatusInternalServerError, upErr.Error())
-			return
-		}
+		svc.GDB.Model(&updateRec).Association("Features").Clear()
 	}
 
 	log.Printf("INFO: adding features to collection %d", updateRec.ID)
@@ -176,42 +141,29 @@ func (svc *ServiceContext) addOrUpdateCollection(c *gin.Context) {
 		vals = append(vals, fmt.Sprintf("(%d,%d)", updateRec.ID, featureID))
 	}
 	qStr += strings.Join(vals, ",")
-	q := svc.DB.NewQuery(qStr)
-	_, err = q.Execute()
-	if err != nil {
-		log.Printf("ERROR: %s add features failed: %s", user, err.Error())
-		c.String(http.StatusInternalServerError, err.Error())
+	dbResp := svc.GDB.Exec(qStr)
+	if dbResp.Error != nil {
+		log.Printf("ERROR: %s add features failed: %s", user, dbResp.Error.Error())
+		c.String(http.StatusInternalServerError, dbResp.Error.Error())
 		return
 	}
 
 	if req.ImageStatus != "no_change" {
 		imgName := req.ImageFileName
 		log.Printf("INFO: update image for collection %d to '%s'", updateRec.ID, imgName)
-		iq := svc.DB.NewQuery("select * from images where collection_id={:cid} limit 1")
-		iq.Bind(dbx.Params{"cid": updateRec.ID})
-		var img imageRec
-		err = iq.One(&img)
-		if err == nil {
-			// an image exists for this collection, see if the filename matches -- or the new filename is blank
-			// if so, delete the current image
-			delErr := svc.DB.Model(&img).Delete()
-			if delErr != nil {
-				log.Printf("ERROR: unable to delete image rec for %s: %s", img.Filename, delErr.Error())
+		var exitImg image
+		dbResp := svc.GDB.Where("collection_id=?", updateRec.ID).First(&exitImg)
+		if dbResp.Error == nil {
+			// only one image per collection
+			delResp := svc.GDB.Delete(&exitImg)
+			if delResp.Error != nil {
+				log.Printf("ERROR: unable to delete image rec for %s: %s", exitImg.Filename, delResp.Error.Error())
 			}
 		}
 
-		log.Printf("INFO: add logo %s to collection %d", imgName, updateRec.ID)
-		newImage := imageRec{CollectionID: updateRec.ID, Filename: req.ImageFileName}
-		if req.ImageTitle != "" {
-			newImage.Title.String = req.ImageTitle
-			newImage.Title.Valid = true
-		}
-		if req.ImageAlt != "" {
-			newImage.AltText.String = req.ImageAlt
-			newImage.AltText.Valid = true
-		}
-
+		newImage := image{CollectionID: updateRec.ID, Filename: req.ImageFileName, Title: req.ImageTitle, AltText: req.ImageAlt}
 		if req.ImageStatus == "new" {
+			log.Printf("INFO: add logo %s to collection %d; lookup sizing", imgName, updateRec.ID)
 			tmpImagePath := fmt.Sprintf("/tmp/%s", req.ImageFileName)
 			cmdArray := []string{"-json", "-ImageWidth", "-ImageHeight", tmpImagePath}
 			stdout, err := exec.Command("exiftool", cmdArray...).Output()
@@ -231,29 +183,26 @@ func (svc *ServiceContext) addOrUpdateCollection(c *gin.Context) {
 			log.Printf("INFO: cleaning up temp image file %s", tmpImagePath)
 			os.Remove(tmpImagePath)
 		} else {
-			log.Printf("INFO: lookup w/h of existing image %s", imgName)
-			iq := svc.DB.NewQuery("select * from images where filename={:fn} order by collection_id asc limit 1")
-			iq.Bind(dbx.Params{"fn": imgName})
-			var img imageRec
-			err := iq.One(&img)
-			if err == nil {
-				newImage.Width = img.Width
-				newImage.Height = img.Height
+			log.Printf("INFO: reuse existing logo %s in collection %d", req.ImageFileName, updateRec.ID)
+			var origImg image
+			imgResp := svc.GDB.Where("filename=?", req.ImageFileName).First(&origImg)
+			if imgResp.Error != nil {
+				log.Printf("ERROR: unable to get existing image %s: %s", req.ImageFileName, imgResp.Error.Error())
 			} else {
-				log.Printf("ERROR: unable to get existing image %s: %s", imgName, err.Error())
+				newImage.Width = origImg.Width
+				newImage.Height = origImg.Height
 			}
 		}
 
-		imgErr := svc.DB.Model(&newImage).Insert()
-		if imgErr != nil {
-			log.Printf("ERROR: unable to add image record for %s: %s", req.ImageFileName, imgErr.Error())
+		imgResp := svc.GDB.Omit("URL").Create(&newImage)
+		if imgResp.Error != nil {
+			log.Printf("ERROR: unable to add image record for %s: %s", req.ImageFileName, imgResp.Error.Error())
 		}
 	}
 
-	// convert DB structs into JSON response
-	out := collectionfromDB(updateRec)
-	out.getFeatures(svc.DB)
-	out.getImages(svc.DB, svc.BaseImageURL)
+	var out collection
+	svc.GDB.Preload("Image").Preload("Features").First(&out, updateRec.ID)
+	out.Image.URL = fmt.Sprintf("%s/%s", svc.BaseImageURL, out.Image.Filename)
 	c.JSON(http.StatusOK, out)
 }
 
