@@ -114,7 +114,7 @@ func (svc *ServiceContext) collectionMiddleware(c *gin.Context) {
 	log.Printf("INFO: lookup collection id %d", id)
 
 	var coll collection
-	dbResp := svc.GDB.Select("title").Where("id=? and active=?", id, true)
+	dbResp := svc.GDB.Select("title").Where("id=? and active=?", id, true).First(&coll)
 	if dbResp.Error != nil {
 		if errors.Is(dbResp.Error, gorm.ErrRecordNotFound) {
 			log.Printf("INFO: collection %d not found", id)
