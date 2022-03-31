@@ -2,7 +2,7 @@
 # build the target application
 #
 FROM golang:1.16.5-alpine3.13 as builder
-RUN apk update && apk upgrade && apk add make yarn
+RUN apk update && apk upgrade && apk add make npm yarn
 
 WORKDIR /build
 COPY go.mod go.sum Makefile ./

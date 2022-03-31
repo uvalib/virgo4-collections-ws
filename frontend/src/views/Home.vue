@@ -55,9 +55,9 @@
 
 <script>
 import { mapState, mapGetters } from "vuex"
-import CollectionDetail from '../components/CollectionDetail.vue'
-import EditCollection from '../components/EditCollection.vue'
-import Confirm from '../components/Confirm.vue'
+import CollectionDetail from "@/components/CollectionDetail.vue"
+import EditCollection from "@/components/EditCollection.vue"
+import Confirm from "@/components/Confirm.vue"
 export default {
    name: 'Home',
    components: {

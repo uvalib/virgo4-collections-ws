@@ -13,10 +13,10 @@ import DropZone from 'dropzone-vue'
 import 'dropzone-vue/dist/dropzone-vue.common.css'
 app.use(DropZone)
 
-import WaitSpinner from "@/components/WaitSpinner"
+import WaitSpinner from "@/components/WaitSpinner.vue"
 app.component('WaitSpinner', WaitSpinner)
 
-import UvaButton from "@/components/UvaButton"
+import UvaButton from "@/components/UvaButton.vue"
 app.component('UvaButton', UvaButton)
 
 import '@fortawesome/fontawesome-free/css/all.css'

@@ -26,9 +26,9 @@
 </template>
 
 <script>
-import UvaLibraryLogo from "@/components/UvaLibraryLogo"
-import UvaLibraryFooter from "@/components/UvaLibraryFooter"
-import MessageBox from "@/components/MessageBox"
+import UvaLibraryLogo from "@/components/UvaLibraryLogo.vue"
+import UvaLibraryFooter from "@/components/UvaLibraryFooter.vue"
+import MessageBox from "@/components/MessageBox.vue"
 import { mapState } from 'vuex'
 export default {
    components: {
