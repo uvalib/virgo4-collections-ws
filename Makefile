@@ -19,7 +19,7 @@ darwin-full: darwin web
 
 web:
 	mkdir -p bin/
-	cd frontend && npm install && npm build
+	cd frontend && npm install && npm run build
 	rm -rf bin/public
 	mv frontend/dist bin/public
 
