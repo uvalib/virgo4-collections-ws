@@ -1,5 +1,5 @@
 <template>
-   <div v-if="message" class="messsage-box">
+   <div v-if="collection.message" class="messsage-box">
       <div class="message" role="dialog" aria-modal="true"
          aria-labelledby="msgtitle" aria-describedby="msgbody"
          @keyup.esc="dismiss"
@@ -7,7 +7,7 @@
          <div class="bar">
             <span id="msgtitle" class="title">System Message</span>
          </div>
-         <div class="message-body" id="msgbody" v-html="message"></div>
+         <div class="message-body" id="msgbody" v-html="collection.message"></div>
          <div class="controls">
             <button id="okbtn" @esc="dismiss" @click="dismiss" >
                OK
@@ -17,26 +17,21 @@
    </div>
 </template>
 
-<script>
-import { mapState } from "vuex"
-export default {
-   computed: {
-      ...mapState({
-         message: state => state.message,
-      }),
-   },
-   methods: {
-      dismiss() {
-         this.$store.commit("clearMessage")
-      },
-   },
-   created() {
-      let ele = document.getElementById("okbtn")
-      if (ele ) {
-               ele.focus()
-            }
-   },
-};
+<script setup>
+import { useCollectionStore } from "@/stores/collection"
+import { onMounted } from "vue"
+const collection = useCollectionStore()
+
+function dismiss() {
+   collection.message = ""
+}
+
+onMounted(() =>{
+   let ele = document.getElementById("okbtn")
+   if (ele ) {
+      ele.focus()
+   }
+})
 </script>
 
 <style lang="scss" scoped>

@@ -1,13 +1,18 @@
-import { createApp } from 'vue'
+import { createApp, markRaw } from 'vue'
 import App from './App.vue'
 import router from './router'
-import store from './store'
+
+import { createPinia } from 'pinia'
+const pinia = createPinia()
+pinia.use(({ store }) => {
+   // all stores can access router with this.router
+   store.router = markRaw (router)
+})
 
 const app = createApp(App)
-app.use(store)
+app.use(pinia)
 app.use(router)
 
-store.router = router
 
 import DropZone from 'dropzone-vue'
 import 'dropzone-vue/dist/dropzone-vue.common.css'

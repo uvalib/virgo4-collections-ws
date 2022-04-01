@@ -10,10 +10,10 @@
            <router-link to="/">Collections Management</router-link>
          </div>
       </div>
-      <div v-if="fatalError" class="fatal-err">
+      <div v-if="collection.fatal" class="fatal-err">
          <h1>Internal System Error</h1>
          <div class="err-txt">
-            <p>{{fatalError}}</p>
+            <p>{{collection.fatal}}</p>
             <p>Sorry for the inconvenience! We are aware of the issue and are working to resolve it. Please check back later.</p>
          </div>
       </div>
@@ -25,21 +25,12 @@
    </div>
 </template>
 
-<script>
+<script setup>
 import UvaLibraryLogo from "@/components/UvaLibraryLogo.vue"
 import UvaLibraryFooter from "@/components/UvaLibraryFooter.vue"
 import MessageBox from "@/components/MessageBox.vue"
-import { mapState } from 'vuex'
-export default {
-   components: {
-      UvaLibraryLogo, UvaLibraryFooter, MessageBox
-   },
-   computed: {
-      ...mapState({
-         fatalError: state => state.fatal
-      }),
-   }
-}
+import { useCollectionStore } from "@/stores/collection"
+const collection = useCollectionStore()
 </script>
 
 <style lang="scss">

@@ -2,73 +2,64 @@
    <dl>
       <dt>Active:</dt>
       <dd>
-         <span v-if="details.active">Yes</span>
+         <span v-if="collection.details.active">Yes</span>
          <span v-else>No</span>
       </dd>
       <dt>Title:</dt>
       <dd>
-         <template v-if="details.title">{{details.title}}</template>
+         <template v-if="collection.details.title">{{collection.details.title}}</template>
          <span v-else class="na">N/A</span>
       </dd>
       <dt>Description:</dt>
       <dd>
-         <span v-if="details.description" v-html="details.description"></span>
+         <span v-if="collection.details.description" v-html="collection.details.description"></span>
          <span v-else class="na">N/A</span>
       </dd>
       <dt>Item Label:</dt>
       <dd>
-         <template v-if="details.itemLabel">{{details.itemLabel}}</template>
+         <template v-if="collection.details.itemLabel">{{collection.details.itemLabel}}</template>
          <span v-else class="na">N/A</span>
       </dd>
       <dt>Start Date:</dt>
       <dd>
-         <template v-if="details.startDate">{{details.startDate}}</template>
+         <template v-if="collection.details.startDate">{{collection.details.startDate}}</template>
          <span v-else class="na">N/A</span>
       </dd>
       <dt>End Date:</dt>
       <dd>
-         <template v-if="details.endDate">{{details.endDate}}</template>
+         <template v-if="collection.details.endDate">{{collection.details.endDate}}</template>
          <span v-else class="na">N/A</span>
       </dd>
       <dt>Facet Name:</dt>
       <dd>
-         {{details.filter}}
+         {{collection.details.filter}}
       </dd>
       <dt>Features:</dt>
       <dd>
-         <template v-for="f in details.features" :key="`f${f.id}`"><span class="feature">{{f.name}}</span></template>
+         <template v-for="f in collection.details.features" :key="`f${f.id}`"><span class="feature">{{f.name}}</span></template>
       </dd>
-      <template v-if="details.image">
+      <template v-if="collection.details.image">
          <dt>Logo Title:</dt>
          <dd>
-            <template v-if="details.image.title">{{details.image.title}}</template>
+            <template v-if="collection.details.image.title">{{collection.details.image.title}}</template>
             <span v-else class="na">N/A</span>
          </dd>
          <dt>Logo Alt Text:</dt>
          <dd>
-            <template v-if="details.image.alt_text">{{details.image.alt_text}}</template>
+            <template v-if="collection.details.image.alt_text">{{collection.details.image.alt_text}}</template>
             <span v-else class="na">N/A</span>
          </dd>
          <dt>Logo:</dt>
          <dd>
-            <img class="thumb" :src="details.image.url"/>
+            <img class="thumb" :src="collection.details.image.url"/>
          </dd>
       </template>
    </dl>
 </template>
 
-<script>
-import { mapState } from "vuex"
-export default {
-   computed: {
-      ...mapState({
-         selectedID: state => state.selectedID,
-         details: state => state.details,
-      })
-   },
-   methods: {
-   },
-}
+<script setup>
+import { useCollectionStore } from "@/stores/collection"
+const collection = useCollectionStore()
 </script>
 
 <style lang="scss" scoped>

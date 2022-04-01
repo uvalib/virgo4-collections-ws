@@ -1,7 +1,7 @@
 <template>
    <div class="home">
       <h1>Collections Management</h1>
-      <wait-spinner v-if="working" message="Initializing system..." :overlay="true"/>
+      <wait-spinner v-if="store.working" message="Initializing system..." :overlay="true"/>
       <div class="content">
          <div class="list-wrap">
             <h2>Collection</h2>
@@ -11,8 +11,8 @@
                   <input type="text" v-model="query" @input="queryTyped" @keyup.enter.prevent.stop="querySelected"/>
                </div>
                <div class="list" id="collection-list">
-                  <div class="item" v-for="c in collections" :key="c.id" :id="`c${c.id}`"
-                     :class="{selected: c.id==selectedID}"
+                  <div class="item" v-for="c in store.collections" :key="c.id" :id="`c${c.id}`"
+                     :class="{selected: c.id==store.selectedID}"
                      @click="collectionClicked(c.id)"
                   >
                      {{c.title}}
@@ -20,138 +20,116 @@
                </div>
             </div>
             <div class="list-buttons">
-               <uva-button @click="addCollectionClicked" :class="{disabled: isEditing}">Add Collection</uva-button>
+               <uva-button @click="addCollectionClicked" :class="{disabled: store.isEditing}">Add Collection</uva-button>
             </div>
          </div>
          <div class="detail-wrap">
             <h2>
                <span>Details</span>
                <span class="detail-butons">
-                  <template v-if="isEditing && selectedID > 0">
+                  <template v-if="store.isEditing && store.selectedID > 0">
                      <uva-button @click="cancelEdit" class="cancel">Cancel</uva-button>
                      <uva-button @click="submitClicked">Submit</uva-button>
                   </template>
-                  <template v-else-if="isEditing && selectedID == 0">
+                  <template v-else-if="store.isEditing && store.selectedID == 0">
                      <uva-button @click="cancelEdit" class="cancel">Cancel</uva-button>
                      <uva-button @click="submitClicked">Create</uva-button>
                   </template>
-                  <template v-else-if="selectedID > 0">
-                     <confirm @confirm="deleteCollection"
+                  <template v-else-if="store.selectedID > 0">
+                     <Confirm @confirm="deleteCollection"
                         buttonText="Delete"
-                        :message="`Delete collection <b>'${selected.title}</b>'?<br/>All data will be removed. This is not reversable.`" />
+                        :message="`Delete collection <b>'${store.details.title}</b>'?<br/>All data will be removed. This is not reversable.`" />
                      <uva-button class="pad-left" @click="editSelected">Edit</uva-button>
                   </template>
                </span>
             </h2>
              <div class="details">
-               <div v-if="selectedID == 0 && !isEditing" class="hint">Select a collection from the list on the left to view and edit the collection details.</div>
-               <collection-detail v-if="selectedID > 0 && !isEditing" />
-               <edit-collection v-else-if="isEditing" />
+               <div v-if="store.selectedID == 0 && !store.isEditing" class="hint">Select a collection from the list on the left to view and edit the collection details.</div>
+               <collection-detail v-if="store.selectedID > 0 && !store.isEditing" />
+               <edit-collection v-else-if="store.isEditing" />
              </div>
          </div>
       </div>
    </div>
 </template>
 
-<script>
-import { mapState, mapGetters } from "vuex"
+<script setup>
+import { useCollectionStore } from "@/stores/collection"
 import CollectionDetail from "@/components/CollectionDetail.vue"
 import EditCollection from "@/components/EditCollection.vue"
 import Confirm from "@/components/Confirm.vue"
-export default {
-   name: 'Home',
-   components: {
-      CollectionDetail,EditCollection,Confirm
-   },
-   data() {
-      return {
-         query: ""
+import { onMounted, ref } from "vue"
+
+const store = useCollectionStore()
+const query = ref("")
+
+function queryTyped() {
+   let val = store.collections.find( c => c.title.toLowerCase().indexOf(query.value)==0)
+   if (val) {
+      let eles = document.getElementsByClassName("tgt-collection")
+      for (let i = 0; i < eles.length; i++) {
+         eles[i].classList.remove('tgt-collection')
       }
-   },
-   computed: {
-      ...mapState({
-         working: state => state.working,
-         collections: state => state.collections,
-         selectedID: state => state.selectedID,
-         selected: state => state.details
-      }),
-      ...mapGetters({
-         isEditing: 'isEditing',
-      })
-   },
-   methods: {
-      queryTyped() {
-         let val = this.collections.find( c => c.title.toLowerCase().indexOf(this.query)==0)
-         if (val) {
-            let eles = document.getElementsByClassName("tgt-collection")
-            for (let i = 0; i < eles.length; i++) {
-               eles[i].classList.remove('tgt-collection')
-            }
-            let tgt = document.getElementById(`c${val.id}`)
-            if (tgt) {
-               // tgt.scrollIntoView()
-               this.scrollParentToChild(document.getElementById("collection-list"), tgt)
-               tgt.classList.add("tgt-collection")
-            }
-         }
-      },
-      querySelected() {
-         let val = this.collections.find( c => c.title.toLowerCase().indexOf(this.query)==0)
-         if ( val ) {
-            this.collectionClicked(val.id)
-         }
-      },
-      scrollParentToChild(parent, child) {
-         var parentRect = parent.getBoundingClientRect()
-         var parentViewableArea = {
-            height: parent.clientHeight,
-            width: parent.clientWidth
-         }
-         var childRect = child.getBoundingClientRect()
-         var isViewable = (childRect.top >= parentRect.top) && (childRect.bottom <= parentRect.top + parentViewableArea.height)
-         if (!isViewable) {
-            // Should we scroll using top or bottom? Find the smaller ABS adjustment
-            const scrollTop = childRect.top - parentRect.top;
-            const scrollBot = childRect.bottom - parentRect.bottom;
-            if (Math.abs(scrollTop) < Math.abs(scrollBot)) {
-               // we're near the top of the list
-               parent.scrollTop += scrollTop;
-            } else {
-               // we're near the bottom of the list
-               parent.scrollTop += scrollBot;
-            }
-         }
-      },
-      deleteCollection() {
-         this.$store.dispatch("deleteSelectedCollection")
-      },
-      deleteClicked() {
-         this.$store.commit("setShowConfirm", true)
-      },
-      submitClicked() {
-         this.$store.commit("setSubmit")
-      },
-      collectionClicked(id) {
-         this.$store.commit("clearDetails")
-         this.$store.commit("setDisplay")
-         this.$store.dispatch("getCollectionDetail", id)
-      },
-      editSelected() {
-        this.$store.commit("setEdit")
-      },
-      cancelEdit() {
-         this.$store.commit("setDisplay")
-      },
-      addCollectionClicked() {
-         this.$store.commit("clearDetails")
-        this.$store.commit("setEdit")
+      let tgt = document.getElementById(`c${val.id}`)
+      if (tgt) {
+         scrollParentToChild(document.getElementById("collection-list"), tgt)
+         tgt.classList.add("tgt-collection")
       }
-   },
-   created() {
-      this.$store.dispatch("getCollections")
-      this.$store.dispatch("getFeatures")
    }
 }
+function querySelected() {
+   let val = store.collections.find( c => c.title.toLowerCase().indexOf(query.value)==0)
+   if ( val ) {
+      collectionClicked(val.id)
+   }
+}
+function scrollParentToChild(parent, child) {
+   var parentRect = parent.getBoundingClientRect()
+   var parentViewableArea = {
+      height: parent.clientHeight,
+      width: parent.clientWidth
+   }
+   var childRect = child.getBoundingClientRect()
+   var isViewable = (childRect.top >= parentRect.top) && (childRect.bottom <= parentRect.top + parentViewableArea.height)
+   if (!isViewable) {
+      // Should we scroll using top or bottom? Find the smaller ABS adjustment
+      const scrollTop = childRect.top - parentRect.top;
+      const scrollBot = childRect.bottom - parentRect.bottom;
+      if (Math.abs(scrollTop) < Math.abs(scrollBot)) {
+         // we're near the top of the list
+         parent.scrollTop += scrollTop;
+      } else {
+         // we're near the bottom of the list
+         parent.scrollTop += scrollBot;
+      }
+   }
+}
+function deleteCollection() {
+  store.deleteSelectedCollection()
+}
+function submitClicked() {
+   store.setSubmit()
+}
+function collectionClicked(id) {
+   store.clearDetails()
+   store.setDisplay()
+   store.getCollectionDetail(id)
+}
+function editSelected() {
+   store.setEdit()
+}
+function cancelEdit() {
+   store.setDisplay()
+}
+function addCollectionClicked() {
+   store.clearDetails()
+   store.setEdit()
+}
+
+onMounted(()=>{
+   store.getCollections()
+   store.getFeatures()
+})
 </script>
 
 <style lang="scss" scoped>

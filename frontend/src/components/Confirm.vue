@@ -1,5 +1,5 @@
 <template>
-   <uva-button @click="triggerClicked" :class="{disabled: isOpen}" >{{buttonText}}</uva-button>
+   <uva-button @click="triggerClicked" :class="{disabled: isOpen}" >{{props.buttonText}}</uva-button>
    <div v-if="isOpen" class="messsage-box">
       <div class="message" role="dialog" aria-modal="true"
          aria-labelledby="msgtitle" aria-describedby="msgbody"
@@ -8,7 +8,7 @@
          <div class="bar">
             <span id="msgtitle" class="title">Confirm Action</span>
          </div>
-         <div class="message-body" id="msgbody" v-html="message"></div>
+         <div class="message-body" id="msgbody" v-html="props.message"></div>
          <div class="message-body">Continue?</div>
          <div class="controls">
             <button id="cancelbtn" class="pad" @esc="dismiss" @click="dismiss" >
@@ -22,38 +22,32 @@
    </div>
 </template>
 
-<script>
-export default {
-   emits: ['cancel', 'confirm' ],
-   props: {
-      message: {
-         type: String,
-         reqired: true
-      },
-      buttonText: {
-         type: String,
-         reqired: true
-      },
+<script setup>
+import { ref } from 'vue'
+const emit = defineEmits( ['cancel', 'confirm' ] )
+const props = defineProps({
+   message: {
+      type: String,
+      reqired: true
    },
-   data: function()  {
-      return {
-         isOpen: false
-      }
+   buttonText: {
+      type: String,
+      reqired: true
    },
-   methods: {
-      triggerClicked() {
-         this.isOpen = true
-      },
-      ok() {
-         this.isOpen = false
-         this.$emit('confirm')
-      },
-      dismiss() {
-         this.isOpen = false
-         this.$emit('cancel')
-      },
-   },
-};
+})
+const isOpen = ref(false)
+
+function triggerClicked() {
+   isOpen.value = true
+}
+function ok() {
+   isOpen.value = false
+   emit('confirm')
+}
+function dismiss() {
+   isOpen.value = false
+   emit('cancel')
+}
 </script>
 
 <style lang="scss" scoped>

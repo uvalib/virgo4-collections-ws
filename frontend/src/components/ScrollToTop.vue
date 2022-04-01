@@ -4,48 +4,47 @@
          leave-active-class="animated faster fadeOut">
       <div v-if="showScrollTop" role="button"
          @click.stop="backToTop" tab-index="0" aria-label="scroll to top of page"
-         class="scroll-to-top"
+         class="scroll-to-top" :class="{mobile: smallScreen}"
       >
          <i class="fas fa-angle-up"></i>
       </div>
    </transition>
 </template>
 
-<script>
-export default {
-   data: function() {
-      return {
-         showScrollTop: false,
+<script setup>
+import { useSystemStore } from "@/stores/system"
+import { ref, computed, onMounted, onUnmounted } from 'vue'
+
+const systemStore = useSystemStore()
+const showScrollTop = ref(false)
+const smallScreen = computed( () => {
+   return systemStore.displayWidth <= 810
+})
+
+function backToTop() {
+   var scrollStep = -window.scrollY / (500 / 10),
+   scrollInterval = setInterval(()=> {
+      if ( window.scrollY != 0 ) {
+         window.scrollBy( 0, scrollStep )
+      } else {
+         clearInterval(scrollInterval)
       }
-   },
-   computed: {
-   },
-   methods: {
-      backToTop: function() {
-         var scrollStep = -window.scrollY / (500 / 10),
-         scrollInterval = setInterval(()=> {
-            if ( window.scrollY != 0 ) {
-               window.scrollBy( 0, scrollStep )
-            } else {
-               clearInterval(scrollInterval)
-            }
-         },10)
-      },
-      scrollChecker() {
-         if (window.window.scrollY > 150) {
-            this.showScrollTop = true
-         } else {
-            this.showScrollTop = false
-         }
-      }
-   },
-   mounted: function() {
-      window.addEventListener("scroll", this.scrollChecker)
-   },
-   unmounted: function() {
-      window.removeEventListener("scroll", this.scrollChecker)
+   },10)
+}
+function scrollChecker() {
+   if (window.window.scrollY > 150) {
+      showScrollTop.value = true
+   } else {
+      showScrollTop.value = false
    }
 }
+
+onMounted(() => {
+   window.addEventListener("scroll", scrollChecker)
+}),
+onUnmounted(() => {
+      window.removeEventListener("scroll", scrollChecker)
+})
 </script>
 
 <style scoped>

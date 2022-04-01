@@ -2,39 +2,39 @@
    <dl>
       <dt>Active:</dt>
       <dd>
-         <input type="checkbox" v-model="collection.active" id="active"/>
+         <input type="checkbox" v-model="edit.active" id="active"/>
       </dd>
       <dt>Title:</dt>
       <dd>
-         <input type="text" v-model="collection.title" id="title" aria-required="true" required="required"/>
+         <input type="text" v-model="edit.title" id="title" aria-required="true" required="required"/>
          <span v-if="hasError('title')" class="error">Collection title is required</span>
       </dd>
       <dt>Description:</dt>
       <dd>
-         <textarea rows="4" v-model="collection.description" id="description"></textarea>
+         <textarea rows="4" v-model="edit.description" id="description"></textarea>
       </dd>
       <dt>Item Label:</dt>
       <dd>
-         <input type="text" v-model="collection.itemLabel" id="item-label"/>
+         <input type="text" v-model="edit.itemLabel" id="item-label"/>
       </dd>
       <dt>Start Date:</dt>
       <dd>
-         <input type="text" v-model="collection.startDate" id="start-date"/>
+         <input type="text" v-model="edit.startDate" id="start-date"/>
       </dd>
       <dt>End Date:</dt>
       <dd>
-         <input type="text" v-model="collection.endDate" id="end-date"/>
+         <input type="text" v-model="edit.endDate" id="end-date"/>
       </dd>
       <dt>Facet Name:</dt>
       <dd>
-         <input type="text" v-model="collection.filter" id="filter" aria-required="true" required="required"/>
+         <input type="text" v-model="edit.filter" id="filter" aria-required="true" required="required"/>
          <span v-if="hasError('filter')" class="error">Facet Name is required</span>
       </dd>
       <dt>Features:</dt>
       <dd>
-         <template v-for="f in features" :key="`f${f.id}`">
+         <template v-for="f in collection.features" :key="`f${f.id}`">
             <label class="cb-label" :for="`f${f.id}`">
-               <input type="checkbox" :id="`f${f.id}`" :value="f.id" v-model="collection.features" />
+               <input type="checkbox" :id="`f${f.id}`" :value="f.id" v-model="edit.features" />
                <span>{{ f.name }}</span>
             </label>
          </template>
@@ -44,16 +44,16 @@
       </dd>
       <dt>Logo Title:</dt>
       <dd>
-         <input type="text" v-model="collection.imageTitle" id="image-title"/>
+         <input type="text" v-model="edit.imageTitle" id="image-title"/>
       </dd>
       <dt>Logo Alt Text:</dt>
       <dd>
-         <input type="text" v-model="collection.imageAlt" id="image-alt"/>
+         <input type="text" v-model="edit.imageAlt" id="image-alt"/>
       </dd>
       <dt>Logo:</dt>
       <dd>
          <div class="logo-wrap">
-            <img v-if="collection.imageURL" class="thumb" :src="collection.imageURL"/>
+            <img v-if="edit.imageURL" class="thumb" :src="edit.imageURL"/>
             <span class="drop-wrap">
                <DropZone
                   :maxFiles="1"
@@ -89,7 +89,7 @@
          </div>
          <div class="content">
             <ul class="images">
-               <li v-for="(i,idx) in logos" :key="`logo${idx}`" :class="{selected: idx==selectedLogoIdx}" @click="logoClicked(idx)">
+               <li v-for="(i,idx) in collection.logos" :key="`logo${idx}`" :class="{selected: idx==selectedLogoIdx}" @click="logoClicked(idx)">
                   <img :src="i" />
                </li>
             </ul>
@@ -106,143 +106,132 @@
    </div>
 </template>
 
-<script>
-import { mapState } from "vuex"
-import UvaButton from './UvaButton.vue'
-export default {
-   components: { UvaButton },
-   computed: {
-      ...mapState({
-         selectedID: state => state.selectedID,
-         details: state => state.details,
-         features: state => state.features,
-         mode: state => state.mode,
-         logos: state => state.logos
-      }),
-      uploadURL() {
-         return `${window.location.href}/api/collections/${this.details.id}/logo`
-      }
-   },
-   data: function()  {
-      return {
-         logosOpened: false,
-         selectedLogoIdx: -1,
-         error: "",
-         errors: [],
-         required: ['title', 'filter', 'itemLabel'],
-         collection: {
-            id: 0,
-            active: false,
-            title: "",
-            description: "",
-            itemLabel: "Issue",
-            startDate: "",
-            endDate: "",
-            filter: "",
-            features: [],
-            imageTitle: "",
-            imageAlt: "",
-            imageURL: "",
-            imageFile: "",
-            imageStatus: "no_change"
-         }
-      }
-   },
-   watch: {
-      mode(newVal, _oldVal)  {
-         if (newVal=="submit") {
-            this.submitChanges()
-         }
-      }
-   },
-   methods: {
-      pickImageClicked() {
-         this.logosOpened = true
-         this.$store.dispatch("getLogos")
-      },
-      logoClicked(idx) {
-         this.selectedLogoIdx = idx
-      },
-      dismissLogo() {
-         this.logosOpened = false
-         this.selectedLogoIdx = -1;
-      },
-      selectLogo() {
-         this.logosOpened = false
-         this.collection.imageURL = this.logos[this.selectedLogoIdx]
-         let bits = this.collection.imageURL.split("/")
-         this.collection.imageFile = bits[bits.length-1]
-         this.selectedLogoIdx = -1
-         this.collection.imageStatus = "existing"
-      },
-      hasError( val) {
-         return this.errors.includes(val)
-      },
-      fileAdded(item) {
-         let filename = item.file.name
-         this.collection.imageFile = filename
-         this.collection.imageStatus = "new"
-      },
-      fileRemoved(item) {
-         this.collection.imageFile = ""
-         this.collection.imageStatus = "no_change"
-         this.$store.dispatch("deletePendingImage", item.file.name)
-      },
-      submitChanges() {
-         this.errors.splice(0, this.errors.length)
-         for (let [key, value] of Object.entries(this.collection)) {
-            if ( key == "features") {
-               if ( value.length == 0) {
-                  this.errors.push(key)
-               }
-            } else if ( this.required.includes(key) && value == "") {
-               this.errors.push(key)
-            }
-         }
+<script setup>
+import { useCollectionStore } from "@/stores/collection"
+import { storeToRefs } from "pinia";
+import { onMounted, ref, watch, computed } from "vue"
+const collection = useCollectionStore()
+const { mode } = storeToRefs (collection)
 
-         let focused = false
-         if (this.errors.length > 0) {
-            let tgtID = this.errors[0]
-            if (tgtID == "itemLabel") {
-               tgtID = "item-label"
-            }
-            if (!focused) {
-               let first = document.getElementById(tgtID)
-               if ( first ) {
-                  first.focus()
-                  focused = true
-               }
-            }
-            this.$store.commit("setEdit")
-         } else {
-            this.$store.dispatch("submitCollection", this.collection)
+const uploadURL = computed(()=>{
+   return `${window.location.href}api/collections/${collection.details.id}/logo`
+})
+
+const required = ['title', 'filter', 'itemLabel']
+const logosOpened = ref(false)
+const selectedLogoIdx = ref(-1)
+const errors = ref([])
+const edit = ref({
+   id: 0,
+   active: false,
+   title: "",
+   description: "",
+   itemLabel: "Issue",
+   startDate: "",
+   endDate: "",
+   filter: "",
+   features: [],
+   imageTitle: "",
+   imageAlt: "",
+   imageURL: "",
+   imageFile: "",
+   imageStatus: "no_change"
+})
+
+watch(mode, (newValue, _oldValue) => {
+   if (newValue =="submit") {
+      submitChanges()
+   }
+})
+
+
+function pickImageClicked() {
+   logosOpened.value = true
+   collection.getLogos()
+}
+function logoClicked(idx) {
+   selectedLogoIdx.value = idx
+}
+function dismissLogo() {
+   logosOpened.value = false
+   selectedLogoIdx.value = -1;
+}
+function selectLogo() {
+   logosOpened.value = false
+   edit.value.imageURL = collection.logos[selectedLogoIdx.value]
+   let bits = edit.value.imageURL.split("/")
+   edit.value.imageFile = bits[bits.length-1]
+   console.log(edit.value.imageFile)
+   selectedLogoIdx.value = -1
+   edit.value.imageStatus = "existing"
+}
+function hasError( val) {
+   return errors.value.includes(val)
+}
+function fileAdded(item) {
+   let filename = item.file.name
+   edit.value.imageFile = filename
+   edit.value.imageStatus = "new"
+}
+function fileRemoved(item) {
+   edit.value.imageFile = ""
+   edit.value.imageStatus = "no_change"
+   collection.deletePendingImage(item.file.name)
+}
+function submitChanges() {
+   errors.value.splice(0, errors.value.length)
+   for (let [key, value] of Object.entries(edit.value)) {
+      if ( key == "features") {
+         if ( value.length == 0) {
+            errors.value.push(key)
          }
-      }
-   },
-   mounted() {
-      if ( this.selectedID > 0) {
-         this.collection.id = this.details.id
-         this.collection.active = this.details.active
-         this.collection.title = this.details.title
-         this.collection.description = this.details.description
-         this.collection.itemLabel = this.details.itemLabel
-         this.collection.startDate = this.details.startDate
-         this.collection.endDate = this.details.endDate
-         this.collection.filter = this.details.filter
-         this.collection.features = []
-         this.details.features.forEach( f => {
-            this.collection.features.push(f.id)
-         })
-         if (this.details.image != null) {
-            this.collection.imageTitle = this.details.image.title
-            this.collection.imageAlt = this.details.image.alt_text
-            this.collection.imageURL = this.details.image.url
-            let bits = this.collection.imageURL.split("/")
-            this.collection.imageFile = bits[bits.length-1]
-         }
+      } else if ( required.includes(key) && value == "") {
+         errors.value.push(key)
       }
    }
+
+   let focused = false
+   if (errors.value.length > 0) {
+      let tgtID = errors.value[0]
+      if (tgtID == "itemLabel") {
+         tgtID = "item-label"
+      }
+      if (!focused) {
+         let first = document.getElementById(tgtID)
+         if ( first ) {
+            first.focus()
+            focused = true
+         }
+      }
+      collection.setEdit()
+   } else {
+      collection.submitCollection(edit.value)
+   }
 }
+
+onMounted(()=>{
+   if ( collection.selectedID > 0) {
+      edit.value.id = collection.details.id
+      edit.value.active = collection.details.active
+      edit.value.title = collection.details.title
+      edit.value.description = collection.details.description
+      edit.value.itemLabel = collection.details.itemLabel
+      edit.value.startDate = collection.details.startDate
+      edit.value.endDate = collection.details.endDate
+      edit.value.filter = collection.details.filter
+      edit.value.features = []
+      collection.details.features.forEach( f => {
+         edit.value.features.push(f.id)
+      })
+      if (collection.details.image != null) {
+         edit.value.imageTitle = collection.details.image.title
+         edit.value.imageAlt = collection.details.image.alt_text
+         edit.value.imageURL = collection.details.image.url
+         let bits = edit.value.imageURL.split("/")
+         edit.value.imageFile = bits[bits.length-1]
+      }
+   }
+})
 </script>
 
 <style lang="scss" scoped>

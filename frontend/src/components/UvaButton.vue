@@ -7,49 +7,46 @@
    </button>
 </template>
 
-<script>
-export default {
-   props: {
-      focusNextOverride: {
-         type: Boolean,
-         default: false
-      },
-      focusBackOverride: {
-         type: Boolean,
-         default: false
-      },
-      disabled: {
-         type: Boolean,
-         default: false
-      }
+<script setup>
+const props = defineProps({
+   focusNextOverride: {
+      type: Boolean,
+      default: false
    },
-   emits: ['click', 'esc', 'tabback', 'tabnext' ],
-   methods: {
-      escClicked() {
-         if (!this.disabled) {
-            this.$emit('esc')
-         }
-      },
-      clicked() {
-         if (!this.disabled) {
-            this.$emit('click')
-         }
-      },
-      tabBack(event) {
-         if (this.focusBackOverride ) {
-            event.stopPropagation()
-            event.preventDefault()
-            this.$emit('tabback')
-         }
-      },
-      tabNext(event) {
-         if (this.focusNextOverride ) {
-            event.stopPropagation()
-            event.preventDefault()
-            this.$emit('tabnext')
-         }
-      }
+   focusBackOverride: {
+      type: Boolean,
+      default: false
    },
+   disabled: {
+      type: Boolean,
+      default: false
+   }
+})
+const emit = defineEmits( ['click', 'esc', 'tabback', 'tabnext' ] )
+
+function escClicked() {
+   if (!props.disabled) {
+      emit('esc')
+   }
+}
+function clicked() {
+   if (!props.disabled) {
+      emit('click')
+   }
+}
+function tabBack(event) {
+   if (props.focusBackOverride ) {
+      event.stopPropagation()
+      event.preventDefault()
+      emit('tabback')
+   }
+}
+function tabNext(event) {
+   if (props.focusNextOverride ) {
+      event.stopPropagation()
+      event.preventDefault()
+      emit('tabnext')
+   }
 }
 </script>
 

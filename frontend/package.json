@@ -11,9 +11,9 @@
     "@fortawesome/fontawesome-free": "^5.15.4",
     "axios": "^0.22.0",
     "dropzone-vue": "^0.1.10",
+    "pinia": "^2.0.13",
     "vue": "^3.0.0",
-    "vue-router": "^4.0.0-0",
-    "vuex": "^4.0.0-0"
+    "vue-router": "^4.0.0-0"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^2.2.2",
