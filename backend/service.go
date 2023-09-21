@@ -56,7 +56,7 @@ func InitializeService(version string, cfg *ServiceConfig) *ServiceContext {
 	log.Printf("INFO: S3 bucket %s and upload manager initailized", ctx.S3ImageBucket)
 
 	log.Printf("Connect to Postgres")
-	connStr := fmt.Sprintf("user=%s password=%s dbname=%s host=%s port=%d sslmode=disable",
+	connStr := fmt.Sprintf("user=%s password=%s dbname=%s host=%s port=%d",
 		cfg.DB.User, cfg.DB.Pass, cfg.DB.Name, cfg.DB.Host, cfg.DB.Port)
 	gdb, err := gorm.Open(postgres.Open(connStr), &gorm.Config{})
 	if err != nil {
