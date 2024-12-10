@@ -1,7 +1,7 @@
 #
 # build the target application
 #
-FROM public.ecr.aws/docker/library/golang:1.22.3-alpine3.20 as builder
+FROM public.ecr.aws/docker/library/golang:1.23.4-alpine3.21 AS builder
 
 # update the packages
 RUN apk update && apk upgrade && apk add --no-cache make npm yarn
@@ -15,7 +15,7 @@ RUN make linux-full
 #
 # build the target container
 #
-FROM public.ecr.aws/docker/library/alpine:3.20
+FROM public.ecr.aws/docker/library/alpine:3.21
 
 # update the packages
 RUN apk update && apk upgrade && apk add bash tzdata ca-certificates curl exiftool && rm -fr /var/cache/apk/*
@@ -41,7 +41,7 @@ RUN cd $APP_HOME/bin && curl -L https://github.com/golang-migrate/migrate/releas
 
 # port and run command
 EXPOSE 8080
-CMD scripts/entry.sh
+ENTRYPOINT ["scripts/entry.sh"]
 
 # Move in necessary assets
 COPY package/scripts/entry.sh $APP_HOME/scripts/entry.sh
