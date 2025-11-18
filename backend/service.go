@@ -1,6 +1,7 @@
 package main
 
 import (
+	"context"
 	"fmt"
 	"io/ioutil"
 	"log"
@@ -12,9 +13,8 @@ import (
 	"strings"
 	"time"
 
-	"github.com/aws/aws-sdk-go/aws/session"
-	"github.com/aws/aws-sdk-go/service/s3"
-	"github.com/aws/aws-sdk-go/service/s3/s3manager"
+	"github.com/aws/aws-sdk-go-v2/config"
+	"github.com/aws/aws-sdk-go-v2/service/s3"
 	"github.com/gin-gonic/gin"
 	_ "github.com/lib/pq"
 	"gorm.io/driver/postgres"
@@ -29,8 +29,7 @@ type ServiceContext struct {
 	HTTPClient    *http.Client
 	GDB           *gorm.DB
 	S3ImageBucket string
-	S3Uploader    *s3manager.Uploader
-	S3Service     *s3.S3
+	S3Client      *s3.Client
 }
 
 // SchemaMigration contains details about the version of the DB
@@ -43,17 +42,23 @@ type SchemaMigration struct {
 func InitializeService(version string, cfg *ServiceConfig) *ServiceContext {
 	ctx := ServiceContext{Version: version, Solr: cfg.Solr, BaseImageURL: cfg.ImageBaseURL}
 
-	log.Printf("INFO: init S3 session and uploader")
+	log.Printf("INFO: init S3 session...")
 	bName := strings.Split(cfg.ImageBaseURL, "https://")[1]
 	bName = strings.Split(bName, ".")[0]
 	ctx.S3ImageBucket = bName
-	sess, err := session.NewSession()
+	awsCfg, err := config.LoadDefaultConfig(context.TODO())
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("unable to load s3 config: %s", err.Error())
 	}
-	ctx.S3Uploader = s3manager.NewUploader(sess)
-	ctx.S3Service = s3.New(sess)
-	log.Printf("INFO: S3 bucket %s and upload manager initailized", ctx.S3ImageBucket)
+	ctx.S3Client = s3.NewFromConfig(awsCfg)
+	log.Printf("INFO: s3 session established")
+	// sess, err := session.NewSession()
+	// if err != nil {
+	// 	log.Fatal(err)
+	// }
+	// ctx.S3Uploader = s3manager.NewUploader(sess)
+	// ctx.S3Service = s3.New(sess)
+	// log.Printf("INFO: S3 bucket %s and upload manager initailized", ctx.S3ImageBucket)
 
 	log.Printf("Connect to Postgres")
 	connStr := fmt.Sprintf("user=%s password=%s dbname=%s host=%s port=%d",

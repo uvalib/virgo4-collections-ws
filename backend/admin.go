@@ -1,11 +1,11 @@
 package main
 
 import (
-	"bytes"
+	"context"
 	"encoding/json"
 	"errors"
 	"fmt"
-	"io/ioutil"
+	"io"
 	"log"
 	"net/http"
 	"os"
@@ -15,9 +15,8 @@ import (
 	"strings"
 	"time"
 
-	"github.com/aws/aws-sdk-go/aws"
-	"github.com/aws/aws-sdk-go/service/s3"
-	"github.com/aws/aws-sdk-go/service/s3/s3manager"
+	"github.com/aws/aws-sdk-go-v2/aws"
+	"github.com/aws/aws-sdk-go-v2/service/s3"
 	"github.com/gin-gonic/gin"
 	"gorm.io/gorm"
 )
@@ -208,22 +207,22 @@ func (svc *ServiceContext) addOrUpdateCollection(c *gin.Context) {
 
 func (svc *ServiceContext) uploadImageToS3(filename string) error {
 	log.Printf("INFO: upload logo %s to S3", filename)
-	imgBytes, err := ioutil.ReadFile(fmt.Sprintf("/tmp/%s", filename))
+	logoPath := fmt.Sprintf("/tmp/%s", filename)
+	logoFile, err := os.Open(logoPath)
 	if err != nil {
 		return err
 	}
-	upParams := s3manager.UploadInput{
+	start := time.Now()
+	_, err = svc.S3Client.PutObject(context.TODO(), &s3.PutObjectInput{
 		Bucket: aws.String(svc.S3ImageBucket),
 		Key:    aws.String(filename),
-		ACL:    aws.String("public-read"),
-		Body:   bytes.NewReader(imgBytes),
-	}
+		Body:   logoFile,
+	})
 
-	start := time.Now()
-	_, err = svc.S3Uploader.Upload(&upParams)
 	if err != nil {
 		return err
 	}
+
 	duration := time.Since(start)
 	log.Printf("INFO: upload of %s complete in %0.2f seconds", filename, duration.Seconds())
 	return nil
@@ -232,9 +231,9 @@ func (svc *ServiceContext) uploadImageToS3(filename string) error {
 func (svc *ServiceContext) getLogos(c *gin.Context) {
 	user := c.GetString("user")
 	log.Printf("INFO: %s is requesting a list of logos", user)
-	b := aws.String(svc.S3ImageBucket)
-	loInput := &s3.ListObjectsV2Input{Bucket: b}
-	resp, err := svc.S3Service.ListObjectsV2(loInput)
+	resp, err := svc.S3Client.ListObjectsV2(context.TODO(), &s3.ListObjectsV2Input{
+		Bucket: aws.String(svc.S3ImageBucket),
+	})
 	if err != nil {
 		log.Printf("ERROR: list %s object failed: %s", svc.S3ImageBucket, err.Error())
 		c.String(http.StatusInternalServerError, err.Error())
@@ -252,14 +251,14 @@ func (svc *ServiceContext) uploadLogo(c *gin.Context) {
 	id := c.Param("id")
 	log.Printf("INFO: %s is uploading a new logo for collection %s", user, id)
 
-	file, err := c.FormFile("file")
+	formFile, err := c.FormFile("file")
 	if err != nil {
 		log.Printf("ERROR: unable to get upload file: %s", err.Error())
 		c.String(http.StatusBadRequest, err.Error())
 		return
 	}
 
-	filename := filepath.Base(file.Filename)
+	filename := filepath.Base(formFile.Filename)
 	dest := fmt.Sprintf("/tmp/%s", filename)
 	if _, err := os.Stat(dest); err == nil {
 		log.Printf("ERROR: File %s already exists", filename)
@@ -267,8 +266,23 @@ func (svc *ServiceContext) uploadLogo(c *gin.Context) {
 		return
 	}
 	log.Printf("INFO: receiving log file %s for collection %s", filename, id)
-	if err := c.SaveUploadedFile(file, dest); err != nil {
-		log.Printf("ERROR: unable to receive logo %s: %s", filename, err.Error())
+	frmFile, err := formFile.Open()
+	if err != nil {
+		log.Printf("ERROR: unable to open uploaded file %s: %s", formFile.Filename, err.Error())
+		c.String(http.StatusInternalServerError, err.Error())
+		return
+	}
+	defer frmFile.Close()
+	out, err := os.Create(dest)
+	if err != nil {
+		log.Printf("ERROR: unable to create temp file %s: %s", dest, err.Error())
+		c.String(http.StatusInternalServerError, err.Error())
+		return
+	}
+	defer out.Close()
+	_, err = io.Copy(out, frmFile)
+	if err != nil {
+		log.Printf("ERROR: unable to save %s: %s", formFile.Filename, err.Error())
 		c.String(http.StatusInternalServerError, err.Error())
 		return
 	}
