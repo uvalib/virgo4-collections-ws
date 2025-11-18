@@ -21,13 +21,11 @@
          <router-view />
          <message-box />
       </template>
-      <uva-library-footer />
    </div>
 </template>
 
 <script setup>
 import UvaLibraryLogo from "@/components/UvaLibraryLogo.vue"
-import UvaLibraryFooter from "@/components/UvaLibraryFooter.vue"
 import MessageBox from "@/components/MessageBox.vue"
 import { useCollectionStore } from "@/stores/collection"
 const collection = useCollectionStore()
@@ -104,7 +102,7 @@ const collection = useCollectionStore()
    line-height: 1.3;
 
    h1 {
-      color: var(--uvalib-brand-orange);
+      color: var(--uvalib-brand-blue);
       margin: 25px 0;
       font-weight: bold;
       position: relative;

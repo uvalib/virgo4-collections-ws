@@ -6,6 +6,10 @@ import vue from '@vitejs/plugin-vue'
 
 // https://vitejs.dev/config/
 export default defineConfig({
+   define: {
+      // enable hydration mismatch details in production build
+      __VUE_PROD_HYDRATION_MISMATCH_DETAILS__: 'true'
+   },
    plugins: [vue()],
    resolve: {
       alias: {
@@ -30,6 +34,13 @@ export default defineConfig({
           changeOrigin: true,
           logLevel: 'debug'
         },
+      }
+   },
+   css: {
+      preprocessorOptions : {
+          scss: {
+              api: "modern-compiler",
+          },
       }
    },
 })
