@@ -1,6 +1,10 @@
 <template>
    <div id="app">
       <ConfirmDialog position="top" :closable="false"/>
+      <Dialog v-model:visible="collection.showMessage" :modal="true" position="top"
+         header="System Message" @hide="collection.clearMessage()" style="width:400px;">
+         <div class="message-body" id="msgbody">{{ collection.message }}></div>
+      </Dialog>
       <div class="header" role="banner" id="uva-header">
          <div class="library-link">
             <a target="_blank" href="https://library.virginia.edu">
@@ -20,14 +24,13 @@
       </div>
       <template v-else>
          <router-view />
-         <message-box />
       </template>
    </div>
 </template>
 
 <script setup>
 import UvaLibraryLogo from "@/components/UvaLibraryLogo.vue"
-import MessageBox from "@/components/MessageBox.vue"
+import Dialog from 'primevue/dialog'
 import { useCollectionStore } from "@/stores/collection"
 const collection = useCollectionStore()
 </script>

@@ -22,6 +22,7 @@ export const useCollectionStore = defineStore('collection', {
       },
       fatal: "",
       message: "",
+      showMessage: false,
       logos: []
    }),
    getters: {
@@ -33,6 +34,14 @@ export const useCollectionStore = defineStore('collection', {
       },
    },
    actions: {
+      clearMessage() {
+         this.showMessage = false
+         this.message = ""
+      },
+      setMessage( msg ) {
+         this.message = msg
+         this.showMessage = true
+      },
       clearDetails() {
          this.selectedID = 0
          this.details.id = 0,
@@ -126,7 +135,7 @@ export const useCollectionStore = defineStore('collection', {
       },
       deleteSelectedCollection() {
          this.working = true
-         this.message = ""
+         this.clearMessage()
          axios.delete("/api/collections/"+this.selectedID).then( _resp => {
             this.working = false
             let idx = this.collections.findIndex( c => c.id == this.selectedID)
@@ -135,7 +144,7 @@ export const useCollectionStore = defineStore('collection', {
             }
             this.clearDetails()
          }).catch((e) => {
-            this.message = e
+            this.message.setMessage( e )
             this.working = false
          })
       },
@@ -144,7 +153,7 @@ export const useCollectionStore = defineStore('collection', {
       },
       submitCollection(collection) {
          this.working = true
-         this.message = ""
+         this.clearMessage()
          let addingNew = (collection.id == 0)
          axios.post("/api/collections", collection).then(resp => {
             if ( addingNew ) {
@@ -156,7 +165,7 @@ export const useCollectionStore = defineStore('collection', {
             this.setDisplay()
          }).catch((e) => {
             this.setEdit()
-            this.message = e
+            this.message.setMessage( e )
             this.working = false
          })
       }

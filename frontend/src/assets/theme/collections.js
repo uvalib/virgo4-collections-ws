@@ -3,6 +3,7 @@ import Aura from '@primeuix/themes/aura'
 import ripple from '@primeuix/themes/aura/ripple'
 import tooltip from '@primeuix/themes/aura/tooltip'
 import colors from './colors.module.scss'
+import './styleoverrides.scss'
 
 const Collections = definePreset(Aura, {
    root: {
@@ -84,6 +85,26 @@ const Collections = definePreset(Aura, {
                   }
                }
             }
+         }
+      },
+      dialog: {
+         root: {
+            background: '#ffffff',
+            borderColor: colors.grey,
+            borderRadius: '0.3rem',
+         },
+         header: {
+            padding: '5px 10px',
+         },
+         content: {
+            padding: '1.5rem'
+         },
+         title: {
+            fontWeight: '600',
+            fontSize: '1em',
+         },
+         footer: {
+            gap: '1rem'
          }
       },
       toast: {
