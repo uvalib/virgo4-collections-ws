@@ -35,9 +35,4 @@ app.component('Button', Button)
 app.component("ConfirmDialog", ConfirmDialog)
 app.use(ConfirmationService)
 
-
-import DropZone from 'dropzone-vue'
-import 'dropzone-vue/dist/dropzone-vue.common.css'
-app.use(DropZone)
-
 app.mount('#app')

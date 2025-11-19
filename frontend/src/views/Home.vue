@@ -1,6 +1,5 @@
 <template>
    <div class="home">
-      <h1>Collections Management</h1>
       <WaitSpinner v-if="store.working" message="Initializing system..." :overlay="true"/>
       <div class="content">
          <div class="list-wrap">
@@ -24,23 +23,7 @@
             </div>
          </div>
          <div class="detail-wrap">
-            <h2>
-               <span>Details</span>
-               <span class="detail-butons">
-                  <template v-if="store.isEditing && store.selectedID > 0">
-                     <Button severity="secondary" @click="cancelEdit" label="Cancel"/>
-                     <Button @click="submitClicked" label="Submit"/>
-                  </template>
-                  <template v-else-if="store.isEditing && store.selectedID == 0">
-                     <Button severity="secondary" @click="cancelEdit" label="Cancel"/>
-                     <Button @click="submitClicked" label="Create"/>
-                  </template>
-                  <template v-else-if="store.selectedID > 0">
-                     <Button @click="deleteClicked" severity="danger" label="Delete"/>
-                     <Button @click="editSelected" label="Edit"/>
-                  </template>
-               </span>
-            </h2>
+            <h2>Details</h2>
              <div class="details">
                <div v-if="store.selectedID == 0 && !store.isEditing" class="hint">Select a collection from the list on the left to view and edit the collection details.</div>
                <collection-detail v-if="store.selectedID > 0 && !store.isEditing" />
@@ -56,12 +39,10 @@ import { useCollectionStore } from "@/stores/collection"
 import CollectionDetail from "@/components/CollectionDetail.vue"
 import EditCollection from "@/components/EditCollection.vue"
 import WaitSpinner from "@/components/WaitSpinner.vue"
-import { useConfirm } from "primevue/useconfirm"
 import { onMounted, ref } from "vue"
 
 const store = useCollectionStore()
 const query = ref("")
-const confirm = useConfirm()
 
 function queryTyped() {
    let val = store.collections.find( c => c.title.toLowerCase().indexOf(query.value)==0)
@@ -104,37 +85,11 @@ function scrollParentToChild(parent, child) {
       }
    }
 }
-const deleteClicked = (() => {
-   confirm.require({
-      message: `Delete collection '${store.details.title}'? All data will be lost. This cannot be reveresed. `,
-      header: 'Confirm Collection Delete',
-      icon: 'pi pi-question-circle',
-      rejectProps: {
-         label: 'Cancel',
-         severity: 'secondary'
-      },
-      acceptProps: {
-         label: 'Delete'
-      },
-      accept: () => {
-          store.deleteSelectedCollection()
-      },
-   })
-})
 
-function submitClicked() {
-   store.setSubmit()
-}
 function collectionClicked(id) {
    store.clearDetails()
    store.setDisplay()
    store.getCollectionDetail(id)
-}
-function editSelected() {
-   store.setEdit()
-}
-function cancelEdit() {
-   store.setDisplay()
 }
 function addCollectionClicked() {
    store.clearDetails()
@@ -152,16 +107,16 @@ onMounted(()=>{
    display: flex;
    flex-flow: row nowrap;
    text-align: left;
+   padding: 20px;
+   gap: 20px;
 
-   .list-wrap, .detail-wrap {
-      padding: 10px 20px;
-      margin-bottom: 20px;
-   }
    .list-wrap {
+      padding:0;
+      margin:0;
       flex-basis: 25%;
       h2 {
          padding: 5px 10px;
-         margin:5px 0 0 0;
+         margin: 0;
          background: $uva-blue-alt-300;
          border: 1px solid $uva-blue-alt;
          border-bottom: 2px solid $uva-blue-alt;
@@ -173,20 +128,18 @@ onMounted(()=>{
       gap: 0.5rem;
    }
     .detail-wrap {
-       flex-basis: 75%;
+      border: 1px solid $uva-grey;
+      flex-basis: 75%;
        h2 {
-         display: flex;
-         flex-flow: row nowrap;
-         justify-content: space-between;
-         background: white;
-         border: 0;
-         border-bottom: 2px solid $uva-grey;
+         border-bottom: 2px solid $uva-blue-alt;
          border-radius: 0;
-         padding: 5px 0px 5px 5px;
+         padding: 5px 10px;
+         margin: 0;
+         background: $uva-blue-alt-300;
       }
     }
     .details {
-       padding: 20px 20px 0 0;
+       padding: 20px;
        .hint {
          font-size: 1.25em;
       }

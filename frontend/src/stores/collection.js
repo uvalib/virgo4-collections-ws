@@ -116,6 +116,8 @@ export const useCollectionStore = defineStore('collection', {
          })
       },
       getLogos() {
+         if (this.logos.length > 0 ) return
+
          axios.get("/api/logos").then(resp => {
             this.logos = resp.data
          }).catch((e) => {

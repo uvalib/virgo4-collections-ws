@@ -55,63 +55,55 @@
          <div class="logo-wrap">
             <img v-if="edit.imageURL" class="thumb" :src="edit.imageURL"/>
             <span class="drop-wrap">
-               <DropZone
-                  :maxFiles="1"
-                  :clickable="true"
-                  :uploadOnDrop="true"
-                  :acceptedFiles="['png', 'jpg']"
-                  :multipleUpload="false"
-                  dropzoneClassName="logo-drop"
-                  :url="uploadURL"
-                  @addedFile="fileAdded"
-                  @removedFile="fileRemoved">
+               <FileUpload name="file" :url="`/api/collections/${collection.details.id}/logo`"
+                  accept="image/*" :fileLimit="1"
+                  :showCancelButton="false" :multiple="false" @upload="fileUploaded"
+                  chooseLabel="Browse images" @removeUploadedFile="fileRemoved" @remove="fileRemoved" @select="fileAdded"
                >
-                  <template v-slot:message>
-                     <span>Drop new logo here, or click to browse.</span>
-                     <span class="note"><b>Note:</b> A newly uploaded logo will replace the current logo upon submission.</span>
+                  <template #empty>
+                     <span>Drop new logo here, or click to browse</span>
                   </template>
-               </DropZone>
-               <div class="other-opts">
-                  <p>OR</p>
-                  <Button @click="pickImageClicked" label="Select an existing logo"/>
-               </div>
+               </FileUpload>
+               <Button @click="pickImageClicked" label="Select an existing logo" />
             </span>
          </div>
       </dd>
    </dl>
-   <div class="picker-dimmer" v-if="logosOpened">
-      <div class="message" role="dialog" aria-modal="true"
-         aria-labelledby="picketitle" aria-describedby="msgbody"
-         @keyup.esc="dismissLogo"
-      >
-         <div class="bar">
-            <span id="picketitle" class="title">Select a logo</span>
-         </div>
-         <div class="content">
-            <ul class="images">
-               <li v-for="(i,idx) in collection.logos" :key="`logo${idx}`" :class="{selected: idx==selectedLogoIdx}" @click="logoClicked(idx)">
-                  <img :src="i" />
-               </li>
-            </ul>
-         </div>
-         <div class="controls">
-            <Button @click="dismissLogo"severity="secondary" label="Cancel"/>
-            <Button @click="selectLogo" label="Select Logo"/>
-         </div>
-      </div>
+   <div class="controls">
+      <Button severity="secondary" @click="collection.setDisplay()" label="Cancel"/>
+      <Button v-if="collection.selectedID > 0" @click="submitChanges()" label="Submit"/>
+      <Button v-else @click="submitChanges()" label="Create"/>
    </div>
+
+   <Dialog v-model:visible="logosOpened" :modal="true" header="Select a Logo" style="width:80%" @hide="dismissLogo()">
+      <Carousel :value="collection.logos" :numVisible="5" :numScroll="5">
+         <template #item="slotProps">
+            <div class="logos">
+               <img class="logo" :src="slotProps.data"
+                  :class="{selected: slotProps.index == selectedLogoIdx}"
+                  @click="logoClicked(slotProps.index)"
+               />
+            </div>
+         </template>
+      </Carousel>
+      <template #footer>
+         <Button @click="dismissLogo"severity="secondary" label="Cancel"/>
+         <Button @click="selectLogo" label="Select Logo" :disabled="selectedLogoIdx < 0"/>
+      </template>
+   </Dialog>
+
 </template>
 
 <script setup>
 import { useCollectionStore } from "@/stores/collection"
-import { storeToRefs } from "pinia";
-import { onMounted, ref, watch, computed } from "vue"
-const collection = useCollectionStore()
-const { mode } = storeToRefs (collection)
+import { onMounted, ref } from "vue"
+import FileUpload from 'primevue/fileupload'
+import { useConfirm } from "primevue/useconfirm"
+import Dialog from 'primevue/dialog'
+import Carousel from 'primevue/carousel'
 
-const uploadURL = computed(()=>{
-   return `${window.location.href}api/collections/${collection.details.id}/logo`
-})
+const confirm = useConfirm()
+const collection = useCollectionStore()
 
 const required = ['title', 'filter', 'itemLabel']
 const logosOpened = ref(false)
@@ -134,46 +126,52 @@ const edit = ref({
    imageStatus: "no_change"
 })
 
-watch(mode, (newValue, _oldValue) => {
-   if (newValue =="submit") {
-      submitChanges()
-   }
-})
-
-
 function pickImageClicked() {
    logosOpened.value = true
    collection.getLogos()
 }
+
 function logoClicked(idx) {
    selectedLogoIdx.value = idx
 }
+
 function dismissLogo() {
    logosOpened.value = false
    selectedLogoIdx.value = -1;
 }
+
 function selectLogo() {
    logosOpened.value = false
    edit.value.imageURL = collection.logos[selectedLogoIdx.value]
    let bits = edit.value.imageURL.split("/")
    edit.value.imageFile = bits[bits.length-1]
-   console.log(edit.value.imageFile)
    selectedLogoIdx.value = -1
    edit.value.imageStatus = "existing"
 }
+
 function hasError( val) {
    return errors.value.includes(val)
 }
-function fileAdded(item) {
-   let filename = item.file.name
+
+function fileAdded(event) {
+   let file = event.files[0]
+   let filename = file.name
    edit.value.imageFile = filename
    edit.value.imageStatus = "new"
 }
-function fileRemoved(item) {
+
+function fileUploaded() {
+   edit.value.imageStatus = "uploaded"
+}
+
+function fileRemoved(event) {
+   if ( edit.value.imageStatus == "uploaded") {
+      collection.deletePendingImage(event.file.name)
+   }
    edit.value.imageFile = ""
    edit.value.imageStatus = "no_change"
-   collection.deletePendingImage(item.file.name)
 }
+
 function submitChanges() {
    errors.value.splice(0, errors.value.length)
    for (let [key, value] of Object.entries(edit.value)) {
@@ -200,6 +198,25 @@ function submitChanges() {
          }
       }
       collection.setEdit()
+      return
+   }
+
+   if ( edit.value.imageStatus== "new") {
+       confirm.require({
+         message: `You have selected a new logo, but not uploaded it. Submitting now will not change the logo. Continue?`,
+         header: 'Confirm Submit',
+         icon: 'pi pi-question-circle',
+         rejectProps: {
+            label: 'Cancel',
+            severity: 'secondary'
+         },
+         acceptProps: {
+            label: 'Submit without logo'
+         },
+         accept: () => {
+            collection.submitCollection(edit.value)
+         },
+      })
    } else {
       collection.submitCollection(edit.value)
    }
@@ -231,83 +248,28 @@ onMounted(()=>{
 </script>
 
 <style lang="scss" scoped>
-.picker-dimmer {
-   position: fixed;
-   left: 0;
-   width: 100%;
-   top:0;
-   height: 100%;
-   background: rgba(0, 0, 0, 0.2);
-   .message {
-      display: block;
-      text-align: left;
-      background: white;
-      padding: 0px;
-      width: 75%;
-      border-radius: 5px;
-      margin: 5% auto;
-      .bar {
-         padding: 5px;
-         font-weight: 500;
-         display: flex;
-         flex-flow: row nowrap;
-         align-items: center;
-         justify-content: space-between;
-         background-color: v$uva-blue-alt-300;
-         border-bottom: 2px solid $uva-blue-alt;
-         border-radius: 5px 5px 0 0;
-         font-size: 1.1em;
-         padding: 10px;
-      }
-      .content {
-         margin: 10px 20px 10px 0;
-         padding: 0;
-      }
-      .images {
-         box-sizing: border-box;
-         margin: 10px;
-         padding: 0;
-         white-space: nowrap;
-         width: 100%;
-         overflow-x: auto;
-         border: 1px solid $uva-grey-100;
-         display: flex;
-         flex-flow: row nowrap;
-         align-items: flex-start;
-         li {
-            display: inline-block;
-            width: 200px;
-            margin: 10px;
 
-            img {
-               max-width: 200px;
-               margin: 0;
-               padding: 0;
-               display: inline-block;
-               border: 1px solid $uva-grey-100;
-               position: relative;
-               cursor: pointer;
-               &:hover, &:focus-within, &:focus {
-                  top: -2px;
-                  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5), 0 1px 2px rgba(0, 0, 0,1);
-               }
-            }
-         }
-         li.selected {
-            img {
-               outline: 5px solid $uva-brand-blue-300;
-            }
-         }
-      }
-      .controls {
-         padding: 15px 10px 10px 0;
-         text-align: right;
-         button {
-            margin-left: 5px;
-         }
+.logos {
+   padding: 10px 0;
+   img.logo {
+      max-width: 200px;
+      margin: 0;
+      padding: 0;
+      display: inline-block;
+      border: 1px solid $uva-grey-100;
+      position: relative;
+      cursor: pointer;
+      &:hover, &:focus-within, &:focus {
+         top: -2px;
+         box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5), 0 1px 2px rgba(0, 0, 0,1);
       }
    }
+
+   img.logo.selected {
+      outline: 5px solid $uva-brand-blue-300;
+   }
 }
+
 dl {
    margin-left: 25px;
    display: inline-grid;
@@ -324,26 +286,19 @@ dl {
       display: flex;
       flex-flow: row nowrap;
       justify-content: flex-start;
-   }
-   .drop-wrap {
-      width: 250px;
-      height: 250px;
-      margin-left: 10px;
-   }
-   .other-opts {
-      text-align: center;
-   }
-   .logo-drop {
-      border: 2px dashed $uva-grey-100;
-      border-radius: 5px;
-      padding: 25px;
-      .note {
-         display: block;
-         margin-top: 10px;
-         font-size: 0.85em;
-         font-style: italic;
+      align-items: flex-start;
+      gap: 20px;
+      .drop-wrap {
+          width: 375px;
+         display: flex;
+         flex-direction: column;
+         gap: 10px;
+         :deep(.p-fileupload-header .p-button) {
+            flex-grow: 1;
+         }
       }
    }
+
    dt {
       font-weight: bold;
       text-align: right;
@@ -392,5 +347,13 @@ dl {
       color: #aaa;
       font-style: italic;
    }
+}
+.controls {
+   padding-top: 20px;
+   display: flex;
+   flex-flow: row nowrap;
+   justify-content: flex-end;
+   gap: 10px;
+   border-top: 2px solid $uva-grey
 }
 </style>

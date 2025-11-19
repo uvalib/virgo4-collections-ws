@@ -261,9 +261,8 @@ func (svc *ServiceContext) uploadLogo(c *gin.Context) {
 	filename := filepath.Base(formFile.Filename)
 	dest := fmt.Sprintf("/tmp/%s", filename)
 	if _, err := os.Stat(dest); err == nil {
-		log.Printf("ERROR: File %s already exists", filename)
-		c.String(http.StatusConflict, fmt.Sprintf("%s already exists", filename))
-		return
+		log.Printf("INFO: File %s already exists; removing", filename)
+		os.Remove(dest)
 	}
 	log.Printf("INFO: receiving log file %s for collection %s", filename, id)
 	frmFile, err := formFile.Open()

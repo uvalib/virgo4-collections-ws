@@ -55,11 +55,38 @@
          </dd>
       </template>
    </dl>
+   <div class="controls">
+      <Button @click="deleteClicked" severity="danger" label="Delete"/>
+      <Button @click="collection.setEdit()" label="Edit"/>
+   </div>
 </template>
 
 <script setup>
 import { useCollectionStore } from "@/stores/collection"
+import { useConfirm } from "primevue/useconfirm"
+
 const collection = useCollectionStore()
+const confirm = useConfirm()
+
+const deleteClicked = (() => {
+   confirm.require({
+      message: `Delete collection '${collection.details.title}'? All data will be lost. This cannot be reveresed. `,
+      header: 'Confirm Collection Delete',
+      icon: 'pi pi-question-circle',
+      rejectProps: {
+         label: 'Cancel',
+         severity: 'secondary'
+      },
+      acceptProps: {
+         label: 'Delete'
+      },
+      accept: () => {
+         collection.deleteSelectedCollection()
+      },
+   })
+})
+
+
 </script>
 
 <style lang="scss" scoped>
@@ -96,5 +123,13 @@ dl {
       color: #aaa;
       font-style: italic;
    }
+}
+.controls {
+   padding-top: 20px;
+   display: flex;
+   flex-flow: row nowrap;
+   justify-content: flex-end;
+   gap: 10px;
+   border-top: 2px solid $uva-grey
 }
 </style>

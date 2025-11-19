@@ -9,7 +9,6 @@
   "dependencies": {
     "@primeuix/themes": "^1.2.5",
     "axios": "^1.13.2",
-    "dropzone-vue": "^0.1.11",
     "pinia": "^3.0.4",
     "primeicons": "^7.0.0",
     "primevue": "^4.4.1",
