@@ -73,7 +73,7 @@
                </DropZone>
                <div class="other-opts">
                   <p>OR</p>
-                  <uva-button @click="pickImageClicked">Select an existing logo</uva-button>
+                  <Button @click="pickImageClicked" label="Select an existing logo"/>
                </div>
             </span>
          </div>
@@ -95,12 +95,8 @@
             </ul>
          </div>
          <div class="controls">
-            <button id="cancel-logo" @esc="dismissLogo" @click="selectLogo" >
-               Cancel
-            </button>
-            <button id="okl-ogo" @esc="dismissLogo" @click="selectLogo" >
-               Select Logo
-            </button>
+            <Button @click="dismissLogo"severity="secondary" label="Cancel"/>
+            <Button @click="selectLogo" label="Select Logo"/>
          </div>
       </div>
    </div>
@@ -247,20 +243,18 @@ onMounted(()=>{
       text-align: left;
       background: white;
       padding: 0px;
-      box-shadow:  0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
       width: 75%;
       border-radius: 5px;
       margin: 5% auto;
       .bar {
          padding: 5px;
-         color: var(--uvalib-text-dark);
          font-weight: 500;
          display: flex;
          flex-flow: row nowrap;
          align-items: center;
          justify-content: space-between;
-         background-color: var(--uvalib-blue-alt-light);
-         border-bottom: 2px solid var(--uvalib-blue-alt);
+         background-color: v$uva-blue-alt-300;
+         border-bottom: 2px solid $uva-blue-alt;
          border-radius: 5px 5px 0 0;
          font-size: 1.1em;
          padding: 10px;
@@ -276,7 +270,7 @@ onMounted(()=>{
          white-space: nowrap;
          width: 100%;
          overflow-x: auto;
-         border: 1px solid var(--uvalib-grey-light);
+         border: 1px solid $uva-grey-100;
          display: flex;
          flex-flow: row nowrap;
          align-items: flex-start;
@@ -290,8 +284,7 @@ onMounted(()=>{
                margin: 0;
                padding: 0;
                display: inline-block;
-               border: 1px solid var(--uvalib-grey-light);
-               box-shadow: 0 1px 3px rgba(0,0,0,.06), 0 1px 2px rgba(0,0,0,.12);
+               border: 1px solid $uva-grey-100;
                position: relative;
                cursor: pointer;
                &:hover, &:focus-within, &:focus {
@@ -302,7 +295,7 @@ onMounted(()=>{
          }
          li.selected {
             img {
-               outline: 5px solid var(--uvalib-brand-blue-lightest);
+               outline: 5px solid $uva-brand-blue-300;
             }
          }
       }
@@ -322,7 +315,7 @@ dl {
    grid-column-gap: 15px;
    width: 95%;
    span.error {
-      color: var(--uvalib-red-emergency);
+      color: $uva-red-A;
       font-style: italic;
       display: inline-block;
       margin-top: 5px;
@@ -341,7 +334,7 @@ dl {
       text-align: center;
    }
    .logo-drop {
-      border: 2px dashed var(--uvalib-grey-light);
+      border: 2px dashed $uva-grey-100;
       border-radius: 5px;
       padding: 25px;
       .note {
@@ -383,7 +376,7 @@ dl {
       textarea {
          width: 100%;
          box-sizing: border-box;
-         border: 1px solid var(--uvalib-grey-light);
+         border: 1px solid $uva-grey-100;
          border-radius: 5px;
          font-family: "franklin-gothic-urw", arial, sans-serif;
          -webkit-font-smoothing: antialiased;
@@ -392,7 +385,7 @@ dl {
       }
       .thumb {
          max-width: 200px;
-         border:1px solid var(--uvalib-grey-light);
+         border:1px solid $uva-grey-100;
       }
    }
    .na {

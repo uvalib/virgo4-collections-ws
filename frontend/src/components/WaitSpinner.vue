@@ -31,7 +31,7 @@ const props = defineProps({
    },
    color: {
       type: String,
-      default: "var(--uvalib-brand-orange)",
+      default: "#E57200",
    },
 })
 </script>
@@ -56,7 +56,6 @@ div.spinner {
    padding: 10px 150px 25px 150px;
    display: inline-block;
    font-weight: bold;
-   color: var(--uvalib-text);
 }
 div.spinner.embed {
    box-shadow: none;
@@ -77,7 +76,6 @@ div.spinner.embed {
    }
 }
 div.spinner h1 {
-   color: var(--uvalib-text);
    border: none;
 }
 .spinner-animation {

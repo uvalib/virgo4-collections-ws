@@ -40,6 +40,7 @@ export default defineConfig({
       preprocessorOptions : {
           scss: {
               api: "modern-compiler",
+              additionalData: `@use "@/assets/theme/colors.scss" as *;`
           },
       }
    },

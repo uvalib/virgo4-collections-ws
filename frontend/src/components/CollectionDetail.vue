@@ -81,13 +81,13 @@ dl {
       hyphens: auto;
       .thumb {
          max-width: 200px;
-         border:1px solid var(--uvalib-grey-light);
+         border:1px solid $uva-grey-100;
       }
       .feature {
          display: inline-block;
          margin-right: 10px;
-         border:1px solid var(--uvalib-grey-light);
-         background: var(--uvalib-grey-lightest);
+         border:1px solid $uva-grey-100;
+         background: $uva-grey-200;
          padding: 2px 15px;
          border-radius: 15px;
       }

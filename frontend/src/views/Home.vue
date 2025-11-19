@@ -1,7 +1,7 @@
 <template>
    <div class="home">
       <h1>Collections Management</h1>
-      <wait-spinner v-if="store.working" message="Initializing system..." :overlay="true"/>
+      <WaitSpinner v-if="store.working" message="Initializing system..." :overlay="true"/>
       <div class="content">
          <div class="list-wrap">
             <h2>Collection</h2>
@@ -20,7 +20,7 @@
                </div>
             </div>
             <div class="list-buttons">
-               <uva-button @click="addCollectionClicked" :class="{disabled: store.isEditing}">Add Collection</uva-button>
+               <Button @click="addCollectionClicked" :disabled="store.isEditing" label="Add Collection"/>
             </div>
          </div>
          <div class="detail-wrap">
@@ -28,18 +28,16 @@
                <span>Details</span>
                <span class="detail-butons">
                   <template v-if="store.isEditing && store.selectedID > 0">
-                     <uva-button @click="cancelEdit" class="cancel">Cancel</uva-button>
-                     <uva-button @click="submitClicked">Submit</uva-button>
+                     <Button severity="secondary" @click="cancelEdit" label="Cancel"/>
+                     <Button @click="submitClicked" label="Submit"/>
                   </template>
                   <template v-else-if="store.isEditing && store.selectedID == 0">
-                     <uva-button @click="cancelEdit" class="cancel">Cancel</uva-button>
-                     <uva-button @click="submitClicked">Create</uva-button>
+                     <Button severity="secondary" @click="cancelEdit" label="Cancel"/>
+                     <Button @click="submitClicked" label="Create"/>
                   </template>
                   <template v-else-if="store.selectedID > 0">
-                     <Confirm @confirm="deleteCollection"
-                        buttonText="Delete"
-                        :message="`Delete collection <b>'${store.details.title}</b>'?<br/>All data will be removed. This is not reversable.`" />
-                     <uva-button class="pad-left" @click="editSelected">Edit</uva-button>
+                     <Button @click="deleteClicked" severity="danger" label="Delete"/>
+                     <Button @click="editSelected" label="Edit"/>
                   </template>
                </span>
             </h2>
@@ -57,11 +55,13 @@
 import { useCollectionStore } from "@/stores/collection"
 import CollectionDetail from "@/components/CollectionDetail.vue"
 import EditCollection from "@/components/EditCollection.vue"
-import Confirm from "@/components/Confirm.vue"
+import WaitSpinner from "@/components/WaitSpinner.vue"
+import { useConfirm } from "primevue/useconfirm"
 import { onMounted, ref } from "vue"
 
 const store = useCollectionStore()
 const query = ref("")
+const confirm = useConfirm()
 
 function queryTyped() {
    let val = store.collections.find( c => c.title.toLowerCase().indexOf(query.value)==0)
@@ -104,9 +104,24 @@ function scrollParentToChild(parent, child) {
       }
    }
 }
-function deleteCollection() {
-  store.deleteSelectedCollection()
-}
+const deleteClicked = (() => {
+   confirm.require({
+      message: `Delete collection '${store.details.title}'? All data will be lost. This cannot be reveresed. `,
+      header: 'Confirm Collection Delete',
+      icon: 'pi pi-question-circle',
+      rejectProps: {
+         label: 'Cancel',
+         severity: 'secondary'
+      },
+      acceptProps: {
+         label: 'Delete'
+      },
+      accept: () => {
+          store.deleteSelectedCollection()
+      },
+   })
+})
+
 function submitClicked() {
    store.setSubmit()
 }
@@ -133,24 +148,11 @@ onMounted(()=>{
 </script>
 
 <style lang="scss" scoped>
-.home {
-   min-height: 400px;
-}
 .content {
    display: flex;
    flex-flow: row nowrap;
    text-align: left;
-   h2 {
-      margin:5px 0 0 0;
-      color: var(--uvalib-text);
-      background: var(--uvalib-grey-lightest);
-      padding: 5px 10px;
-      border: 1px solid var(--uvalib-grey-light);
-      border-radius:5px 5px 0 0;
-   }
-   .pad-left {
-      margin-left: 5px;
-   }
+
    .list-wrap, .detail-wrap {
       padding: 10px 20px;
       margin-bottom: 20px;
@@ -158,10 +160,17 @@ onMounted(()=>{
    .list-wrap {
       flex-basis: 25%;
       h2 {
-         background: var(--uvalib-blue-alt-light);
-         border: 1px solid var(--uvalib-blue-alt);
-         border-bottom: 2px solid var(--uvalib-blue-alt);
+         padding: 5px 10px;
+         margin:5px 0 0 0;
+         background: $uva-blue-alt-300;
+         border: 1px solid $uva-blue-alt;
+         border-bottom: 2px solid $uva-blue-alt;
       }
+   }
+   .detail-butons {
+      display: flex;
+      flex-flow: row nowrap;
+      gap: 0.5rem;
    }
     .detail-wrap {
        flex-basis: 75%;
@@ -171,50 +180,26 @@ onMounted(()=>{
          justify-content: space-between;
          background: white;
          border: 0;
-         border-bottom: 2px solid var(--uvalib-grey);
+         border-bottom: 2px solid $uva-grey;
          border-radius: 0;
          padding: 5px 0px 5px 5px;
-         .delete  {
-            margin-right: 5px;
-            background: #a00;
-            border-color: #800;
-            &:hover {
-               background: #c00;
-            }
-         }
-         .cancel {
-            margin-right: 5px;
-            background-color: var(--uvalib-grey-lightest);
-            border: 1px solid var(--uvalib-grey);
-            color: black;
-            &:hover {
-               background-color: var(--uvalib-grey-light);
-            }
-         }
       }
     }
     .details {
-       border-radius: 5px;
-       min-height: 600px;
        padding: 20px 20px 0 0;
        .hint {
          font-size: 1.25em;
-         font-style: italic;
-         color: var(--uvalib-grey);
-         margin: 25px;
       }
     }
     .list-details {
-       border-radius: 0 0 5px 5px;
-       box-shadow:0 2px 4px rgba(0, 0, 0, 0.10), 0 2px 4px rgba(0, 0, 0, 0.12);
-       border: 1px solid #aaa;
+       border: 1px solid $uva-grey;
        .search-div {
           padding: 5px;
           display: flex;
           flex-flow: row nowrap;
           align-items: center;
           justify-content: flex-start;
-          background: #f0f0f0;
+          background: $uva-grey-200;
           label {
              font-weight: bold;
              margin: 0 5px;
@@ -223,7 +208,7 @@ onMounted(()=>{
              box-sizing: border-box;
              flex-grow: 1;
           }
-          border-bottom: 1px solid #aaa;
+          border-bottom: 1px solid  $uva-grey;;
        }
       .list {
          text-align: left;
@@ -239,16 +224,12 @@ onMounted(()=>{
             margin: 0;
             cursor: pointer;
             padding: 5px 15px;
-            border-bottom: 1px solid var(--uvalib-grey-lightest);
             &:hover {
-               background: var(--uvalib-teal-lightest);
+               background: $uva-blue-alt-300;
             }
          }
-         .tgt-collection {
-            background: var(--uvalib-teal-lightest);
-         }
          .item.selected {
-            background: var(--uvalib-brand-blue-light);
+            background: $uva-brand-blue-100;
             color: white;
          }
       }

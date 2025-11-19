@@ -53,20 +53,18 @@ div.messsage-box {
       text-align: left;
       background: white;
       padding: 0px;
-      box-shadow:  0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
       min-width: 20%;
       max-width: 80%;
       border-radius: 5px;
       .bar {
          padding: 5px;
-         color: var(--uvalib-text-dark);
          font-weight: 500;
          display: flex;
          flex-flow: row nowrap;
          align-items: center;
          justify-content: space-between;
-         background-color: var(--uvalib-blue-alt-light);
-         border-bottom: 2px solid var(--uvalib-blue-alt);
+         background-color: $uva-blue-alt-300;
+         border-bottom: 2px solid $uva-blue-alt;
          border-radius: 5px 5px 0 0;
          font-size: 1.1em;
          padding: 10px;
@@ -85,7 +83,6 @@ div.messsage-box {
          -webkit-hyphens: auto;
          -moz-hyphens: auto;
          hyphens: auto;
-         color: var(--uvalib-primary-text);
       }
 
       .controls {
